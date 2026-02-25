@@ -76,6 +76,12 @@ public/images/       → Immagini statiche
 - Supporto `prefers-reduced-motion` per animazioni
 - Skip-link come primo elemento focusable
 
+## Analytics
+
+- `@vercel/analytics` — pageviews e visitatori (privacy-friendly, no cookies)
+- `@vercel/speed-insights` — Web Vitals reali (LCP, CLS, INP, TTFB)
+- Entrambi integrati in `app/[locale]/layout.tsx`, attivi solo in produzione
+
 ## Deploy
 
 - Piattaforma: Vercel
