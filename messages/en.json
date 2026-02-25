@@ -1,0 +1,203 @@
+{
+  "metadata": {
+    "title": "Ida Sato — Psychologist",
+    "description": "Psychologist in Milan. Individual psychological counseling, anxiety and stress support, personal growth. Book a free initial consultation."
+  },
+  "navigation": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "contact": "Contact",
+    "faq": "FAQ"
+  },
+  "common": {
+    "readMore": "Read more",
+    "back": "Back",
+    "backToHome": "Back to Home",
+    "bookConsultation": "Book a consultation",
+    "contactMe": "Contact me",
+    "learnMore": "Learn more",
+    "viewAll": "View all",
+    "send": "Send",
+    "loading": "Loading...",
+    "required": "Required",
+    "optional": "Optional",
+    "skipToContent": "Skip to content",
+    "toggleTheme": "Toggle theme",
+    "switchLanguage": "Passa all'italiano"
+  },
+  "hero": {
+    "title": "Your psychological well-being starts here",
+    "subtitle": "I'm Ida Sato, a psychologist. I'll guide you on a journey of self-awareness and personal growth, in a safe and welcoming space.",
+    "cta": "Book an initial consultation"
+  },
+  "aboutPreview": {
+    "title": "About Me",
+    "text": "I'm a licensed psychologist with experience in individual and couples counseling. My approach integrates different methodologies to adapt to each person's unique needs.",
+    "cta": "Discover my background"
+  },
+  "about": {
+    "pageTitle": "About",
+    "title": "Ida Sato",
+    "subtitle": "Psychologist — Order of Psychologists of Lombardy",
+    "bio": "I hold a Master's degree in Clinical Psychology from the University of Milan, followed by a specialization in Cognitive-Behavioral Psychotherapy. For over ten years, I have been supporting people on their journey of growth and psychological well-being.",
+    "approach": {
+      "title": "My approach",
+      "text": "I believe in an integrated approach that puts the person at the center. Each path is unique and is built together, respecting each individual's timing and needs. I use evidence-based techniques to provide effective and personalized support."
+    },
+    "qualifications": {
+      "title": "Education and qualifications",
+      "items": [
+        "Master's Degree in Clinical Psychology — University of Milan",
+        "Specialization in Cognitive-Behavioral Psychotherapy",
+        "Registered with the Order of Psychologists of Lombardy",
+        "Continuing education in Mindfulness and relaxation techniques",
+        "Master in Well-being and Health Psychology"
+      ]
+    },
+    "values": {
+      "title": "My values",
+      "empathy": {
+        "title": "Empathy",
+        "text": "Active listening and deep understanding of your experience."
+      },
+      "respect": {
+        "title": "Respect",
+        "text": "Each journey is unique — I respect your timing and choices."
+      },
+      "professionalism": {
+        "title": "Professionalism",
+        "text": "Evidence-based approach with continuous professional development."
+      }
+    }
+  },
+  "servicesPreview": {
+    "title": "My Services",
+    "subtitle": "I offer various psychological paths to accompany you on your journey to well-being.",
+    "cta": "Discover all services"
+  },
+  "services": {
+    "pageTitle": "Services",
+    "title": "My Services",
+    "subtitle": "Each path is tailor-made to meet your specific needs.",
+    "individual": {
+      "title": "Individual counseling",
+      "description": "A personalized path to address personal difficulties, improve emotional well-being, and develop new coping strategies."
+    },
+    "anxiety": {
+      "title": "Anxiety and stress support",
+      "description": "Effective techniques for managing anxiety, panic attacks, and chronic stress, rediscovering balance and serenity in daily life."
+    },
+    "growth": {
+      "title": "Personal growth",
+      "description": "A journey of exploration and development of your inner resources to achieve personal and professional goals."
+    },
+    "mood": {
+      "title": "Mood disorders",
+      "description": "Professional support for dealing with depression, mood swings, and emotional difficulties with an empathetic, evidence-based approach."
+    },
+    "couples": {
+      "title": "Couples counseling",
+      "description": "A neutral space to improve communication, resolve conflicts, and strengthen the couple's bond."
+    },
+    "online": {
+      "title": "Online sessions",
+      "description": "Remote psychological consultations via video call, with the same quality and confidentiality as in-office sessions."
+    }
+  },
+  "testimonials": {
+    "title": "What people say",
+    "subtitle": "Experiences from those who have embarked on a journey with me.",
+    "t1": {
+      "text": "Ida helped me regain confidence in myself during a very difficult time. Her empathetic and professional approach truly made a difference.",
+      "author": "M., 34 years old"
+    },
+    "t2": {
+      "text": "Thanks to my sessions with Dr. Sato, I learned to manage the anxiety that was paralyzing me. Today I live with more serenity and awareness.",
+      "author": "L., 28 years old"
+    },
+    "t3": {
+      "text": "Online sessions are convenient and equally effective. Ida manages to create a welcoming environment even through the screen.",
+      "author": "A., 41 years old"
+    }
+  },
+  "cta": {
+    "title": "Start your journey today",
+    "text": "The first step is often the hardest. Contact me for a free initial consultation, no commitment required.",
+    "button": "Contact me now"
+  },
+  "contact": {
+    "pageTitle": "Contact",
+    "title": "Contact Me",
+    "subtitle": "Have questions or want to book an appointment? Fill out the form or contact me directly.",
+    "form": {
+      "name": "Full Name",
+      "namePlaceholder": "Your name",
+      "email": "Email",
+      "emailPlaceholder": "your@email.com",
+      "phone": "Phone",
+      "phonePlaceholder": "+39 ...",
+      "message": "Message",
+      "messagePlaceholder": "Briefly describe the reason for your contact...",
+      "submit": "Send message",
+      "success": "Message sent successfully! I'll get back to you as soon as possible.",
+      "errors": {
+        "nameRequired": "Name is required",
+        "emailRequired": "Email is required",
+        "emailInvalid": "Please enter a valid email",
+        "messageRequired": "Message is required"
+      }
+    },
+    "info": {
+      "title": "Contact Information",
+      "email": "Email",
+      "phone": "Phone",
+      "whatsapp": "WhatsApp",
+      "address": "Office Address",
+      "hours": "Office Hours",
+      "hoursValue": "Monday — Friday: 9:00 AM — 7:00 PM",
+      "whatsappNote": "Message me on WhatsApp"
+    }
+  },
+  "faq": {
+    "pageTitle": "FAQ",
+    "title": "Frequently Asked Questions",
+    "subtitle": "Answers to the most common questions about psychological counseling.",
+    "q1": {
+      "question": "How does the first consultation work?",
+      "answer": "The first consultation is an introductory meeting of about 50 minutes where we discuss your needs and the goals you'd like to achieve. It's a moment to get to know each other and understand together if the path I propose is right for you. It involves no commitment."
+    },
+    "q2": {
+      "question": "How long is a session?",
+      "answer": "Each session lasts about 50 minutes. The frequency of meetings is agreed upon together based on individual needs, generally on a weekly or bi-weekly basis."
+    },
+    "q3": {
+      "question": "What is the cost of sessions?",
+      "answer": "The cost of sessions is communicated during the initial consultation. Fees are in line with the Order of Psychologists guidelines and invoices are tax-deductible."
+    },
+    "q4": {
+      "question": "Are online sessions available?",
+      "answer": "Yes, I offer the possibility of online sessions via video call. Remote sessions are equally effective and allow you to continue your path even when you cannot come to the office."
+    },
+    "q5": {
+      "question": "How can I book an appointment?",
+      "answer": "You can contact me through the form on the Contact page, via email, phone, or WhatsApp. I'll get back to you as soon as possible to schedule an initial meeting."
+    },
+    "q6": {
+      "question": "Are sessions confidential?",
+      "answer": "Absolutely. Professional secrecy is a fundamental ethical obligation. Everything shared during sessions is strictly confidential."
+    }
+  },
+  "notFound": {
+    "title": "Page not found",
+    "text": "The page you're looking for doesn't exist or has been moved.",
+    "cta": "Back to Home"
+  },
+  "footer": {
+    "description": "Psychologist registered with the Order of Psychologists of Lombardy. Individual and couples psychological counseling.",
+    "quickLinks": "Quick links",
+    "contacts": "Contacts",
+    "legal": "VAT: {piva} — Psychologists Register no. {alboNumber}",
+    "copyright": "© {year} Ida Sato. All rights reserved."
+  }
+}

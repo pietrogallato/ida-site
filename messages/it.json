@@ -1,0 +1,203 @@
+{
+  "metadata": {
+    "title": "Ida Sato — Psicologa",
+    "description": "Psicologa a Milano. Consulenza psicologica individuale, supporto per ansia e stress, percorsi di crescita personale. Prenota un primo colloquio gratuito."
+  },
+  "navigation": {
+    "home": "Home",
+    "about": "Chi Sono",
+    "services": "Servizi",
+    "contact": "Contatti",
+    "faq": "FAQ"
+  },
+  "common": {
+    "readMore": "Scopri di più",
+    "back": "Indietro",
+    "backToHome": "Torna alla Home",
+    "bookConsultation": "Prenota un consulto",
+    "contactMe": "Contattami",
+    "learnMore": "Approfondisci",
+    "viewAll": "Vedi tutti",
+    "send": "Invia",
+    "loading": "Caricamento...",
+    "required": "Obbligatorio",
+    "optional": "Facoltativo",
+    "skipToContent": "Vai al contenuto",
+    "toggleTheme": "Cambia tema",
+    "switchLanguage": "Switch to English"
+  },
+  "hero": {
+    "title": "Il tuo benessere psicologico inizia qui",
+    "subtitle": "Sono Ida Sato, psicologa. Ti accompagno in un percorso di consapevolezza e crescita personale, in uno spazio sicuro e accogliente.",
+    "cta": "Prenota un primo colloquio"
+  },
+  "aboutPreview": {
+    "title": "Chi Sono",
+    "text": "Sono una psicologa iscritta all'Albo con esperienza nel supporto individuale e di coppia. Il mio approccio integra diverse metodologie per adattarsi alle esigenze uniche di ogni persona.",
+    "cta": "Scopri il mio percorso"
+  },
+  "about": {
+    "pageTitle": "Chi Sono",
+    "title": "Ida Sato",
+    "subtitle": "Psicologa — Ordine degli Psicologi della Lombardia",
+    "bio": "Laureata in Psicologia Clinica presso l'Università degli Studi di Milano, ho successivamente conseguito una specializzazione in Psicoterapia Cognitivo-Comportamentale. Da oltre dieci anni accompagno persone nel loro percorso di crescita e benessere psicologico.",
+    "approach": {
+      "title": "Il mio approccio",
+      "text": "Credo in un approccio integrato che mette la persona al centro. Ogni percorso è unico e viene costruito insieme, rispettando i tempi e le esigenze di ciascuno. Utilizzo tecniche evidence-based per offrire un supporto efficace e personalizzato."
+    },
+    "qualifications": {
+      "title": "Formazione e qualifiche",
+      "items": [
+        "Laurea Magistrale in Psicologia Clinica — Università degli Studi di Milano",
+        "Specializzazione in Psicoterapia Cognitivo-Comportamentale",
+        "Iscritta all'Albo degli Psicologi della Lombardia",
+        "Formazione continua in Mindfulness e tecniche di rilassamento",
+        "Master in Psicologia del Benessere e della Salute"
+      ]
+    },
+    "values": {
+      "title": "I miei valori",
+      "empathy": {
+        "title": "Empatia",
+        "text": "Ascolto attivo e comprensione profonda della tua esperienza."
+      },
+      "respect": {
+        "title": "Rispetto",
+        "text": "Ogni percorso è unico, rispetto i tuoi tempi e le tue scelte."
+      },
+      "professionalism": {
+        "title": "Professionalità",
+        "text": "Approccio basato su evidenze scientifiche e aggiornamento continuo."
+      }
+    }
+  },
+  "servicesPreview": {
+    "title": "I miei servizi",
+    "subtitle": "Offro diversi percorsi psicologici per accompagnarti nel tuo cammino di benessere.",
+    "cta": "Scopri tutti i servizi"
+  },
+  "services": {
+    "pageTitle": "Servizi",
+    "title": "I miei servizi",
+    "subtitle": "Ogni percorso è costruito su misura per rispondere alle tue esigenze specifiche.",
+    "individual": {
+      "title": "Consulenza individuale",
+      "description": "Un percorso personalizzato per affrontare difficoltà personali, migliorare il benessere emotivo e sviluppare nuove strategie di coping."
+    },
+    "anxiety": {
+      "title": "Supporto per ansia e stress",
+      "description": "Tecniche efficaci per gestire ansia, attacchi di panico e stress cronico, ritrovando equilibrio e serenità nella vita quotidiana."
+    },
+    "growth": {
+      "title": "Crescita personale",
+      "description": "Un percorso di esplorazione e sviluppo delle proprie risorse interiori per raggiungere obiettivi personali e professionali."
+    },
+    "mood": {
+      "title": "Disturbi dell'umore",
+      "description": "Supporto professionale per affrontare depressione, sbalzi d'umore e difficoltà emotive con un approccio empatico e basato su evidenze."
+    },
+    "couples": {
+      "title": "Consulenza di coppia",
+      "description": "Uno spazio neutro per migliorare la comunicazione, risolvere conflitti e rafforzare il legame di coppia."
+    },
+    "online": {
+      "title": "Sedute online",
+      "description": "Consulenze psicologiche a distanza tramite videochiamata, con la stessa qualità e riservatezza delle sedute in studio."
+    }
+  },
+  "testimonials": {
+    "title": "Cosa dicono di me",
+    "subtitle": "Le esperienze di chi ha intrapreso un percorso con me.",
+    "t1": {
+      "text": "Ida mi ha aiutato a ritrovare fiducia in me stessa in un momento molto difficile. Il suo approccio empatico e professionale ha fatto davvero la differenza.",
+      "author": "M., 34 anni"
+    },
+    "t2": {
+      "text": "Grazie al percorso con la dott.ssa Sato ho imparato a gestire l'ansia che mi paralizzava. Oggi vivo con più serenità e consapevolezza.",
+      "author": "L., 28 anni"
+    },
+    "t3": {
+      "text": "Le sedute online sono comode e altrettanto efficaci. Ida riesce a creare un ambiente accogliente anche attraverso lo schermo.",
+      "author": "A., 41 anni"
+    }
+  },
+  "cta": {
+    "title": "Inizia il tuo percorso oggi",
+    "text": "Il primo passo è spesso il più difficile. Contattami per un primo colloquio conoscitivo, senza impegno.",
+    "button": "Contattami ora"
+  },
+  "contact": {
+    "pageTitle": "Contatti",
+    "title": "Contattami",
+    "subtitle": "Hai domande o vuoi prenotare un appuntamento? Compila il modulo o contattami direttamente.",
+    "form": {
+      "name": "Nome e Cognome",
+      "namePlaceholder": "Il tuo nome",
+      "email": "Email",
+      "emailPlaceholder": "la.tua@email.it",
+      "phone": "Telefono",
+      "phonePlaceholder": "+39 ...",
+      "message": "Messaggio",
+      "messagePlaceholder": "Descrivi brevemente il motivo del contatto...",
+      "submit": "Invia messaggio",
+      "success": "Messaggio inviato con successo! Ti risponderò al più presto.",
+      "errors": {
+        "nameRequired": "Il nome è obbligatorio",
+        "emailRequired": "L'email è obbligatoria",
+        "emailInvalid": "Inserisci un'email valida",
+        "messageRequired": "Il messaggio è obbligatorio"
+      }
+    },
+    "info": {
+      "title": "Informazioni di contatto",
+      "email": "Email",
+      "phone": "Telefono",
+      "whatsapp": "WhatsApp",
+      "address": "Indirizzo dello studio",
+      "hours": "Orari di ricevimento",
+      "hoursValue": "Lunedì — Venerdì: 9:00 — 19:00",
+      "whatsappNote": "Scrivimi su WhatsApp"
+    }
+  },
+  "faq": {
+    "pageTitle": "Domande Frequenti",
+    "title": "Domande frequenti",
+    "subtitle": "Risposte alle domande più comuni sul percorso psicologico.",
+    "q1": {
+      "question": "Come funziona il primo colloquio?",
+      "answer": "Il primo colloquio è un incontro conoscitivo di circa 50 minuti in cui parliamo delle tue esigenze e degli obiettivi che vorresti raggiungere. È un momento per conoscerci e capire insieme se il percorso che propongo fa al caso tuo. Non comporta alcun impegno."
+    },
+    "q2": {
+      "question": "Quanto dura una seduta?",
+      "answer": "Ogni seduta dura circa 50 minuti. La frequenza degli incontri viene concordata insieme in base alle esigenze individuali, generalmente con cadenza settimanale o bisettimanale."
+    },
+    "q3": {
+      "question": "Qual è il costo delle sedute?",
+      "answer": "Il costo delle sedute viene comunicato durante il primo colloquio conoscitivo. Le tariffe sono in linea con le indicazioni dell'Ordine degli Psicologi e le fatture sono detraibili dalla dichiarazione dei redditi."
+    },
+    "q4": {
+      "question": "È possibile fare sedute online?",
+      "answer": "Sì, offro la possibilità di effettuare sedute online tramite videochiamata. Le sedute a distanza sono altrettanto efficaci e permettono di seguire il percorso anche quando non è possibile recarsi in studio."
+    },
+    "q5": {
+      "question": "Come posso prenotare un appuntamento?",
+      "answer": "Puoi contattarmi tramite il modulo nella pagina Contatti, via email, telefono o WhatsApp. Ti risponderò al più presto per fissare un primo incontro."
+    },
+    "q6": {
+      "question": "I colloqui sono riservati?",
+      "answer": "Assolutamente sì. Il segreto professionale è un obbligo deontologico fondamentale. Tutto ciò che viene condiviso durante le sedute è strettamente confidenziale."
+    }
+  },
+  "notFound": {
+    "title": "Pagina non trovata",
+    "text": "La pagina che stai cercando non esiste o è stata spostata.",
+    "cta": "Torna alla Home"
+  },
+  "footer": {
+    "description": "Psicologa iscritta all'Albo degli Psicologi della Lombardia. Consulenza psicologica individuale e di coppia.",
+    "quickLinks": "Link rapidi",
+    "contacts": "Contatti",
+    "legal": "P.IVA: {piva} — Albo Psicologi n. {alboNumber}",
+    "copyright": "© {year} Ida Sato. Tutti i diritti riservati."
+  }
+}
