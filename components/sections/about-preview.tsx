@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { getLocale, getTranslations } from "next-intl/server";
 import { ArrowRight } from "lucide-react";
@@ -12,11 +13,14 @@ export async function AboutPreview() {
     <section className="py-16 md:py-24">
       <Container>
         <div className="grid items-center gap-12 lg:grid-cols-2">
-          {/* Image placeholder */}
           <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-surface-alt">
-            <div className="absolute inset-0 flex items-center justify-center text-foreground-subtle">
-              <span className="text-sm">Foto di Ida</span>
-            </div>
+            <Image
+              src="/images/ida-sato.jpg"
+              alt="Ida Sato, psicologa"
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
           </div>
 
           {/* Text */}
