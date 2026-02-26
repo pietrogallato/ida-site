@@ -5,6 +5,8 @@ import * as Accordion from "@radix-ui/react-accordion";
 import { ChevronDown } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Heading } from "@/components/ui/heading";
+import { FadeIn } from "@/components/ui/fade-in";
+import { ScrollReveal } from "@/components/ui/scroll-reveal";
 import { faqs } from "@/content/faq";
 
 export default function FaqPage() {
@@ -13,11 +15,14 @@ export default function FaqPage() {
   return (
     <section className="py-16 md:py-24">
       <Container>
-        <div className="mx-auto max-w-2xl text-center">
-          <Heading level={1}>{t("title")}</Heading>
-          <p className="mt-4 text-lg text-foreground-muted">{t("subtitle")}</p>
-        </div>
+        <FadeIn>
+          <div className="mx-auto max-w-2xl text-center">
+            <Heading level={1}>{t("title")}</Heading>
+            <p className="mt-4 text-lg text-foreground-muted">{t("subtitle")}</p>
+          </div>
+        </FadeIn>
 
+        <ScrollReveal>
         <div className="mx-auto mt-12 max-w-3xl">
           <Accordion.Root type="single" collapsible className="space-y-3">
             {faqs.map((faq) => (
@@ -44,6 +49,7 @@ export default function FaqPage() {
             ))}
           </Accordion.Root>
         </div>
+        </ScrollReveal>
       </Container>
     </section>
   );

@@ -4,6 +4,8 @@ import { Mail, Phone, MessageCircle, MapPin, Clock } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Heading } from "@/components/ui/heading";
 import { Card } from "@/components/ui/card";
+import { FadeIn } from "@/components/ui/fade-in";
+import { ScrollReveal } from "@/components/ui/scroll-reveal";
 import { ContactForm } from "@/components/sections/contact-form";
 import { siteConfig } from "@/content/site";
 
@@ -28,11 +30,14 @@ export default async function ContactPage() {
   return (
     <section className="py-16 md:py-24">
       <Container>
-        <div className="mx-auto max-w-2xl text-center">
-          <Heading level={1}>{t("title")}</Heading>
-          <p className="mt-4 text-lg text-foreground-muted">{t("subtitle")}</p>
-        </div>
+        <FadeIn>
+          <div className="mx-auto max-w-2xl text-center">
+            <Heading level={1}>{t("title")}</Heading>
+            <p className="mt-4 text-lg text-foreground-muted">{t("subtitle")}</p>
+          </div>
+        </FadeIn>
 
+        <ScrollReveal>
         <div className="mt-12 grid gap-12 lg:grid-cols-2">
           {/* Contact form */}
           <div>
@@ -132,6 +137,7 @@ export default async function ContactPage() {
             </Card>
           </div>
         </div>
+        </ScrollReveal>
       </Container>
     </section>
   );

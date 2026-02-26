@@ -4,6 +4,8 @@ import { User, Users, GraduationCap, Baby, Heart, Monitor } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Heading } from "@/components/ui/heading";
 import { Card } from "@/components/ui/card";
+import { FadeIn } from "@/components/ui/fade-in";
+import { ScrollReveal } from "@/components/ui/scroll-reveal";
 import { services } from "@/content/services";
 
 const iconMap: Record<string, typeof User> = {
@@ -36,32 +38,36 @@ export default async function ServicesPage() {
   return (
     <section className="py-16 md:py-24">
       <Container>
-        <div className="mx-auto max-w-2xl text-center">
-          <Heading level={1}>{t("title")}</Heading>
-          <p className="mt-4 text-lg text-foreground-muted">{t("subtitle")}</p>
-        </div>
+        <FadeIn>
+          <div className="mx-auto max-w-2xl text-center">
+            <Heading level={1}>{t("title")}</Heading>
+            <p className="mt-4 text-lg text-foreground-muted">{t("subtitle")}</p>
+          </div>
+        </FadeIn>
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {services.map((service) => {
-            const Icon = iconMap[service.icon] || User;
-            return (
-              <Card key={service.id}>
-                <div className="mb-4 inline-flex rounded-lg bg-primary/10 p-3">
-                  <Icon
-                    className="h-6 w-6 text-primary"
-                    aria-hidden="true"
-                  />
-                </div>
-                <h2 className="text-lg font-semibold text-foreground">
-                  {t(`${service.id}.title`)}
-                </h2>
-                <p className="mt-2 text-foreground-muted">
-                  {t(`${service.id}.description`)}
-                </p>
-              </Card>
-            );
-          })}
-        </div>
+        <ScrollReveal>
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {services.map((service) => {
+              const Icon = iconMap[service.icon] || User;
+              return (
+                <Card key={service.id}>
+                  <div className="mb-4 inline-flex rounded-lg bg-primary/10 p-3">
+                    <Icon
+                      className="h-6 w-6 text-primary"
+                      aria-hidden="true"
+                    />
+                  </div>
+                  <h2 className="text-lg font-semibold text-foreground">
+                    {t(`${service.id}.title`)}
+                  </h2>
+                  <p className="mt-2 text-foreground-muted">
+                    {t(`${service.id}.description`)}
+                  </p>
+                </Card>
+              );
+            })}
+          </div>
+        </ScrollReveal>
       </Container>
     </section>
   );
