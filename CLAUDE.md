@@ -55,9 +55,9 @@ public/images/       → Immagini statiche
 - Dark mode: classe `dark` su `<html>`, variabili invertite automaticamente
 
 ### Typography
-- Font: Inter (via next/font/google)
-- Heading: `font-semibold` o `font-bold`
-- Body: `font-normal` (400)
+- Heading: Playfair Display (serif, via `--font-heading`) — `font-semibold` o `font-bold`
+- Body: DM Sans (sans-serif, via `--font-sans`) — `font-normal` (400)
+- I titoli h1-h6 ereditano il font serif da globals.css
 
 ### Spacing
 - Usa scala Tailwind standard (4, 8, 12, 16, 24, 32, 48, 64, 96)
