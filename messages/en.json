@@ -147,7 +147,8 @@
         "nameRequired": "Name is required",
         "emailRequired": "Email is required",
         "emailInvalid": "Please enter a valid email",
-        "messageRequired": "Message is required"
+        "messageRequired": "Message is required",
+        "sendFailed": "An error occurred while sending. Please try again or contact me directly via email."
       }
     },
     "info": {

@@ -147,7 +147,8 @@
         "nameRequired": "Il nome è obbligatorio",
         "emailRequired": "L'email è obbligatoria",
         "emailInvalid": "Inserisci un'email valida",
-        "messageRequired": "Il messaggio è obbligatorio"
+        "messageRequired": "Il messaggio è obbligatorio",
+        "sendFailed": "Si è verificato un errore nell'invio. Riprova o contattami direttamente via email."
       }
     },
     "info": {

@@ -15,6 +15,8 @@ export function ContactForm() {
   const tCommon = useTranslations("common");
 
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [sendError, setSendError] = useState(false);
   const [errors, setErrors] = useState<FormErrors>({});
   const mountTime = useRef(0);
 
@@ -33,7 +35,7 @@ export function ContactForm() {
     return errs;
   }
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
 
@@ -57,7 +59,34 @@ export function ContactForm() {
     }
 
     setErrors({});
-    setSubmitted(true);
+    setSendError(false);
+    setLoading(true);
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.get("name"),
+          email: formData.get("email"),
+          phone: formData.get("phone") || undefined,
+          message: formData.get("message"),
+          website: formData.get("website"),
+          timestamp: mountTime.current,
+        }),
+      });
+
+      if (!res.ok) {
+        setSendError(true);
+        return;
+      }
+
+      setSubmitted(true);
+    } catch {
+      setSendError(true);
+    } finally {
+      setLoading(false);
+    }
   }
 
   if (submitted) {
@@ -169,8 +198,14 @@ export function ContactForm() {
         )}
       </div>
 
-      <Button type="submit" size="lg" className="w-full">
-        {t("submit")}
+      {sendError && (
+        <p className="text-sm text-error" role="alert">
+          {t("errors.sendFailed")}
+        </p>
+      )}
+
+      <Button type="submit" size="lg" className="w-full" disabled={loading}>
+        {loading ? tCommon("loading") : t("submit")}
       </Button>
     </form>
   );
