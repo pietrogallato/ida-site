@@ -36,12 +36,14 @@
   "aboutPreview": {
     "title": "About Me",
     "text": "I'm a clinical psychologist with experience in individual, couples, and family support. Training as a systemic-relational psychotherapist, I pay particular attention to each person and their individual and relational resources.",
-    "cta": "Discover my background"
+    "cta": "Discover my background",
+    "imageAlt": "Ida Sato, clinical psychologist"
   },
   "about": {
     "pageTitle": "About",
     "title": "Ida Sato",
     "subtitle": "Clinical Psychologist — Order of Psychologists of Veneto, no. 13939",
+    "imageAlt": "Ida Sato, clinical psychologist",
     "bio": "Clinical psychologist with experience in individual, couples, and family support, as well as group facilitation and psychological interventions for children and parents. Training as a systemic-relational psychotherapist at the Centro Padovano di Terapia della Famiglia, I pay particular attention to the person, their relational system, and the therapeutic relationship, valuing individual and relational resources.",
     "approach": {
       "title": "My approach",

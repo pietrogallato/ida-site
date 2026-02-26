@@ -73,7 +73,7 @@ export function MobileMenu() {
                       className={cn(
                         "block rounded-lg px-4 py-3 text-lg font-medium transition-colors",
                         isActive
-                          ? "bg-primary/10 text-primary"
+                          ? "bg-primary/10 text-primary-text"
                           : "text-foreground-muted hover:bg-surface-alt hover:text-foreground",
                       )}
                       aria-current={isActive ? "page" : undefined}

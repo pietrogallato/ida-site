@@ -36,12 +36,14 @@
   "aboutPreview": {
     "title": "Chi Sono",
     "text": "Sono una psicologa clinica con esperienza nel sostegno individuale, di coppia e familiare. In formazione come psicoterapeuta sistemico-relazionale, pongo particolare attenzione alla persona e alle sue risorse individuali e relazionali.",
-    "cta": "Scopri il mio percorso"
+    "cta": "Scopri il mio percorso",
+    "imageAlt": "Ida Sato, psicologa clinica"
   },
   "about": {
     "pageTitle": "Chi Sono",
     "title": "Ida Sato",
     "subtitle": "Psicologa Clinica — Albo degli Psicologi del Veneto, n.13939",
+    "imageAlt": "Ida Sato, psicologa clinica",
     "bio": "Psicologa clinica con esperienza in sostegno individuale, di coppia e familiare, oltre che nella conduzione di gruppi e interventi di sostegno psicologico per minori e genitori. In formazione come psicoterapeuta sistemico-relazionale presso il Centro Padovano di Terapia della Famiglia, pongo particolare attenzione alla persona, al suo sistema di appartenenza e alla relazione di cura, valorizzando le risorse individuali e relazionali.",
     "approach": {
       "title": "Il mio approccio",

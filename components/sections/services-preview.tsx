@@ -70,7 +70,7 @@ export async function ServicesPreview() {
           <div className="mt-10 text-center">
             <Link
               href={`/${locale}/servizi`}
-              className="inline-flex items-center gap-2 font-medium text-primary transition-colors hover:text-primary-dark"
+              className="inline-flex items-center gap-2 font-medium text-primary-text transition-colors hover:text-primary-dark"
             >
               {t("cta")}
               <ArrowRight className="h-4 w-4" aria-hidden="true" />

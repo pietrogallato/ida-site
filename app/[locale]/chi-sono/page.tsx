@@ -59,7 +59,7 @@ export default async function AboutPage() {
               <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-surface-alt">
                 <Image
                   src="/images/ida-sato.jpg"
-                  alt="Ida Sato, psicologa"
+                  alt={t("imageAlt")}
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, 50vw"
@@ -69,7 +69,7 @@ export default async function AboutPage() {
 
               <div>
                 <Heading level={1}>{t("title")}</Heading>
-                <p className="mt-2 text-lg text-primary">{t("subtitle")}</p>
+                <p className="mt-2 text-lg text-primary-text">{t("subtitle")}</p>
                 <p className="mt-6 text-lg leading-relaxed text-foreground-muted">
                   {t("bio")}
                 </p>

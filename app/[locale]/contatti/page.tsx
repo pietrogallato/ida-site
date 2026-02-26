@@ -55,7 +55,7 @@ export default async function ContactPage() {
                 <li>
                   <a
                     href={`mailto:${siteConfig.email}`}
-                    className="flex items-start gap-3 text-foreground-muted transition-colors hover:text-primary"
+                    className="flex items-start gap-3 text-foreground-muted transition-colors hover:text-primary-text"
                   >
                     <Mail
                       className="mt-0.5 h-5 w-5 shrink-0 text-primary"
@@ -73,7 +73,7 @@ export default async function ContactPage() {
                 <li>
                   <a
                     href={`tel:${siteConfig.phone.replace(/\s/g, "")}`}
-                    className="flex items-start gap-3 text-foreground-muted transition-colors hover:text-primary"
+                    className="flex items-start gap-3 text-foreground-muted transition-colors hover:text-primary-text"
                   >
                     <Phone
                       className="mt-0.5 h-5 w-5 shrink-0 text-primary"
@@ -93,7 +93,7 @@ export default async function ContactPage() {
                     href={`https://wa.me/${siteConfig.whatsapp}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-start gap-3 text-foreground-muted transition-colors hover:text-primary"
+                    className="flex items-start gap-3 text-foreground-muted transition-colors hover:text-primary-text"
                   >
                     <MessageCircle
                       className="mt-0.5 h-5 w-5 shrink-0 text-primary"

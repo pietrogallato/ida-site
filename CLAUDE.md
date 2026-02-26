@@ -49,10 +49,13 @@ public/images/       → Immagini statiche
 ## Design System
 
 ### Colori (CSS variables in globals.css)
-- `--color-primary`: sage green (#6B8F71) — usare per CTA, link, accenti
+- `--color-primary`: sage green (#6B8F71) — usare per sfondi (bottoni, CTA bg, badge)
+- `--color-primary-text`: sage dark (#5A7A5F) — usare per testo e link su sfondi chiari (4.8:1 su bianco)
+- `--color-primary-dark`: (#5A7A5F) — usare per hover su link e bg con testo bianco
 - `--color-secondary`: warm beige (#D4C5A9) — usare per sfondi secondari
 - `--color-accent`: soft teal (#5B9A8B) — usare per elementi di accento
 - Dark mode: classe `dark` su `<html>`, variabili invertite automaticamente
+- **IMPORTANTE**: NON usare `text-primary` per testo leggibile — il contrasto è solo 3.6:1. Usare `text-primary-text` (4.8:1)
 
 ### Typography
 - Heading: Playfair Display (serif, via `--font-heading`) — `font-semibold` o `font-bold`
@@ -64,17 +67,23 @@ public/images/       → Immagini statiche
 - Sezioni: `py-16 md:py-24` per padding verticale
 - Container: `max-w-7xl mx-auto px-4 sm:px-6 lg:px-8`
 
-## Accessibilità (OBBLIGATORIO)
+## Accessibilità (OBBLIGATORIO — verificare ad OGNI modifica)
 
-- Ogni immagine DEVE avere `alt` descrittivo (o `alt=""` se decorativa)
-- Ogni form input DEVE avere `<label>` associato
-- Errori form collegati con `aria-describedby`
-- Gerarchia heading corretta (h1 → h2 → h3, mai saltare livelli)
-- Focus ring visibile su tutti gli elementi interattivi
-- Contrasto colori minimo 4.5:1 (testo normale) e 3:1 (testo grande)
-- Tutti i bottoni/link con testo leggibile o `aria-label`
-- Supporto `prefers-reduced-motion` per animazioni
-- Skip-link come primo elemento focusable
+**Ogni modifica al codice DEVE essere valutata per l'accessibilità WCAG 2.1 AA.**
+
+### Checklist per ogni modifica
+- [ ] Contrasto colori: 4.5:1 per testo normale, 3:1 per testo grande e UI components
+- [ ] Testo su sfondi chiari: usare `text-primary-text` (NON `text-primary`, che ha solo 3.6:1)
+- [ ] Immagini: `alt` descrittivo e localizzato (via i18n), o `alt=""` se decorativa
+- [ ] Icone decorative: `aria-hidden="true"`
+- [ ] Form input: `<label>` associato, errori con `aria-describedby` e `aria-invalid`
+- [ ] Heading: gerarchia corretta (h1 → h2 → h3, mai saltare livelli, un solo h1 per pagina)
+- [ ] Focus: ring visibile su tutti gli elementi interattivi
+- [ ] Link/bottoni: testo leggibile o `aria-label`
+- [ ] Animazioni: rispettare `prefers-reduced-motion` (usare `useReducedMotion()` di Framer Motion)
+- [ ] Keyboard: tutti gli elementi interattivi raggiungibili via Tab
+- [ ] Skip-link: mantenere come primo elemento focusable
+- [ ] Dark mode: verificare che i contrasti siano validi anche in dark mode
 
 ## Analytics
 

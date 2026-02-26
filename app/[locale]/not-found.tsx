@@ -10,7 +10,7 @@ export default async function NotFound() {
     <section className="flex min-h-[60vh] items-center py-16 md:py-24">
       <Container>
         <div className="mx-auto max-w-md text-center">
-          <p className="text-6xl font-bold text-primary">404</p>
+          <p className="text-6xl font-bold text-primary-text">404</p>
           <h1 className="mt-4 text-2xl font-bold text-foreground">
             {t("title")}
           </h1>

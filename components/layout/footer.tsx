@@ -37,7 +37,7 @@ export async function Footer() {
                     <li key={item.href}>
                       <Link
                         href={href}
-                        className="text-sm text-foreground-muted transition-colors hover:text-primary"
+                        className="text-sm text-foreground-muted transition-colors hover:text-primary-text"
                       >
                         {tNav(item.labelKey)}
                       </Link>
@@ -55,7 +55,7 @@ export async function Footer() {
               <li>
                 <a
                   href={`mailto:${siteConfig.email}`}
-                  className="inline-flex items-center gap-2 text-sm text-foreground-muted transition-colors hover:text-primary"
+                  className="inline-flex items-center gap-2 text-sm text-foreground-muted transition-colors hover:text-primary-text"
                 >
                   <Mail className="h-4 w-4" aria-hidden="true" />
                   {siteConfig.email}
@@ -64,7 +64,7 @@ export async function Footer() {
               <li>
                 <a
                   href={`tel:${siteConfig.phone.replace(/\s/g, "")}`}
-                  className="inline-flex items-center gap-2 text-sm text-foreground-muted transition-colors hover:text-primary"
+                  className="inline-flex items-center gap-2 text-sm text-foreground-muted transition-colors hover:text-primary-text"
                 >
                   <Phone className="h-4 w-4" aria-hidden="true" />
                   {siteConfig.phone}
@@ -75,7 +75,7 @@ export async function Footer() {
                   href={`https://wa.me/${siteConfig.whatsapp}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-sm text-foreground-muted transition-colors hover:text-primary"
+                  className="inline-flex items-center gap-2 text-sm text-foreground-muted transition-colors hover:text-primary-text"
                 >
                   <MessageCircle className="h-4 w-4" aria-hidden="true" />
                   WhatsApp

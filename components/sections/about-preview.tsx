@@ -18,7 +18,7 @@ export async function AboutPreview() {
             <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-surface-alt">
               <Image
                 src="/images/ida-sato.jpg"
-                alt="Ida Sato, psicologa"
+                alt={t("imageAlt")}
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 100vw, 50vw"
@@ -34,7 +34,7 @@ export async function AboutPreview() {
               </p>
               <Link
                 href={`/${locale}/chi-sono`}
-                className="mt-6 inline-flex items-center gap-2 font-medium text-primary transition-colors hover:text-primary-dark"
+                className="mt-6 inline-flex items-center gap-2 font-medium text-primary-text transition-colors hover:text-primary-dark"
               >
                 {t("cta")}
                 <ArrowRight className="h-4 w-4" aria-hidden="true" />

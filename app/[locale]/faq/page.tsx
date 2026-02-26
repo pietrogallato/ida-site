@@ -32,7 +32,7 @@ export default function FaqPage() {
                 className="overflow-hidden rounded-xl border border-border bg-surface"
               >
                 <Accordion.Header>
-                  <Accordion.Trigger className="group flex w-full items-center justify-between px-6 py-4 text-left font-medium text-foreground transition-colors hover:text-primary">
+                  <Accordion.Trigger className="group flex w-full items-center justify-between px-6 py-4 text-left font-medium text-foreground transition-colors hover:text-primary-text">
                     {t(`${faq.id}.question`)}
                     <ChevronDown
                       className="h-5 w-5 shrink-0 text-foreground-subtle transition-transform duration-200 group-data-[state=open]:rotate-180"

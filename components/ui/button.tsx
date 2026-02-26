@@ -7,7 +7,7 @@ const variants = {
   secondary:
     "bg-secondary text-foreground hover:bg-secondary-light focus-visible:ring-secondary",
   outline:
-    "border-2 border-primary text-primary hover:bg-primary hover:text-white focus-visible:ring-primary",
+    "border-2 border-primary text-primary-text hover:bg-primary-dark hover:text-white focus-visible:ring-primary",
   ghost:
     "text-foreground hover:bg-surface-alt focus-visible:ring-primary",
 } as const;

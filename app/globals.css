@@ -19,6 +19,8 @@
   --color-foreground-muted: #4A4A48;
   --color-foreground-subtle: #7A7A78;
 
+  --color-primary-text: #5A7A5F;
+
   --color-error: #DC2626;
   --color-success: #16A34A;
 }
@@ -42,6 +44,8 @@
   --color-foreground-muted: #B5B1A9;
   --color-foreground-subtle: #8A8680;
 
+  --color-primary-text: #8BAF90;
+
   --color-error: #F87171;
   --color-success: #4ADE80;
 }
@@ -64,6 +68,8 @@
   --color-foreground: var(--color-foreground);
   --color-foreground-muted: var(--color-foreground-muted);
   --color-foreground-subtle: var(--color-foreground-subtle);
+
+  --color-primary-text: var(--color-primary-text);
 
   --color-error: var(--color-error);
   --color-success: var(--color-success);
@@ -110,7 +116,7 @@ h1, h2, h3, h4, h5, h6 {
   transform: translateX(-50%);
   z-index: 100;
   padding: 0.75rem 1.5rem;
-  background-color: var(--color-primary);
+  background-color: var(--color-primary-dark);
   color: white;
   font-weight: 600;
   border-radius: 0 0 0.5rem 0.5rem;

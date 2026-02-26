@@ -28,7 +28,7 @@ export function Navigation() {
                 className={cn(
                   "rounded-lg px-3 py-2 text-sm font-medium transition-colors",
                   isActive
-                    ? "bg-primary/10 text-primary"
+                    ? "bg-primary/10 text-primary-text"
                     : "text-foreground-muted hover:bg-surface-alt hover:text-foreground",
                 )}
                 aria-current={isActive ? "page" : undefined}

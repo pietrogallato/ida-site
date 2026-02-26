@@ -34,7 +34,7 @@ export function LanguageSwitcher() {
         aria-checked={locale === "it"}
         className={`rounded-full px-2.5 py-1 text-xs font-semibold transition-all ${
           locale === "it"
-            ? "bg-primary text-white shadow-sm"
+            ? "bg-primary-dark text-white shadow-sm"
             : "text-foreground-muted hover:text-foreground"
         }`}
       >
@@ -46,7 +46,7 @@ export function LanguageSwitcher() {
         aria-checked={locale === "en"}
         className={`rounded-full px-2.5 py-1 text-xs font-semibold transition-all ${
           locale === "en"
-            ? "bg-primary text-white shadow-sm"
+            ? "bg-primary-dark text-white shadow-sm"
             : "text-foreground-muted hover:text-foreground"
         }`}
       >
