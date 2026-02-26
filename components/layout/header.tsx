@@ -18,13 +18,13 @@ export function Header() {
         <div className="flex h-16 items-center justify-between">
           <Link
             href={`/${locale}`}
-            className="flex flex-col leading-tight"
+            className="flex items-baseline gap-2"
             aria-label={t("home")}
           >
-            <span className="text-lg font-bold text-foreground">
+            <span className="text-xl font-bold text-foreground">
               Ida Sato
             </span>
-            <span className="text-xs text-foreground-muted">
+            <span className="text-sm text-foreground-muted">
               {locale === "it" ? "Psicologa" : "Psychologist"}
             </span>
           </Link>
