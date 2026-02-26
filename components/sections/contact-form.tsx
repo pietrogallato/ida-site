@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useState, useRef, useEffect, type FormEvent } from "react";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 
@@ -16,6 +16,11 @@ export function ContactForm() {
 
   const [submitted, setSubmitted] = useState(false);
   const [errors, setErrors] = useState<FormErrors>({});
+  const mountTime = useRef(0);
+
+  useEffect(() => {
+    mountTime.current = Date.now();
+  }, []);
 
   function validate(formData: FormData): FormErrors {
     const errs: FormErrors = {};
@@ -31,6 +36,19 @@ export function ContactForm() {
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
+
+    // Anti-bot: honeypot field filled → silent fake success
+    if (formData.get("website")) {
+      setSubmitted(true);
+      return;
+    }
+
+    // Anti-bot: form submitted too fast (< 2s) → silent fake success
+    if (mountTime.current && Date.now() - mountTime.current < 2000) {
+      setSubmitted(true);
+      return;
+    }
+
     const errs = validate(formData);
 
     if (Object.keys(errs).length > 0) {
@@ -55,6 +73,18 @@ export function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} noValidate className="space-y-6">
+      {/* Honeypot — invisible to humans, bots fill it automatically */}
+      <div aria-hidden="true" style={{ position: "absolute", left: "-9999px" }}>
+        <label htmlFor="website">Website</label>
+        <input
+          id="website"
+          name="website"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+        />
+      </div>
+
       {/* Name */}
       <div>
         <label htmlFor="name" className="block text-sm font-medium text-foreground">
