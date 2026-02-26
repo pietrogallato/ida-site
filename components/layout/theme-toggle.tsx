@@ -11,13 +11,19 @@ export function ThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      className="rounded-lg p-2 text-foreground-muted transition-colors hover:bg-surface-alt hover:text-foreground"
+      className="flex items-center gap-1.5 rounded-full border border-border bg-surface-alt px-3 py-1.5 text-sm font-medium text-foreground-muted transition-all hover:border-primary hover:text-foreground active:scale-95"
       aria-label={t("toggleTheme")}
     >
       {theme === "light" ? (
-        <Moon className="h-5 w-5" />
+        <>
+          <Moon className="h-4 w-4" />
+          <span className="hidden sm:inline">{t("dark")}</span>
+        </>
       ) : (
-        <Sun className="h-5 w-5" />
+        <>
+          <Sun className="h-4 w-4" />
+          <span className="hidden sm:inline">{t("light")}</span>
+        </>
       )}
     </button>
   );

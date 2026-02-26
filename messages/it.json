@@ -24,7 +24,9 @@
     "optional": "Facoltativo",
     "skipToContent": "Vai al contenuto",
     "toggleTheme": "Cambia tema",
-    "switchLanguage": "Switch to English"
+    "light": "Chiaro",
+    "dark": "Scuro",
+    "switchLanguage": "Cambia lingua"
   },
   "hero": {
     "title": "Il tuo benessere psicologico inizia qui",

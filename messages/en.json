@@ -24,7 +24,9 @@
     "optional": "Optional",
     "skipToContent": "Skip to content",
     "toggleTheme": "Toggle theme",
-    "switchLanguage": "Passa all'italiano"
+    "light": "Light",
+    "dark": "Dark",
+    "switchLanguage": "Switch language"
   },
   "hero": {
     "title": "Your psychological well-being starts here",

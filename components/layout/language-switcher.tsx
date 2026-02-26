@@ -10,10 +10,9 @@ export function LanguageSwitcher() {
   const router = useRouter();
   const pathname = usePathname();
 
-  function switchLocale() {
-    const nextLocale = locale === "it" ? "en" : "it";
+  function switchLocale(nextLocale: string) {
+    if (nextLocale === locale) return;
 
-    // Replace the current locale prefix in the pathname
     const segments = pathname.split("/");
     if (routing.locales.includes(segments[1] as "it" | "en")) {
       segments[1] = nextLocale;
@@ -24,12 +23,35 @@ export function LanguageSwitcher() {
   }
 
   return (
-    <button
-      onClick={switchLocale}
-      className="rounded-lg px-3 py-2 text-sm font-medium text-foreground-muted transition-colors hover:bg-surface-alt hover:text-foreground"
+    <div
+      className="flex rounded-full border border-border bg-surface-alt p-0.5"
+      role="radiogroup"
       aria-label={t("switchLanguage")}
     >
-      {locale === "it" ? "EN" : "IT"}
-    </button>
+      <button
+        onClick={() => switchLocale("it")}
+        role="radio"
+        aria-checked={locale === "it"}
+        className={`rounded-full px-2.5 py-1 text-xs font-semibold transition-all ${
+          locale === "it"
+            ? "bg-primary text-white shadow-sm"
+            : "text-foreground-muted hover:text-foreground"
+        }`}
+      >
+        IT
+      </button>
+      <button
+        onClick={() => switchLocale("en")}
+        role="radio"
+        aria-checked={locale === "en"}
+        className={`rounded-full px-2.5 py-1 text-xs font-semibold transition-all ${
+          locale === "en"
+            ? "bg-primary text-white shadow-sm"
+            : "text-foreground-muted hover:text-foreground"
+        }`}
+      >
+        EN
+      </button>
+    </div>
   );
 }
