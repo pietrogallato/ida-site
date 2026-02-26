@@ -2,13 +2,13 @@ import type { SiteConfig, NavItem } from "@/types";
 
 export const siteConfig: SiteConfig = {
   name: "Ida Sato",
-  email: "ida.sato@example.com",
-  phone: "+39 012 345 6789",
-  whatsapp: "+390123456789",
-  address: "Via Example 42, 20100 Milano (MI)",
-  city: "Milano",
+  email: "idasato1@gmail.com",
+  phone: "+39 334 5029289",
+  whatsapp: "+393345029289",
+  address: "Meledo (VI) e Spinea (VE)",
+  city: "Padova",
   piva: "IT12345678901",
-  alboNumber: "12345",
+  alboNumber: "13939",
   url: "https://idasato.it",
 };
 

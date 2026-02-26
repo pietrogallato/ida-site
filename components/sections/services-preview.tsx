@@ -2,10 +2,10 @@ import Link from "next/link";
 import { getLocale, getTranslations } from "next-intl/server";
 import {
   User,
-  Brain,
-  Sprout,
-  Sun,
   Users,
+  GraduationCap,
+  Baby,
+  Heart,
   Monitor,
   ArrowRight,
 } from "lucide-react";
@@ -16,10 +16,10 @@ import { services } from "@/content/services";
 
 const iconMap: Record<string, typeof User> = {
   User,
-  Brain,
-  Sprout,
-  Sun,
   Users,
+  GraduationCap,
+  Baby,
+  Heart,
   Monitor,
 };
 

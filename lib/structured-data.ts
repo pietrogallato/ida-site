@@ -25,8 +25,8 @@ export function getLocalBusinessSchema(locale: string) {
     },
     description:
       locale === "it"
-        ? "Psicologa a Milano. Consulenza psicologica individuale, supporto per ansia e stress, percorsi di crescita personale."
-        : "Psychologist in Milan. Individual psychological counseling, anxiety and stress support, personal growth.",
+        ? "Psicologa clinica a Padova, Meledo (VI) e Spinea (VE). Sostegno psicologico individuale, consulenze di coppia e familiari, psicologia scolastica."
+        : "Clinical psychologist in Padova, Meledo (VI) and Spinea (VE), Italy. Individual psychological support, couples and family counseling, school psychology.",
     openingHoursSpecification: {
       "@type": "OpeningHoursSpecification",
       dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],

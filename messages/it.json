@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "title": "Ida Sato — Psicologa",
-    "description": "Psicologa a Milano. Consulenza psicologica individuale, supporto per ansia e stress, percorsi di crescita personale. Prenota un primo colloquio gratuito."
+    "title": "Ida Sato — Psicologa Clinica",
+    "description": "Psicologa clinica a Padova, Meledo (VI) e Spinea (VE). Sostegno psicologico individuale, consulenze di coppia e familiari, psicologia scolastica. Prenota un primo colloquio."
   },
   "navigation": {
     "home": "Home",
@@ -30,46 +30,47 @@
   },
   "hero": {
     "title": "Il tuo benessere psicologico inizia qui",
-    "subtitle": "Sono Ida Sato, psicologa. Ti accompagno in un percorso di consapevolezza e crescita personale, in uno spazio sicuro e accogliente.",
+    "subtitle": "Sono Ida Sato, psicologa clinica. Ti accompagno in un percorso di consapevolezza e crescita, ponendo attenzione alla persona, al suo sistema di appartenenza e alla relazione di cura.",
     "cta": "Prenota un primo colloquio"
   },
   "aboutPreview": {
     "title": "Chi Sono",
-    "text": "Sono una psicologa iscritta all'Albo con esperienza nel supporto individuale e di coppia. Il mio approccio integra diverse metodologie per adattarsi alle esigenze uniche di ogni persona.",
+    "text": "Sono una psicologa clinica con esperienza nel sostegno individuale, di coppia e familiare. In formazione come psicoterapeuta sistemico-relazionale, pongo particolare attenzione alla persona e alle sue risorse individuali e relazionali.",
     "cta": "Scopri il mio percorso"
   },
   "about": {
     "pageTitle": "Chi Sono",
     "title": "Ida Sato",
-    "subtitle": "Psicologa — Ordine degli Psicologi della Lombardia",
-    "bio": "Laureata in Psicologia Clinica presso l'Università degli Studi di Milano, ho successivamente conseguito una specializzazione in Psicoterapia Cognitivo-Comportamentale. Da oltre dieci anni accompagno persone nel loro percorso di crescita e benessere psicologico.",
+    "subtitle": "Psicologa Clinica — Albo degli Psicologi del Veneto, n.13939",
+    "bio": "Psicologa clinica con esperienza in sostegno individuale, di coppia e familiare, oltre che nella conduzione di gruppi e interventi di sostegno psicologico per minori e genitori. In formazione come psicoterapeuta sistemico-relazionale presso il Centro Padovano di Terapia della Famiglia, pongo particolare attenzione alla persona, al suo sistema di appartenenza e alla relazione di cura, valorizzando le risorse individuali e relazionali.",
     "approach": {
       "title": "Il mio approccio",
-      "text": "Credo in un approccio integrato che mette la persona al centro. Ogni percorso è unico e viene costruito insieme, rispettando i tempi e le esigenze di ciascuno. Utilizzo tecniche evidence-based per offrire un supporto efficace e personalizzato."
+      "text": "Il mio lavoro si basa sull'approccio sistemico-relazionale: ogni persona è parte di un sistema di relazioni che influenza il suo benessere. Insieme esploriamo le dinamiche relazionali e le risorse presenti nel tuo contesto di vita, per trovare nuovi equilibri e possibilità di cambiamento. Ogni percorso è unico e viene costruito insieme, rispettando i tuoi tempi e le tue esigenze."
     },
     "qualifications": {
       "title": "Formazione e qualifiche",
       "items": [
-        "Laurea Magistrale in Psicologia Clinica — Università degli Studi di Milano",
-        "Specializzazione in Psicoterapia Cognitivo-Comportamentale",
-        "Iscritta all'Albo degli Psicologi della Lombardia",
-        "Formazione continua in Mindfulness e tecniche di rilassamento",
-        "Master in Psicologia del Benessere e della Salute"
+        "Laurea Magistrale in Psicologia Clinico-Dinamica — Università degli Studi di Padova (110/110 e lode)",
+        "Laurea Triennale in Scienze Psicologiche Cognitive e Psicobiologiche — Università degli Studi di Padova (108/110)",
+        "Scuola di Specializzazione in Psicoterapia Sistemico-Relazionale — Centro Padovano di Terapia della Famiglia (in corso)",
+        "Master in Psicologia Scolastica — IGEA (in corso)",
+        "Corso di Formazione (300h) per Tutor DSA e BES — Saperepiù",
+        "Autrice di pubblicazioni scientifiche su Psychiatry Research (Elsevier) e Stigma and Health (APA)"
       ]
     },
     "values": {
       "title": "I miei valori",
       "empathy": {
-        "title": "Empatia",
-        "text": "Ascolto attivo e comprensione profonda della tua esperienza."
+        "title": "Ascolto",
+        "text": "Ascolto attivo ed empatia per comprendere la tua esperienza e il tuo mondo relazionale."
       },
       "respect": {
         "title": "Rispetto",
-        "text": "Ogni percorso è unico, rispetto i tuoi tempi e le tue scelte."
+        "text": "Ogni percorso è unico, rispetto i tuoi tempi e le tue scelte all'interno del tuo sistema di appartenenza."
       },
       "professionalism": {
         "title": "Professionalità",
-        "text": "Approccio basato su evidenze scientifiche e aggiornamento continuo."
+        "text": "Formazione continua, supervisione e approccio basato su evidenze scientifiche."
       }
     }
   },
@@ -83,24 +84,24 @@
     "title": "I miei servizi",
     "subtitle": "Ogni percorso è costruito su misura per rispondere alle tue esigenze specifiche.",
     "individual": {
-      "title": "Consulenza individuale",
-      "description": "Un percorso personalizzato per affrontare difficoltà personali, migliorare il benessere emotivo e sviluppare nuove strategie di coping."
-    },
-    "anxiety": {
-      "title": "Supporto per ansia e stress",
-      "description": "Tecniche efficaci per gestire ansia, attacchi di panico e stress cronico, ritrovando equilibrio e serenità nella vita quotidiana."
-    },
-    "growth": {
-      "title": "Crescita personale",
-      "description": "Un percorso di esplorazione e sviluppo delle proprie risorse interiori per raggiungere obiettivi personali e professionali."
-    },
-    "mood": {
-      "title": "Disturbi dell'umore",
-      "description": "Supporto professionale per affrontare depressione, sbalzi d'umore e difficoltà emotive con un approccio empatico e basato su evidenze."
+      "title": "Sostegno psicologico individuale",
+      "description": "Un percorso personalizzato per affrontare difficoltà personali, migliorare il benessere emotivo e sviluppare nuove risorse e strategie."
     },
     "couples": {
-      "title": "Consulenza di coppia",
-      "description": "Uno spazio neutro per migliorare la comunicazione, risolvere conflitti e rafforzare il legame di coppia."
+      "title": "Consulenze di coppia e familiari",
+      "description": "Uno spazio per migliorare la comunicazione, affrontare conflitti e ritrovare equilibrio nelle relazioni di coppia e familiari."
+    },
+    "school": {
+      "title": "Psicologia scolastica",
+      "description": "Interventi di educazione affettiva e sessuo-affettiva nelle scuole, supporto per studenti con BES e DSA, consulenza per insegnanti e genitori."
+    },
+    "parenting": {
+      "title": "Sostegno alla genitorialità",
+      "description": "Gruppi e percorsi per genitori di adolescenti e pre-adolescenti, affrontando tematiche come cambiamenti adolescenziali, ansia, conflitto e autonomia."
+    },
+    "youth": {
+      "title": "Supporto per minori e adolescenti",
+      "description": "Interventi educativi e psicologici per bambini e ragazzi, con attenzione alle difficoltà evolutive, emotive e relazionali."
     },
     "online": {
       "title": "Sedute online",
@@ -156,7 +157,7 @@
       "email": "Email",
       "phone": "Telefono",
       "whatsapp": "WhatsApp",
-      "address": "Indirizzo dello studio",
+      "address": "Studi",
       "hours": "Orari di ricevimento",
       "hoursValue": "Lunedì — Venerdì: 9:00 — 19:00",
       "whatsappNote": "Scrivimi su WhatsApp"
@@ -197,10 +198,10 @@
     "cta": "Torna alla Home"
   },
   "footer": {
-    "description": "Psicologa iscritta all'Albo degli Psicologi della Lombardia. Consulenza psicologica individuale e di coppia.",
+    "description": "Psicologa clinica iscritta all'Albo degli Psicologi del Veneto. Sostegno psicologico individuale, consulenze di coppia e familiari.",
     "quickLinks": "Link rapidi",
     "contacts": "Contatti",
-    "legal": "P.IVA: {piva} — Albo Psicologi n. {alboNumber}",
+    "legal": "P.IVA: {piva} — Albo Psicologi del Veneto n. {alboNumber}",
     "copyright": "© {year} Ida Sato. Tutti i diritti riservati."
   }
 }

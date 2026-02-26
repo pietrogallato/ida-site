@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { getLocale, getTranslations } from "next-intl/server";
-import { User, Brain, Sprout, Sun, Users, Monitor } from "lucide-react";
+import { User, Users, GraduationCap, Baby, Heart, Monitor } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Heading } from "@/components/ui/heading";
 import { Card } from "@/components/ui/card";
@@ -8,10 +8,10 @@ import { services } from "@/content/services";
 
 const iconMap: Record<string, typeof User> = {
   User,
-  Brain,
-  Sprout,
-  Sun,
   Users,
+  GraduationCap,
+  Baby,
+  Heart,
   Monitor,
 };
 

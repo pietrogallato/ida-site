@@ -25,7 +25,7 @@ export function Header() {
               Ida Sato
             </span>
             <span className="text-sm text-foreground-muted">
-              {locale === "it" ? "Psicologa" : "Psychologist"}
+              {locale === "it" ? "Psicologa Clinica" : "Clinical Psychologist"}
             </span>
           </Link>
 
