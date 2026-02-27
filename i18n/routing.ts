@@ -19,5 +19,9 @@ export const routing = defineRouting({
       en: "/contact",
     },
     "/faq": "/faq",
+    "/privacy": {
+      it: "/privacy",
+      en: "/privacy",
+    },
   },
 });

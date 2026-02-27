@@ -8,7 +8,8 @@
     "about": "Chi Sono",
     "services": "Servizi",
     "contact": "Contatti",
-    "faq": "FAQ"
+    "faq": "FAQ",
+    "subtitle": "Psicologa Clinica"
   },
   "common": {
     "readMore": "Scopri di più",
@@ -26,7 +27,8 @@
     "toggleTheme": "Cambia tema",
     "light": "Chiaro",
     "dark": "Scuro",
-    "switchLanguage": "Cambia lingua"
+    "switchLanguage": "Cambia lingua",
+    "backToTop": "Torna in cima"
   },
   "hero": {
     "title": "Il tuo benessere psicologico inizia qui",
@@ -194,10 +196,45 @@
       "answer": "Assolutamente sì. Il segreto professionale è un obbligo deontologico fondamentale. Tutto ciò che viene condiviso durante le sedute è strettamente confidenziale."
     }
   },
+  "error": {
+    "title": "Si è verificato un errore",
+    "text": "Qualcosa è andato storto. Riprova o torna alla pagina precedente.",
+    "retry": "Riprova"
+  },
   "notFound": {
     "title": "Pagina non trovata",
     "text": "La pagina che stai cercando non esiste o è stata spostata.",
     "cta": "Torna alla Home"
+  },
+  "privacy": {
+    "pageTitle": "Privacy Policy",
+    "title": "Informativa sulla Privacy",
+    "lastUpdated": "Ultimo aggiornamento: febbraio 2026",
+    "intro": "La presente informativa descrive le modalità di trattamento dei dati personali raccolti attraverso questo sito web, ai sensi del Regolamento UE 2016/679 (GDPR).",
+    "controller": {
+      "title": "Titolare del trattamento",
+      "text": "Il titolare del trattamento è Ida Sato, P.IVA {piva}, con sede a {address}. Per qualsiasi richiesta relativa ai dati personali, è possibile scrivere a {email}."
+    },
+    "dataCollected": {
+      "title": "Dati raccolti",
+      "text": "Attraverso il modulo di contatto, raccogliamo: nome, indirizzo email, numero di telefono (facoltativo) e il testo del messaggio. Questi dati sono utilizzati esclusivamente per rispondere alle richieste ricevute."
+    },
+    "analytics": {
+      "title": "Analisi del traffico",
+      "text": "Questo sito utilizza Vercel Analytics e Vercel Speed Insights per raccogliere dati anonimi sull'utilizzo del sito. Questi strumenti non utilizzano cookie e non raccolgono dati personali identificabili."
+    },
+    "rights": {
+      "title": "I tuoi diritti",
+      "text": "Hai il diritto di accedere ai tuoi dati, richiederne la rettifica o la cancellazione, limitare il trattamento e opporti allo stesso. Per esercitare questi diritti, contattaci all'indirizzo email indicato sopra."
+    },
+    "retention": {
+      "title": "Conservazione dei dati",
+      "text": "I dati raccolti tramite il modulo di contatto vengono conservati per il tempo strettamente necessario a gestire la richiesta e successivamente cancellati."
+    },
+    "cookies": {
+      "title": "Cookie",
+      "text": "Questo sito utilizza esclusivamente cookie tecnici necessari al funzionamento (come la preferenza del tema chiaro/scuro e la lingua). Non vengono utilizzati cookie di profilazione o di terze parti."
+    }
   },
   "footer": {
     "description": "Psicologa clinica iscritta all'Albo degli Psicologi del Veneto. Sostegno psicologico individuale, consulenze di coppia e familiari.",

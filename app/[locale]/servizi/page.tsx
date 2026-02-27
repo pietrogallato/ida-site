@@ -23,7 +23,11 @@ export async function generateMetadata(): Promise<Metadata> {
 
   return {
     title: t("pageTitle"),
+    description: locale === "it"
+      ? "Sostegno psicologico individuale, consulenze di coppia e familiari, psicologia scolastica, supporto alla genitorialità e sedute online."
+      : "Individual psychological support, couples and family counseling, school psychology, parenting support, and online sessions.",
     alternates: {
+      canonical: locale === "it" ? "/it/servizi" : "/en/services",
       languages: {
         it: "/it/servizi",
         en: "/en/services",

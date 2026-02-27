@@ -95,6 +95,13 @@ export async function Footer() {
           </p>
           <p className="mt-1">
             {t("copyright", { year: String(year) })}
+            {" — "}
+            <Link
+              href={`/${locale}/privacy`}
+              className="underline transition-colors hover:text-primary-text"
+            >
+              Privacy Policy
+            </Link>
           </p>
         </div>
       </Container>

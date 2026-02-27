@@ -14,7 +14,11 @@ export async function generateMetadata(): Promise<Metadata> {
 
   return {
     title: t("pageTitle"),
+    description: locale === "it"
+      ? "Scopri il percorso di Ida Sato, psicologa clinica. Formazione, approccio sistemico-relazionale e valori professionali."
+      : "Learn about Ida Sato, clinical psychologist. Education, systemic-relational approach, and professional values.",
     alternates: {
+      canonical: locale === "it" ? "/it/chi-sono" : "/en/about",
       languages: {
         it: "/it/chi-sono",
         en: "/en/about",

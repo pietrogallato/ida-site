@@ -15,7 +15,11 @@ export async function generateMetadata(): Promise<Metadata> {
 
   return {
     title: t("pageTitle"),
+    description: locale === "it"
+      ? "Contatta Ida Sato per un primo colloquio conoscitivo. Email, telefono, WhatsApp o modulo di contatto. Studi a Meledo (VI) e Spinea (VE)."
+      : "Contact Ida Sato for an initial consultation. Email, phone, WhatsApp, or contact form. Offices in Meledo (VI) and Spinea (VE).",
     alternates: {
+      canonical: locale === "it" ? "/it/contatti" : "/en/contact",
       languages: {
         it: "/it/contatti",
         en: "/en/contact",

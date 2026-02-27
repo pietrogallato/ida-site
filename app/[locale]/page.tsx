@@ -1,7 +1,26 @@
+import type { Metadata } from "next";
+import { getLocale, getTranslations } from "next-intl/server";
 import { Hero } from "@/components/sections/hero";
 import { AboutPreview } from "@/components/sections/about-preview";
 import { ServicesPreview } from "@/components/sections/services-preview";
 import { CtaSection } from "@/components/sections/cta-section";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+  const t = await getTranslations({ locale, namespace: "metadata" });
+
+  return {
+    title: t("title"),
+    description: t("description"),
+    alternates: {
+      canonical: `/${locale}`,
+      languages: {
+        it: "/it",
+        en: "/en",
+      },
+    },
+  };
+}
 
 export default function HomePage() {
   return (

@@ -8,7 +8,8 @@
     "about": "About",
     "services": "Services",
     "contact": "Contact",
-    "faq": "FAQ"
+    "faq": "FAQ",
+    "subtitle": "Clinical Psychologist"
   },
   "common": {
     "readMore": "Read more",
@@ -26,7 +27,8 @@
     "toggleTheme": "Toggle theme",
     "light": "Light",
     "dark": "Dark",
-    "switchLanguage": "Switch language"
+    "switchLanguage": "Switch language",
+    "backToTop": "Back to top"
   },
   "hero": {
     "title": "Your psychological well-being starts here",
@@ -194,10 +196,45 @@
       "answer": "Absolutely. Professional secrecy is a fundamental ethical obligation. Everything shared during sessions is strictly confidential."
     }
   },
+  "error": {
+    "title": "Something went wrong",
+    "text": "An error occurred. Please try again or go back to the previous page.",
+    "retry": "Try again"
+  },
   "notFound": {
     "title": "Page not found",
     "text": "The page you're looking for doesn't exist or has been moved.",
     "cta": "Back to Home"
+  },
+  "privacy": {
+    "pageTitle": "Privacy Policy",
+    "title": "Privacy Policy",
+    "lastUpdated": "Last updated: February 2026",
+    "intro": "This policy describes how personal data collected through this website is processed, in accordance with EU Regulation 2016/679 (GDPR).",
+    "controller": {
+      "title": "Data Controller",
+      "text": "The data controller is Ida Sato, VAT {piva}, based in {address}. For any request regarding personal data, you can write to {email}."
+    },
+    "dataCollected": {
+      "title": "Data Collected",
+      "text": "Through the contact form, we collect: name, email address, phone number (optional), and message text. This data is used exclusively to respond to inquiries received."
+    },
+    "analytics": {
+      "title": "Traffic Analysis",
+      "text": "This site uses Vercel Analytics and Vercel Speed Insights to collect anonymous usage data. These tools do not use cookies and do not collect personally identifiable information."
+    },
+    "rights": {
+      "title": "Your Rights",
+      "text": "You have the right to access your data, request its rectification or deletion, restrict processing, and object to it. To exercise these rights, contact us at the email address indicated above."
+    },
+    "retention": {
+      "title": "Data Retention",
+      "text": "Data collected through the contact form is retained only for the time strictly necessary to handle the request and is subsequently deleted."
+    },
+    "cookies": {
+      "title": "Cookies",
+      "text": "This site exclusively uses technical cookies necessary for operation (such as light/dark theme preference and language). No profiling or third-party cookies are used."
+    }
   },
   "footer": {
     "description": "Clinical psychologist registered with the Order of Psychologists of Veneto. Individual psychological support, couples and family counseling.",

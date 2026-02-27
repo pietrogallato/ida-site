@@ -1,8 +1,31 @@
 import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
 import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
-const CONTACT_EMAIL = process.env.CONTACT_EMAIL || "pietrogallato@gmail.com";
+
+if (!process.env.CONTACT_EMAIL) {
+  console.warn("CONTACT_EMAIL env variable is not set");
+}
+const CONTACT_EMAIL = process.env.CONTACT_EMAIL;
+
+// In-memory rate limiting (per IP, 5 requests per 15 minutes)
+const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
+const RATE_LIMIT_MAX = 5;
+const RATE_LIMIT_WINDOW_MS = 15 * 60 * 1000;
+
+function isRateLimited(ip: string): boolean {
+  const now = Date.now();
+  const entry = rateLimitMap.get(ip);
+
+  if (!entry || now > entry.resetAt) {
+    rateLimitMap.set(ip, { count: 1, resetAt: now + RATE_LIMIT_WINDOW_MS });
+    return false;
+  }
+
+  entry.count++;
+  return entry.count > RATE_LIMIT_MAX;
+}
 
 interface ContactBody {
   name: string;
@@ -13,8 +36,20 @@ interface ContactBody {
   timestamp?: number;
 }
 
-export async function POST(request: Request) {
+export async function POST(request: NextRequest) {
   try {
+    // Validate Content-Type
+    const contentType = request.headers.get("content-type");
+    if (!contentType?.includes("application/json")) {
+      return NextResponse.json({ error: "Invalid content type" }, { status: 415 });
+    }
+
+    // Rate limiting
+    const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
+    if (isRateLimited(ip)) {
+      return NextResponse.json({ error: "Too many requests" }, { status: 429 });
+    }
+
     const body: ContactBody = await request.json();
 
     // Anti-bot: honeypot
@@ -25,6 +60,12 @@ export async function POST(request: Request) {
     // Anti-bot: too fast (< 2s)
     if (body.timestamp && Date.now() - body.timestamp < 2000) {
       return NextResponse.json({ success: true });
+    }
+
+    // Check required env vars
+    if (!CONTACT_EMAIL) {
+      console.error("CONTACT_EMAIL is not configured");
+      return NextResponse.json({ error: "Server configuration error" }, { status: 500 });
     }
 
     // Server-side validation
@@ -38,18 +79,21 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Message is required" }, { status: 400 });
     }
 
+    // Sanitize replyTo to prevent header injection
+    const sanitizedEmail = body.email.replace(/[\r\n]/g, "");
+
     const { error } = await resend.emails.send({
       from: "Sito Ida Sato <onboarding@resend.dev>",
       to: CONTACT_EMAIL,
-      replyTo: body.email,
-      subject: `Nuovo messaggio da ${body.name}`,
+      replyTo: sanitizedEmail,
+      subject: `Nuovo messaggio da ${body.name.slice(0, 100)}`,
       text: [
-        `Nome: ${body.name}`,
-        `Email: ${body.email}`,
-        body.phone ? `Telefono: ${body.phone}` : null,
+        `Nome: ${body.name.slice(0, 200)}`,
+        `Email: ${sanitizedEmail}`,
+        body.phone ? `Telefono: ${body.phone.slice(0, 30)}` : null,
         "",
         "Messaggio:",
-        body.message,
+        body.message.slice(0, 5000),
       ]
         .filter(Boolean)
         .join("\n"),

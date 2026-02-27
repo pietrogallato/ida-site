@@ -23,15 +23,11 @@ export function LanguageSwitcher() {
   }
 
   return (
-    <div
-      className="flex rounded-full border border-border bg-surface-alt p-0.5"
-      role="radiogroup"
-      aria-label={t("switchLanguage")}
-    >
+    <nav aria-label={t("switchLanguage")} className="flex rounded-full border border-border bg-surface-alt p-0.5">
       <button
         onClick={() => switchLocale("it")}
-        role="radio"
-        aria-checked={locale === "it"}
+        aria-current={locale === "it" ? "true" : undefined}
+        aria-label="Italiano"
         className={`rounded-full px-2.5 py-1 text-xs font-semibold transition-all ${
           locale === "it"
             ? "bg-primary-dark text-white shadow-sm"
@@ -42,8 +38,8 @@ export function LanguageSwitcher() {
       </button>
       <button
         onClick={() => switchLocale("en")}
-        role="radio"
-        aria-checked={locale === "en"}
+        aria-current={locale === "en" ? "true" : undefined}
+        aria-label="English"
         className={`rounded-full px-2.5 py-1 text-xs font-semibold transition-all ${
           locale === "en"
             ? "bg-primary-dark text-white shadow-sm"
@@ -52,6 +48,6 @@ export function LanguageSwitcher() {
       >
         EN
       </button>
-    </div>
+    </nav>
   );
 }
