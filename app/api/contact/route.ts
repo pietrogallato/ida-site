@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { Resend } from "resend";
+import { ContactEmail } from "@/lib/emails/contact-email";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -82,18 +83,42 @@ export async function POST(request: NextRequest) {
     // Sanitize replyTo to prevent header injection
     const sanitizedEmail = body.email.replace(/[\r\n]/g, "");
 
+    // Format timestamp
+    const now = new Date();
+    const receivedAt = now.toLocaleString("it-IT", {
+      day: "2-digit",
+      month: "long",
+      year: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+      timeZone: "Europe/Rome",
+    });
+
+    const sanitizedName = body.name.slice(0, 200);
+    const sanitizedPhone = body.phone?.slice(0, 30);
+    const sanitizedMessage = body.message.slice(0, 5000);
+
     const { error } = await resend.emails.send({
       from: "Sito Ida Sato <onboarding@resend.dev>",
       to: CONTACT_EMAIL,
       replyTo: sanitizedEmail,
-      subject: `Nuovo messaggio da ${body.name.slice(0, 100)}`,
+      subject: `Nuovo messaggio da ${sanitizedName.slice(0, 100)}`,
+      react: ContactEmail({
+        name: sanitizedName,
+        email: sanitizedEmail,
+        phone: sanitizedPhone,
+        message: sanitizedMessage,
+        receivedAt,
+      }),
       text: [
-        `Nome: ${body.name.slice(0, 200)}`,
+        `Nome: ${sanitizedName}`,
         `Email: ${sanitizedEmail}`,
-        body.phone ? `Telefono: ${body.phone.slice(0, 30)}` : null,
+        sanitizedPhone ? `Telefono: ${sanitizedPhone}` : null,
         "",
         "Messaggio:",
-        body.message.slice(0, 5000),
+        sanitizedMessage,
+        "",
+        `Ricevuto: ${receivedAt}`,
       ]
         .filter(Boolean)
         .join("\n"),
