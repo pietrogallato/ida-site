@@ -25,6 +25,7 @@ const nextConfig: NextConfig = {
               "font-src 'self' https://fonts.gstatic.com",
               "img-src 'self' data: blob:",
               "connect-src 'self' https://vitals.vercel-insights.com https://va.vercel-scripts.com",
+              "frame-src 'self' https://www.google.com",
               "frame-ancestors 'none'",
             ].join("; "),
           },

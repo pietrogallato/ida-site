@@ -9,12 +9,14 @@ import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { navItems } from "@/content/site";
+import { ButtonLink } from "@/components/ui/button";
 
 export function MobileMenu() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
   const locale = useLocale();
   const t = useTranslations("navigation");
+  const tCommon = useTranslations("common");
 
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
@@ -84,6 +86,16 @@ export function MobileMenu() {
                 );
               })}
             </ul>
+
+            <div className="mt-6 px-4">
+              <ButtonLink
+                href={`/${locale}/contatti`}
+                size="lg"
+                className="w-full justify-center"
+              >
+                {tCommon("bookConsultation")}
+              </ButtonLink>
+            </div>
           </nav>
         </Dialog.Content>
       </Dialog.Portal>

@@ -3,6 +3,7 @@ import { getLocale, getTranslations } from "next-intl/server";
 import { Container } from "@/components/ui/container";
 import { Heading } from "@/components/ui/heading";
 import { FadeIn } from "@/components/ui/fade-in";
+import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { siteConfig } from "@/content/site";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -29,7 +30,9 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function PrivacyPage() {
+  const locale = await getLocale();
   const t = await getTranslations("privacy");
+  const tNav = await getTranslations("navigation");
 
   const sections = [
     "controller",
@@ -43,6 +46,12 @@ export default async function PrivacyPage() {
   return (
     <section className="py-16 md:py-24">
       <Container>
+        <Breadcrumbs
+          items={[
+            { label: tNav("home"), href: `/${locale}` },
+            { label: t("pageTitle") },
+          ]}
+        />
         <FadeIn>
           <div className="mx-auto max-w-3xl">
             <Heading level={1}>{t("title")}</Heading>

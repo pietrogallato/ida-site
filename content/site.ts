@@ -10,6 +10,8 @@ export const siteConfig: SiteConfig = {
   piva: "IT12345678901",
   alboNumber: "13939",
   url: "https://idasato.it",
+  instagram: "https://www.instagram.com/idasato.psicologa/",
+  linkedin: "https://www.linkedin.com/in/ida-sato/",
 };
 
 export const navItems: NavItem[] = [

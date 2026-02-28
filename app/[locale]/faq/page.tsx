@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { getLocale, getTranslations } from "next-intl/server";
+import { Container } from "@/components/ui/container";
+import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { FaqContent } from "./faq-content";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -21,6 +23,23 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default function FaqPage() {
-  return <FaqContent />;
+export default async function FaqPage() {
+  const locale = await getLocale();
+  const tNav = await getTranslations("navigation");
+
+  return (
+    <>
+      <div className="pt-16 md:pt-24">
+        <Container>
+          <Breadcrumbs
+            items={[
+              { label: tNav("home"), href: `/${locale}` },
+              { label: tNav("faq") },
+            ]}
+          />
+        </Container>
+      </div>
+      <FaqContent />
+    </>
+  );
 }

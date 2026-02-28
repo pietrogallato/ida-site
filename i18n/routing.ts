@@ -18,6 +18,10 @@ export const routing = defineRouting({
       it: "/contatti",
       en: "/contact",
     },
+    "/come-funziona": {
+      it: "/come-funziona",
+      en: "/how-it-works",
+    },
     "/faq": "/faq",
     "/privacy": {
       it: "/privacy",

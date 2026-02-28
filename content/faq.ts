@@ -7,4 +7,7 @@ export const faqs: FAQ[] = [
   { id: "q4" },
   { id: "q5" },
   { id: "q6" },
+  { id: "q7" },
+  { id: "q8" },
+  { id: "q9" },
 ];

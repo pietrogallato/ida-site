@@ -26,4 +26,6 @@ export interface SiteConfig {
   piva: string;
   alboNumber: string;
   url: string;
+  instagram?: string;
+  linkedin?: string;
 }

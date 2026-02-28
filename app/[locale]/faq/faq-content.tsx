@@ -13,7 +13,7 @@ export function FaqContent() {
   const t = useTranslations("faq");
 
   return (
-    <section className="py-16 md:py-24">
+    <section className="pb-16 pt-6 md:pb-24">
       <Container>
         <FadeIn>
           <div className="mx-auto max-w-2xl text-center">

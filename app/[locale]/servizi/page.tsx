@@ -6,6 +6,7 @@ import { Heading } from "@/components/ui/heading";
 import { Card } from "@/components/ui/card";
 import { FadeIn } from "@/components/ui/fade-in";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
+import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { services } from "@/content/services";
 
 const iconMap: Record<string, typeof User> = {
@@ -37,11 +38,19 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function ServicesPage() {
+  const locale = await getLocale();
   const t = await getTranslations("services");
+  const tNav = await getTranslations("navigation");
 
   return (
     <section className="py-16 md:py-24">
       <Container>
+        <Breadcrumbs
+          items={[
+            { label: tNav("home"), href: `/${locale}` },
+            { label: tNav("services") },
+          ]}
+        />
         <FadeIn>
           <div className="mx-auto max-w-2xl text-center">
             <Heading level={1}>{t("title")}</Heading>

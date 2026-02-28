@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { getLocale, getTranslations } from "next-intl/server";
-import { Mail, Phone, MessageCircle } from "lucide-react";
+import { Mail, Phone, MessageCircle, Instagram, Linkedin } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { siteConfig, navItems } from "@/content/site";
 
@@ -81,6 +81,34 @@ export async function Footer() {
                   WhatsApp
                 </a>
               </li>
+              {siteConfig.instagram && (
+                <li>
+                  <a
+                    href={siteConfig.instagram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-sm text-foreground-muted transition-colors hover:text-primary-text"
+                    aria-label="Instagram"
+                  >
+                    <Instagram className="h-4 w-4" aria-hidden="true" />
+                    Instagram
+                  </a>
+                </li>
+              )}
+              {siteConfig.linkedin && (
+                <li>
+                  <a
+                    href={siteConfig.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-sm text-foreground-muted transition-colors hover:text-primary-text"
+                    aria-label="LinkedIn"
+                  >
+                    <Linkedin className="h-4 w-4" aria-hidden="true" />
+                    LinkedIn
+                  </a>
+                </li>
+              )}
             </ul>
           </div>
         </div>

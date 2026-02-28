@@ -7,6 +7,7 @@ import { Heading } from "@/components/ui/heading";
 import { Card } from "@/components/ui/card";
 import { FadeIn } from "@/components/ui/fade-in";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
+import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
@@ -28,7 +29,9 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function AboutPage() {
+  const locale = await getLocale();
   const t = await getTranslations("about");
+  const tNav = await getTranslations("navigation");
 
   const qualifications = [
     t("qualifications.items.0"),
@@ -58,6 +61,12 @@ export default async function AboutPage() {
       {/* Hero section */}
       <section className="py-16 md:py-24">
         <Container>
+          <Breadcrumbs
+            items={[
+              { label: tNav("home"), href: `/${locale}` },
+              { label: tNav("about") },
+            ]}
+          />
           <FadeIn>
             <div className="grid items-center gap-12 lg:grid-cols-2">
               <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-surface-alt">

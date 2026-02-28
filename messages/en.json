@@ -28,17 +28,21 @@
     "light": "Light",
     "dark": "Dark",
     "switchLanguage": "Switch language",
-    "backToTop": "Back to top"
+    "backToTop": "Back to top",
+    "contactWhatsApp": "Contact me on WhatsApp"
   },
   "hero": {
     "title": "Your psychological well-being starts here",
     "subtitle": "I'm Ida Sato, a clinical psychologist. I'll guide you on a journey of self-awareness and growth, with attention to the person, their relational system, and the therapeutic relationship.",
-    "cta": "Book an initial consultation"
+    "cta": "Book an initial consultation",
+    "alboLabel": "Order of Psychologists of Veneto no.",
+    "imageAlt": "Ida Sato, clinical psychologist, in her office"
   },
   "aboutPreview": {
     "title": "About Me",
     "text": "I'm a clinical psychologist with experience in individual, couples, and family support. Training as a systemic-relational psychotherapist, I pay particular attention to each person and their individual and relational resources.",
     "cta": "Discover my background",
+    "howItWorksLink": "How it works",
     "imageAlt": "Ida Sato, clinical psychologist"
   },
   "about": {
@@ -89,23 +93,23 @@
     "subtitle": "Each path is tailor-made to meet your specific needs.",
     "individual": {
       "title": "Individual psychological support",
-      "description": "A personalized path to address personal difficulties, improve emotional well-being, and develop new resources and strategies."
+      "description": "I help you cope with anxiety, stress, depression, relationship difficulties, and times of crisis. Together we build a personalized path to find your balance and develop new resources."
     },
     "couples": {
       "title": "Couples and family counseling",
-      "description": "A space to improve communication, address conflicts, and find balance in couples and family relationships."
+      "description": "A safe space to improve communication, resolve conflicts, navigate major life changes such as separations, births, or grief, and find balance in your relationship."
     },
     "school": {
       "title": "School psychology",
-      "description": "Affective and sexual-affective education in schools, support for students with SEN and learning disabilities, counseling for teachers and parents."
+      "description": "Affective education programs in schools, support for students with learning difficulties (SEN and learning disabilities), and counseling for teachers and parents on educational issues."
     },
     "parenting": {
       "title": "Parenting support",
-      "description": "Groups and programs for parents of adolescents and pre-adolescents, addressing topics such as adolescent changes, anxiety, conflict, and autonomy."
+      "description": "Programs for parents facing the challenges of adolescence and pre-adolescence: managing conflicts, children's anxiety, social media use, autonomy, and boundaries."
     },
     "youth": {
       "title": "Support for children and adolescents",
-      "description": "Educational and psychological interventions for children and young people, with attention to developmental, emotional, and relational difficulties."
+      "description": "Psychological support for children and young people experiencing emotional difficulties, school problems, anxiety, insecurity, or struggles in peer relationships."
     },
     "online": {
       "title": "Online sessions",
@@ -165,6 +169,21 @@
       "hours": "Office Hours",
       "hoursValue": "Monday — Friday: 9:00 AM — 7:00 PM",
       "whatsappNote": "Message me on WhatsApp"
+    },
+    "practical": {
+      "title": "Practical Information",
+      "modalitiesLabel": "Modalities",
+      "modalitiesValue": "In person (Meledo VI, Spinea VE) and online via video call",
+      "durationLabel": "Session duration",
+      "durationValue": "Approximately 50 minutes",
+      "costLabel": "Cost",
+      "costValue": "Fees are communicated during the initial consultation. Invoices are tax-deductible.",
+      "paymentLabel": "Payment",
+      "paymentValue": "Bank transfer or cash"
+    },
+    "map": {
+      "title": "Where to find me",
+      "iframeTitle": "Map of Ida Sato's offices in Meledo (VI) and Spinea (VE)"
     }
   },
   "faq": {
@@ -194,6 +213,50 @@
     "q6": {
       "question": "Are sessions confidential?",
       "answer": "Absolutely. Professional secrecy is a fundamental ethical obligation. Everything shared during sessions is strictly confidential."
+    },
+    "q7": {
+      "question": "What is the difference between a psychologist and a psychotherapist?",
+      "answer": "A psychologist holds a master's degree in psychology and is registered with the professional board. They can provide consultations, psychological support, and assessments. A psychotherapist has also completed a four-year specialization school that qualifies them to treat more structured psychological disorders."
+    },
+    "q8": {
+      "question": "How do I know if I need psychological support?",
+      "answer": "If you feel that certain emotional, relational, or behavioral difficulties are interfering with your daily life, work, or relationships, it might be time to seek help. You don't need to wait until things get really bad — even talking to someone during a period of change can be helpful."
+    },
+    "q9": {
+      "question": "Are sessions tax-deductible?",
+      "answer": "Yes. Psychological services are tax-deductible healthcare expenses in Italy (19% deduction on the amount exceeding the €129.11 threshold). I issue regular invoices."
+    }
+  },
+  "howItWorks": {
+    "pageTitle": "How It Works",
+    "title": "How a psychological journey works",
+    "subtitle": "If you've never been to a psychologist, it's normal to have questions or feel a bit anxious. Here's what to expect, step by step.",
+    "steps": {
+      "title": "The journey in three steps",
+      "contact": {
+        "title": "First contact",
+        "text": "Write or call me to schedule an initial consultation. You can use the contact form, email, phone, or WhatsApp. I'll get back to you as soon as possible."
+      },
+      "firstSession": {
+        "title": "The first session",
+        "text": "It's a meeting of about 50 minutes where we get to know each other. You tell me what brings you here, and I explain how I work. There's no obligation to continue — it's a moment to understand together if the path is right for you."
+      },
+      "path": {
+        "title": "The therapeutic path",
+        "text": "If we decide to continue, we define goals and meeting frequency together (usually weekly or bi-weekly). Each path is unique and tailored to you, respecting your timing."
+      }
+    },
+    "modalities": {
+      "title": "Session modalities",
+      "subtitle": "You can choose the modality that works best for you, based on your needs.",
+      "inPerson": {
+        "title": "In person",
+        "text": "I see clients at my offices in Meledo (VI) and Spinea (VE). A welcoming and private environment, designed to make you feel comfortable."
+      },
+      "online": {
+        "title": "Online",
+        "text": "Online sessions take place via video call, with the same quality and confidentiality as in-office sessions. Ideal if you have difficulty traveling or prefer the comfort of home."
+      }
     }
   },
   "error": {
@@ -235,6 +298,12 @@
       "title": "Cookies",
       "text": "This site exclusively uses technical cookies necessary for operation (such as light/dark theme preference and language). No profiling or third-party cookies are used."
     }
+  },
+  "cookieBanner": {
+    "text": "This site only uses technical cookies necessary for operation.",
+    "privacyLink": "Privacy Policy",
+    "dismiss": "Got it",
+    "ariaLabel": "Cookie notice"
   },
   "footer": {
     "description": "Clinical psychologist registered with the Order of Psychologists of Veneto. Individual psychological support, couples and family counseling.",

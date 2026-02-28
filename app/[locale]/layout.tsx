@@ -14,6 +14,8 @@ import { SkipLink } from "@/components/ui/skip-link";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { BackToTop } from "@/components/ui/back-to-top";
+import { FloatingWhatsApp } from "@/components/ui/floating-whatsapp";
+import { CookieBanner } from "@/components/ui/cookie-banner";
 import "../globals.css";
 
 const playfair = Playfair_Display({
@@ -131,6 +133,8 @@ export default async function LocaleLayout({
             </main>
             <Footer />
             <BackToTop />
+            <FloatingWhatsApp />
+            <CookieBanner />
           </ThemeProvider>
           <SpeedInsights />
           <Analytics />

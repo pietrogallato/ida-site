@@ -28,17 +28,21 @@
     "light": "Chiaro",
     "dark": "Scuro",
     "switchLanguage": "Cambia lingua",
-    "backToTop": "Torna in cima"
+    "backToTop": "Torna in cima",
+    "contactWhatsApp": "Contattami su WhatsApp"
   },
   "hero": {
     "title": "Il tuo benessere psicologico inizia qui",
     "subtitle": "Sono Ida Sato, psicologa clinica. Ti accompagno in un percorso di consapevolezza e crescita, ponendo attenzione alla persona, al suo sistema di appartenenza e alla relazione di cura.",
-    "cta": "Prenota un primo colloquio"
+    "cta": "Prenota un primo colloquio",
+    "alboLabel": "Albo Psicologi del Veneto n.",
+    "imageAlt": "Ida Sato, psicologa clinica, nel suo studio"
   },
   "aboutPreview": {
     "title": "Chi Sono",
     "text": "Sono una psicologa clinica con esperienza nel sostegno individuale, di coppia e familiare. In formazione come psicoterapeuta sistemico-relazionale, pongo particolare attenzione alla persona e alle sue risorse individuali e relazionali.",
     "cta": "Scopri il mio percorso",
+    "howItWorksLink": "Come funziona",
     "imageAlt": "Ida Sato, psicologa clinica"
   },
   "about": {
@@ -89,23 +93,23 @@
     "subtitle": "Ogni percorso è costruito su misura per rispondere alle tue esigenze specifiche.",
     "individual": {
       "title": "Sostegno psicologico individuale",
-      "description": "Un percorso personalizzato per affrontare difficoltà personali, migliorare il benessere emotivo e sviluppare nuove risorse e strategie."
+      "description": "Ti aiuto ad affrontare ansia, stress, depressione, difficoltà relazionali e momenti di crisi. Insieme costruiamo un percorso personalizzato per ritrovare il tuo equilibrio e sviluppare nuove risorse."
     },
     "couples": {
       "title": "Consulenze di coppia e familiari",
-      "description": "Uno spazio per migliorare la comunicazione, affrontare conflitti e ritrovare equilibrio nelle relazioni di coppia e familiari."
+      "description": "Uno spazio sicuro per migliorare la comunicazione, affrontare conflitti, gestire cambiamenti importanti come separazioni, nascite o lutti, e ritrovare equilibrio nella relazione."
     },
     "school": {
       "title": "Psicologia scolastica",
-      "description": "Interventi di educazione affettiva e sessuo-affettiva nelle scuole, supporto per studenti con BES e DSA, consulenza per insegnanti e genitori."
+      "description": "Interventi di educazione affettiva nelle scuole, supporto per studenti con difficoltà di apprendimento (BES e DSA), e consulenza per insegnanti e genitori su tematiche educative."
     },
     "parenting": {
       "title": "Sostegno alla genitorialità",
-      "description": "Gruppi e percorsi per genitori di adolescenti e pre-adolescenti, affrontando tematiche come cambiamenti adolescenziali, ansia, conflitto e autonomia."
+      "description": "Percorsi per genitori che affrontano le sfide dell'adolescenza e della pre-adolescenza: gestione dei conflitti, ansia dei figli, uso dei social media, autonomia e regole."
     },
     "youth": {
       "title": "Supporto per minori e adolescenti",
-      "description": "Interventi educativi e psicologici per bambini e ragazzi, con attenzione alle difficoltà evolutive, emotive e relazionali."
+      "description": "Aiuto psicologico per bambini e ragazzi che vivono difficoltà emotive, problemi scolastici, ansia, insicurezza o faticano nelle relazioni con i coetanei."
     },
     "online": {
       "title": "Sedute online",
@@ -165,6 +169,21 @@
       "hours": "Orari di ricevimento",
       "hoursValue": "Lunedì — Venerdì: 9:00 — 19:00",
       "whatsappNote": "Scrivimi su WhatsApp"
+    },
+    "practical": {
+      "title": "Informazioni pratiche",
+      "modalitiesLabel": "Modalità",
+      "modalitiesValue": "In presenza (Meledo VI, Spinea VE) e online tramite videochiamata",
+      "durationLabel": "Durata seduta",
+      "durationValue": "Circa 50 minuti",
+      "costLabel": "Costo",
+      "costValue": "Il costo viene comunicato durante il primo colloquio conoscitivo. Le fatture sono detraibili dalla dichiarazione dei redditi.",
+      "paymentLabel": "Pagamento",
+      "paymentValue": "Bonifico bancario o contanti"
+    },
+    "map": {
+      "title": "Dove trovarmi",
+      "iframeTitle": "Mappa degli studi di Ida Sato a Meledo (VI) e Spinea (VE)"
     }
   },
   "faq": {
@@ -194,6 +213,50 @@
     "q6": {
       "question": "I colloqui sono riservati?",
       "answer": "Assolutamente sì. Il segreto professionale è un obbligo deontologico fondamentale. Tutto ciò che viene condiviso durante le sedute è strettamente confidenziale."
+    },
+    "q7": {
+      "question": "Qual è la differenza tra psicologo e psicoterapeuta?",
+      "answer": "Lo psicologo ha una laurea magistrale in psicologia ed è iscritto all'Albo. Può effettuare consulenze, sostegno psicologico e diagnosi. Lo psicoterapeuta ha completato anche una scuola di specializzazione quadriennale che lo abilita alla psicoterapia, cioè al trattamento di disturbi psicologici più strutturati."
+    },
+    "q8": {
+      "question": "Come faccio a capire se ho bisogno di supporto psicologico?",
+      "answer": "Se senti che alcune difficoltà emotive, relazionali o comportamentali interferiscono con la tua vita quotidiana, il lavoro o le relazioni, potrebbe essere il momento di chiedere aiuto. Non serve aspettare di stare molto male: anche un confronto in un momento di cambiamento può essere utile."
+    },
+    "q9": {
+      "question": "Le sedute sono detraibili fiscalmente?",
+      "answer": "Sì. Le prestazioni psicologiche sono spese sanitarie detraibili nella dichiarazione dei redditi (detrazione del 19% sulla parte eccedente la franchigia di 129,11 euro). Rilascio regolare fattura."
+    }
+  },
+  "howItWorks": {
+    "pageTitle": "Come Funziona",
+    "title": "Come funziona un percorso psicologico",
+    "subtitle": "Se non hai mai fatto un percorso psicologico, è normale avere dubbi o un po' di ansia. Ecco cosa aspettarti, passo dopo passo.",
+    "steps": {
+      "title": "Il percorso in tre passi",
+      "contact": {
+        "title": "Primo contatto",
+        "text": "Scrivimi o chiamami per fissare un primo colloquio conoscitivo. Puoi usare il modulo contatti, email, telefono o WhatsApp. Ti risponderò al più presto."
+      },
+      "firstSession": {
+        "title": "Il primo colloquio",
+        "text": "È un incontro di circa 50 minuti in cui ci conosciamo. Mi racconti cosa ti porta qui, io ti spiego come lavoro. Non c'è alcun obbligo di continuare: è un momento per capire insieme se il percorso può fare al caso tuo."
+      },
+      "path": {
+        "title": "Il percorso terapeutico",
+        "text": "Se decidiamo di proseguire, definiamo insieme obiettivi e frequenza degli incontri (generalmente settimanale o bisettimanale). Ogni percorso è unico e viene costruito su misura, rispettando i tuoi tempi."
+      }
+    },
+    "modalities": {
+      "title": "Modalità delle sedute",
+      "subtitle": "Puoi scegliere la modalità che preferisci, in base alle tue esigenze.",
+      "inPerson": {
+        "title": "In presenza",
+        "text": "Ricevo nei miei studi a Meledo (VI) e Spinea (VE). Un ambiente accogliente e riservato, pensato per farti sentire a tuo agio."
+      },
+      "online": {
+        "title": "Online",
+        "text": "Le sedute online si svolgono in videochiamata, con la stessa qualità e riservatezza dello studio. Ideali se hai difficoltà a spostarti o preferisci la comodità di casa."
+      }
     }
   },
   "error": {
@@ -235,6 +298,12 @@
       "title": "Cookie",
       "text": "Questo sito utilizza esclusivamente cookie tecnici necessari al funzionamento (come la preferenza del tema chiaro/scuro e la lingua). Non vengono utilizzati cookie di profilazione o di terze parti."
     }
+  },
+  "cookieBanner": {
+    "text": "Questo sito utilizza solo cookie tecnici necessari al funzionamento.",
+    "privacyLink": "Privacy Policy",
+    "dismiss": "Ho capito",
+    "ariaLabel": "Informativa sui cookie"
   },
   "footer": {
     "description": "Psicologa clinica iscritta all'Albo degli Psicologi del Veneto. Sostegno psicologico individuale, consulenze di coppia e familiari.",
