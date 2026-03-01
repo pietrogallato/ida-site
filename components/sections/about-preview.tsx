@@ -17,7 +17,7 @@ export async function AboutPreview() {
           <ScrollReveal>
             <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-surface-alt">
               <Image
-                src="/images/ida-sato.jpg"
+                src="/images/ida-sato-2.jpeg"
                 alt={t("imageAlt")}
                 fill
                 className="object-cover"
@@ -32,22 +32,13 @@ export async function AboutPreview() {
               <p className="mt-4 text-lg leading-relaxed text-foreground-muted">
                 {t("text")}
               </p>
-              <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:gap-6">
-                <Link
-                  href={`/${locale}/chi-sono`}
-                  className="inline-flex items-center gap-2 font-medium text-primary-text transition-colors hover:text-primary-dark"
-                >
-                  {t("cta")}
-                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                </Link>
-                <Link
-                  href={`/${locale}/come-funziona`}
-                  className="inline-flex items-center gap-2 font-medium text-primary-text transition-colors hover:text-primary-dark"
-                >
-                  {t("howItWorksLink")}
-                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                </Link>
-              </div>
+              <Link
+                href={`/${locale}/chi-sono`}
+                className="mt-6 inline-flex items-center gap-2 font-medium text-primary-text transition-colors hover:text-primary-dark"
+              >
+                {t("cta")}
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </Link>
             </div>
           </ScrollReveal>
         </div>

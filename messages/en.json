@@ -81,6 +81,25 @@
       }
     }
   },
+  "howItWorksPreview": {
+    "title": "How It Works",
+    "subtitle": "A simple, no-commitment process designed to put you at ease.",
+    "steps": {
+      "contact": {
+        "title": "First contact",
+        "text": "Write or call me to schedule an initial consultation. No commitment required."
+      },
+      "firstSession": {
+        "title": "First session",
+        "text": "We get to know each other, you tell me what brings you here. Together we see if the path is right for you."
+      },
+      "path": {
+        "title": "The journey",
+        "text": "We define goals and frequency together, building a path tailored to your needs."
+      }
+    },
+    "cta": "Learn more about how it works"
+  },
   "servicesPreview": {
     "title": "My Services",
     "subtitle": "I offer various psychological paths to accompany you on your journey to well-being.",

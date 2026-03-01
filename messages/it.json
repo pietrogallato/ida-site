@@ -81,6 +81,25 @@
       }
     }
   },
+  "howItWorksPreview": {
+    "title": "Come funziona",
+    "subtitle": "Un percorso semplice e senza impegno, pensato per metterti a tuo agio.",
+    "steps": {
+      "contact": {
+        "title": "Primo contatto",
+        "text": "Scrivimi o chiamami per fissare un primo colloquio. Nessun impegno."
+      },
+      "firstSession": {
+        "title": "Primo colloquio",
+        "text": "Ci conosciamo, mi racconti cosa ti porta qui. Insieme capiamo se il percorso fa per te."
+      },
+      "path": {
+        "title": "Il percorso",
+        "text": "Definiamo insieme obiettivi e frequenza, costruendo un percorso su misura per te."
+      }
+    },
+    "cta": "Scopri di più su come funziona"
+  },
   "servicesPreview": {
     "title": "I miei servizi",
     "subtitle": "Offro diversi percorsi psicologici per accompagnarti nel tuo cammino di benessere.",

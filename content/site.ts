@@ -18,6 +18,5 @@ export const navItems: NavItem[] = [
   { href: "/", labelKey: "home" },
   { href: "/chi-sono", labelKey: "about" },
   { href: "/servizi", labelKey: "services" },
-  { href: "/contatti", labelKey: "contact" },
   { href: "/faq", labelKey: "faq" },
 ];
