@@ -10,7 +10,7 @@ export async function AboutPreview() {
   const t = await getTranslations("aboutPreview");
 
   return (
-    <section className="py-16 md:py-24">
+    <section className="bg-surface-alt py-16 md:py-24">
       <Container>
         <ScrollReveal>
           <div className="mx-auto max-w-2xl text-center">

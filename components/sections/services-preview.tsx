@@ -33,7 +33,7 @@ export async function ServicesPreview() {
   const previewServices = services.slice(0, 4);
 
   return (
-    <section className="py-16 md:py-24">
+    <section className="bg-surface-alt py-16 md:py-24">
       <Container>
         <ScrollReveal>
           <div className="mx-auto max-w-2xl text-center">
