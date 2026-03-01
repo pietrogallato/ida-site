@@ -10,7 +10,7 @@ export const siteConfig: SiteConfig = {
   piva: "IT12345678901",
   alboNumber: "13939",
   url: "https://idasato.it",
-  linkedin: "https://it.linkedin.com/in/ida-sato-b12380164",
+  linkedin: "https://www.linkedin.com/in/idasato/",
 };
 
 export const navItems: NavItem[] = [
