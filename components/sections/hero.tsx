@@ -18,7 +18,7 @@ export async function Hero() {
       />
 
       <Container>
-        <div className="grid items-center gap-12 lg:grid-cols-2">
+        <div className="flex flex-col gap-12 lg:grid lg:grid-cols-2 lg:items-center">
           <FadeIn>
             <div>
               <p className="text-sm font-medium tracking-wide text-primary-text uppercase">
@@ -30,7 +30,7 @@ export async function Hero() {
               <p className="mt-6 text-lg leading-relaxed text-foreground-muted sm:text-xl">
                 {t("subtitle")}
               </p>
-              <div className="mt-10">
+              <div className="mt-10 hidden lg:block">
                 <ButtonLink href={`/${locale}/contatti`} size="lg">
                   {t("cta")}
                 </ButtonLink>
@@ -50,6 +50,12 @@ export async function Hero() {
               />
             </div>
           </FadeIn>
+
+          <div className="lg:hidden">
+            <ButtonLink href={`/${locale}/contatti`} size="lg">
+              {t("cta")}
+            </ButtonLink>
+          </div>
         </div>
       </Container>
     </section>
