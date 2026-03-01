@@ -71,7 +71,7 @@ export default async function AboutPage() {
             <div className="grid items-center gap-12 lg:grid-cols-2">
               <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-surface-alt">
                 <Image
-                  src="/images/ida-sato.jpg"
+                  src="/images/ida-sato-2.jpeg"
                   alt={t("imageAlt")}
                   fill
                   className="object-cover"
