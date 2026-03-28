@@ -47,7 +47,7 @@ export async function ServicesPreview() {
             {previewServices.map((service) => {
               const Icon = iconMap[service.icon] || User;
               return (
-                <Card key={service.id} interactive>
+                <Card key={service.id} interactive accentColor="primary">
                   <div className="mb-4 inline-flex rounded-lg bg-primary/10 p-3">
                     <Icon
                       className="h-6 w-6 text-primary"

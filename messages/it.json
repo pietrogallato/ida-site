@@ -109,29 +109,174 @@
     "pageTitle": "Servizi",
     "title": "I miei servizi",
     "subtitle": "Ogni percorso è costruito su misura per rispondere alle tue esigenze specifiche.",
+    "otherServices": "Altri servizi",
     "individual": {
       "title": "Sostegno psicologico individuale",
-      "description": "Ti aiuto ad affrontare ansia, stress, depressione, difficoltà relazionali e momenti di crisi. Insieme costruiamo un percorso personalizzato per ritrovare il tuo equilibrio e sviluppare nuove risorse."
+      "description": "Ti aiuto ad affrontare ansia, stress, depressione, difficoltà relazionali e momenti di crisi. Insieme costruiamo un percorso personalizzato per ritrovare il tuo equilibrio e sviluppare nuove risorse.",
+      "extendedDescription": {
+        "p1": "Il sostegno psicologico individuale è uno spazio dedicato interamente a te, in cui puoi esplorare i tuoi pensieri, emozioni e comportamenti in un ambiente sicuro e non giudicante. Che tu stia attraversando un momento di difficoltà o desideri semplicemente conoscerti meglio, questo percorso ti offre gli strumenti per affrontare le sfide della vita quotidiana.",
+        "p2": "Lavoro con un approccio sistemico-relazionale, ponendo attenzione non solo a ciò che senti, ma anche al contesto relazionale in cui vivi. Insieme esploriamo le dinamiche che influenzano il tuo benessere, valorizzando le risorse che già possiedi e sviluppandone di nuove.",
+        "p3": "Il percorso è costruito su misura per te: rispettiamo i tuoi tempi, definiamo insieme gli obiettivi e adattiamo il lavoro alle tue esigenze. Non esiste un percorso uguale a un altro, perché ogni persona è unica."
+      },
+      "benefitsTitle": "Benefici",
+      "benefits": {
+        "b1": "Maggiore consapevolezza delle proprie emozioni e dei propri schemi relazionali",
+        "b2": "Strategie concrete per gestire ansia, stress e momenti di difficoltà",
+        "b3": "Miglioramento dell'autostima e della fiducia in sé stessi",
+        "b4": "Nuove risorse per affrontare cambiamenti e transizioni di vita"
+      },
+      "stepsTitle": "Come funziona",
+      "steps": {
+        "s1": { "title": "Primo contatto", "text": "Scrivimi o chiamami per fissare un primo colloquio conoscitivo. È un momento informale per raccontarmi cosa ti porta qui." },
+        "s2": { "title": "Valutazione iniziale", "text": "Nel primo incontro ci conosciamo e insieme valutiamo le tue esigenze. Capiremo se il percorso individuale è la strada giusta per te." },
+        "s3": { "title": "Percorso personalizzato", "text": "Definiamo obiettivi e frequenza degli incontri. Le sedute hanno cadenza settimanale o bisettimanale, con una durata di circa 50 minuti." }
+      },
+      "faqTitle": "Domande frequenti",
+      "faq": {
+        "f1": { "question": "Quanto dura un percorso di sostegno individuale?", "answer": "La durata dipende dalle esigenze personali e dagli obiettivi concordati. Alcuni percorsi durano pochi mesi, altri possono essere più lunghi. Ne parliamo insieme fin dal primo incontro." },
+        "f2": { "question": "Devo avere un problema grave per chiedere sostegno?", "answer": "No, non è necessario trovarsi in una situazione di emergenza. Il sostegno psicologico è utile anche nei momenti di cambiamento, incertezza o semplicemente quando senti il bisogno di confrontarti con un professionista." },
+        "f3": { "question": "Il sostegno individuale è adatto anche agli adolescenti?", "answer": "Per i minori offro un servizio dedicato con modalità specifiche per la loro età. Il sostegno individuale classico è pensato per adulti dai 18 anni in su." }
+      }
     },
     "couples": {
       "title": "Consulenze di coppia e familiari",
-      "description": "Uno spazio sicuro per migliorare la comunicazione, affrontare conflitti, gestire cambiamenti importanti come separazioni, nascite o lutti, e ritrovare equilibrio nella relazione."
+      "description": "Uno spazio sicuro per migliorare la comunicazione, affrontare conflitti, gestire cambiamenti importanti come separazioni, nascite o lutti, e ritrovare equilibrio nella relazione.",
+      "extendedDescription": {
+        "p1": "Le relazioni di coppia e familiari attraversano inevitabilmente momenti di difficoltà: conflitti ricorrenti, problemi di comunicazione, cambiamenti importanti come una nascita, una separazione o un lutto possono mettere a dura prova l'equilibrio relazionale.",
+        "p2": "La consulenza di coppia e familiare offre uno spazio neutro e protetto in cui ogni membro può esprimere il proprio punto di vista ed essere ascoltato. Il mio ruolo è quello di facilitare il dialogo, aiutandovi a comprendere le dinamiche relazionali che generano sofferenza e a trovare nuove modalità di comunicazione.",
+        "p3": "L'approccio sistemico-relazionale è particolarmente adatto a questo tipo di lavoro, perché considera la coppia e la famiglia come un sistema in cui ogni cambiamento di un membro influenza tutti gli altri. Insieme cerchiamo nuovi equilibri che rispettino le esigenze di ciascuno."
+      },
+      "benefitsTitle": "Benefici",
+      "benefits": {
+        "b1": "Miglioramento della comunicazione e della capacità di ascolto reciproco",
+        "b2": "Gestione costruttiva dei conflitti e delle divergenze",
+        "b3": "Maggiore comprensione delle dinamiche relazionali nella coppia o nella famiglia",
+        "b4": "Supporto nei momenti di transizione e cambiamento familiare"
+      },
+      "stepsTitle": "Come funziona",
+      "steps": {
+        "s1": { "title": "Primo contatto", "text": "Uno dei partner o un membro della famiglia mi contatta per fissare un primo incontro. Possiamo parlare brevemente al telefono per capire la situazione." },
+        "s2": { "title": "Incontro conoscitivo", "text": "Il primo colloquio è con tutti i membri coinvolti. Ognuno ha la possibilità di raccontare il proprio punto di vista in un ambiente sicuro e rispettoso." },
+        "s3": { "title": "Percorso condiviso", "text": "Definiamo insieme gli obiettivi del lavoro. Le sedute hanno cadenza regolare e coinvolgono tutti i partecipanti, con possibilità di incontri individuali se necessario." }
+      },
+      "faqTitle": "Domande frequenti",
+      "faq": {
+        "f1": { "question": "Entrambi i partner devono essere d'accordo nel venire?", "answer": "È importante che entrambi siano motivati a partecipare. Se il tuo partner è titubante, possiamo fare un primo colloquio insieme per capire se il percorso può essere utile, senza alcun obbligo." },
+        "f2": { "question": "Posso fare una consulenza familiare anche con i figli?", "answer": "Sì, a seconda della situazione possiamo coinvolgere i figli nel percorso. Valutiamo insieme chi è opportuno includere nelle sedute e con quali modalità." },
+        "f3": { "question": "La consulenza di coppia serve solo per coppie in crisi?", "answer": "No, è utile anche per coppie che vogliono migliorare la comunicazione, affrontare un cambiamento importante o semplicemente investire nella qualità della relazione." }
+      }
     },
     "school": {
       "title": "Psicologia scolastica",
-      "description": "Interventi di educazione affettiva nelle scuole, supporto per studenti con difficoltà di apprendimento (BES e DSA), e consulenza per insegnanti e genitori su tematiche educative."
+      "description": "Interventi di educazione affettiva nelle scuole, supporto per studenti con difficoltà di apprendimento (BES e DSA), e consulenza per insegnanti e genitori su tematiche educative.",
+      "extendedDescription": {
+        "p1": "La scuola è un ambiente fondamentale per la crescita emotiva e sociale di bambini e ragazzi. Come psicologa scolastica, lavoro a fianco di studenti, insegnanti e genitori per promuovere il benessere all'interno del contesto educativo.",
+        "p2": "I miei interventi comprendono progetti di educazione affettiva in classe, sportelli di ascolto per studenti, supporto per alunni con Bisogni Educativi Speciali (BES) e Disturbi Specifici dell'Apprendimento (DSA), e consulenze per il corpo docente su tematiche psicoeducative.",
+        "p3": "Credo che la collaborazione tra scuola e famiglia sia essenziale: per questo offro anche consulenze individuali ai genitori che desiderano comprendere meglio le difficoltà dei propri figli nel contesto scolastico e trovare strategie efficaci per supportarli."
+      },
+      "benefitsTitle": "Benefici",
+      "benefits": {
+        "b1": "Promozione del benessere emotivo e relazionale in classe",
+        "b2": "Supporto specifico per studenti con BES e DSA",
+        "b3": "Strumenti pratici per insegnanti nella gestione delle dinamiche di gruppo",
+        "b4": "Maggiore collaborazione tra scuola e famiglia"
+      },
+      "stepsTitle": "Come funziona",
+      "steps": {
+        "s1": { "title": "Analisi dei bisogni", "text": "Incontro la dirigenza scolastica e gli insegnanti per comprendere le esigenze specifiche della scuola e degli studenti." },
+        "s2": { "title": "Progettazione dell'intervento", "text": "Sulla base dell'analisi, creo un progetto su misura: laboratori in classe, sportello d'ascolto, formazione docenti o consulenze individuali." },
+        "s3": { "title": "Realizzazione e monitoraggio", "text": "Realizzo gli interventi concordati e monitoro i risultati, mantenendo un dialogo costante con insegnanti e genitori." }
+      },
+      "faqTitle": "Domande frequenti",
+      "faq": {
+        "f1": { "question": "Chi può richiedere un intervento di psicologia scolastica?", "answer": "L'intervento può essere richiesto dalla dirigenza scolastica, dal corpo docente o dai genitori. In ogni caso, lavoro in stretta collaborazione con tutte le figure coinvolte." },
+        "f2": { "question": "Che tipo di interventi vengono fatti in classe?", "answer": "I laboratori in classe trattano temi come l'educazione affettiva, la gestione delle emozioni, le relazioni tra pari e la prevenzione del bullismo. Sono attività interattive e adatte all'età degli studenti." },
+        "f3": { "question": "Come si supporta uno studente con DSA?", "answer": "Il supporto include la valutazione delle difficoltà, la collaborazione con la famiglia e gli insegnanti per definire strategie didattiche personalizzate, e il tutoring individuale quando necessario." }
+      }
     },
     "parenting": {
       "title": "Sostegno alla genitorialità",
-      "description": "Percorsi per genitori che affrontano le sfide dell'adolescenza e della pre-adolescenza: gestione dei conflitti, ansia dei figli, uso dei social media, autonomia e regole."
+      "description": "Percorsi per genitori che affrontano le sfide dell'adolescenza e della pre-adolescenza: gestione dei conflitti, ansia dei figli, uso dei social media, autonomia e regole.",
+      "extendedDescription": {
+        "p1": "Essere genitori è una delle esperienze più intense e complesse della vita. Ogni fase della crescita dei figli porta nuove sfide: dalla gestione dei capricci nell'infanzia ai conflitti dell'adolescenza, dal tema dell'autonomia a quello dei social media e della tecnologia.",
+        "p2": "Il sostegno alla genitorialità ti offre uno spazio per riflettere sul tuo ruolo di genitore, comprendere meglio i comportamenti dei tuoi figli e trovare strategie efficaci per affrontare le difficoltà quotidiane. Non si tratta di ricevere giudizi o regole rigide, ma di esplorare insieme nuove possibilità.",
+        "p3": "Con l'approccio sistemico-relazionale, guardiamo alla famiglia come a un sistema interconnesso: il comportamento di ogni membro influenza e viene influenzato dagli altri. Comprendere queste dinamiche ti aiuta a trovare nuovi modi di relazionarti con i tuoi figli."
+      },
+      "benefitsTitle": "Benefici",
+      "benefits": {
+        "b1": "Maggiore comprensione dei bisogni evolutivi dei figli nelle diverse fasi di crescita",
+        "b2": "Strategie concrete per gestire conflitti e momenti di tensione familiare",
+        "b3": "Rafforzamento della relazione genitore-figlio basata su ascolto e fiducia",
+        "b4": "Supporto nel definire regole e confini chiari, adeguati all'età"
+      },
+      "stepsTitle": "Come funziona",
+      "steps": {
+        "s1": { "title": "Primo contatto", "text": "Contattami per raccontarmi brevemente la situazione. Possiamo capire insieme se il sostegno alla genitorialità è il percorso più adatto." },
+        "s2": { "title": "Incontro iniziale", "text": "Nel primo colloquio esploriamo le dinamiche familiari e le difficoltà che stai vivendo. Può partecipare un genitore o entrambi." },
+        "s3": { "title": "Percorso di supporto", "text": "Lavoriamo insieme con incontri regolari, affrontando le sfide concrete che si presentano e sviluppando nuove competenze genitoriali." }
+      },
+      "faqTitle": "Domande frequenti",
+      "faq": {
+        "f1": { "question": "Il sostegno alla genitorialità è solo per genitori in difficoltà?", "answer": "No, è utile per qualsiasi genitore che voglia comprendere meglio le dinamiche familiari, migliorare la comunicazione con i figli o affrontare una fase di cambiamento nella crescita dei propri figli." },
+        "f2": { "question": "Devono partecipare entrambi i genitori?", "answer": "Non necessariamente. Il percorso può essere fatto anche da un solo genitore. Tuttavia, quando possibile, il coinvolgimento di entrambi porta a risultati più efficaci." },
+        "f3": { "question": "A che età dei figli è consigliato?", "answer": "Il sostegno alla genitorialità è utile in qualsiasi fase, dall'infanzia all'adolescenza. Le sfide cambiano con l'età dei figli e il percorso si adatta di conseguenza." }
+      }
     },
     "youth": {
       "title": "Supporto per minori e adolescenti",
-      "description": "Aiuto psicologico per bambini e ragazzi che vivono difficoltà emotive, problemi scolastici, ansia, insicurezza o faticano nelle relazioni con i coetanei."
+      "description": "Aiuto psicologico per bambini e ragazzi che vivono difficoltà emotive, problemi scolastici, ansia, insicurezza o faticano nelle relazioni con i coetanei.",
+      "extendedDescription": {
+        "p1": "L'infanzia e l'adolescenza sono periodi di grandi trasformazioni. A volte bambini e ragazzi possono trovarsi in difficoltà: ansia, insicurezza, problemi scolastici, difficoltà nelle relazioni con i coetanei o cambiamenti familiari che li destabilizzano.",
+        "p2": "Il supporto psicologico per minori utilizza modalità adatte all'età: con i più piccoli si lavora attraverso il gioco e il disegno, con gli adolescenti si privilegia il dialogo in un ambiente accogliente e non giudicante. L'obiettivo è offrire uno spazio sicuro in cui esprimere emozioni e difficoltà.",
+        "p3": "Il coinvolgimento della famiglia è fondamentale in questo tipo di percorso. Lavoro in stretta collaborazione con i genitori, aiutandoli a comprendere le difficoltà dei figli e a supportarli nel modo più efficace."
+      },
+      "benefitsTitle": "Benefici",
+      "benefits": {
+        "b1": "Uno spazio sicuro dove esprimere emozioni e difficoltà senza giudizio",
+        "b2": "Sviluppo di competenze emotive e relazionali adeguate all'età",
+        "b3": "Supporto nell'affrontare cambiamenti scolastici, familiari e sociali",
+        "b4": "Coinvolgimento attivo dei genitori per un supporto integrato"
+      },
+      "stepsTitle": "Come funziona",
+      "steps": {
+        "s1": { "title": "Contatto con i genitori", "text": "Il primo passo è un colloquio con i genitori per comprendere la situazione e le preoccupazioni. Questo mi permette di avere un quadro completo prima di incontrare il minore." },
+        "s2": { "title": "Incontro con il minore", "text": "Incontro il bambino o il ragazzo in un ambiente accogliente, utilizzando modalità adatte alla sua età per creare un rapporto di fiducia." },
+        "s3": { "title": "Percorso integrato", "text": "Il lavoro procede con incontri regolari con il minore e colloqui periodici con i genitori, per un supporto coordinato e efficace." }
+      },
+      "faqTitle": "Domande frequenti",
+      "faq": {
+        "f1": { "question": "Da che età è possibile iniziare un percorso?", "answer": "È possibile lavorare con bambini a partire dai 6 anni circa. Per i bambini più piccoli, il lavoro è prevalentemente con i genitori attraverso il sostegno alla genitorialità." },
+        "f2": { "question": "I genitori sono presenti durante le sedute?", "answer": "Dipende dall'età e dalla situazione. Con i bambini più piccoli i genitori possono essere coinvolti nelle sedute. Con gli adolescenti, le sedute sono generalmente individuali, con colloqui periodici con i genitori." },
+        "f3": { "question": "La scuola viene coinvolta nel percorso?", "answer": "Solo se necessario e con il consenso dei genitori. In alcuni casi, la collaborazione con gli insegnanti è molto utile per un supporto coordinato." }
+      }
     },
     "online": {
       "title": "Sedute online",
-      "description": "Consulenze psicologiche a distanza tramite videochiamata, con la stessa qualità e riservatezza delle sedute in studio."
+      "description": "Consulenze psicologiche a distanza tramite videochiamata, con la stessa qualità e riservatezza delle sedute in studio.",
+      "extendedDescription": {
+        "p1": "Le sedute online ti permettono di ricevere supporto psicologico comodamente da casa tua, senza rinunciare alla qualità e alla riservatezza di un colloquio in studio. Utilizzo piattaforme sicure per garantire la privacy della comunicazione.",
+        "p2": "Questa modalità è particolarmente adatta se vivi lontano dai miei studi, hai difficoltà negli spostamenti, preferisci la comodità del tuo ambiente domestico o hai orari che rendono difficile gli incontri in presenza.",
+        "p3": "Le sedute online seguono le stesse modalità di quelle in studio: stessa durata, stesso approccio professionale, stessa attenzione alla relazione terapeutica. La ricerca scientifica conferma che i colloqui online sono altrettanto efficaci di quelli in presenza."
+      },
+      "benefitsTitle": "Benefici",
+      "benefits": {
+        "b1": "Flessibilità: puoi partecipare da qualsiasi luogo con una connessione internet",
+        "b2": "Risparmio di tempo e costi legati agli spostamenti",
+        "b3": "Stessa qualità e riservatezza delle sedute in studio",
+        "b4": "Ideale per chi ha orari irregolari o vive lontano"
+      },
+      "stepsTitle": "Come funziona",
+      "steps": {
+        "s1": { "title": "Prenotazione", "text": "Contattami per fissare un appuntamento online. Ti invierò il link alla videochiamata prima della seduta." },
+        "s2": { "title": "Preparazione", "text": "Assicurati di avere una connessione stabile, un dispositivo con telecamera e microfono, e un luogo tranquillo e riservato da cui collegarti." },
+        "s3": { "title": "La seduta", "text": "Ci colleghiamo all'orario concordato. La seduta dura circa 50 minuti, esattamente come in studio. Il pagamento avviene tramite bonifico." }
+      },
+      "faqTitle": "Domande frequenti",
+      "faq": {
+        "f1": { "question": "Quale piattaforma si utilizza per le videochiamate?", "answer": "Utilizzo piattaforme sicure e conformi alle normative sulla privacy. I dettagli tecnici ti verranno comunicati al momento della prenotazione." },
+        "f2": { "question": "Le sedute online sono efficaci quanto quelle in studio?", "answer": "Sì, numerosi studi scientifici confermano che le sedute online sono altrettanto efficaci di quelle in presenza per la maggior parte delle problematiche psicologiche." },
+        "f3": { "question": "Posso alternare sedute online e in studio?", "answer": "Certamente. Molte persone scelgono una modalità mista, alternando incontri in studio e online in base alle proprie esigenze." }
+      }
     }
   },
   "testimonials": {
@@ -175,7 +320,8 @@
         "emailRequired": "L'email è obbligatoria",
         "emailInvalid": "Inserisci un'email valida",
         "messageRequired": "Il messaggio è obbligatorio",
-        "sendFailed": "Si è verificato un errore nell'invio. Riprova o contattami direttamente via email."
+        "sendFailed": "Si è verificato un errore nell'invio. Riprova o contattami direttamente via email.",
+        "rateLimited": "Troppi tentativi di invio. Riprova tra qualche minuto."
       }
     },
     "info": {

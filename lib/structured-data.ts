@@ -12,7 +12,8 @@ export function getWebsiteSchema() {
 export function getLocalBusinessSchema(locale: string) {
   return {
     "@context": "https://schema.org",
-    "@type": "Psychologist",
+    "@type": "ProfessionalService",
+    additionalType: "https://schema.org/MedicalBusiness",
     name: siteConfig.name,
     url: siteConfig.url,
     telephone: siteConfig.phone,
@@ -23,6 +24,19 @@ export function getLocalBusinessSchema(locale: string) {
       addressLocality: siteConfig.city,
       addressCountry: "IT",
     },
+    contactPoint: [
+      {
+        "@type": "ContactPoint",
+        telephone: siteConfig.phone,
+        contactType: "customer service",
+        availableLanguage: ["Italian", "English"],
+      },
+      {
+        "@type": "ContactPoint",
+        email: siteConfig.email,
+        contactType: "customer service",
+      },
+    ],
     description:
       locale === "it"
         ? "Psicologa clinica a Padova, Meledo (VI) e Spinea (VE). Sostegno psicologico individuale, consulenze di coppia e familiari, psicologia scolastica."
@@ -50,5 +64,46 @@ export function getFaqSchema(
         text: item.answer,
       },
     })),
+  };
+}
+
+export function getBreadcrumbSchema(
+  items: { name: string; url: string }[],
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      item: item.url,
+    })),
+  };
+}
+
+export function getServiceSchema(service: {
+  name: string;
+  description: string;
+  serviceType: string;
+  url: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": service.url,
+    name: service.name,
+    description: service.description,
+    url: service.url,
+    serviceType: service.serviceType,
+    provider: {
+      "@type": "ProfessionalService",
+      name: siteConfig.name,
+      url: siteConfig.url,
+    },
+    areaServed: {
+      "@type": "Country",
+      name: "Italy",
+    },
   };
 }

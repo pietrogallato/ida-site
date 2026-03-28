@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { Resend } from "resend";
 import { ContactEmail } from "@/lib/emails/contact-email";
+import type { ContactFormData, ContactAPIResponse } from "@/types";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -28,56 +29,47 @@ function isRateLimited(ip: string): boolean {
   return entry.count > RATE_LIMIT_MAX;
 }
 
-interface ContactBody {
-  name: string;
-  email: string;
-  phone?: string;
-  message: string;
-  website?: string;
-  timestamp?: number;
-}
-
 export async function POST(request: NextRequest) {
   try {
     // Validate Content-Type
     const contentType = request.headers.get("content-type");
     if (!contentType?.includes("application/json")) {
-      return NextResponse.json({ error: "Invalid content type" }, { status: 415 });
+      return NextResponse.json<ContactAPIResponse>({ success: false, error: "Invalid content type" }, { status: 415 });
     }
 
     // Rate limiting
     const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
     if (isRateLimited(ip)) {
-      return NextResponse.json({ error: "Too many requests" }, { status: 429 });
+      return NextResponse.json<ContactAPIResponse>({ success: false, error: "Too many requests" }, { status: 429 });
     }
 
-    const body: ContactBody = await request.json();
+    const body: ContactFormData = await request.json();
 
     // Anti-bot: honeypot
     if (body.website) {
-      return NextResponse.json({ success: true });
+      return NextResponse.json<ContactAPIResponse>({ success: true });
     }
 
     // Anti-bot: too fast (< 2s)
     if (body.timestamp && Date.now() - body.timestamp < 2000) {
-      return NextResponse.json({ success: true });
+      return NextResponse.json<ContactAPIResponse>({ success: true });
     }
 
     // Check required env vars
     if (!CONTACT_EMAIL) {
       console.error("CONTACT_EMAIL is not configured");
-      return NextResponse.json({ error: "Server configuration error" }, { status: 500 });
+      return NextResponse.json<ContactAPIResponse>({ success: false, error: "Server configuration error" }, { status: 500 });
     }
 
     // Server-side validation
     if (!body.name?.trim()) {
-      return NextResponse.json({ error: "Name is required" }, { status: 400 });
+      return NextResponse.json<ContactAPIResponse>({ success: false, error: "Name is required" }, { status: 400 });
     }
     if (!body.email?.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(body.email)) {
-      return NextResponse.json({ error: "Valid email is required" }, { status: 400 });
+      return NextResponse.json<ContactAPIResponse>({ success: false, error: "Valid email is required" }, { status: 400 });
     }
     if (!body.message?.trim()) {
-      return NextResponse.json({ error: "Message is required" }, { status: 400 });
+      return NextResponse.json<ContactAPIResponse>({ success: false, error: "Message is required" }, { status: 400 });
     }
 
     // Sanitize replyTo to prevent header injection
@@ -126,12 +118,12 @@ export async function POST(request: NextRequest) {
 
     if (error) {
       console.error("Resend error:", error);
-      return NextResponse.json({ error: "Failed to send email" }, { status: 500 });
+      return NextResponse.json<ContactAPIResponse>({ success: false, error: "Failed to send email" }, { status: 500 });
     }
 
-    return NextResponse.json({ success: true });
+    return NextResponse.json<ContactAPIResponse>({ success: true });
   } catch {
     console.error("Contact API error");
-    return NextResponse.json({ error: "Internal server error" }, { status: 500 });
+    return NextResponse.json<ContactAPIResponse>({ success: false, error: "Internal server error" }, { status: 500 });
   }
 }

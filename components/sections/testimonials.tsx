@@ -22,15 +22,15 @@ export async function Testimonials() {
         <ScrollReveal delay={0.1}>
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {testimonials.map((testimonial) => (
-              <Card key={testimonial.id}>
+              <Card key={testimonial.id} accentColor="secondary">
                 <Quote
-                  className="mb-4 h-8 w-8 text-primary/30"
+                  className="mb-4 h-10 w-10 text-primary/50"
                   aria-hidden="true"
                 />
-                <blockquote className="text-foreground-muted">
+                <blockquote className="leading-relaxed text-foreground-muted">
                   <p>{t(`${testimonial.id}.text`)}</p>
                 </blockquote>
-                <p className="mt-4 text-sm font-medium text-foreground">
+                <p className="mt-4 text-sm font-semibold text-primary-text">
                   — {t(`${testimonial.id}.author`)}
                 </p>
               </Card>

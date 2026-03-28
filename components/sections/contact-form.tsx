@@ -16,7 +16,7 @@ export function ContactForm() {
 
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [sendError, setSendError] = useState(false);
+  const [sendError, setSendError] = useState<string | null>(null);
   const [errors, setErrors] = useState<FormErrors>({});
   const mountTime = useRef(0);
 
@@ -59,7 +59,7 @@ export function ContactForm() {
     }
 
     setErrors({});
-    setSendError(false);
+    setSendError(null);
     setLoading(true);
 
     try {
@@ -77,13 +77,17 @@ export function ContactForm() {
       });
 
       if (!res.ok) {
-        setSendError(true);
+        if (res.status === 429) {
+          setSendError("rateLimited");
+        } else {
+          setSendError("generic");
+        }
         return;
       }
 
       setSubmitted(true);
     } catch {
-      setSendError(true);
+      setSendError("generic");
     } finally {
       setLoading(false);
     }
@@ -94,6 +98,7 @@ export function ContactForm() {
       <div
         className="rounded-xl border border-success/30 bg-success/10 p-6 text-center"
         role="alert"
+        aria-live="polite"
       >
         <p className="font-medium text-foreground">{t("success")}</p>
       </div>
@@ -198,11 +203,18 @@ export function ContactForm() {
         )}
       </div>
 
-      {sendError && (
-        <p className="text-sm text-error" role="alert">
-          {t("errors.sendFailed")}
-        </p>
-      )}
+      <div aria-live="polite">
+        {sendError === "rateLimited" && (
+          <p className="text-sm text-error" role="alert">
+            {t("errors.rateLimited")}
+          </p>
+        )}
+        {sendError === "generic" && (
+          <p className="text-sm text-error" role="alert">
+            {t("errors.sendFailed")}
+          </p>
+        )}
+      </div>
 
       <Button type="submit" size="lg" className="w-full" disabled={loading}>
         {loading ? tCommon("loading") : t("submit")}

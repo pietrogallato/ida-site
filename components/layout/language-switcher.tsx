@@ -3,6 +3,20 @@
 import { useLocale, useTranslations } from "next-intl";
 import { useRouter, usePathname } from "next/navigation";
 import { routing } from "@/i18n/routing";
+import { services } from "@/content/services";
+import type { Locale } from "@/types";
+
+// Static segment translations derived from routing.pathnames
+const segmentTranslations: Record<string, Record<string, string>> = {
+  "chi-sono": { en: "about" },
+  about: { it: "chi-sono" },
+  servizi: { en: "services" },
+  services: { it: "servizi" },
+  contatti: { en: "contact" },
+  contact: { it: "contatti" },
+  "come-funziona": { en: "how-it-works" },
+  "how-it-works": { it: "come-funziona" },
+};
 
 export function LanguageSwitcher() {
   const locale = useLocale();
@@ -17,8 +31,28 @@ export function LanguageSwitcher() {
     if (routing.locales.includes(segments[1] as "it" | "en")) {
       segments[1] = nextLocale;
     }
-    const newPath = segments.join("/") || "/";
 
+    // Translate all localized path segments
+    for (let i = 2; i < segments.length; i++) {
+      const segment = segments[i];
+
+      // Check static segment translations
+      const translation = segmentTranslations[segment]?.[nextLocale];
+      if (translation) {
+        segments[i] = translation;
+        continue;
+      }
+
+      // Check service slug translations
+      const service = services.find(
+        (s) => s.slugs[locale as Locale] === segment
+      );
+      if (service) {
+        segments[i] = service.slugs[nextLocale as Locale];
+      }
+    }
+
+    const newPath = segments.join("/") || "/";
     router.push(newPath);
   }
 

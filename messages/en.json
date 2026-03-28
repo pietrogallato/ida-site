@@ -109,29 +109,174 @@
     "pageTitle": "Services",
     "title": "My Services",
     "subtitle": "Each path is tailor-made to meet your specific needs.",
+    "otherServices": "Other services",
     "individual": {
       "title": "Individual psychological support",
-      "description": "I help you cope with anxiety, stress, depression, relationship difficulties, and times of crisis. Together we build a personalized path to find your balance and develop new resources."
+      "description": "I help you cope with anxiety, stress, depression, relationship difficulties, and times of crisis. Together we build a personalized path to find your balance and develop new resources.",
+      "extendedDescription": {
+        "p1": "Individual psychological support is a space entirely dedicated to you, where you can explore your thoughts, emotions, and behaviors in a safe, non-judgmental environment. Whether you're going through a difficult time or simply want to understand yourself better, this path gives you the tools to face life's everyday challenges.",
+        "p2": "I work with a systemic-relational approach, paying attention not only to what you feel, but also to the relational context in which you live. Together we explore the dynamics that influence your well-being, building on the resources you already have and developing new ones.",
+        "p3": "The path is tailored to you: we respect your pace, define goals together, and adapt the work to your needs. No two journeys are the same, because every person is unique."
+      },
+      "benefitsTitle": "Benefits",
+      "benefits": {
+        "b1": "Greater awareness of your emotions and relational patterns",
+        "b2": "Practical strategies for managing anxiety, stress, and difficult moments",
+        "b3": "Improved self-esteem and self-confidence",
+        "b4": "New resources for facing life changes and transitions"
+      },
+      "stepsTitle": "How it works",
+      "steps": {
+        "s1": { "title": "First contact", "text": "Write or call me to schedule an initial consultation. It's an informal moment to tell me what brings you here." },
+        "s2": { "title": "Initial assessment", "text": "In the first meeting, we get to know each other and assess your needs together. We'll understand if individual support is the right path for you." },
+        "s3": { "title": "Personalized path", "text": "We define goals and session frequency. Sessions are typically weekly or bi-weekly, lasting about 50 minutes each." }
+      },
+      "faqTitle": "Frequently asked questions",
+      "faq": {
+        "f1": { "question": "How long does an individual support path last?", "answer": "The duration depends on your personal needs and the goals we set together. Some paths last a few months, others may be longer. We discuss this from the very first meeting." },
+        "f2": { "question": "Do I need to have a serious problem to seek support?", "answer": "No, you don't need to be in an emergency situation. Psychological support is also helpful during times of change, uncertainty, or simply when you feel the need to talk to a professional." },
+        "f3": { "question": "Is individual support suitable for teenagers?", "answer": "For minors, I offer a dedicated service with age-appropriate methods. Classic individual support is designed for adults aged 18 and over." }
+      }
     },
     "couples": {
       "title": "Couples and family counseling",
-      "description": "A safe space to improve communication, resolve conflicts, navigate major life changes such as separations, births, or grief, and find balance in your relationship."
+      "description": "A safe space to improve communication, resolve conflicts, navigate major life changes such as separations, births, or grief, and find balance in your relationship.",
+      "extendedDescription": {
+        "p1": "Couple and family relationships inevitably go through difficult times: recurring conflicts, communication problems, major changes such as a birth, a separation, or a loss can put a strain on the relational balance.",
+        "p2": "Couples and family counseling offers a neutral, protected space where each member can express their point of view and be heard. My role is to facilitate dialogue, helping you understand the relational dynamics that cause suffering and find new ways of communicating.",
+        "p3": "The systemic-relational approach is particularly suited to this type of work, because it considers the couple and the family as a system where every change in one member affects all the others. Together we seek new balances that respect everyone's needs."
+      },
+      "benefitsTitle": "Benefits",
+      "benefits": {
+        "b1": "Improved communication and mutual listening skills",
+        "b2": "Constructive management of conflicts and disagreements",
+        "b3": "Better understanding of relational dynamics within the couple or family",
+        "b4": "Support during times of transition and family change"
+      },
+      "stepsTitle": "How it works",
+      "steps": {
+        "s1": { "title": "First contact", "text": "One partner or family member contacts me to schedule a first meeting. We can talk briefly on the phone to understand the situation." },
+        "s2": { "title": "Introductory meeting", "text": "The first session is with all members involved. Everyone has the opportunity to share their point of view in a safe and respectful environment." },
+        "s3": { "title": "Shared path", "text": "We define the goals of our work together. Sessions take place regularly and involve all participants, with the possibility of individual meetings if needed." }
+      },
+      "faqTitle": "Frequently asked questions",
+      "faq": {
+        "f1": { "question": "Do both partners need to agree to come?", "answer": "It's important that both are motivated to participate. If your partner is hesitant, we can have an initial session together to see if the path could be helpful, with no obligation." },
+        "f2": { "question": "Can I have family counseling with my children?", "answer": "Yes, depending on the situation, we can involve children in the process. We assess together who should be included in the sessions and how." },
+        "f3": { "question": "Is couples counseling only for couples in crisis?", "answer": "No, it's also useful for couples who want to improve communication, face an important change, or simply invest in the quality of their relationship." }
+      }
     },
     "school": {
       "title": "School psychology",
-      "description": "Affective education programs in schools, support for students with learning difficulties (SEN and learning disabilities), and counseling for teachers and parents on educational issues."
+      "description": "Affective education programs in schools, support for students with learning difficulties (SEN and learning disabilities), and counseling for teachers and parents on educational issues.",
+      "extendedDescription": {
+        "p1": "School is a fundamental environment for the emotional and social growth of children and young people. As a school psychologist, I work alongside students, teachers, and parents to promote well-being within the educational context.",
+        "p2": "My interventions include classroom affective education projects, student listening services, support for students with Special Educational Needs (SEN) and Specific Learning Disabilities (SLD), and consultations for teaching staff on psychoeducational topics.",
+        "p3": "I believe that collaboration between school and family is essential: that's why I also offer individual consultations to parents who want to better understand their children's difficulties in the school context and find effective strategies to support them."
+      },
+      "benefitsTitle": "Benefits",
+      "benefits": {
+        "b1": "Promotion of emotional and relational well-being in the classroom",
+        "b2": "Specific support for students with SEN and learning disabilities",
+        "b3": "Practical tools for teachers to manage group dynamics",
+        "b4": "Stronger collaboration between school and family"
+      },
+      "stepsTitle": "How it works",
+      "steps": {
+        "s1": { "title": "Needs assessment", "text": "I meet with school leadership and teachers to understand the specific needs of the school and its students." },
+        "s2": { "title": "Intervention design", "text": "Based on the assessment, I create a tailored project: classroom workshops, listening services, teacher training, or individual consultations." },
+        "s3": { "title": "Implementation and monitoring", "text": "I carry out the agreed interventions and monitor results, maintaining constant dialogue with teachers and parents." }
+      },
+      "faqTitle": "Frequently asked questions",
+      "faq": {
+        "f1": { "question": "Who can request a school psychology intervention?", "answer": "The intervention can be requested by school leadership, teaching staff, or parents. In any case, I work in close collaboration with all parties involved." },
+        "f2": { "question": "What kind of classroom activities are offered?", "answer": "Classroom workshops cover topics like affective education, emotional management, peer relationships, and bullying prevention. They are interactive activities appropriate for the students' age." },
+        "f3": { "question": "How is a student with learning disabilities supported?", "answer": "Support includes assessing difficulties, collaborating with family and teachers to define personalized teaching strategies, and individual tutoring when necessary." }
+      }
     },
     "parenting": {
       "title": "Parenting support",
-      "description": "Programs for parents facing the challenges of adolescence and pre-adolescence: managing conflicts, children's anxiety, social media use, autonomy, and boundaries."
+      "description": "Programs for parents facing the challenges of adolescence and pre-adolescence: managing conflicts, children's anxiety, social media use, autonomy, and boundaries.",
+      "extendedDescription": {
+        "p1": "Being a parent is one of life's most intense and complex experiences. Every stage of a child's growth brings new challenges: from managing tantrums in childhood to adolescent conflicts, from questions of autonomy to social media and technology.",
+        "p2": "Parenting support offers you a space to reflect on your role as a parent, better understand your children's behaviors, and find effective strategies for dealing with everyday difficulties. It's not about receiving judgments or rigid rules, but about exploring new possibilities together.",
+        "p3": "With the systemic-relational approach, we look at the family as an interconnected system: each member's behavior influences and is influenced by the others. Understanding these dynamics helps you find new ways of relating to your children."
+      },
+      "benefitsTitle": "Benefits",
+      "benefits": {
+        "b1": "Better understanding of children's developmental needs at different growth stages",
+        "b2": "Practical strategies for managing conflicts and moments of family tension",
+        "b3": "Strengthened parent-child relationship based on listening and trust",
+        "b4": "Support in setting clear, age-appropriate rules and boundaries"
+      },
+      "stepsTitle": "How it works",
+      "steps": {
+        "s1": { "title": "First contact", "text": "Contact me to briefly describe the situation. We can figure out together whether parenting support is the most suitable path." },
+        "s2": { "title": "Initial meeting", "text": "In the first session, we explore family dynamics and the difficulties you're experiencing. One or both parents can attend." },
+        "s3": { "title": "Support path", "text": "We work together through regular meetings, addressing the concrete challenges that arise and developing new parenting skills." }
+      },
+      "faqTitle": "Frequently asked questions",
+      "faq": {
+        "f1": { "question": "Is parenting support only for parents in difficulty?", "answer": "No, it's useful for any parent who wants to better understand family dynamics, improve communication with their children, or face a phase of change in their children's growth." },
+        "f2": { "question": "Do both parents need to participate?", "answer": "Not necessarily. The path can be followed by one parent alone. However, when possible, involving both parents leads to more effective results." },
+        "f3": { "question": "What age range is it recommended for?", "answer": "Parenting support is useful at any stage, from childhood to adolescence. The challenges change with the children's age, and the path adapts accordingly." }
+      }
     },
     "youth": {
       "title": "Support for children and adolescents",
-      "description": "Psychological support for children and young people experiencing emotional difficulties, school problems, anxiety, insecurity, or struggles in peer relationships."
+      "description": "Psychological support for children and young people experiencing emotional difficulties, school problems, anxiety, insecurity, or struggles in peer relationships.",
+      "extendedDescription": {
+        "p1": "Childhood and adolescence are times of great transformation. Sometimes children and young people find themselves struggling: anxiety, insecurity, school problems, difficulties in peer relationships, or family changes that unsettle them.",
+        "p2": "Psychological support for minors uses age-appropriate methods: with younger children, we work through play and drawing; with teenagers, dialogue is prioritized in a welcoming, non-judgmental environment. The goal is to provide a safe space to express emotions and difficulties.",
+        "p3": "Family involvement is essential in this type of path. I work in close collaboration with parents, helping them understand their children's difficulties and support them in the most effective way."
+      },
+      "benefitsTitle": "Benefits",
+      "benefits": {
+        "b1": "A safe space to express emotions and difficulties without judgment",
+        "b2": "Development of age-appropriate emotional and relational skills",
+        "b3": "Support in facing school, family, and social changes",
+        "b4": "Active involvement of parents for integrated support"
+      },
+      "stepsTitle": "How it works",
+      "steps": {
+        "s1": { "title": "Meeting with parents", "text": "The first step is a session with the parents to understand the situation and their concerns. This gives me a complete picture before meeting the child." },
+        "s2": { "title": "Meeting with the child", "text": "I meet the child or teenager in a welcoming environment, using age-appropriate methods to build a trusting relationship." },
+        "s3": { "title": "Integrated path", "text": "The work continues with regular sessions with the child and periodic meetings with parents, for coordinated and effective support." }
+      },
+      "faqTitle": "Frequently asked questions",
+      "faq": {
+        "f1": { "question": "From what age can a child start a path?", "answer": "It's possible to work with children from about 6 years of age. For younger children, the work is mainly with parents through parenting support." },
+        "f2": { "question": "Are parents present during sessions?", "answer": "It depends on the age and the situation. With younger children, parents may be involved in sessions. With teenagers, sessions are generally individual, with periodic meetings with parents." },
+        "f3": { "question": "Is the school involved in the path?", "answer": "Only if necessary and with parental consent. In some cases, collaboration with teachers is very helpful for coordinated support." }
+      }
     },
     "online": {
       "title": "Online sessions",
-      "description": "Remote psychological consultations via video call, with the same quality and confidentiality as in-office sessions."
+      "description": "Remote psychological consultations via video call, with the same quality and confidentiality as in-office sessions.",
+      "extendedDescription": {
+        "p1": "Online sessions allow you to receive psychological support from the comfort of your home, without sacrificing the quality and confidentiality of an in-office session. I use secure platforms to ensure the privacy of our communication.",
+        "p2": "This modality is particularly suitable if you live far from my offices, have difficulty traveling, prefer the comfort of your home environment, or have a schedule that makes in-person meetings difficult.",
+        "p3": "Online sessions follow the same format as in-office ones: same duration, same professional approach, same attention to the therapeutic relationship. Scientific research confirms that online sessions are just as effective as in-person ones."
+      },
+      "benefitsTitle": "Benefits",
+      "benefits": {
+        "b1": "Flexibility: you can participate from anywhere with an internet connection",
+        "b2": "Save time and travel costs",
+        "b3": "Same quality and confidentiality as in-office sessions",
+        "b4": "Ideal for those with irregular schedules or who live far away"
+      },
+      "stepsTitle": "How it works",
+      "steps": {
+        "s1": { "title": "Booking", "text": "Contact me to schedule an online appointment. I'll send you the video call link before the session." },
+        "s2": { "title": "Preparation", "text": "Make sure you have a stable connection, a device with a camera and microphone, and a quiet, private place to connect from." },
+        "s3": { "title": "The session", "text": "We connect at the agreed time. The session lasts about 50 minutes, just like in the office. Payment is made by bank transfer." }
+      },
+      "faqTitle": "Frequently asked questions",
+      "faq": {
+        "f1": { "question": "What platform is used for video calls?", "answer": "I use secure platforms that comply with privacy regulations. Technical details will be provided when you book your appointment." },
+        "f2": { "question": "Are online sessions as effective as in-office ones?", "answer": "Yes, numerous scientific studies confirm that online sessions are just as effective as in-person ones for most psychological issues." },
+        "f3": { "question": "Can I alternate between online and in-office sessions?", "answer": "Absolutely. Many people choose a mixed approach, alternating between in-office and online meetings based on their needs." }
+      }
     }
   },
   "testimonials": {
@@ -175,7 +320,8 @@
         "emailRequired": "Email is required",
         "emailInvalid": "Please enter a valid email",
         "messageRequired": "Message is required",
-        "sendFailed": "An error occurred while sending. Please try again or contact me directly via email."
+        "sendFailed": "An error occurred while sending. Please try again or contact me directly via email.",
+        "rateLimited": "Too many attempts. Please try again in a few minutes."
       }
     },
     "info": {

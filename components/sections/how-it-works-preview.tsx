@@ -28,14 +28,14 @@ export async function HowItWorksPreview() {
         <div className="mx-auto mt-12 grid max-w-4xl gap-8 md:grid-cols-3">
           {steps.map((step, index) => (
             <ScrollReveal key={step.key} delay={index * 0.1}>
-              <div className="text-center">
-                <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-primary/10">
+              <div className="border-l-[3px] border-l-primary pl-6">
+                <div className="flex h-14 w-14 items-center justify-center rounded-full bg-primary/10">
                   <step.icon
                     className="h-6 w-6 text-primary-text"
                     aria-hidden="true"
                   />
                 </div>
-                <p className="mt-1 text-sm font-medium text-primary-text">
+                <p className="mt-2 text-base font-bold text-primary-text">
                   {index + 1}
                 </p>
                 <h3 className="mt-2 text-lg font-semibold text-foreground">

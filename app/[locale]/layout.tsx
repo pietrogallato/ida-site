@@ -60,6 +60,14 @@ export async function generateMetadata({
       siteName: siteConfig.name,
       locale: locale === "it" ? "it_IT" : "en_US",
       type: "website",
+      images: [
+        {
+          url: `/${locale}/opengraph-image`,
+          width: 1200,
+          height: 630,
+          alt: `${siteConfig.name} — ${locale === "it" ? "Psicologa Clinica" : "Clinical Psychologist"}`,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",

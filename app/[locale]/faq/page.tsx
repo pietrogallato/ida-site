@@ -3,6 +3,8 @@ import { getLocale, getTranslations } from "next-intl/server";
 import { Container } from "@/components/ui/container";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { FaqContent } from "./faq-content";
+import { getFaqSchema } from "@/lib/structured-data";
+import { faqs } from "@/content/faq";
 
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
@@ -26,9 +28,21 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function FaqPage() {
   const locale = await getLocale();
   const tNav = await getTranslations("navigation");
+  const tFaq = await getTranslations("faq");
+
+  const faqItems = faqs.map((faq) => ({
+    question: tFaq(`${faq.id}.question`),
+    answer: tFaq(`${faq.id}.answer`),
+  }));
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(getFaqSchema(faqItems)),
+        }}
+      />
       <div className="pt-16 md:pt-24">
         <Container>
           <Breadcrumbs

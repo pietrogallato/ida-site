@@ -1,10 +1,14 @@
-import type { Service } from "@/types";
+import type { Service, Locale } from "@/types";
 
 export const services: Service[] = [
-  { id: "individual", icon: "User" },
-  { id: "couples", icon: "Users" },
-  { id: "school", icon: "GraduationCap" },
-  { id: "parenting", icon: "Baby" },
-  { id: "youth", icon: "Heart" },
-  { id: "online", icon: "Monitor" },
+  { id: "individual", icon: "User", slugs: { it: "sostegno-individuale", en: "individual-support" } },
+  { id: "couples", icon: "Users", slugs: { it: "consulenza-coppia", en: "couples-counseling" } },
+  { id: "school", icon: "GraduationCap", slugs: { it: "psicologia-scolastica", en: "school-psychology" } },
+  { id: "parenting", icon: "Baby", slugs: { it: "sostegno-genitorialita", en: "parenting-support" } },
+  { id: "youth", icon: "Heart", slugs: { it: "supporto-giovani", en: "youth-support" } },
+  { id: "online", icon: "Monitor", slugs: { it: "sedute-online", en: "online-sessions" } },
 ];
+
+export function getServiceBySlug(slug: string, locale: Locale): Service | undefined {
+  return services.find((s) => s.slugs[locale] === slug);
+}

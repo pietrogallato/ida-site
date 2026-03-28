@@ -10,6 +10,8 @@ const variants = {
     "border-2 border-primary text-primary-text hover:bg-primary-dark hover:text-white focus-visible:ring-primary",
   ghost:
     "text-foreground hover:bg-surface-alt focus-visible:ring-primary",
+  white:
+    "bg-white text-[#5A7A5F] hover:bg-white/90 focus-visible:ring-white shadow-[0_2px_12px_rgba(0,0,0,0.12)] hover:shadow-[0_4px_16px_rgba(0,0,0,0.15)]",
 } as const;
 
 const sizes = {

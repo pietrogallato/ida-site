@@ -1,6 +1,21 @@
+export type Locale = "it" | "en";
+
+export type Theme = "light" | "dark";
+
+export type PageParams = Promise<{ locale: Locale }>;
+
+export type ServiceIcon =
+  | "User"
+  | "Users"
+  | "GraduationCap"
+  | "Baby"
+  | "Heart"
+  | "Monitor";
+
 export interface Service {
   id: string;
-  icon: string;
+  icon: ServiceIcon;
+  slugs: { it: string; en: string };
 }
 
 export interface FAQ {
@@ -27,4 +42,18 @@ export interface SiteConfig {
   alboNumber: string;
   url: string;
   linkedin?: string;
+}
+
+export interface ContactFormData {
+  name: string;
+  email: string;
+  phone?: string;
+  message: string;
+  website?: string;
+  timestamp?: number;
+}
+
+export interface ContactAPIResponse {
+  success: boolean;
+  error?: string;
 }
