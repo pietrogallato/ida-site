@@ -107,3 +107,29 @@ export function getServiceSchema(service: {
     },
   };
 }
+
+export function getBlogPostingSchema(post: {
+  title: string;
+  excerpt: string;
+  author: string;
+  publishedAt: string;
+  url: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.excerpt,
+    author: {
+      "@type": "Person",
+      name: post.author,
+    },
+    datePublished: post.publishedAt,
+    url: post.url,
+    publisher: {
+      "@type": "ProfessionalService",
+      name: siteConfig.name,
+      url: siteConfig.url,
+    },
+  };
+}

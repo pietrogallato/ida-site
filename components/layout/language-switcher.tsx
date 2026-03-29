@@ -52,6 +52,13 @@ export function LanguageSwitcher() {
       }
     }
 
+    // For blog detail pages, strip the slug and go to blog list
+    // (translation navigation is handled by explicit link in the article)
+    const blogIndex = segments.findIndex((s) => s === "blog");
+    if (blogIndex !== -1 && segments[blogIndex + 1]) {
+      segments.splice(blogIndex + 1);
+    }
+
     const newPath = segments.join("/") || "/";
     router.push(newPath);
   }

@@ -9,6 +9,7 @@
     "services": "Services",
     "contact": "Contact",
     "faq": "FAQ",
+    "blog": "Blog",
     "subtitle": "Clinical Psychologist"
   },
   "common": {
@@ -475,5 +476,27 @@
     "contacts": "Contacts",
     "legal": "VAT: {piva} — Psychologists Register of Veneto no. {alboNumber}",
     "copyright": "© {year} Ida Sato. All rights reserved."
+  },
+  "blog": {
+    "pageTitle": "Blog",
+    "title": "Blog",
+    "subtitle": "Articles, exercises, and resources on psychological well-being.",
+    "filters": {
+      "all": "All",
+      "posts": "Articles",
+      "postSingular": "Article",
+      "resources": "Resources"
+    },
+    "noResults": "No content found for the selected filters.",
+    "readMore": "Read article",
+    "download": "Download",
+    "publishedBy": "by {author}",
+    "readInOtherLanguage": "Leggi in italiano",
+    "relatedPosts": "Related articles",
+    "resourceLanguage": "Language: {language}",
+    "topicFilter": "Topic",
+    "allTopics": "All topics",
+    "prevPage": "Previous",
+    "nextPage": "Next"
   }
 }

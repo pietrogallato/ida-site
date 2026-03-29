@@ -9,6 +9,7 @@
     "services": "Servizi",
     "contact": "Contatti",
     "faq": "FAQ",
+    "blog": "Blog",
     "subtitle": "Psicologa Clinica"
   },
   "common": {
@@ -475,5 +476,27 @@
     "contacts": "Contatti",
     "legal": "P.IVA: {piva} — Albo Psicologi del Veneto n. {alboNumber}",
     "copyright": "© {year} Ida Sato. Tutti i diritti riservati."
+  },
+  "blog": {
+    "pageTitle": "Blog",
+    "title": "Blog",
+    "subtitle": "Articoli, esercizi e risorse sul benessere psicologico.",
+    "filters": {
+      "all": "Tutti",
+      "posts": "Articoli",
+      "postSingular": "Articolo",
+      "resources": "Risorse"
+    },
+    "noResults": "Nessun contenuto trovato per i filtri selezionati.",
+    "readMore": "Leggi l'articolo",
+    "download": "Scarica",
+    "publishedBy": "di {author}",
+    "readInOtherLanguage": "Read in English",
+    "relatedPosts": "Altri articoli",
+    "resourceLanguage": "Lingua: {language}",
+    "topicFilter": "Argomento",
+    "allTopics": "Tutti gli argomenti",
+    "prevPage": "Precedente",
+    "nextPage": "Successiva"
   }
 }

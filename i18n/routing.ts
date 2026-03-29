@@ -31,5 +31,7 @@ export const routing = defineRouting({
       it: "/privacy",
       en: "/privacy",
     },
+    "/blog": "/blog",
+    "/blog/[slug]": "/blog/[slug]",
   },
 });

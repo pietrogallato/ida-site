@@ -6,11 +6,23 @@ const withNextIntl = createNextIntlPlugin("./i18n/request.ts");
 const nextConfig: NextConfig = {
   images: {
     formats: ["image/avif", "image/webp"],
+    remotePatterns: [
+      { protocol: "https", hostname: "cdn.sanity.io" },
+    ],
   },
   async headers() {
     return [
+      // Permissive headers for Sanity Studio
       {
-        source: "/(.*)",
+        source: "/studio/:path*",
+        headers: [
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+        ],
+      },
+      // Restrictive headers for all other routes
+      {
+        source: "/((?!studio).*)",
         headers: [
           { key: "X-Frame-Options", value: "DENY" },
           { key: "X-Content-Type-Options", value: "nosniff" },
@@ -26,7 +38,7 @@ const nextConfig: NextConfig = {
               "script-src 'self' 'unsafe-inline' https://va.vercel-scripts.com",
               "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
               "font-src 'self' https://fonts.gstatic.com",
-              "img-src 'self' data: blob:",
+              "img-src 'self' data: blob: https://cdn.sanity.io",
               "connect-src 'self' https://vitals.vercel-insights.com https://va.vercel-scripts.com",
               "frame-src 'self' https://www.google.com",
               "frame-ancestors 'none'",

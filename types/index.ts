@@ -1,3 +1,5 @@
+import type { PortableTextBlock } from "sanity";
+
 export type Locale = "it" | "en";
 
 export type Theme = "light" | "dark";
@@ -57,3 +59,37 @@ export interface ContactAPIResponse {
   success: boolean;
   error?: string;
 }
+
+export interface Topic {
+  title: { it: string; en: string };
+  slug: string;
+}
+
+export interface Post {
+  _id: string;
+  _type: "post";
+  title: string;
+  slug: string;
+  language: Locale;
+  translationOf?: { slug: string; language: Locale } | null;
+  topic: Topic;
+  author: string;
+  publishedAt: string;
+  excerpt: string;
+  body: PortableTextBlock[];
+}
+
+export interface Resource {
+  _id: string;
+  _type: "resource";
+  title: string;
+  slug: string;
+  language: Locale;
+  contentType: "esercizi" | "guida" | "scheda";
+  topic: Topic;
+  description: string;
+  fileUrl: string;
+  publishedAt: string;
+}
+
+export type BlogItem = Post | Resource;
