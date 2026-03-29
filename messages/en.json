@@ -485,7 +485,8 @@
       "all": "All",
       "posts": "Articles",
       "postSingular": "Article",
-      "resources": "Resources"
+      "resources": "Resources",
+      "countLabel": "{count} results"
     },
     "noResults": "No content found for the selected filters.",
     "readMore": "Read article",

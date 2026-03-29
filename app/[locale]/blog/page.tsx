@@ -40,6 +40,16 @@ export default async function BlogPage({
     topic: params.argomento,
   });
 
+  // Fetch all items (without type filter) for tab counters
+  const allForCounts = await getAllBlogItems(locale, {
+    topic: params.argomento,
+  });
+  const counts = {
+    all: allForCounts.length,
+    posts: allForCounts.filter((i) => i._type === "post").length,
+    resources: allForCounts.filter((i) => i._type === "resource").length,
+  };
+
   // Pagination
   const page = parseInt(params.pagina || "1", 10);
   const perPage = 10;
@@ -64,7 +74,7 @@ export default async function BlogPage({
 
         <div className="mt-8 flex justify-center">
           <Suspense fallback={null}>
-            <BlogFilters topics={topics} locale={locale} />
+            <BlogFilters topics={topics} locale={locale} counts={counts} />
           </Suspense>
         </div>
 
