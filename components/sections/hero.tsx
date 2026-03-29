@@ -68,7 +68,7 @@ export async function Hero() {
             </div>
           </FadeIn>
 
-          <div className="lg:hidden">
+          <div className="flex justify-center lg:hidden">
             <ButtonLink
               href={`/${locale}/contatti`}
               size="lg"
