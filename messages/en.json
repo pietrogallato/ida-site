@@ -437,31 +437,40 @@
   "privacy": {
     "pageTitle": "Privacy Policy",
     "title": "Privacy Policy",
-    "lastUpdated": "Last updated: February 2026",
+    "lastUpdated": "Last updated: March 2026",
     "intro": "This policy describes how personal data collected through this website is processed, in accordance with EU Regulation 2016/679 (GDPR).",
+    "tableOfContents": "Table of contents",
     "controller": {
       "title": "Data Controller",
       "text": "The data controller is Ida Sato, VAT {piva}, based in {address}. For any request regarding personal data, you can write to {email}."
     },
+    "legalBasis": {
+      "title": "Legal Basis for Processing",
+      "text": "Personal data is processed on the following legal bases: data subject's consent (Art. 6(1)(a) GDPR) for data submitted through the contact form; controller's legitimate interest (Art. 6(1)(f) GDPR) for anonymous traffic analysis and site operation; performance of pre-contractual measures (Art. 6(1)(b) GDPR) for handling consultation requests."
+    },
     "dataCollected": {
       "title": "Data Collected",
-      "text": "Through the contact form, we collect: name, email address, phone number (optional), and message text. This data is used exclusively to respond to inquiries received."
+      "text": "Through the contact form, we collect: name, email address, phone number (optional), and message text. This data is used exclusively to respond to inquiries received. Blog content is delivered through the Sanity CDN (cdn.sanity.io), which may log standard HTTP request data (IP address, user-agent). Legal basis: Art. 6(1)(b) GDPR for the contact form; Art. 6(1)(f) GDPR for website content delivery."
+    },
+    "thirdParty": {
+      "title": "Third-Party Services",
+      "text": "This site uses the following third-party services: Vercel Inc. (vercel.com) for website hosting and traffic analysis; Sanity AS (sanity.io) for managing and delivering blog content via the CDN cdn.sanity.io. Both providers operate in compliance with the GDPR and have appropriate Data Processing Agreements (DPA) in place. For more information, please refer to their respective privacy policies."
     },
     "analytics": {
       "title": "Traffic Analysis",
-      "text": "This site uses Vercel Analytics and Vercel Speed Insights to collect anonymous usage data. These tools do not use cookies and do not collect personally identifiable information."
+      "text": "This site uses Vercel Analytics and Vercel Speed Insights to collect anonymous usage data. These tools do not use cookies, do not collect personally identifiable information, and do not perform cross-site tracking. Data is processed within the European Union and is not transferred to third countries. Vercel Analytics is GDPR-compliant."
     },
-    "rights": {
-      "title": "Your Rights",
-      "text": "You have the right to access your data, request its rectification or deletion, restrict processing, and object to it. To exercise these rights, contact us at the email address indicated above."
+    "cookies": {
+      "title": "Cookies and Local Storage",
+      "text": "This site exclusively uses technical cookies necessary for operation. Additionally, the site uses the browser's localStorage (not technically a cookie) to store theme preference (light/dark) and language selection. This data remains exclusively on your device and is not transmitted to third parties. No profiling or third-party cookies are used. Since no profiling cookies are present, a cookie consent banner is not required."
     },
     "retention": {
       "title": "Data Retention",
-      "text": "Data collected through the contact form is retained only for the time strictly necessary to handle the request and is subsequently deleted."
+      "text": "Data collected through the contact form is retained only for the time strictly necessary to handle the request and is subsequently deleted. Anonymous analytics data cannot be traced back to individuals and is retained according to Vercel's policies."
     },
-    "cookies": {
-      "title": "Cookies",
-      "text": "This site exclusively uses technical cookies necessary for operation (such as light/dark theme preference and language). No profiling or third-party cookies are used."
+    "rights": {
+      "title": "Your Rights",
+      "text": "Under the GDPR, you have the right to access your data, request its rectification or deletion, restrict processing, and object to it. To exercise these rights, contact us at {email}. You also have the right to lodge a complaint with the Garante per la protezione dei dati personali (Italian Data Protection Authority) at www.garanteprivacy.it."
     }
   },
   "cookieBanner": {

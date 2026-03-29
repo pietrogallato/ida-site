@@ -437,31 +437,40 @@
   "privacy": {
     "pageTitle": "Privacy Policy",
     "title": "Informativa sulla Privacy",
-    "lastUpdated": "Ultimo aggiornamento: febbraio 2026",
+    "lastUpdated": "Ultimo aggiornamento: marzo 2026",
     "intro": "La presente informativa descrive le modalità di trattamento dei dati personali raccolti attraverso questo sito web, ai sensi del Regolamento UE 2016/679 (GDPR).",
+    "tableOfContents": "Indice",
     "controller": {
       "title": "Titolare del trattamento",
       "text": "Il titolare del trattamento è Ida Sato, P.IVA {piva}, con sede a {address}. Per qualsiasi richiesta relativa ai dati personali, è possibile scrivere a {email}."
     },
+    "legalBasis": {
+      "title": "Basi giuridiche del trattamento",
+      "text": "Il trattamento dei dati personali avviene sulla base delle seguenti basi giuridiche: consenso dell'interessato (art. 6(1)(a) GDPR) per i dati inviati tramite il modulo di contatto; legittimo interesse del titolare (art. 6(1)(f) GDPR) per l'analisi anonima del traffico e il funzionamento del sito; esecuzione di misure precontrattuali (art. 6(1)(b) GDPR) per la gestione delle richieste di consulto."
+    },
     "dataCollected": {
       "title": "Dati raccolti",
-      "text": "Attraverso il modulo di contatto, raccogliamo: nome, indirizzo email, numero di telefono (facoltativo) e il testo del messaggio. Questi dati sono utilizzati esclusivamente per rispondere alle richieste ricevute."
+      "text": "Attraverso il modulo di contatto, raccogliamo: nome, indirizzo email, numero di telefono (facoltativo) e il testo del messaggio. Questi dati sono utilizzati esclusivamente per rispondere alle richieste ricevute. I contenuti del blog vengono distribuiti tramite la CDN di Sanity (cdn.sanity.io), che può registrare dati tecnici standard delle richieste HTTP (indirizzo IP, user-agent). Base giuridica: art. 6(1)(b) GDPR per il modulo di contatto; art. 6(1)(f) GDPR per la fornitura dei contenuti del sito."
+    },
+    "thirdParty": {
+      "title": "Servizi di terze parti",
+      "text": "Questo sito si avvale dei seguenti servizi di terze parti: Vercel Inc. (vercel.com) per l'hosting del sito e l'analisi del traffico; Sanity AS (sanity.io) per la gestione e la distribuzione dei contenuti del blog tramite la CDN cdn.sanity.io. Entrambi i fornitori operano in conformità al GDPR e dispongono di adeguati accordi sul trattamento dei dati (DPA). Per maggiori informazioni, consulta le rispettive informative sulla privacy."
     },
     "analytics": {
       "title": "Analisi del traffico",
-      "text": "Questo sito utilizza Vercel Analytics e Vercel Speed Insights per raccogliere dati anonimi sull'utilizzo del sito. Questi strumenti non utilizzano cookie e non raccolgono dati personali identificabili."
+      "text": "Questo sito utilizza Vercel Analytics e Vercel Speed Insights per raccogliere dati anonimi sull'utilizzo del sito. Questi strumenti non utilizzano cookie, non raccolgono dati personali identificabili e non effettuano tracciamento cross-site. I dati vengono elaborati nell'Unione Europea e non vengono trasferiti a paesi terzi. Vercel Analytics è conforme al GDPR."
     },
-    "rights": {
-      "title": "I tuoi diritti",
-      "text": "Hai il diritto di accedere ai tuoi dati, richiederne la rettifica o la cancellazione, limitare il trattamento e opporti allo stesso. Per esercitare questi diritti, contattaci all'indirizzo email indicato sopra."
+    "cookies": {
+      "title": "Cookie e archiviazione locale",
+      "text": "Questo sito utilizza esclusivamente cookie tecnici necessari al funzionamento. Inoltre, il sito utilizza il localStorage del browser (non tecnicamente un cookie) per memorizzare la preferenza del tema (chiaro/scuro) e della lingua. Questi dati rimangono esclusivamente sul tuo dispositivo e non vengono trasmessi a terzi. Non vengono utilizzati cookie di profilazione o di terze parti. Non essendo presenti cookie di profilazione, non è necessario un banner di consenso ai cookie."
     },
     "retention": {
       "title": "Conservazione dei dati",
-      "text": "I dati raccolti tramite il modulo di contatto vengono conservati per il tempo strettamente necessario a gestire la richiesta e successivamente cancellati."
+      "text": "I dati raccolti tramite il modulo di contatto vengono conservati per il tempo strettamente necessario a gestire la richiesta e successivamente cancellati. I dati anonimi di analytics non sono riconducibili a persone fisiche e vengono conservati secondo le policy di Vercel."
     },
-    "cookies": {
-      "title": "Cookie",
-      "text": "Questo sito utilizza esclusivamente cookie tecnici necessari al funzionamento (come la preferenza del tema chiaro/scuro e la lingua). Non vengono utilizzati cookie di profilazione o di terze parti."
+    "rights": {
+      "title": "I tuoi diritti",
+      "text": "Ai sensi del GDPR, hai il diritto di accedere ai tuoi dati, richiederne la rettifica o la cancellazione, limitare il trattamento e opporti allo stesso. Per esercitare questi diritti, contattaci all'indirizzo email {email}. Hai inoltre il diritto di proporre reclamo al Garante per la protezione dei dati personali (www.garanteprivacy.it)."
     }
   },
   "cookieBanner": {
