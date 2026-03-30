@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "Ida Sato — Clinical Psychologist",
-    "description": "Clinical psychologist in Padova, Meledo (VI) and Spinea (VE), Italy. Individual psychological support, couples and family counseling, school psychology. Book an initial consultation."
+    "description": "Clinical psychologist in Meledo (VI) and Spinea (VE), Italy. Individual support, couples and family counseling, school psychology, support for parents and adolescents. Online sessions available. Book a first consultation."
   },
   "navigation": {
     "home": "Home",
@@ -33,14 +33,14 @@
   },
   "hero": {
     "title": "Your psychological well-being starts here",
-    "subtitle": "I'm Ida Sato, a clinical psychologist. I'll guide you on a journey of self-awareness and growth, with attention to the person, their relational system, and the therapeutic relationship.",
+    "subtitle": "I'm Ida Sato, a clinical psychologist. I support individuals, couples, and families through paths of change, building on each person's strengths and the relationships that define us.",
     "cta": "Book an initial consultation",
     "alboLabel": "Order of Psychologists of Veneto no.",
     "imageAlt": "Ida Sato, clinical psychologist, in her office"
   },
   "aboutPreview": {
     "title": "About Me",
-    "text": "I'm a clinical psychologist with experience in individual, couples, and family support. Training as a systemic-relational psychotherapist, I pay particular attention to each person and their individual and relational resources.",
+    "text": "A clinical psychologist with experience in public and private practice, I work with individuals, couples, and families. Training as a systemic-relational psychotherapist, I believe that change is born from relationships and the resources each person brings.",
     "cta": "Discover my background",
     "howItWorksLink": "How it works",
     "imageAlt": "Ida Sato, clinical psychologist"
@@ -50,10 +50,10 @@
     "title": "Ida Sato",
     "subtitle": "Clinical Psychologist — Order of Psychologists of Veneto, no. 13939",
     "imageAlt": "Ida Sato, clinical psychologist",
-    "bio": "Clinical psychologist with experience in individual, couples, and family support, as well as group facilitation and psychological interventions for children and parents. Training as a systemic-relational psychotherapist at the Centro Padovano di Terapia della Famiglia, I pay particular attention to the person, their relational system, and the therapeutic relationship, valuing individual and relational resources.",
+    "bio": "I'm a clinical psychologist registered with the Veneto Psychologists' Register (no. 13939), working in private practice in Meledo (VI) and Spinea (VE). My experience was built in public services and the social-private sector: I worked as a school psychologist in ULSS 6 Padova schools, led parenting support groups, and collaborated with therapeutic communities and child development services. I currently also serve as head of educational and psychological services at Cooperativa FAI in Padova. I'm specializing in systemic-relational psychotherapy at the Centro Padovano di Terapia della Famiglia. This approach guides my work: every person is part of a network of relationships, and change happens when we learn to see and use the resources within us and around us.",
     "approach": {
       "title": "My approach",
-      "text": "My work is based on the systemic-relational approach: every person is part of a system of relationships that influences their well-being. Together we explore relational dynamics and the resources present in your life context, to find new balances and possibilities for change. Each path is unique and is built together, respecting your timing and needs."
+      "text": "I work with a systemic-relational approach: I look not only at the person, but also at the relationships they're immersed in — family, couple, school, work. I don't believe in one-size-fits-all solutions: every path begins with listening and is built together, at your own pace. My goal is to help you recognize the resources you already have and find new ways to feel better in your relationships."
     },
     "qualifications": {
       "title": "Education and qualifications",
@@ -70,15 +70,15 @@
       "title": "My values",
       "empathy": {
         "title": "Listening",
-        "text": "Active listening and empathy to understand your experience and your relational world."
+        "text": "Every journey begins with listening. I welcome your experience without judgment, paying attention to what you say and what you can't yet put into words."
       },
       "respect": {
         "title": "Respect",
-        "text": "Each journey is unique — I respect your timing and choices within your relational system."
+        "text": "Your pace is the right pace. I don't rush the process and I respect your choices, working with you, not in your place."
       },
       "professionalism": {
         "title": "Professionalism",
-        "text": "Continuous training, supervision, and evidence-based approach."
+        "text": "I train continuously, participate in regular supervision, and work with an evidence-based approach. I've published research in international journals such as Psychiatry Research and Stigma and Health."
       }
     }
   },
@@ -88,15 +88,15 @@
     "steps": {
       "contact": {
         "title": "First contact",
-        "text": "Write or call me to schedule an initial consultation. No commitment required."
+        "text": "Write or call me to schedule an initial session. No commitment."
       },
       "firstSession": {
         "title": "First session",
-        "text": "We get to know each other, you tell me what brings you here. Together we see if the path is right for you."
+        "text": "We get to know each other, you tell me what brings you here. Together we decide if the path is right for you."
       },
       "path": {
         "title": "The journey",
-        "text": "We define goals and frequency together, building a path tailored to your needs."
+        "text": "We define concrete goals and a sustainable frequency, building a path tailored to you."
       }
     },
     "cta": "Learn more about how it works"
@@ -113,170 +113,170 @@
     "otherServices": "Other services",
     "individual": {
       "title": "Individual psychological support",
-      "description": "I help you cope with anxiety, stress, depression, relationship difficulties, and times of crisis. Together we build a personalized path to find your balance and develop new resources.",
+      "description": "A space dedicated to you, to face anxiety, stress, moments of crisis, or simply the need to better understand what you're going through. Together we build a tailored path, at your own pace.",
       "extendedDescription": {
-        "p1": "Individual psychological support is a space entirely dedicated to you, where you can explore your thoughts, emotions, and behaviors in a safe, non-judgmental environment. Whether you're going through a difficult time or simply want to understand yourself better, this path gives you the tools to face life's everyday challenges.",
-        "p2": "I work with a systemic-relational approach, paying attention not only to what you feel, but also to the relational context in which you live. Together we explore the dynamics that influence your well-being, building on the resources you already have and developing new ones.",
-        "p3": "The path is tailored to you: we respect your pace, define goals together, and adapt the work to your needs. No two journeys are the same, because every person is unique."
+        "p1": "Individual psychological support is a safe, private space where you can explore what you feel, name your difficulties, and discover resources you didn't know you had.",
+        "p2": "I use a systemic-relational approach: this means I look not only at you in isolation, but also at the context of relationships you live in — family, work, friendships — because that's often where both the struggles and the possibilities for change are found.",
+        "p3": "Every path is different: together we define realistic goals and work at your pace, without pressure."
       },
       "benefitsTitle": "Benefits",
       "benefits": {
-        "b1": "Greater awareness of your emotions and relational patterns",
-        "b2": "Practical strategies for managing anxiety, stress, and difficult moments",
-        "b3": "Improved self-esteem and self-confidence",
+        "b1": "Greater awareness of your emotions and how you relate to others",
+        "b2": "Concrete strategies for managing anxiety, stress, and difficult moments",
+        "b3": "Greater confidence in yourself and your abilities",
         "b4": "New resources for facing life changes and transitions"
       },
       "stepsTitle": "How it works",
       "steps": {
-        "s1": { "title": "First contact", "text": "Write or call me to schedule an initial consultation. It's an informal moment to tell me what brings you here." },
-        "s2": { "title": "Initial assessment", "text": "In the first meeting, we get to know each other and assess your needs together. We'll understand if individual support is the right path for you." },
-        "s3": { "title": "Personalized path", "text": "We define goals and session frequency. Sessions are typically weekly or bi-weekly, lasting about 50 minutes each." }
+        "s1": { "title": "First contact", "text": "You write or call me to briefly tell me what's bringing you to seek help. We find a time to meet, with no commitment." },
+        "s2": { "title": "First session", "text": "We meet for about 50 minutes — at my office in Meledo (VI) or Spinea (VE), or online. We get to know each other and assess together whether it makes sense to start a path." },
+        "s3": { "title": "Personalized path", "text": "We define concrete goals and a sustainable frequency (weekly or bi-weekly). We regularly reassess how things are going." }
       },
       "faqTitle": "Frequently asked questions",
       "faq": {
-        "f1": { "question": "How long does an individual support path last?", "answer": "The duration depends on your personal needs and the goals we set together. Some paths last a few months, others may be longer. We discuss this from the very first meeting." },
-        "f2": { "question": "Do I need to have a serious problem to seek support?", "answer": "No, you don't need to be in an emergency situation. Psychological support is also helpful during times of change, uncertainty, or simply when you feel the need to talk to a professional." },
-        "f3": { "question": "Is individual support suitable for teenagers?", "answer": "For minors, I offer a dedicated service with age-appropriate methods. Classic individual support is designed for adults aged 18 and over." }
+        "f1": { "question": "How long does an individual support path last?", "answer": "There's no predefined duration: it depends on your goals and how the path evolves. Some conclude in a few weeks, others take longer. We discuss it openly from the very first meeting." },
+        "f2": { "question": "Do I need to have a serious problem to seek support?", "answer": "No. Psychological support is also helpful during times of change, uncertainty, or simply when you feel the need for a space to reflect." },
+        "f3": { "question": "Is individual support suitable for teenagers?", "answer": "For minors, I offer a dedicated service with age-appropriate methods. Individual support is designed for adults aged 18 and over." }
       }
     },
     "couples": {
       "title": "Couples and family counseling",
-      "description": "A safe space to improve communication, resolve conflicts, navigate major life changes such as separations, births, or grief, and find balance in your relationship.",
+      "description": "When communication breaks down or an important change tests the relationship — a separation, a birth, a loss — a neutral space can make all the difference. I work with couples and families to find a way to talk and be together again.",
       "extendedDescription": {
-        "p1": "Couple and family relationships inevitably go through difficult times: recurring conflicts, communication problems, major changes such as a birth, a separation, or a loss can put a strain on the relational balance.",
-        "p2": "Couples and family counseling offers a neutral, protected space where each member can express their point of view and be heard. My role is to facilitate dialogue, helping you understand the relational dynamics that cause suffering and find new ways of communicating.",
-        "p3": "The systemic-relational approach is particularly suited to this type of work, because it considers the couple and the family as a system where every change in one member affects all the others. Together we seek new balances that respect everyone's needs."
+        "p1": "Couple and family relationships go through difficult moments that sometimes can't be managed alone. Counseling offers a neutral space where each person can express themselves and feel heard.",
+        "p2": "With a systemic-relational approach, we explore together the dynamics that have developed and look for new balances. You don't need to be in crisis to ask for help: sometimes just wanting to better understand how your relationship works is enough.",
+        "p3": "In my experience with families and couples, I've seen that change is possible when people learn to listen to each other differently."
       },
       "benefitsTitle": "Benefits",
       "benefits": {
-        "b1": "Improved communication and mutual listening skills",
-        "b2": "Constructive management of conflicts and disagreements",
-        "b3": "Better understanding of relational dynamics within the couple or family",
-        "b4": "Support during times of transition and family change"
+        "b1": "Rediscovering a way to communicate and truly listen to each other",
+        "b2": "Learning to manage conflicts without them becoming destructive",
+        "b3": "Better understanding of the dynamics that have developed in the relationship",
+        "b4": "Support during times of change — births, separations, losses"
       },
       "stepsTitle": "How it works",
       "steps": {
-        "s1": { "title": "First contact", "text": "One partner or family member contacts me to schedule a first meeting. We can talk briefly on the phone to understand the situation." },
-        "s2": { "title": "Introductory meeting", "text": "The first session is with all members involved. Everyone has the opportunity to share their point of view in a safe and respectful environment." },
-        "s3": { "title": "Shared path", "text": "We define the goals of our work together. Sessions take place regularly and involve all participants, with the possibility of individual meetings if needed." }
+        "s1": { "title": "First contact", "text": "One partner or family member contacts me. We talk briefly to understand the situation and schedule a first meeting." },
+        "s2": { "title": "Introductory meeting", "text": "The first session is with all members involved. Everyone has space to share their point of view in a safe, neutral environment." },
+        "s3": { "title": "Shared path", "text": "We define goals together. Sessions involve all participants, with the possibility of individual meetings when helpful." }
       },
       "faqTitle": "Frequently asked questions",
       "faq": {
-        "f1": { "question": "Do both partners need to agree to come?", "answer": "It's important that both are motivated to participate. If your partner is hesitant, we can have an initial session together to see if the path could be helpful, with no obligation." },
-        "f2": { "question": "Can I have family counseling with my children?", "answer": "Yes, depending on the situation, we can involve children in the process. We assess together who should be included in the sessions and how." },
-        "f3": { "question": "Is couples counseling only for couples in crisis?", "answer": "No, it's also useful for couples who want to improve communication, face an important change, or simply invest in the quality of their relationship." }
+        "f1": { "question": "Do both partners need to agree to come?", "answer": "Ideally yes. If your partner is uncertain, we can have a first session together to see if the path could be helpful — with no obligation." },
+        "f2": { "question": "Can I have family counseling with my children?", "answer": "Yes, we assess together who it's helpful to involve and how, based on the specific situation." },
+        "f3": { "question": "Is couples counseling only for couples in crisis?", "answer": "No. It's also useful for those who want to improve communication, face an important change, or invest in the quality of their relationship." }
       }
     },
     "school": {
       "title": "School psychology",
-      "description": "Affective education programs in schools, support for students with learning difficulties (SEN and learning disabilities), and counseling for teachers and parents on educational issues.",
+      "description": "Affective and sex education programs in schools, support for students with SEN and SLD, and counseling for teachers and parents. I bring to schools the experience gained in public services.",
       "extendedDescription": {
-        "p1": "School is a fundamental environment for the emotional and social growth of children and young people. As a school psychologist, I work alongside students, teachers, and parents to promote well-being within the educational context.",
-        "p2": "My interventions include classroom affective education projects, student listening services, support for students with Special Educational Needs (SEN) and Specific Learning Disabilities (SLD), and consultations for teaching staff on psychoeducational topics.",
-        "p3": "I believe that collaboration between school and family is essential: that's why I also offer individual consultations to parents who want to better understand their children's difficulties in the school context and find effective strategies to support them."
+        "p1": "I worked as a school psychologist in primary and secondary schools in ULSS 6 Padova, delivering affective and sex education programs. This experience in public services taught me how fundamental school is as an environment for young people's well-being.",
+        "p2": "Today I continue to collaborate with schools through classroom projects, individual support for students with learning difficulties (SEN and SLD), and counseling for teachers and parents.",
+        "p3": "My approach is always collaborative: I work closely with families and school staff to build tailored interventions."
       },
       "benefitsTitle": "Benefits",
       "benefits": {
-        "b1": "Promotion of emotional and relational well-being in the classroom",
-        "b2": "Specific support for students with SEN and learning disabilities",
-        "b3": "Practical tools for teachers to manage group dynamics",
-        "b4": "Stronger collaboration between school and family"
+        "b1": "Promoting emotional and relational well-being in the classroom",
+        "b2": "Targeted support for students with SEN and SLD",
+        "b3": "Concrete tools for teachers in managing group dynamics",
+        "b4": "Strengthening collaboration between school and family"
       },
       "stepsTitle": "How it works",
       "steps": {
         "s1": { "title": "Needs assessment", "text": "I meet with school leadership and teachers to understand the specific needs of the school and its students." },
-        "s2": { "title": "Intervention design", "text": "Based on the assessment, I create a tailored project: classroom workshops, listening services, teacher training, or individual consultations." },
-        "s3": { "title": "Implementation and monitoring", "text": "I carry out the agreed interventions and monitor results, maintaining constant dialogue with teachers and parents." }
+        "s2": { "title": "Design", "text": "I create a tailored project: classroom workshops, listening services, teacher training, or individual support." },
+        "s3": { "title": "Intervention and monitoring", "text": "I carry out the interventions and monitor results, maintaining constant dialogue with teachers and parents." }
       },
       "faqTitle": "Frequently asked questions",
       "faq": {
-        "f1": { "question": "Who can request a school psychology intervention?", "answer": "The intervention can be requested by school leadership, teaching staff, or parents. In any case, I work in close collaboration with all parties involved." },
-        "f2": { "question": "What kind of classroom activities are offered?", "answer": "Classroom workshops cover topics like affective education, emotional management, peer relationships, and bullying prevention. They are interactive activities appropriate for the students' age." },
-        "f3": { "question": "How is a student with learning disabilities supported?", "answer": "Support includes assessing difficulties, collaborating with family and teachers to define personalized teaching strategies, and individual tutoring when necessary." }
+        "f1": { "question": "Who can request a school psychology intervention?", "answer": "School leadership, teachers, or parents. In any case, I work involving all relevant figures." },
+        "f2": { "question": "What kind of classroom activities are offered?", "answer": "Interactive workshops on affective and sex education, emotional management, peer relationships, and bullying prevention. Always adapted to the students' age." },
+        "f3": { "question": "How is a student with SLD supported?", "answer": "Through assessing difficulties, collaborating with family and teachers for personalized teaching strategies, and when needed, individual tutoring. I have specific training as an SLD and SEN tutor." }
       }
     },
     "parenting": {
       "title": "Parenting support",
-      "description": "Programs for parents facing the challenges of adolescence and pre-adolescence: managing conflicts, children's anxiety, social media use, autonomy, and boundaries.",
+      "description": "Being a parent of adolescents and pre-adolescents means facing new challenges every day: conflicts, anxiety, social media, demands for autonomy. A dedicated path helps you find your own way to be there.",
       "extendedDescription": {
-        "p1": "Being a parent is one of life's most intense and complex experiences. Every stage of a child's growth brings new challenges: from managing tantrums in childhood to adolescent conflicts, from questions of autonomy to social media and technology.",
-        "p2": "Parenting support offers you a space to reflect on your role as a parent, better understand your children's behaviors, and find effective strategies for dealing with everyday difficulties. It's not about receiving judgments or rigid rules, but about exploring new possibilities together.",
-        "p3": "With the systemic-relational approach, we look at the family as an interconnected system: each member's behavior influences and is influenced by the others. Understanding these dynamics helps you find new ways of relating to your children."
+        "p1": "I led parenting support groups at ULSS 6 Padova, working with parents of adolescents and pre-adolescents on topics like adolescent changes, anxiety and depressive disorders, hikikomori, conflict, and autonomy.",
+        "p2": "This experience confirmed for me that parents don't need recipes, but a space to reflect together on their role.",
+        "p3": "With a systemic-relational approach, I look at the family as a whole: understanding family dynamics helps find more effective strategies and strengthen the bond with your children."
       },
       "benefitsTitle": "Benefits",
       "benefits": {
-        "b1": "Better understanding of children's developmental needs at different growth stages",
-        "b2": "Practical strategies for managing conflicts and moments of family tension",
-        "b3": "Strengthened parent-child relationship based on listening and trust",
-        "b4": "Support in setting clear, age-appropriate rules and boundaries"
+        "b1": "Better understanding what your children are going through at different stages of growth",
+        "b2": "Concrete strategies for managing conflicts and family tensions",
+        "b3": "Strengthening the bond with your children, based on listening and trust",
+        "b4": "Finding a balance between rules, boundaries, and autonomy"
       },
       "stepsTitle": "How it works",
       "steps": {
-        "s1": { "title": "First contact", "text": "Contact me to briefly describe the situation. We can figure out together whether parenting support is the most suitable path." },
+        "s1": { "title": "First contact", "text": "You briefly tell me about the situation and we figure out together whether parenting support is the most suitable path." },
         "s2": { "title": "Initial meeting", "text": "In the first session, we explore family dynamics and the difficulties you're experiencing. One or both parents can attend." },
-        "s3": { "title": "Support path", "text": "We work together through regular meetings, addressing the concrete challenges that arise and developing new parenting skills." }
+        "s3": { "title": "Support path", "text": "We work through regular meetings on the concrete challenges that arise, developing new resources for your role as a parent." }
       },
       "faqTitle": "Frequently asked questions",
       "faq": {
-        "f1": { "question": "Is parenting support only for parents in difficulty?", "answer": "No, it's useful for any parent who wants to better understand family dynamics, improve communication with their children, or face a phase of change in their children's growth." },
-        "f2": { "question": "Do both parents need to participate?", "answer": "Not necessarily. The path can be followed by one parent alone. However, when possible, involving both parents leads to more effective results." },
-        "f3": { "question": "What age range is it recommended for?", "answer": "Parenting support is useful at any stage, from childhood to adolescence. The challenges change with the children's age, and the path adapts accordingly." }
+        "f1": { "question": "Is parenting support only for parents in difficulty?", "answer": "No. It's useful for anyone who wants to better understand family dynamics, improve communication with their children, or face a phase of change." },
+        "f2": { "question": "Do both parents need to participate?", "answer": "Not necessarily. You can work with one parent alone. When possible, involving both leads to better results." },
+        "f3": { "question": "What age range is it recommended for?", "answer": "Any stage, from childhood to adolescence. The challenges change with age and the path adapts accordingly." }
       }
     },
     "youth": {
       "title": "Support for children and adolescents",
-      "description": "Psychological support for children and young people experiencing emotional difficulties, school problems, anxiety, insecurity, or struggles in peer relationships.",
+      "description": "Psychological support for children and young people experiencing emotional difficulties, anxiety, insecurity, or struggling in peer relationships. A path designed for their age, with family involvement.",
       "extendedDescription": {
-        "p1": "Childhood and adolescence are times of great transformation. Sometimes children and young people find themselves struggling: anxiety, insecurity, school problems, difficulties in peer relationships, or family changes that unsettle them.",
-        "p2": "Psychological support for minors uses age-appropriate methods: with younger children, we work through play and drawing; with teenagers, dialogue is prioritized in a welcoming, non-judgmental environment. The goal is to provide a safe space to express emotions and difficulties.",
-        "p3": "Family involvement is essential in this type of path. I work in close collaboration with parents, helping them understand their children's difficulties and support them in the most effective way."
+        "p1": "Childhood and adolescence are phases of great transformation, and sometimes young people need extra help to face them. Through my internship at the Child Development Service of ULSS 6 and my work with educational communities, I gained experience working with minors with developmental disorders, emotional difficulties, and anxiety.",
+        "p2": "With younger children, I use age-appropriate tools — play, drawing, expressive activities. With adolescents, dialogue is central.",
+        "p3": "In both cases, the family is an active part of the path, because a child's or teenager's well-being is never built in isolation."
       },
       "benefitsTitle": "Benefits",
       "benefits": {
         "b1": "A safe space to express emotions and difficulties without judgment",
-        "b2": "Development of age-appropriate emotional and relational skills",
-        "b3": "Support in facing school, family, and social changes",
-        "b4": "Active involvement of parents for integrated support"
+        "b2": "Development of emotional and relational skills appropriate for their age",
+        "b3": "Support in facing changes at school, in the family, and with peers",
+        "b4": "Active involvement of parents for an integrated path"
       },
       "stepsTitle": "How it works",
       "steps": {
-        "s1": { "title": "Meeting with parents", "text": "The first step is a session with the parents to understand the situation and their concerns. This gives me a complete picture before meeting the child." },
-        "s2": { "title": "Meeting with the child", "text": "I meet the child or teenager in a welcoming environment, using age-appropriate methods to build a trusting relationship." },
-        "s3": { "title": "Integrated path", "text": "The work continues with regular sessions with the child and periodic meetings with parents, for coordinated and effective support." }
+        "s1": { "title": "Meeting with parents", "text": "The first step is a session with parents to understand the situation and concerns. It helps me get a complete picture before meeting the child or teenager." },
+        "s2": { "title": "Meeting with the child", "text": "I meet the child or teenager in a welcoming environment, using age-appropriate methods — play, drawing, or dialogue — to build a trusting relationship." },
+        "s3": { "title": "Integrated path", "text": "The work continues with regular sessions with the child and periodic meetings with parents, for coordinated support." }
       },
       "faqTitle": "Frequently asked questions",
       "faq": {
-        "f1": { "question": "From what age can a child start a path?", "answer": "It's possible to work with children from about 6 years of age. For younger children, the work is mainly with parents through parenting support." },
-        "f2": { "question": "Are parents present during sessions?", "answer": "It depends on the age and the situation. With younger children, parents may be involved in sessions. With teenagers, sessions are generally individual, with periodic meetings with parents." },
-        "f3": { "question": "Is the school involved in the path?", "answer": "Only if necessary and with parental consent. In some cases, collaboration with teachers is very helpful for coordinated support." }
+        "f1": { "question": "From what age can a child start a path?", "answer": "From about 6 years of age. For younger children, the work is mainly with parents through parenting support." },
+        "f2": { "question": "Are parents present during sessions?", "answer": "It depends on the age. With younger children, parents may be involved. With teenagers, sessions are individual, with periodic meetings with parents." },
+        "f3": { "question": "Is the school involved in the path?", "answer": "Only when helpful and with parental consent. Collaboration with teachers can be very effective for coordinated support." }
       }
     },
     "online": {
       "title": "Online sessions",
-      "description": "Remote psychological consultations via video call, with the same quality and confidentiality as in-office sessions.",
+      "description": "Remote psychological consultations via video call, with the same care and confidentiality as in-office sessions. Ideal for those with irregular schedules, who live far away, or prefer the comfort of home.",
       "extendedDescription": {
-        "p1": "Online sessions allow you to receive psychological support from the comfort of your home, without sacrificing the quality and confidentiality of an in-office session. I use secure platforms to ensure the privacy of our communication.",
-        "p2": "This modality is particularly suitable if you live far from my offices, have difficulty traveling, prefer the comfort of your home environment, or have a schedule that makes in-person meetings difficult.",
-        "p3": "Online sessions follow the same format as in-office ones: same duration, same professional approach, same attention to the therapeutic relationship. Scientific research confirms that online sessions are just as effective as in-person ones."
+        "p1": "Online sessions take place via video call on secure platforms and are fully equivalent to in-office sessions. Scientific research confirms their effectiveness.",
+        "p2": "In my experience, they work particularly well for those who have difficulty traveling, inflexible work schedules, or simply prefer the comfort of a familiar space. All I ask is a stable connection and an environment where you can talk freely.",
+        "p3": "You can alternate between online and in-person sessions based on your needs."
       },
       "benefitsTitle": "Benefits",
       "benefits": {
-        "b1": "Flexibility: you can participate from anywhere with an internet connection",
+        "b1": "You can participate from anywhere with an internet connection",
         "b2": "Save time and travel costs",
         "b3": "Same quality and confidentiality as in-office sessions",
-        "b4": "Ideal for those with irregular schedules or who live far away"
+        "b4": "Ideal for those with inflexible schedules or who live far away"
       },
       "stepsTitle": "How it works",
       "steps": {
         "s1": { "title": "Booking", "text": "Contact me to schedule an online appointment. I'll send you the video call link before the session." },
-        "s2": { "title": "Preparation", "text": "Make sure you have a stable connection, a device with a camera and microphone, and a quiet, private place to connect from." },
+        "s2": { "title": "Preparation", "text": "You need a stable connection, a device with camera and microphone, and a quiet place where you can speak privately." },
         "s3": { "title": "The session", "text": "We connect at the agreed time. The session lasts about 50 minutes, just like in the office. Payment is made by bank transfer." }
       },
       "faqTitle": "Frequently asked questions",
       "faq": {
-        "f1": { "question": "What platform is used for video calls?", "answer": "I use secure platforms that comply with privacy regulations. Technical details will be provided when you book your appointment." },
-        "f2": { "question": "Are online sessions as effective as in-office ones?", "answer": "Yes, numerous scientific studies confirm that online sessions are just as effective as in-person ones for most psychological issues." },
-        "f3": { "question": "Can I alternate between online and in-office sessions?", "answer": "Absolutely. Many people choose a mixed approach, alternating between in-office and online meetings based on their needs." }
+        "f1": { "question": "What platform is used for video calls?", "answer": "I use secure platforms that comply with privacy regulations. I'll share the details when you book your appointment." },
+        "f2": { "question": "Are online sessions as effective as in-office ones?", "answer": "Yes. Scientific research confirms that online sessions are equally effective as in-person ones for most situations." },
+        "f3": { "question": "Can I alternate between online and in-office sessions?", "answer": "Of course. Many people choose a mixed approach, alternating based on their needs." }
       }
     }
   },
@@ -297,14 +297,14 @@
     }
   },
   "cta": {
-    "title": "Start your journey today",
-    "text": "The first step is often the hardest. Contact me for an initial consultation, no commitment required.",
+    "title": "The first step is often the hardest",
+    "text": "If you're thinking about asking for help, you're already on the right track. Contact me for an initial consultation — no commitment, we'll get to know each other and see together if I can help.",
     "button": "Contact me now"
   },
   "contact": {
     "pageTitle": "Contact",
     "title": "Contact Me",
-    "subtitle": "Have questions or want to book an appointment? Fill out the form or contact me directly.",
+    "subtitle": "Write to me to book a first consultation or for any question. I usually reply within 24 hours.",
     "form": {
       "name": "Full Name",
       "namePlaceholder": "Your name",
@@ -357,58 +357,58 @@
     "subtitle": "Answers to the most common questions about psychological counseling.",
     "q1": {
       "question": "How does the first consultation work?",
-      "answer": "The first consultation is an introductory meeting of about 50 minutes where we discuss your needs and the goals you'd like to achieve. It's a moment to get to know each other and understand together if the path I propose is right for you. It involves no commitment."
+      "answer": "The first session lasts about 50 minutes and is an introductory meeting: you tell me what brings you here, I explain how I work, and together we assess whether it makes sense to start a path. It's a chance to get to know each other, with no obligation to continue. You can choose to meet at my office in Meledo (VI) or Spinea (VE), or via video call."
     },
     "q2": {
       "question": "How long is a session?",
-      "answer": "Each session lasts about 50 minutes. The frequency of meetings is agreed upon together based on individual needs, generally on a weekly or bi-weekly basis."
+      "answer": "There's no fixed duration: it depends on what you bring and the goals we set together. Some paths conclude in a few weeks, others take longer. From the very first meeting, we discuss this openly and periodically reassess how things are going, so you always know where we stand."
     },
     "q3": {
       "question": "What is the cost of sessions?",
-      "answer": "The cost of sessions is communicated during the initial consultation. Fees are in line with the Order of Psychologists guidelines and invoices are tax-deductible."
+      "answer": "The cost varies depending on the type of path (individual, couple, family). I'll let you know during the first phone or email contact, before scheduling an appointment, so you can decide at your own pace. Psychological sessions are tax-deductible as healthcare expenses in Italy."
     },
     "q4": {
       "question": "Are online sessions available?",
-      "answer": "Yes, I offer the possibility of online sessions via video call. Remote sessions are equally effective and allow you to continue your path even when you cannot come to the office."
+      "answer": "Yes, online sessions take place via video call on secure platforms and are equivalent to in-office sessions in quality and confidentiality. They work well for those who have difficulty traveling, inflexible schedules, or simply prefer to stay at home. You can also alternate between in-person and online sessions based on your needs."
     },
     "q5": {
       "question": "How can I book an appointment?",
-      "answer": "You can contact me through the form on the Contact page, via email, phone, or WhatsApp. I'll get back to you as soon as possible to schedule an initial meeting."
+      "answer": "You can write to me by email, WhatsApp, or fill out the form on the Contact page. You can also call me directly. I usually reply within 24 hours on working days. In the first contact, you briefly tell me what's bringing you to seek help, so I can understand if I'm the right professional for you."
     },
     "q6": {
       "question": "Are sessions confidential?",
-      "answer": "Absolutely. Professional secrecy is a fundamental ethical obligation. Everything shared during sessions is strictly confidential."
+      "answer": "Yes, confidentiality is a fundamental right and a professional obligation. As a psychologist, I'm bound by professional secrecy under the Italian Psychologists' Code of Ethics (articles 11-17). Everything that emerges during sessions is strictly confidential, both in the office and online."
     },
     "q7": {
       "question": "What is the difference between a psychologist and a psychotherapist?",
-      "answer": "A psychologist holds a master's degree in psychology and is registered with the professional board. They can provide consultations, psychological support, and assessments. A psychotherapist has also completed a four-year specialization school that qualifies them to treat more structured psychological disorders."
+      "answer": "A psychologist holds a master's degree and is registered with the professional board; they can provide prevention, diagnosis, support, and psychological rehabilitation. A psychotherapist has an additional 4-year specialization that qualifies them to use specific therapeutic techniques. I'm a psychologist and I'm specializing in systemic-relational psychotherapy at the Centro Padovano di Terapia della Famiglia. My work is already guided by this approach, which looks at the person in the context of their relationships."
     },
     "q8": {
       "question": "How do I know if I need psychological support?",
-      "answer": "If you feel that certain emotional, relational, or behavioral difficulties are interfering with your daily life, work, or relationships, it might be time to seek help. You don't need to wait until things get really bad — even talking to someone during a period of change can be helpful."
+      "answer": "You don't need to have a 'serious' problem to ask for help. If you're struggling, if a recurring thought won't leave you alone, if the relationships around you have become complicated, or if you simply feel the need for a space to reflect — these are all valid reasons. The first session is there precisely to understand together whether a path could be helpful, with no commitment."
     },
     "q9": {
       "question": "Are sessions tax-deductible?",
-      "answer": "Yes. Psychological services are tax-deductible healthcare expenses in Italy (19% deduction on the amount exceeding the €129.11 threshold). I issue regular invoices."
+      "answer": "Yes. Psychological services are tax-deductible healthcare expenses in Italy at 19%. I issue a regular invoice after each session and, if needed, an annual summary for your accountant."
     }
   },
   "howItWorks": {
     "pageTitle": "How It Works",
     "title": "How a psychological journey works",
-    "subtitle": "If you've never been to a psychologist, it's normal to have questions or feel a bit anxious. Here's what to expect, step by step.",
+    "subtitle": "It's normal to have doubts before starting a psychological journey. Here's what happens, step by step, from the first contact onward.",
     "steps": {
       "title": "The journey in three steps",
       "contact": {
         "title": "First contact",
-        "text": "Write or call me to schedule an initial consultation. You can use the contact form, email, phone, or WhatsApp. I'll get back to you as soon as possible."
+        "text": "You write or call me. You briefly tell me what's bringing you to seek help and we find a time for the first session. No commitment."
       },
       "firstSession": {
         "title": "The first session",
-        "text": "It's a meeting of about 50 minutes where we get to know each other. You tell me what brings you here, and I explain how I work. There's no obligation to continue — it's a moment to understand together if the path is right for you."
+        "text": "We meet for about 50 minutes — at my office in Meledo (VI) or Spinea (VE), or online. We get to know each other, you tell me about your situation, and together we decide if and how to continue."
       },
       "path": {
         "title": "The therapeutic path",
-        "text": "If we decide to continue, we define goals and meeting frequency together (usually weekly or bi-weekly). Each path is unique and tailored to you, respecting your timing."
+        "text": "We define concrete goals and a sustainable frequency together. We regularly reassess how things are going, so the path adapts to you, not the other way around."
       }
     },
     "modalities": {
@@ -480,7 +480,7 @@
     "ariaLabel": "Cookie notice"
   },
   "footer": {
-    "description": "Clinical psychologist registered with the Order of Psychologists of Veneto. Individual psychological support, couples and family counseling.",
+    "description": "Clinical psychologist registered with the Veneto Psychologists' Register (no. 13939). Individual support, couples and family counseling, school psychology, and programs for parents and adolescents.",
     "quickLinks": "Quick links",
     "contacts": "Contacts",
     "legal": "VAT: {piva} — Psychologists Register of Veneto no. {alboNumber}",

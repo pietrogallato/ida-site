@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "Ida Sato — Psicologa Clinica",
-    "description": "Psicologa clinica a Padova, Meledo (VI) e Spinea (VE). Sostegno psicologico individuale, consulenze di coppia e familiari, psicologia scolastica. Prenota un primo colloquio."
+    "description": "Psicologa clinica a Meledo (VI) e Spinea (VE). Sostegno individuale, consulenze di coppia e familiari, psicologia scolastica, supporto per genitori e adolescenti. Anche online. Prenota un primo colloquio."
   },
   "navigation": {
     "home": "Home",
@@ -33,14 +33,14 @@
   },
   "hero": {
     "title": "Il tuo benessere psicologico inizia qui",
-    "subtitle": "Sono Ida Sato, psicologa clinica. Ti accompagno in un percorso di consapevolezza e crescita, ponendo attenzione alla persona, al suo sistema di appartenenza e alla relazione di cura.",
+    "subtitle": "Sono Ida Sato, psicologa clinica. Accompagno persone, coppie e famiglie in percorsi di cambiamento, valorizzando le risorse di ciascuno e le relazioni che ci definiscono.",
     "cta": "Prenota un primo colloquio",
     "alboLabel": "Albo Psicologi del Veneto n.",
     "imageAlt": "Ida Sato, psicologa clinica, nel suo studio"
   },
   "aboutPreview": {
     "title": "Chi Sono",
-    "text": "Sono una psicologa clinica con esperienza nel sostegno individuale, di coppia e familiare. In formazione come psicoterapeuta sistemico-relazionale, pongo particolare attenzione alla persona e alle sue risorse individuali e relazionali.",
+    "text": "Psicologa clinica con esperienza nel servizio pubblico e privato, lavoro con persone, coppie e famiglie. In formazione come psicoterapeuta sistemico-relazionale, credo che il cambiamento nasca dalla relazione e dalle risorse che ciascuno porta con sé.",
     "cta": "Scopri il mio percorso",
     "howItWorksLink": "Come funziona",
     "imageAlt": "Ida Sato, psicologa clinica"
@@ -50,10 +50,10 @@
     "title": "Ida Sato",
     "subtitle": "Psicologa Clinica — Albo degli Psicologi del Veneto, n.13939",
     "imageAlt": "Ida Sato, psicologa clinica",
-    "bio": "Psicologa clinica con esperienza in sostegno individuale, di coppia e familiare, oltre che nella conduzione di gruppi e interventi di sostegno psicologico per minori e genitori. In formazione come psicoterapeuta sistemico-relazionale presso il Centro Padovano di Terapia della Famiglia, pongo particolare attenzione alla persona, al suo sistema di appartenenza e alla relazione di cura, valorizzando le risorse individuali e relazionali.",
+    "bio": "Sono psicologa clinica iscritta all'Albo del Veneto (n. 13939) e lavoro come libera professionista a Meledo (VI) e Spinea (VE). La mia esperienza si è costruita nel servizio pubblico e nel privato sociale: ho lavorato come psicologa scolastica nelle scuole dell'ULSS 6 di Padova, condotto gruppi di sostegno alla genitorialità e collaborato con comunità terapeutiche e servizi per l'età evolutiva. Attualmente sono anche responsabile dei servizi educativi e psicologici presso la Cooperativa FAI di Padova. Mi sto specializzando in psicoterapia sistemico-relazionale al Centro Padovano di Terapia della Famiglia. Questo approccio guida il mio lavoro: ogni persona è parte di una rete di relazioni, e il cambiamento avviene quando impariamo a vedere e utilizzare le risorse presenti in noi e intorno a noi.",
     "approach": {
       "title": "Il mio approccio",
-      "text": "Il mio lavoro si basa sull'approccio sistemico-relazionale: ogni persona è parte di un sistema di relazioni che influenza il suo benessere. Insieme esploriamo le dinamiche relazionali e le risorse presenti nel tuo contesto di vita, per trovare nuovi equilibri e possibilità di cambiamento. Ogni percorso è unico e viene costruito insieme, rispettando i tuoi tempi e le tue esigenze."
+      "text": "Lavoro con un approccio sistemico-relazionale: guardo non solo alla persona, ma anche alle relazioni in cui è immersa — famiglia, coppia, scuola, lavoro. Non credo in soluzioni preconfezionate: ogni percorso nasce dall'ascolto e viene costruito insieme, rispettando i tuoi tempi. Il mio obiettivo è aiutarti a riconoscere le risorse che già possiedi e a trovare nuovi modi per stare meglio nelle tue relazioni."
     },
     "qualifications": {
       "title": "Formazione e qualifiche",
@@ -70,15 +70,15 @@
       "title": "I miei valori",
       "empathy": {
         "title": "Ascolto",
-        "text": "Ascolto attivo ed empatia per comprendere la tua esperienza e il tuo mondo relazionale."
+        "text": "Ogni percorso parte dall'ascolto. Accolgo la tua esperienza senza giudizio, con attenzione a ciò che dici e a ciò che non riesci ancora a dire."
       },
       "respect": {
         "title": "Rispetto",
-        "text": "Ogni percorso è unico, rispetto i tuoi tempi e le tue scelte all'interno del tuo sistema di appartenenza."
+        "text": "I tuoi tempi sono i tempi giusti. Non forzo il percorso e rispetto le tue scelte, lavorando con te e non al posto tuo."
       },
       "professionalism": {
         "title": "Professionalità",
-        "text": "Formazione continua, supervisione e approccio basato su evidenze scientifiche."
+        "text": "Mi formo continuamente, partecipo a supervisioni regolari e lavoro con un approccio basato sulle evidenze scientifiche. Ho pubblicato ricerche su riviste internazionali come Psychiatry Research e Stigma and Health."
       }
     }
   },
@@ -113,170 +113,170 @@
     "otherServices": "Altri servizi",
     "individual": {
       "title": "Sostegno psicologico individuale",
-      "description": "Ti aiuto ad affrontare ansia, stress, depressione, difficoltà relazionali e momenti di crisi. Insieme costruiamo un percorso personalizzato per ritrovare il tuo equilibrio e sviluppare nuove risorse.",
+      "description": "Uno spazio dedicato a te, per affrontare ansia, stress, momenti di crisi o semplicemente il bisogno di capire meglio quello che stai vivendo. Insieme costruiamo un percorso su misura, al tuo ritmo.",
       "extendedDescription": {
-        "p1": "Il sostegno psicologico individuale è uno spazio dedicato interamente a te, in cui puoi esplorare i tuoi pensieri, emozioni e comportamenti in un ambiente sicuro e non giudicante. Che tu stia attraversando un momento di difficoltà o desideri semplicemente conoscerti meglio, questo percorso ti offre gli strumenti per affrontare le sfide della vita quotidiana.",
-        "p2": "Lavoro con un approccio sistemico-relazionale, ponendo attenzione non solo a ciò che senti, ma anche al contesto relazionale in cui vivi. Insieme esploriamo le dinamiche che influenzano il tuo benessere, valorizzando le risorse che già possiedi e sviluppandone di nuove.",
-        "p3": "Il percorso è costruito su misura per te: rispettiamo i tuoi tempi, definiamo insieme gli obiettivi e adattiamo il lavoro alle tue esigenze. Non esiste un percorso uguale a un altro, perché ogni persona è unica."
+        "p1": "Il sostegno psicologico individuale è uno spazio sicuro e riservato dove puoi esplorare ciò che senti, dare un nome alle difficoltà e scoprire risorse che non sapevi di avere.",
+        "p2": "Utilizzo un approccio sistemico-relazionale: questo significa che non guardo solo a te in isolamento, ma anche al contesto di relazioni in cui vivi — famiglia, lavoro, amicizie — perché spesso è lì che si trovano sia le fatiche sia le possibilità di cambiamento.",
+        "p3": "Ogni percorso è diverso: insieme definiamo obiettivi realistici e lavoriamo con i tuoi tempi, senza forzature."
       },
       "benefitsTitle": "Benefici",
       "benefits": {
-        "b1": "Maggiore consapevolezza delle proprie emozioni e dei propri schemi relazionali",
+        "b1": "Più consapevolezza delle tue emozioni e di come ti relazioni con gli altri",
         "b2": "Strategie concrete per gestire ansia, stress e momenti di difficoltà",
-        "b3": "Miglioramento dell'autostima e della fiducia in sé stessi",
-        "b4": "Nuove risorse per affrontare cambiamenti e transizioni di vita"
+        "b3": "Maggiore fiducia in te stesso e nelle tue capacità",
+        "b4": "Risorse nuove per affrontare cambiamenti e transizioni di vita"
       },
       "stepsTitle": "Come funziona",
       "steps": {
-        "s1": { "title": "Primo contatto", "text": "Scrivimi o chiamami per fissare un primo colloquio conoscitivo. È un momento informale per raccontarmi cosa ti porta qui." },
-        "s2": { "title": "Valutazione iniziale", "text": "Nel primo incontro ci conosciamo e insieme valutiamo le tue esigenze. Capiremo se il percorso individuale è la strada giusta per te." },
-        "s3": { "title": "Percorso personalizzato", "text": "Definiamo obiettivi e frequenza degli incontri. Le sedute hanno cadenza settimanale o bisettimanale, con una durata di circa 50 minuti." }
+        "s1": { "title": "Primo contatto", "text": "Mi scrivi o mi chiami per raccontarmi brevemente cosa ti porta a cercare aiuto. Troviamo un momento per vederci, senza impegno." },
+        "s2": { "title": "Primo colloquio", "text": "Ci vediamo per circa 50 minuti — in studio a Meledo (VI) o Spinea (VE), oppure online. Ci conosciamo e valutiamo insieme se ha senso iniziare un percorso." },
+        "s3": { "title": "Percorso personalizzato", "text": "Definiamo obiettivi concreti e una frequenza sostenibile (settimanale o bisettimanale). Rivalutiamo regolarmente come sta andando." }
       },
       "faqTitle": "Domande frequenti",
       "faq": {
-        "f1": { "question": "Quanto dura un percorso di sostegno individuale?", "answer": "La durata dipende dalle esigenze personali e dagli obiettivi concordati. Alcuni percorsi durano pochi mesi, altri possono essere più lunghi. Ne parliamo insieme fin dal primo incontro." },
-        "f2": { "question": "Devo avere un problema grave per chiedere sostegno?", "answer": "No, non è necessario trovarsi in una situazione di emergenza. Il sostegno psicologico è utile anche nei momenti di cambiamento, incertezza o semplicemente quando senti il bisogno di confrontarti con un professionista." },
-        "f3": { "question": "Il sostegno individuale è adatto anche agli adolescenti?", "answer": "Per i minori offro un servizio dedicato con modalità specifiche per la loro età. Il sostegno individuale classico è pensato per adulti dai 18 anni in su." }
+        "f1": { "question": "Quanto dura un percorso di sostegno individuale?", "answer": "Non c'è una durata predefinita: dipende dai tuoi obiettivi e da come evolve il percorso. Alcuni si concludono in poche settimane, altri richiedono più tempo. Ne parliamo apertamente fin dal primo incontro." },
+        "f2": { "question": "Devo avere un problema grave per chiedere sostegno?", "answer": "No. Il sostegno psicologico è utile anche nei momenti di cambiamento, incertezza o semplicemente quando senti il bisogno di uno spazio per riflettere." },
+        "f3": { "question": "Il sostegno individuale è adatto anche agli adolescenti?", "answer": "Per i minori offro un servizio dedicato con modalità specifiche per la loro età. Il sostegno individuale è pensato per adulti dai 18 anni in su." }
       }
     },
     "couples": {
       "title": "Consulenze di coppia e familiari",
-      "description": "Uno spazio sicuro per migliorare la comunicazione, affrontare conflitti, gestire cambiamenti importanti come separazioni, nascite o lutti, e ritrovare equilibrio nella relazione.",
+      "description": "Quando la comunicazione si interrompe o un cambiamento importante mette alla prova la relazione — una separazione, una nascita, un lutto — uno spazio neutro può fare la differenza. Lavoro con coppie e famiglie per ritrovare un modo di parlarsi e stare insieme.",
       "extendedDescription": {
-        "p1": "Le relazioni di coppia e familiari attraversano inevitabilmente momenti di difficoltà: conflitti ricorrenti, problemi di comunicazione, cambiamenti importanti come una nascita, una separazione o un lutto possono mettere a dura prova l'equilibrio relazionale.",
-        "p2": "La consulenza di coppia e familiare offre uno spazio neutro e protetto in cui ogni membro può esprimere il proprio punto di vista ed essere ascoltato. Il mio ruolo è quello di facilitare il dialogo, aiutandovi a comprendere le dinamiche relazionali che generano sofferenza e a trovare nuove modalità di comunicazione.",
-        "p3": "L'approccio sistemico-relazionale è particolarmente adatto a questo tipo di lavoro, perché considera la coppia e la famiglia come un sistema in cui ogni cambiamento di un membro influenza tutti gli altri. Insieme cerchiamo nuovi equilibri che rispettino le esigenze di ciascuno."
+        "p1": "Le relazioni di coppia e familiari attraversano momenti di difficoltà che a volte non si riesce a gestire da soli. La consulenza offre uno spazio neutro dove ciascuno può esprimersi e sentirsi ascoltato.",
+        "p2": "Con un approccio sistemico-relazionale, esploriamo insieme le dinamiche che si sono create e cerchiamo nuovi equilibri. Non serve essere in crisi per chiedere aiuto: a volte basta voler capire meglio come funziona la propria relazione.",
+        "p3": "Nella mia esperienza con famiglie e coppie, ho visto che il cambiamento è possibile quando si impara ad ascoltarsi in modo diverso."
       },
       "benefitsTitle": "Benefici",
       "benefits": {
-        "b1": "Miglioramento della comunicazione e della capacità di ascolto reciproco",
-        "b2": "Gestione costruttiva dei conflitti e delle divergenze",
-        "b3": "Maggiore comprensione delle dinamiche relazionali nella coppia o nella famiglia",
-        "b4": "Supporto nei momenti di transizione e cambiamento familiare"
+        "b1": "Ritrovare un modo di comunicare e ascoltarsi davvero",
+        "b2": "Imparare a gestire i conflitti senza che diventino distruttivi",
+        "b3": "Capire meglio le dinamiche che si sono create nella relazione",
+        "b4": "Avere supporto nei momenti di cambiamento — nascite, separazioni, lutti"
       },
       "stepsTitle": "Come funziona",
       "steps": {
-        "s1": { "title": "Primo contatto", "text": "Uno dei partner o un membro della famiglia mi contatta per fissare un primo incontro. Possiamo parlare brevemente al telefono per capire la situazione." },
-        "s2": { "title": "Incontro conoscitivo", "text": "Il primo colloquio è con tutti i membri coinvolti. Ognuno ha la possibilità di raccontare il proprio punto di vista in un ambiente sicuro e rispettoso." },
-        "s3": { "title": "Percorso condiviso", "text": "Definiamo insieme gli obiettivi del lavoro. Le sedute hanno cadenza regolare e coinvolgono tutti i partecipanti, con possibilità di incontri individuali se necessario." }
+        "s1": { "title": "Primo contatto", "text": "Uno dei partner o un membro della famiglia mi contatta. Parliamo brevemente per capire la situazione e fissare un primo incontro." },
+        "s2": { "title": "Incontro conoscitivo", "text": "Il primo colloquio è con tutti i membri coinvolti. Ognuno ha spazio per raccontare il proprio punto di vista in un ambiente sicuro e neutro." },
+        "s3": { "title": "Percorso condiviso", "text": "Definiamo insieme gli obiettivi. Le sedute coinvolgono tutti i partecipanti, con possibilità di incontri individuali quando utile." }
       },
       "faqTitle": "Domande frequenti",
       "faq": {
-        "f1": { "question": "Entrambi i partner devono essere d'accordo nel venire?", "answer": "È importante che entrambi siano motivati a partecipare. Se il tuo partner è titubante, possiamo fare un primo colloquio insieme per capire se il percorso può essere utile, senza alcun obbligo." },
-        "f2": { "question": "Posso fare una consulenza familiare anche con i figli?", "answer": "Sì, a seconda della situazione possiamo coinvolgere i figli nel percorso. Valutiamo insieme chi è opportuno includere nelle sedute e con quali modalità." },
-        "f3": { "question": "La consulenza di coppia serve solo per coppie in crisi?", "answer": "No, è utile anche per coppie che vogliono migliorare la comunicazione, affrontare un cambiamento importante o semplicemente investire nella qualità della relazione." }
+        "f1": { "question": "Entrambi i partner devono essere d'accordo nel venire?", "answer": "Idealmente sì. Se il tuo partner è incerto, possiamo fare un primo colloquio insieme per capire se il percorso può essere utile — senza alcun obbligo." },
+        "f2": { "question": "Posso fare una consulenza familiare anche con i figli?", "answer": "Sì, valutiamo insieme chi è utile coinvolgere e con quali modalità, in base alla situazione specifica." },
+        "f3": { "question": "La consulenza di coppia serve solo per coppie in crisi?", "answer": "No. È utile anche per chi vuole migliorare la comunicazione, affrontare un cambiamento importante o investire nella qualità della relazione." }
       }
     },
     "school": {
       "title": "Psicologia scolastica",
-      "description": "Interventi di educazione affettiva nelle scuole, supporto per studenti con difficoltà di apprendimento (BES e DSA), e consulenza per insegnanti e genitori su tematiche educative.",
+      "description": "Progetti di educazione affettiva e sessuo-affettiva nelle scuole, supporto per studenti con BES e DSA, e consulenza per insegnanti e genitori. Porto nelle scuole l'esperienza maturata nel servizio pubblico.",
       "extendedDescription": {
-        "p1": "La scuola è un ambiente fondamentale per la crescita emotiva e sociale di bambini e ragazzi. Come psicologa scolastica, lavoro a fianco di studenti, insegnanti e genitori per promuovere il benessere all'interno del contesto educativo.",
-        "p2": "I miei interventi comprendono progetti di educazione affettiva in classe, sportelli di ascolto per studenti, supporto per alunni con Bisogni Educativi Speciali (BES) e Disturbi Specifici dell'Apprendimento (DSA), e consulenze per il corpo docente su tematiche psicoeducative.",
-        "p3": "Credo che la collaborazione tra scuola e famiglia sia essenziale: per questo offro anche consulenze individuali ai genitori che desiderano comprendere meglio le difficoltà dei propri figli nel contesto scolastico e trovare strategie efficaci per supportarli."
+        "p1": "Ho lavorato come psicologa scolastica nelle scuole primarie e secondarie dell'ULSS 6 di Padova, realizzando interventi di educazione affettiva e sessuo-affettiva. Questa esperienza nel servizio pubblico mi ha insegnato quanto la scuola sia un ambiente fondamentale per il benessere dei ragazzi.",
+        "p2": "Oggi continuo a collaborare con le scuole attraverso progetti in classe, supporto individuale per studenti con difficoltà di apprendimento (BES e DSA), e consulenza per insegnanti e genitori.",
+        "p3": "Il mio approccio è sempre collaborativo: lavoro a stretto contatto con famiglie e personale scolastico per costruire interventi su misura."
       },
       "benefitsTitle": "Benefici",
       "benefits": {
-        "b1": "Promozione del benessere emotivo e relazionale in classe",
-        "b2": "Supporto specifico per studenti con BES e DSA",
-        "b3": "Strumenti pratici per insegnanti nella gestione delle dinamiche di gruppo",
-        "b4": "Maggiore collaborazione tra scuola e famiglia"
+        "b1": "Promuovere il benessere emotivo e relazionale in classe",
+        "b2": "Supporto mirato per studenti con BES e DSA",
+        "b3": "Strumenti concreti per insegnanti nella gestione del gruppo",
+        "b4": "Rafforzare la collaborazione tra scuola e famiglia"
       },
       "stepsTitle": "Come funziona",
       "steps": {
-        "s1": { "title": "Analisi dei bisogni", "text": "Incontro la dirigenza scolastica e gli insegnanti per comprendere le esigenze specifiche della scuola e degli studenti." },
-        "s2": { "title": "Progettazione dell'intervento", "text": "Sulla base dell'analisi, creo un progetto su misura: laboratori in classe, sportello d'ascolto, formazione docenti o consulenze individuali." },
-        "s3": { "title": "Realizzazione e monitoraggio", "text": "Realizzo gli interventi concordati e monitoro i risultati, mantenendo un dialogo costante con insegnanti e genitori." }
+        "s1": { "title": "Analisi dei bisogni", "text": "Incontro la dirigenza e gli insegnanti per capire le esigenze specifiche della scuola e degli studenti." },
+        "s2": { "title": "Progettazione", "text": "Creo un progetto su misura: laboratori in classe, sportello d'ascolto, formazione docenti o supporto individuale." },
+        "s3": { "title": "Intervento e monitoraggio", "text": "Realizzo gli interventi e ne monitoro i risultati, mantenendo un confronto costante con insegnanti e genitori." }
       },
       "faqTitle": "Domande frequenti",
       "faq": {
-        "f1": { "question": "Chi può richiedere un intervento di psicologia scolastica?", "answer": "L'intervento può essere richiesto dalla dirigenza scolastica, dal corpo docente o dai genitori. In ogni caso, lavoro in stretta collaborazione con tutte le figure coinvolte." },
-        "f2": { "question": "Che tipo di interventi vengono fatti in classe?", "answer": "I laboratori in classe trattano temi come l'educazione affettiva, la gestione delle emozioni, le relazioni tra pari e la prevenzione del bullismo. Sono attività interattive e adatte all'età degli studenti." },
-        "f3": { "question": "Come si supporta uno studente con DSA?", "answer": "Il supporto include la valutazione delle difficoltà, la collaborazione con la famiglia e gli insegnanti per definire strategie didattiche personalizzate, e il tutoring individuale quando necessario." }
+        "f1": { "question": "Chi può richiedere un intervento di psicologia scolastica?", "answer": "Dirigenti scolastici, insegnanti o genitori. In ogni caso lavoro coinvolgendo tutte le figure rilevanti." },
+        "f2": { "question": "Che tipo di interventi vengono fatti in classe?", "answer": "Laboratori interattivi su educazione affettiva e sessuo-affettiva, gestione delle emozioni, relazioni tra pari e prevenzione del bullismo. Sempre adattati all'età degli studenti." },
+        "f3": { "question": "Come si supporta uno studente con DSA?", "answer": "Con una valutazione delle difficoltà, la collaborazione con famiglia e insegnanti per strategie didattiche personalizzate, e quando serve il tutoring individuale. Ho una formazione specifica come tutor DSA e BES." }
       }
     },
     "parenting": {
       "title": "Sostegno alla genitorialità",
-      "description": "Percorsi per genitori che affrontano le sfide dell'adolescenza e della pre-adolescenza: gestione dei conflitti, ansia dei figli, uso dei social media, autonomia e regole.",
+      "description": "Essere genitori di adolescenti e pre-adolescenti significa affrontare ogni giorno sfide nuove: conflitti, ansia, social media, richieste di autonomia. Un percorso dedicato aiuta a trovare il proprio modo di esserci.",
       "extendedDescription": {
-        "p1": "Essere genitori è una delle esperienze più intense e complesse della vita. Ogni fase della crescita dei figli porta nuove sfide: dalla gestione dei capricci nell'infanzia ai conflitti dell'adolescenza, dal tema dell'autonomia a quello dei social media e della tecnologia.",
-        "p2": "Il sostegno alla genitorialità ti offre uno spazio per riflettere sul tuo ruolo di genitore, comprendere meglio i comportamenti dei tuoi figli e trovare strategie efficaci per affrontare le difficoltà quotidiane. Non si tratta di ricevere giudizi o regole rigide, ma di esplorare insieme nuove possibilità.",
-        "p3": "Con l'approccio sistemico-relazionale, guardiamo alla famiglia come a un sistema interconnesso: il comportamento di ogni membro influenza e viene influenzato dagli altri. Comprendere queste dinamiche ti aiuta a trovare nuovi modi di relazionarti con i tuoi figli."
+        "p1": "Ho condotto gruppi di sostegno alla genitorialità presso l'ULSS 6 di Padova, lavorando con genitori di adolescenti e pre-adolescenti su temi come i cambiamenti adolescenziali, i disturbi ansiosi e depressivi, l'hikikomori, il conflitto e l'autonomia.",
+        "p2": "Questa esperienza mi ha confermato che i genitori non hanno bisogno di ricette, ma di uno spazio per riflettere insieme sul proprio ruolo.",
+        "p3": "Con un approccio sistemico-relazionale, guardo alla famiglia nel suo insieme: capire le dinamiche familiari aiuta a trovare strategie più efficaci e a rafforzare il legame con i propri figli."
       },
       "benefitsTitle": "Benefici",
       "benefits": {
-        "b1": "Maggiore comprensione dei bisogni evolutivi dei figli nelle diverse fasi di crescita",
-        "b2": "Strategie concrete per gestire conflitti e momenti di tensione familiare",
-        "b3": "Rafforzamento della relazione genitore-figlio basata su ascolto e fiducia",
-        "b4": "Supporto nel definire regole e confini chiari, adeguati all'età"
+        "b1": "Capire meglio cosa stanno attraversando i tuoi figli nelle diverse fasi di crescita",
+        "b2": "Strategie concrete per gestire conflitti e tensioni familiari",
+        "b3": "Rafforzare il legame con i tuoi figli, basato su ascolto e fiducia",
+        "b4": "Trovare un equilibrio tra regole, confini e autonomia"
       },
       "stepsTitle": "Come funziona",
       "steps": {
-        "s1": { "title": "Primo contatto", "text": "Contattami per raccontarmi brevemente la situazione. Possiamo capire insieme se il sostegno alla genitorialità è il percorso più adatto." },
-        "s2": { "title": "Incontro iniziale", "text": "Nel primo colloquio esploriamo le dinamiche familiari e le difficoltà che stai vivendo. Può partecipare un genitore o entrambi." },
-        "s3": { "title": "Percorso di supporto", "text": "Lavoriamo insieme con incontri regolari, affrontando le sfide concrete che si presentano e sviluppando nuove competenze genitoriali." }
+        "s1": { "title": "Primo contatto", "text": "Mi racconti brevemente la situazione e capiamo insieme se il sostegno alla genitorialità è il percorso più adatto." },
+        "s2": { "title": "Incontro iniziale", "text": "Nel primo colloquio esploriamo le dinamiche familiari e le difficoltà che stai vivendo. Può partecipare un solo genitore o entrambi." },
+        "s3": { "title": "Percorso di supporto", "text": "Lavoriamo con incontri regolari sulle sfide concrete che si presentano, sviluppando nuove risorse per il tuo ruolo di genitore." }
       },
       "faqTitle": "Domande frequenti",
       "faq": {
-        "f1": { "question": "Il sostegno alla genitorialità è solo per genitori in difficoltà?", "answer": "No, è utile per qualsiasi genitore che voglia comprendere meglio le dinamiche familiari, migliorare la comunicazione con i figli o affrontare una fase di cambiamento nella crescita dei propri figli." },
-        "f2": { "question": "Devono partecipare entrambi i genitori?", "answer": "Non necessariamente. Il percorso può essere fatto anche da un solo genitore. Tuttavia, quando possibile, il coinvolgimento di entrambi porta a risultati più efficaci." },
-        "f3": { "question": "A che età dei figli è consigliato?", "answer": "Il sostegno alla genitorialità è utile in qualsiasi fase, dall'infanzia all'adolescenza. Le sfide cambiano con l'età dei figli e il percorso si adatta di conseguenza." }
+        "f1": { "question": "Il sostegno alla genitorialità è solo per genitori in difficoltà?", "answer": "No. È utile per chiunque voglia capire meglio le dinamiche familiari, migliorare la comunicazione con i figli o affrontare una fase di cambiamento." },
+        "f2": { "question": "Devono partecipare entrambi i genitori?", "answer": "Non necessariamente. Si può lavorare anche con un solo genitore. Quando è possibile, il coinvolgimento di entrambi porta a risultati migliori." },
+        "f3": { "question": "A che età dei figli è consigliato?", "answer": "In qualsiasi fase, dall'infanzia all'adolescenza. Le sfide cambiano con l'età e il percorso si adatta di conseguenza." }
       }
     },
     "youth": {
       "title": "Supporto per minori e adolescenti",
-      "description": "Aiuto psicologico per bambini e ragazzi che vivono difficoltà emotive, problemi scolastici, ansia, insicurezza o faticano nelle relazioni con i coetanei.",
+      "description": "Supporto psicologico per bambini e ragazzi che vivono difficoltà emotive, ansia, insicurezza o faticano nelle relazioni con i coetanei. Un percorso pensato per la loro età, con il coinvolgimento della famiglia.",
       "extendedDescription": {
-        "p1": "L'infanzia e l'adolescenza sono periodi di grandi trasformazioni. A volte bambini e ragazzi possono trovarsi in difficoltà: ansia, insicurezza, problemi scolastici, difficoltà nelle relazioni con i coetanei o cambiamenti familiari che li destabilizzano.",
-        "p2": "Il supporto psicologico per minori utilizza modalità adatte all'età: con i più piccoli si lavora attraverso il gioco e il disegno, con gli adolescenti si privilegia il dialogo in un ambiente accogliente e non giudicante. L'obiettivo è offrire uno spazio sicuro in cui esprimere emozioni e difficoltà.",
-        "p3": "Il coinvolgimento della famiglia è fondamentale in questo tipo di percorso. Lavoro in stretta collaborazione con i genitori, aiutandoli a comprendere le difficoltà dei figli e a supportarli nel modo più efficace."
+        "p1": "L'infanzia e l'adolescenza sono fasi di grandi trasformazioni, e a volte i ragazzi hanno bisogno di un aiuto in più per affrontarle. Attraverso il tirocinio al Servizio per l'Età Evolutiva dell'ULSS 6 e il lavoro con comunità educative, ho maturato esperienza nel lavoro con minori con disturbi dello sviluppo, difficoltà emotive e ansia.",
+        "p2": "Con i più piccoli utilizzo strumenti adatti alla loro età — gioco, disegno, attività espressive. Con gli adolescenti, il dialogo è centrale.",
+        "p3": "In entrambi i casi, la famiglia è parte attiva del percorso, perché il benessere di un bambino o un ragazzo non si costruisce mai in isolamento."
       },
       "benefitsTitle": "Benefici",
       "benefits": {
         "b1": "Uno spazio sicuro dove esprimere emozioni e difficoltà senza giudizio",
-        "b2": "Sviluppo di competenze emotive e relazionali adeguate all'età",
-        "b3": "Supporto nell'affrontare cambiamenti scolastici, familiari e sociali",
-        "b4": "Coinvolgimento attivo dei genitori per un supporto integrato"
+        "b2": "Sviluppo di competenze emotive e relazionali adatte alla loro età",
+        "b3": "Supporto nell'affrontare cambiamenti a scuola, in famiglia e con i coetanei",
+        "b4": "Coinvolgimento attivo dei genitori per un percorso integrato"
       },
       "stepsTitle": "Come funziona",
       "steps": {
-        "s1": { "title": "Contatto con i genitori", "text": "Il primo passo è un colloquio con i genitori per comprendere la situazione e le preoccupazioni. Questo mi permette di avere un quadro completo prima di incontrare il minore." },
-        "s2": { "title": "Incontro con il minore", "text": "Incontro il bambino o il ragazzo in un ambiente accogliente, utilizzando modalità adatte alla sua età per creare un rapporto di fiducia." },
-        "s3": { "title": "Percorso integrato", "text": "Il lavoro procede con incontri regolari con il minore e colloqui periodici con i genitori, per un supporto coordinato e efficace." }
+        "s1": { "title": "Incontro con i genitori", "text": "Il primo passo è un colloquio con i genitori per capire la situazione e le preoccupazioni. Mi aiuta ad avere un quadro completo prima di incontrare il bambino o il ragazzo." },
+        "s2": { "title": "Incontro con il minore", "text": "Incontro il bambino o l'adolescente in un ambiente accogliente, usando modalità adatte alla sua età — gioco, disegno o dialogo — per costruire un rapporto di fiducia." },
+        "s3": { "title": "Percorso integrato", "text": "Il lavoro prosegue con incontri regolari con il minore e colloqui periodici con i genitori, per un supporto coordinato." }
       },
       "faqTitle": "Domande frequenti",
       "faq": {
-        "f1": { "question": "Da che età è possibile iniziare un percorso?", "answer": "È possibile lavorare con bambini a partire dai 6 anni circa. Per i bambini più piccoli, il lavoro è prevalentemente con i genitori attraverso il sostegno alla genitorialità." },
-        "f2": { "question": "I genitori sono presenti durante le sedute?", "answer": "Dipende dall'età e dalla situazione. Con i bambini più piccoli i genitori possono essere coinvolti nelle sedute. Con gli adolescenti, le sedute sono generalmente individuali, con colloqui periodici con i genitori." },
-        "f3": { "question": "La scuola viene coinvolta nel percorso?", "answer": "Solo se necessario e con il consenso dei genitori. In alcuni casi, la collaborazione con gli insegnanti è molto utile per un supporto coordinato." }
+        "f1": { "question": "Da che età è possibile iniziare un percorso?", "answer": "Dai 6 anni circa. Per i bambini più piccoli, il lavoro è prevalentemente con i genitori attraverso il sostegno alla genitorialità." },
+        "f2": { "question": "I genitori sono presenti durante le sedute?", "answer": "Dipende dall'età. Con i più piccoli i genitori possono essere coinvolti. Con gli adolescenti le sedute sono individuali, con colloqui periodici con i genitori." },
+        "f3": { "question": "La scuola viene coinvolta nel percorso?", "answer": "Solo quando utile e con il consenso dei genitori. La collaborazione con gli insegnanti può essere molto efficace per un supporto coordinato." }
       }
     },
     "online": {
       "title": "Sedute online",
-      "description": "Consulenze psicologiche a distanza tramite videochiamata, con la stessa qualità e riservatezza delle sedute in studio.",
+      "description": "Consulenze psicologiche a distanza in videochiamata, con la stessa attenzione e riservatezza delle sedute in studio. Ideali per chi ha orari irregolari, vive lontano o preferisce la comodità di casa.",
       "extendedDescription": {
-        "p1": "Le sedute online ti permettono di ricevere supporto psicologico comodamente da casa tua, senza rinunciare alla qualità e alla riservatezza di un colloquio in studio. Utilizzo piattaforme sicure per garantire la privacy della comunicazione.",
-        "p2": "Questa modalità è particolarmente adatta se vivi lontano dai miei studi, hai difficoltà negli spostamenti, preferisci la comodità del tuo ambiente domestico o hai orari che rendono difficile gli incontri in presenza.",
-        "p3": "Le sedute online seguono le stesse modalità di quelle in studio: stessa durata, stesso approccio professionale, stessa attenzione alla relazione terapeutica. La ricerca scientifica conferma che i colloqui online sono altrettanto efficaci di quelli in presenza."
+        "p1": "Le sedute online si svolgono in videochiamata su piattaforme sicure e sono a tutti gli effetti equivalenti a quelle in studio. La ricerca scientifica ne conferma l'efficacia.",
+        "p2": "Nella mia esperienza funzionano particolarmente bene per chi ha difficoltà a spostarsi, orari di lavoro poco flessibili, o semplicemente preferisce il comfort di uno spazio familiare. L'unica cosa che chiedo è una connessione stabile e un ambiente dove poter parlare con tranquillità.",
+        "p3": "È possibile alternare sedute online e in presenza in base alle proprie esigenze."
       },
       "benefitsTitle": "Benefici",
       "benefits": {
-        "b1": "Flessibilità: puoi partecipare da qualsiasi luogo con una connessione internet",
+        "b1": "Puoi partecipare da qualsiasi luogo con una connessione internet",
         "b2": "Risparmio di tempo e costi legati agli spostamenti",
         "b3": "Stessa qualità e riservatezza delle sedute in studio",
-        "b4": "Ideale per chi ha orari irregolari o vive lontano"
+        "b4": "Ideale per chi ha orari poco flessibili o vive lontano"
       },
       "stepsTitle": "Come funziona",
       "steps": {
-        "s1": { "title": "Prenotazione", "text": "Contattami per fissare un appuntamento online. Ti invierò il link alla videochiamata prima della seduta." },
-        "s2": { "title": "Preparazione", "text": "Assicurati di avere una connessione stabile, un dispositivo con telecamera e microfono, e un luogo tranquillo e riservato da cui collegarti." },
-        "s3": { "title": "La seduta", "text": "Ci colleghiamo all'orario concordato. La seduta dura circa 50 minuti, esattamente come in studio. Il pagamento avviene tramite bonifico." }
+        "s1": { "title": "Prenotazione", "text": "Contattami per fissare un appuntamento online. Ti invio il link alla videochiamata prima della seduta." },
+        "s2": { "title": "Preparazione", "text": "Ti serve una connessione stabile, un dispositivo con telecamera e microfono, e un luogo tranquillo dove poter parlare con riservatezza." },
+        "s3": { "title": "La seduta", "text": "Ci colleghiamo all'orario concordato. La seduta dura circa 50 minuti, come in studio. Il pagamento avviene tramite bonifico." }
       },
       "faqTitle": "Domande frequenti",
       "faq": {
-        "f1": { "question": "Quale piattaforma si utilizza per le videochiamate?", "answer": "Utilizzo piattaforme sicure e conformi alle normative sulla privacy. I dettagli tecnici ti verranno comunicati al momento della prenotazione." },
-        "f2": { "question": "Le sedute online sono efficaci quanto quelle in studio?", "answer": "Sì, numerosi studi scientifici confermano che le sedute online sono altrettanto efficaci di quelle in presenza per la maggior parte delle problematiche psicologiche." },
-        "f3": { "question": "Posso alternare sedute online e in studio?", "answer": "Certamente. Molte persone scelgono una modalità mista, alternando incontri in studio e online in base alle proprie esigenze." }
+        "f1": { "question": "Quale piattaforma si utilizza per le videochiamate?", "answer": "Utilizzo piattaforme sicure e conformi alle normative sulla privacy. Ti comunico i dettagli al momento della prenotazione." },
+        "f2": { "question": "Le sedute online sono efficaci quanto quelle in studio?", "answer": "Sì. La ricerca scientifica conferma che le sedute online sono altrettanto efficaci di quelle in presenza per la maggior parte delle situazioni." },
+        "f3": { "question": "Posso alternare sedute online e in studio?", "answer": "Certo. Molte persone scelgono una modalità mista, alternando in base alle proprie esigenze." }
       }
     }
   },
@@ -297,14 +297,14 @@
     }
   },
   "cta": {
-    "title": "Inizia il tuo percorso oggi",
-    "text": "Il primo passo è spesso il più difficile. Contattami per un primo colloquio conoscitivo, senza impegno.",
+    "title": "Il primo passo è spesso il più difficile",
+    "text": "Se stai pensando di chiedere aiuto, sei già a buon punto. Contattami per un primo colloquio conoscitivo — senza impegno, ci conosciamo e vediamo insieme se posso esserti utile.",
     "button": "Contattami ora"
   },
   "contact": {
     "pageTitle": "Contatti",
     "title": "Contattami",
-    "subtitle": "Hai domande o vuoi prenotare un appuntamento? Compila il modulo o contattami direttamente.",
+    "subtitle": "Scrivimi per prenotare un primo colloquio o per qualsiasi domanda. Rispondo di solito entro 24 ore.",
     "form": {
       "name": "Nome e Cognome",
       "namePlaceholder": "Il tuo nome",
@@ -357,58 +357,58 @@
     "subtitle": "Risposte alle domande più comuni sul percorso psicologico.",
     "q1": {
       "question": "Come funziona il primo colloquio?",
-      "answer": "Il primo colloquio è un incontro conoscitivo di circa 50 minuti in cui parliamo delle tue esigenze e degli obiettivi che vorresti raggiungere. È un momento per conoscerci e capire insieme se il percorso che propongo fa al caso tuo. Non comporta alcun impegno."
+      "answer": "Il primo colloquio dura circa 50 minuti ed è un incontro conoscitivo: mi racconti cosa ti porta qui, io ti spiego come lavoro e insieme valutiamo se ha senso iniziare un percorso. È un momento per conoscerci, senza alcun obbligo di proseguire. Puoi scegliere se vederci in studio a Meledo (VI) o Spinea (VE), oppure in videochiamata."
     },
     "q2": {
       "question": "Quanto dura una seduta?",
-      "answer": "Ogni seduta dura circa 50 minuti. La frequenza degli incontri viene concordata insieme in base alle esigenze individuali, generalmente con cadenza settimanale o bisettimanale."
+      "answer": "Non c'è una durata fissa: dipende da ciò che porti e dagli obiettivi che ci diamo insieme. Alcuni percorsi si concludono in poche settimane, altri richiedono più tempo. Fin dal primo incontro ne parliamo apertamente e rivalutiamo periodicamente come sta andando, così sai sempre a che punto siamo."
     },
     "q3": {
       "question": "Qual è il costo delle sedute?",
-      "answer": "Il costo delle sedute viene comunicato durante il primo colloquio conoscitivo. Le tariffe sono in linea con le indicazioni dell'Ordine degli Psicologi e le fatture sono detraibili dalla dichiarazione dei redditi."
+      "answer": "Il costo varia in base al tipo di percorso (individuale, coppia, famiglia). Te lo comunico durante il primo contatto telefonico o via email, prima ancora di fissare un appuntamento, così puoi decidere con tranquillità. Le sedute psicologiche sono detraibili fiscalmente come spesa sanitaria."
     },
     "q4": {
       "question": "È possibile fare sedute online?",
-      "answer": "Sì, offro la possibilità di effettuare sedute online tramite videochiamata. Le sedute a distanza sono altrettanto efficaci e permettono di seguire il percorso anche quando non è possibile recarsi in studio."
+      "answer": "Sì, le sedute online si svolgono in videochiamata su piattaforme sicure e sono equivalenti a quelle in studio per qualità e riservatezza. Funzionano bene per chi ha difficoltà a spostarsi, orari poco flessibili, o semplicemente preferisce restare a casa. Puoi anche alternare sedute in presenza e online in base alle tue esigenze."
     },
     "q5": {
       "question": "Come posso prenotare un appuntamento?",
-      "answer": "Puoi contattarmi tramite il modulo nella pagina Contatti, via email, telefono o WhatsApp. Ti risponderò al più presto per fissare un primo incontro."
+      "answer": "Puoi scrivermi via email, WhatsApp, oppure compilare il modulo nella pagina Contatti. Puoi anche chiamarmi direttamente. Rispondo di solito entro 24 ore nei giorni lavorativi. Nel primo contatto mi racconti brevemente cosa ti porta a cercare aiuto, così posso capire se sono la professionista giusta per te."
     },
     "q6": {
       "question": "I colloqui sono riservati?",
-      "answer": "Assolutamente sì. Il segreto professionale è un obbligo deontologico fondamentale. Tutto ciò che viene condiviso durante le sedute è strettamente confidenziale."
+      "answer": "Sì, la riservatezza è un diritto fondamentale e un obbligo professionale. Come psicologa sono tenuta al segreto professionale ai sensi del Codice Deontologico degli Psicologi Italiani (artt. 11-17). Tutto ciò che emerge durante le sedute è strettamente confidenziale, sia in studio che online."
     },
     "q7": {
       "question": "Qual è la differenza tra psicologo e psicoterapeuta?",
-      "answer": "Lo psicologo ha una laurea magistrale in psicologia ed è iscritto all'Albo. Può effettuare consulenze, sostegno psicologico e diagnosi. Lo psicoterapeuta ha completato anche una scuola di specializzazione quadriennale che lo abilita alla psicoterapia, cioè al trattamento di disturbi psicologici più strutturati."
+      "answer": "Lo psicologo ha una laurea magistrale e l'iscrizione all'Albo; può fare prevenzione, diagnosi, sostegno e riabilitazione psicologica. Lo psicoterapeuta ha in più una specializzazione di 4 anni che gli consente di utilizzare tecniche terapeutiche specifiche. Io sono psicologa e mi sto specializzando in psicoterapia sistemico-relazionale presso il Centro Padovano di Terapia della Famiglia. Già oggi il mio lavoro è orientato da questo approccio, che guarda alla persona nel contesto delle sue relazioni."
     },
     "q8": {
       "question": "Come faccio a capire se ho bisogno di supporto psicologico?",
-      "answer": "Se senti che alcune difficoltà emotive, relazionali o comportamentali interferiscono con la tua vita quotidiana, il lavoro o le relazioni, potrebbe essere il momento di chiedere aiuto. Non serve aspettare di stare molto male: anche un confronto in un momento di cambiamento può essere utile."
+      "answer": "Non serve avere un problema 'serio' per chiedere aiuto. Se ti senti in difficoltà, se un pensiero ricorrente non ti dà pace, se le relazioni intorno a te si sono complicate, o se semplicemente senti il bisogno di uno spazio per riflettere — sono tutti motivi validi. Il primo colloquio serve proprio a capire insieme se un percorso può esserti utile, senza impegno."
     },
     "q9": {
       "question": "Le sedute sono detraibili fiscalmente?",
-      "answer": "Sì. Le prestazioni psicologiche sono spese sanitarie detraibili nella dichiarazione dei redditi (detrazione del 19% sulla parte eccedente la franchigia di 129,11 euro). Rilascio regolare fattura."
+      "answer": "Sì. Le prestazioni psicologiche sono spese sanitarie detraibili al 19% nella dichiarazione dei redditi. Rilascio regolare fattura dopo ogni seduta e, se necessario, un riepilogo annuale per il tuo commercialista."
     }
   },
   "howItWorks": {
     "pageTitle": "Come Funziona",
     "title": "Come funziona un percorso psicologico",
-    "subtitle": "Se non hai mai fatto un percorso psicologico, è normale avere dubbi o un po' di ansia. Ecco cosa aspettarti, passo dopo passo.",
+    "subtitle": "È normale avere dubbi prima di iniziare un percorso psicologico. Ecco cosa succede, passo dopo passo, dal primo contatto in poi.",
     "steps": {
       "title": "Il percorso in tre passi",
       "contact": {
         "title": "Primo contatto",
-        "text": "Scrivimi o chiamami per fissare un primo colloquio conoscitivo. Puoi usare il modulo contatti, email, telefono o WhatsApp. Ti risponderò al più presto."
+        "text": "Mi scrivi o mi chiami. Mi racconti brevemente cosa ti porta a cercare aiuto e troviamo un momento per il primo colloquio. Nessun impegno."
       },
       "firstSession": {
         "title": "Il primo colloquio",
-        "text": "È un incontro di circa 50 minuti in cui ci conosciamo. Mi racconti cosa ti porta qui, io ti spiego come lavoro. Non c'è alcun obbligo di continuare: è un momento per capire insieme se il percorso può fare al caso tuo."
+        "text": "Ci vediamo per circa 50 minuti — in studio a Meledo (VI) o Spinea (VE), oppure online. Ci conosciamo, mi racconti la tua situazione e insieme valutiamo se e come proseguire."
       },
       "path": {
         "title": "Il percorso terapeutico",
-        "text": "Se decidiamo di proseguire, definiamo insieme obiettivi e frequenza degli incontri (generalmente settimanale o bisettimanale). Ogni percorso è unico e viene costruito su misura, rispettando i tuoi tempi."
+        "text": "Definiamo insieme obiettivi concreti e una frequenza sostenibile. Rivalutiamo regolarmente come sta andando, così il percorso si adatta a te e non il contrario."
       }
     },
     "modalities": {
@@ -480,7 +480,7 @@
     "ariaLabel": "Informativa sui cookie"
   },
   "footer": {
-    "description": "Psicologa clinica iscritta all'Albo degli Psicologi del Veneto. Sostegno psicologico individuale, consulenze di coppia e familiari.",
+    "description": "Psicologa clinica iscritta all'Albo degli Psicologi del Veneto (n. 13939). Sostegno individuale, di coppia e familiare, psicologia scolastica e percorsi per genitori e adolescenti.",
     "quickLinks": "Link rapidi",
     "contacts": "Contatti",
     "legal": "P.IVA: {piva} — Albo Psicologi del Veneto n. {alboNumber}",
