@@ -8,7 +8,7 @@ import { Heading } from "@/components/ui/heading";
 import { FadeIn } from "@/components/ui/fade-in";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
-import { getAllBlogItems, getTopics } from "@/lib/sanity";
+import { getAllBlogItems, getBlogCounts, getTopics } from "@/lib/sanity";
 import { BlogFilters } from "./blog-filters";
 import type { Locale, Post, Resource } from "@/types";
 
@@ -34,21 +34,14 @@ export default async function BlogPage({
   const tNav = await getTranslations("navigation");
   const params = await searchParams;
 
-  const topics = await getTopics();
-  const items = await getAllBlogItems(locale, {
-    type: params.tipo,
-    topic: params.argomento,
-  });
-
-  // Fetch all items (without type filter) for tab counters
-  const allForCounts = await getAllBlogItems(locale, {
-    topic: params.argomento,
-  });
-  const counts = {
-    all: allForCounts.length,
-    posts: allForCounts.filter((i) => i._type === "post").length,
-    resources: allForCounts.filter((i) => i._type === "resource").length,
-  };
+  const [topics, items, counts] = await Promise.all([
+    getTopics(),
+    getAllBlogItems(locale, {
+      type: params.tipo,
+      topic: params.argomento,
+    }),
+    getBlogCounts(locale, { topic: params.argomento }),
+  ]);
 
   // Pagination
   const page = parseInt(params.pagina || "1", 10);

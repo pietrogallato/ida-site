@@ -5,7 +5,7 @@ export const client = createClient({
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET!,
   apiVersion: "2026-03-28",
-  useCdn: false,
+  useCdn: true,
 });
 
 export async function getPosts(
@@ -129,6 +129,28 @@ export async function getAllBlogItems(
     (a: { publishedAt: string }, b: { publishedAt: string }) =>
       new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime(),
   );
+}
+
+export async function getBlogCounts(
+  locale: Locale,
+  filters?: { topic?: string },
+): Promise<{ all: number; posts: number; resources: number }> {
+  const hasTopicFilter = !!filters?.topic;
+  const topicParams = hasTopicFilter ? { topicSlug: filters!.topic } : {};
+
+  const result = await client.fetch(
+    `{
+      "posts": count(*[_type == "post" && language == $locale ${hasTopicFilter ? '&& topic->slug.current == $topicSlug' : ''}]),
+      "resources": count(*[_type == "resource" ${hasTopicFilter ? '&& topic->slug.current == $topicSlug' : ''}])
+    }`,
+    { locale, ...topicParams },
+  );
+
+  return {
+    all: result.posts + result.resources,
+    posts: result.posts,
+    resources: result.resources,
+  };
 }
 
 export async function getAllPostSlugs() {

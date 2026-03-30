@@ -2,7 +2,6 @@
 
 import { useState, useRef, useEffect, useCallback, useMemo } from "react";
 import { useTranslations } from "next-intl";
-import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import type { Locale, Topic } from "@/types";
 
@@ -20,7 +19,6 @@ export function TopicDropdown({
   onTopicChange,
 }: TopicDropdownProps) {
   const t = useTranslations("blog");
-  const shouldReduceMotion = useReducedMotion();
   const [isOpen, setIsOpen] = useState(false);
   const [highlightedIndex, setHighlightedIndex] = useState(-1);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -132,55 +130,51 @@ export function TopicDropdown({
       >
         <span className="truncate">{selectedLabel}</span>
         <ChevronDown
-          className={`h-4 w-4 shrink-0 text-foreground-subtle transition-transform ${
+          className={`h-4 w-4 shrink-0 text-foreground-subtle transition-transform duration-150 ${
             isOpen ? "rotate-180" : ""
           }`}
           aria-hidden="true"
         />
       </button>
 
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            role="listbox"
-            id="topic-listbox"
-            initial={shouldReduceMotion ? false : { opacity: 0, y: -4 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={shouldReduceMotion ? undefined : { opacity: 0, y: -4 }}
-            transition={{ duration: 0.15 }}
-            className="absolute top-full z-10 mt-1 max-h-60 w-full overflow-y-auto rounded-xl border border-border bg-surface p-1 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.05),0_16px_40px_-4px_rgba(0,0,0,0.1)] dark:shadow-[0_4px_6px_-1px_rgba(0,0,0,0.2),0_16px_40px_-4px_rgba(0,0,0,0.3)]"
-          >
-            {options.map((option, index) => {
-              const isSelected = option.slug === currentTopic;
-              const isHighlighted = index === highlightedIndex;
+      <div
+        role="listbox"
+        id="topic-listbox"
+        className={`absolute top-full z-10 mt-1 max-h-60 w-full overflow-y-auto rounded-xl border border-border bg-surface p-1 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.05),0_16px_40px_-4px_rgba(0,0,0,0.1)] transition-[opacity,transform] duration-150 dark:shadow-[0_4px_6px_-1px_rgba(0,0,0,0.2),0_16px_40px_-4px_rgba(0,0,0,0.3)] ${
+          isOpen
+            ? "pointer-events-auto translate-y-0 opacity-100"
+            : "pointer-events-none -translate-y-1 opacity-0"
+        }`}
+      >
+        {options.map((option, index) => {
+          const isSelected = option.slug === currentTopic;
+          const isHighlighted = index === highlightedIndex;
 
-              return (
-                <div
-                  key={option.slug || "__all__"}
-                  id={`topic-option-${index}`}
-                  role="option"
-                  aria-selected={isSelected}
-                  onMouseEnter={() => setHighlightedIndex(index)}
-                  onClick={() => {
-                    onTopicChange(option.slug);
-                    setIsOpen(false);
-                    triggerRef.current?.focus();
-                  }}
-                  className={`cursor-pointer rounded-lg px-3 py-2 text-sm transition-colors ${
-                    isSelected
-                      ? "bg-gradient-to-r from-primary/[0.08] to-accent/[0.06] font-medium text-primary-text"
-                      : isHighlighted
-                        ? "bg-surface-alt text-foreground"
-                        : "text-foreground"
-                  }`}
-                >
-                  {option.label}
-                </div>
-              );
-            })}
-          </motion.div>
-        )}
-      </AnimatePresence>
+          return (
+            <div
+              key={option.slug || "__all__"}
+              id={`topic-option-${index}`}
+              role="option"
+              aria-selected={isSelected}
+              onMouseEnter={() => setHighlightedIndex(index)}
+              onClick={() => {
+                onTopicChange(option.slug);
+                setIsOpen(false);
+                triggerRef.current?.focus();
+              }}
+              className={`cursor-pointer rounded-lg px-3 py-2 text-sm transition-colors ${
+                isSelected
+                  ? "bg-gradient-to-r from-primary/[0.08] to-accent/[0.06] font-medium text-primary-text"
+                  : isHighlighted
+                    ? "bg-surface-alt text-foreground"
+                    : "text-foreground"
+              }`}
+            >
+              {option.label}
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }
