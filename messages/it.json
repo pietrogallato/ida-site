@@ -10,6 +10,7 @@
     "contact": "Contatti",
     "faq": "FAQ",
     "blog": "Blog",
+    "testimonials": "Recensioni",
     "subtitle": "Psicologa Clinica"
   },
   "common": {
@@ -283,18 +284,15 @@
   "testimonials": {
     "title": "Cosa dicono di me",
     "subtitle": "Le esperienze di chi ha intrapreso un percorso con me.",
-    "t1": {
-      "text": "Ida mi ha aiutato a ritrovare fiducia in me stessa in un momento molto difficile. Il suo approccio empatico e professionale ha fatto davvero la differenza.",
-      "author": "M., 34 anni"
-    },
-    "t2": {
-      "text": "Grazie al percorso con la dott.ssa Sato ho imparato a gestire l'ansia che mi paralizzava. Oggi vivo con più serenità e consapevolezza.",
-      "author": "L., 28 anni"
-    },
-    "t3": {
-      "text": "Le sedute online sono comode e altrettanto efficaci. Ida riesce a creare un ambiente accogliente anche attraverso lo schermo.",
-      "author": "A., 41 anni"
-    }
+    "readAll": "Leggi tutte le recensioni",
+    "pageTitle": "Recensioni",
+    "pageSubtitle": "Cosa dicono le persone che hanno fatto un percorso con me.",
+    "averageRating": "Valutazione media",
+    "basedOn": "Basato su {count} recensioni",
+    "noTestimonials": "Non ci sono ancora recensioni.",
+    "sourceManual": "Recensione verificata",
+    "sourceGoogle": "Da Google",
+    "slideLabel": "{current} di {total}"
   },
   "cta": {
     "title": "Il primo passo è spesso il più difficile",

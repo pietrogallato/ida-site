@@ -12,21 +12,29 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Invalid signature" }, { status: 401 });
   }
 
-  let payload: { slug?: { current?: string } } = {};
+  let payload: { _type?: string; slug?: { current?: string } } = {};
   try {
     payload = JSON.parse(body);
   } catch {
     return NextResponse.json({ error: "Invalid payload" }, { status: 400 });
   }
 
-  // Revalidate blog list pages
-  revalidatePath("/it/blog");
-  revalidatePath("/en/blog");
+  if (payload._type === "testimonial") {
+    // Revalidate homepage and reviews page
+    revalidatePath("/it");
+    revalidatePath("/en");
+    revalidatePath("/it/recensioni");
+    revalidatePath("/en/reviews");
+  } else {
+    // Revalidate blog list pages
+    revalidatePath("/it/blog");
+    revalidatePath("/en/blog");
 
-  // Revalidate specific post if slug is present
-  if (payload?.slug?.current) {
-    revalidatePath(`/it/blog/${payload.slug.current}`);
-    revalidatePath(`/en/blog/${payload.slug.current}`);
+    // Revalidate specific post if slug is present
+    if (payload?.slug?.current) {
+      revalidatePath(`/it/blog/${payload.slug.current}`);
+      revalidatePath(`/en/blog/${payload.slug.current}`);
+    }
   }
 
   // Revalidate sitemap

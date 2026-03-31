@@ -108,6 +108,25 @@ export function getServiceSchema(service: {
   };
 }
 
+export function getAggregateRatingSchema(params: {
+  ratingValue: number;
+  reviewCount: number;
+  bestRating?: number;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    name: siteConfig.name,
+    url: siteConfig.url,
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: params.ratingValue,
+      bestRating: params.bestRating ?? 5,
+      reviewCount: params.reviewCount,
+    },
+  };
+}
+
 export function getBlogPostingSchema(post: {
   title: string;
   excerpt: string;

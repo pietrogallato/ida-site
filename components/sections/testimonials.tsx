@@ -1,13 +1,17 @@
-import { getTranslations } from "next-intl/server";
-import { Quote } from "lucide-react";
+import { getLocale, getTranslations } from "next-intl/server";
 import { Container } from "@/components/ui/container";
 import { Heading } from "@/components/ui/heading";
-import { Card } from "@/components/ui/card";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
-import { testimonials } from "@/content/testimonials";
+import { getFeaturedTestimonials } from "@/lib/sanity";
+import { TestimonialCarousel } from "./testimonial-carousel";
+import type { Locale } from "@/types";
 
 export async function Testimonials() {
+  const locale = (await getLocale()) as Locale;
   const t = await getTranslations("testimonials");
+  const testimonials = await getFeaturedTestimonials();
+
+  if (testimonials.length === 0) return null;
 
   return (
     <section className="py-16 md:py-24">
@@ -20,21 +24,23 @@ export async function Testimonials() {
         </ScrollReveal>
 
         <ScrollReveal delay={0.1}>
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {testimonials.map((testimonial) => (
-              <Card key={testimonial.id} accentColor="secondary">
-                <Quote
-                  className="mb-4 h-10 w-10 text-primary/50"
-                  aria-hidden="true"
-                />
-                <blockquote className="leading-relaxed text-foreground-muted">
-                  <p>{t(`${testimonial.id}.text`)}</p>
-                </blockquote>
-                <p className="mt-4 text-sm font-semibold text-primary-text">
-                  — {t(`${testimonial.id}.author`)}
-                </p>
-              </Card>
-            ))}
+          <div className="mt-12">
+            <TestimonialCarousel
+              testimonials={testimonials}
+              locale={locale}
+              slideLabel={t("slideLabel", { current: "{current}", total: "{total}" })}
+            />
+          </div>
+        </ScrollReveal>
+
+        <ScrollReveal delay={0.15}>
+          <div className="mt-8 text-center">
+            <a
+              href={`/${locale}/${locale === "it" ? "recensioni" : "reviews"}`}
+              className="text-sm font-medium text-primary-text transition-colors hover:text-primary-dark"
+            >
+              {t("readAll")} →
+            </a>
           </div>
         </ScrollReveal>
       </Container>

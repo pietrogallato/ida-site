@@ -10,6 +10,7 @@
     "contact": "Contact",
     "faq": "FAQ",
     "blog": "Blog",
+    "testimonials": "Reviews",
     "subtitle": "Clinical Psychologist"
   },
   "common": {
@@ -283,18 +284,15 @@
   "testimonials": {
     "title": "What people say",
     "subtitle": "Experiences from those who have embarked on a journey with me.",
-    "t1": {
-      "text": "Ida helped me regain confidence in myself during a very difficult time. Her empathetic and professional approach truly made a difference.",
-      "author": "M., 34 years old"
-    },
-    "t2": {
-      "text": "Thanks to my sessions with Dr. Sato, I learned to manage the anxiety that was paralyzing me. Today I live with more serenity and awareness.",
-      "author": "L., 28 years old"
-    },
-    "t3": {
-      "text": "Online sessions are convenient and equally effective. Ida manages to create a welcoming environment even through the screen.",
-      "author": "A., 41 years old"
-    }
+    "readAll": "Read all reviews",
+    "pageTitle": "Reviews",
+    "pageSubtitle": "What people say about their journey with me.",
+    "averageRating": "Average rating",
+    "basedOn": "Based on {count} reviews",
+    "noTestimonials": "No reviews yet.",
+    "sourceManual": "Verified review",
+    "sourceGoogle": "From Google",
+    "slideLabel": "{current} of {total}"
   },
   "cta": {
     "title": "The first step is often the hardest",

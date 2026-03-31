@@ -25,7 +25,13 @@ export interface FAQ {
 }
 
 export interface Testimonial {
-  id: string;
+  _id: string;
+  text: { it: string; en: string };
+  author: string;
+  rating: number;
+  source: "manual" | "google";
+  order?: number;
+  publishedAt?: string;
 }
 
 export interface NavItem {

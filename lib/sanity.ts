@@ -1,5 +1,5 @@
 import { createClient } from "next-sanity";
-import type { Locale, BlogItem } from "@/types";
+import type { Locale, BlogItem, Testimonial } from "@/types";
 
 export const client = createClient({
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
@@ -151,6 +151,31 @@ export async function getBlogCounts(
     posts: result.posts,
     resources: result.resources,
   };
+}
+
+export async function getFeaturedTestimonials(): Promise<Testimonial[]> {
+  return client.fetch(
+    `*[_type == "testimonial" && featured == true] | order(order asc, publishedAt desc) [0...4] {
+      _id, text, author, rating, source
+    }`,
+  );
+}
+
+export async function getAllTestimonials(): Promise<Testimonial[]> {
+  return client.fetch(
+    `*[_type == "testimonial"] | order(publishedAt desc) {
+      _id, text, author, rating, source, publishedAt
+    }`,
+  );
+}
+
+export async function getTestimonialStats(): Promise<{ count: number; ratings: number[] }> {
+  return client.fetch(
+    `{
+      "count": count(*[_type == "testimonial"]),
+      "ratings": *[_type == "testimonial"].rating
+    }`,
+  );
 }
 
 export async function getAllPostSlugs() {
