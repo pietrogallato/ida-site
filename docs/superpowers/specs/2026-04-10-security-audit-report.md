@@ -233,7 +233,129 @@ Questa è l'area più sensibile del sito dal punto di vista GDPR (amplifier appl
 
 ### 3.2 `POST /api/revalidate`
 
-_Da compilare nel Task 3._
+File esaminati: `app/api/revalidate/route.ts`, `node_modules/@sanity/webhook/dist/index.js` (comportamento libreria).
+
+**Controlli già in ordine (non-finding):**
+- La signature HMAC-SHA256 è verificata **prima** di qualsiasi parsing del payload (`route.ts:11-13`). ✓
+- `body = req.text()` raw prima di `JSON.parse` → hash calcolato sul body esatto, nessun mismatch di canonicalizzazione. ✓
+- Il non-null assertion `SANITY_REVALIDATION_SECRET!` (`route.ts:5`) **non è pericoloso**: `@sanity/webhook` in `createHS256Signature` valida esplicitamente `!secret || typeof secret != "string"` e lancia un `WebhookSignatureFormatError`, che è un signature error riconosciuto e convertito in `isValidSignature === false` → route ritorna 401. Se l'env sparisce in runtime, l'endpoint rifiuta tutto anziché accettare tutto. ✓ Fail-safe.
+- Errori generici 401 / 400 senza leak interno. ✓
+- `revalidatePath` è un'operazione relativamente cheap e bounded a max ~5 path per chiamata. ✓
+
+---
+
+#### F-10 — Nessuna protezione contro replay del webhook
+
+- **Severity**: Medium
+- **Category**: Authentication / Replay protection
+- **Evidence**: `app/api/revalidate/route.ts:7-13` + comportamento `@sanity/webhook` `decodeSignatureHeader` (solo check `timestamp >= MINIMUM_TIMESTAMP = 2021-01-01`)
+  ```ts
+  if (!signature || !(await isValidSignature(body, signature, secret))) {
+    return NextResponse.json({ error: "Invalid signature" }, { status: 401 });
+  }
+  ```
+- **Impact**: La libreria `@sanity/webhook` firma la coppia `(timestamp, body)` con HMAC-SHA256, ma **non verifica che il timestamp sia recente**. Una richiesta firmata valida può essere replayed indefinitamente: un attaccante che riesce a intercettare UN solo webhook valido (es. via man-in-the-middle, log leakato, proxy compromesso, debugger intermedio) può riutilizzarla per causare revalidation arbitrarie del sito. Impatto concreto:
+  - Amplification DoS contro la cache ISR di Next.js (forzando rebuild costosi delle pagine).
+  - Consumo di quota build/bandwidth Vercel.
+  - Nessun accesso a dati protetti (il payload è solo `_type` + `slug`).
+  È un Medium — non un data breach, ma è una superficie di abuso evitabile con poche righe.
+- **Exploitation**: richiede l'intercetto di un webhook valido; improbabile in HTTPS diretto Sanity → Vercel, ma plausibile se qualcuno ha accesso a log applicativi, Vercel log drains, o configurazioni di proxy intermedie (Postman collezionate dagli sviluppatori, screenshot in issue tracker, ecc).
+- **Remediation**: dopo la verifica della signature, estrarre e validare il timestamp della firma:
+  ```ts
+  import { isValidSignature, SIGNATURE_HEADER_NAME } from "@sanity/webhook";
+
+  const MAX_WEBHOOK_AGE_MS = 5 * 60 * 1000; // 5 minuti
+
+  export async function POST(req: NextRequest) {
+    const body = await req.text();
+    const signature = req.headers.get(SIGNATURE_HEADER_NAME);
+
+    if (!signature || !(await isValidSignature(body, signature, secret))) {
+      return NextResponse.json({ error: "Invalid signature" }, { status: 401 });
+    }
+
+    // Anti-replay: rifiuta webhook più vecchi di 5 minuti
+    const match = signature.match(/^t=(\d+)/);
+    const timestamp = match ? parseInt(match[1], 10) : 0;
+    if (!timestamp || Date.now() - timestamp > MAX_WEBHOOK_AGE_MS) {
+      return NextResponse.json({ error: "Webhook expired" }, { status: 401 });
+    }
+
+    // ... resto invariato
+  }
+  ```
+- **Effort**: S
+
+---
+
+#### F-11 — `_type` non whitelistato: payload arbitrario cade nel branch "blog"
+
+- **Severity**: Low
+- **Category**: Input validation / Defense in depth
+- **Evidence**: `app/api/revalidate/route.ts:22-38`
+  ```ts
+  if (payload._type === "testimonial") {
+    revalidatePath("/it");
+    // ...
+  } else {
+    // qualsiasi altro _type (o nessuno) finisce qui
+    revalidatePath("/it/blog");
+    revalidatePath("/en/blog");
+    // ...
+  }
+  ```
+- **Impact**: Con una signature valida, un payload con `_type = "anythingElse"` (o assente) fa comunque partire la revalidation del blog. Non è sfruttabile da un esterno (serve la firma), ma è un'ambiguità: se Sanity aggiunge un nuovo schema, i webhook per quel tipo faranno revalidation sbagliate invece di essere rifiutati con `200 { ignored: true }` o `400 unknown type`. Ordine di grandezza minore perché è post-signature.
+- **Exploitation**: N/A (post-authentication).
+- **Remediation**: esplicitare la whitelist:
+  ```ts
+  switch (payload._type) {
+    case "testimonial":
+      revalidatePath("/it");
+      revalidatePath("/en");
+      revalidatePath("/it/recensioni");
+      revalidatePath("/en/reviews");
+      break;
+    case "post":
+    case "resource":
+    case "topic":
+      revalidatePath("/it/blog");
+      revalidatePath("/en/blog");
+      if (payload.slug?.current) {
+        revalidatePath(`/it/blog/${payload.slug.current}`);
+        revalidatePath(`/en/blog/${payload.slug.current}`);
+      }
+      break;
+    default:
+      return NextResponse.json({ ignored: true, reason: "unknown type" });
+  }
+  revalidatePath("/sitemap.xml");
+  ```
+- **Effort**: S
+
+---
+
+#### F-12 — `revalidatePath` con slug utente potrebbe normalizzare percorsi inattesi
+
+- **Severity**: Low
+- **Category**: Input validation
+- **Evidence**: `app/api/revalidate/route.ts:35-37`
+  ```ts
+  if (payload?.slug?.current) {
+    revalidatePath(`/it/blog/${payload.slug.current}`);
+    revalidatePath(`/en/blog/${payload.slug.current}`);
+  }
+  ```
+- **Impact**: `payload.slug.current` proviene da Sanity ma è post-autenticazione webhook — in pratica è fidato. Tuttavia se un editor Sanity malizioso (o uno compromesso) crea un post con `slug = "../../"` o simile, `revalidatePath` riceverebbe `/it/blog/../../`. Next.js normalmente normalizza i path, ma il comportamento con caratteri speciali non è testato qui. Impatto massimo: revalidation di path non previste → ISR cache miss, nessuna esposizione di dati. Low.
+- **Exploitation**: richiede accesso scrittura a Sanity — minaccia insider, non esterna.
+- **Remediation**: validare lo slug con un pattern conservativo:
+  ```ts
+  const SLUG_RE = /^[a-z0-9-]+$/i;
+  if (payload?.slug?.current && SLUG_RE.test(payload.slug.current)) {
+    revalidatePath(`/it/blog/${payload.slug.current}`);
+    revalidatePath(`/en/blog/${payload.slug.current}`);
+  }
+  ```
+- **Effort**: S
 
 ### 3.3 `/studio/*`
 
