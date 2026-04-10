@@ -791,7 +791,167 @@ File esaminati: `components/sections/contact-form.tsx`, `lib/portable-text-compo
 
 ### 4.1 Security headers
 
-_Da compilare nel Task 6._
+File esaminato: `next.config.ts:13-58`.
+
+**Headers presenti (non-finding):**
+- `X-Content-Type-Options: nosniff` su tutte le route (`next.config.ts:19, 28`). ✓
+- `X-Frame-Options: DENY` su route non-studio (`next.config.ts:27`). ✓ (manca su /studio → F-13)
+- `Referrer-Policy: strict-origin-when-cross-origin` su tutte le route (`next.config.ts:20, 29`). ✓
+- `Content-Security-Policy` presente con `default-src 'self'`, `frame-ancestors 'none'` → anti-clickjacking OK (`next.config.ts:37, 44`). ✓
+
+I finding sotto si concentrano su (a) CSP con `'unsafe-inline'` e directive mancanti, (b) Permissions-Policy molto parziale, (c) HSTS / COOP/COEP/CORP non espliciti nel repo.
+
+---
+
+#### F-23 — CSP usa `'unsafe-inline'` in `script-src` e `style-src`
+
+- **Severity**: High (script-src) + Medium (style-src)
+- **Category**: CSP / XSS defense
+- **Evidence**: `next.config.ts:38-39`
+  ```ts
+  "script-src 'self' 'unsafe-inline' https://va.vercel-scripts.com",
+  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+  ```
+- **Impact**: `'unsafe-inline'` in `script-src` disabilita in pratica una delle protezioni principali di CSP: qualsiasi XSS (anche un bug dormiente introdotto domani) può eseguire `<script>...</script>` inline. Senza di esso, un XSS riflesso o persistente da CMS (cfr. F-22) verrebbe bloccato dal browser. `'unsafe-inline'` in `style-src` ha impatto minore (CSS injection → data exfil limitata, defacement), ma rimane evitabile. Il motivo della presenza è documentato in F-20: Next.js App Router inietta 3 `<script>` inline in layout per i18n locale, Vercel Analytics init e Speed Insights init.
+- **Exploitation**: nessun exploit diretto oggi (nessun XSS noto), ma qualsiasi futuro XSS diventa automaticamente sfruttabile. La presenza di input utente (form contatti, CMS Sanity) aumenta il baseline di rischio.
+- **Remediation**: tre opzioni, in ordine di robustezza:
+  1. **Nonce-based CSP** (preferito per Next.js 16): generare un nonce random per request in `proxy.ts` (middleware), metterlo in un header custom, leggerlo nei RSC e applicarlo ai `<Script strategy="beforeInteractive">` o tag inline. Next.js ha documentazione ufficiale per questo pattern. Richiede refactor dei 3 punti in F-20 che usano `dangerouslySetInnerHTML`. Eliminare `'unsafe-inline'` dopo la migrazione.
+  2. **Hash-based CSP**: calcolare SHA-256 di ciascuno script inline statico e metterli in `script-src 'sha256-...'`. Funziona solo se gli script non cambiano. Fragile ai refactor.
+  3. **Accettare il tradeoff** documentato (come già discusso in F-20 Opzione C) ma almeno aggiungere `'strict-dynamic'` se migrato a nonce. Non risolve il problema, solo riconosce.
+- **Effort**: M (opzione 1) / S (opzione 2 se script stabili) / S (opzione 3, doc only)
+
+---
+
+#### F-24 — CSP manca direttive di hardening: `base-uri`, `form-action`, `object-src`, `upgrade-insecure-requests`
+
+- **Severity**: Medium
+- **Category**: CSP hardening
+- **Evidence**: `next.config.ts:36-46` (block CSP intero)
+- **Impact**: Quattro direttive che chiudono vettori residui di XSS / hijacking:
+  - `base-uri 'none'` (o `'self'`) — impedisce a un XSS di iniettare `<base href="https://evil.com/">` e reindirizzare tutti i relative URL del sito verso un dominio attaccante. Senza questa, un XSS parziale diventa totale.
+  - `form-action 'self'` — previene che un form del sito faccia POST verso un dominio attaccante (es. credential harvesting via form injection). Per il form contatti che tratta PII, questo è GDPR-rilevante.
+  - `object-src 'none'` — blocca `<object>`, `<embed>`, `<applet>` (Flash/Java legacy). Superficie minima oggi, ma è one-liner.
+  - `upgrade-insecure-requests` — forza ogni sub-request HTTP a essere promossa a HTTPS, evitando mixed content che degrada la security UI del browser.
+  Con amplifier GDPR su `form-action` (PII contatti) → **Medium**.
+- **Exploitation**: nessun exploit diretto, ma ognuna delle 4 direttive manca nel depth-in-defense. In combinazione con F-23 (`'unsafe-inline'` attivo) aumentano l'area d'attacco in caso di XSS.
+- **Remediation**: aggiungere tutte e 4 al blocco CSP:
+  ```ts
+  {
+    key: "Content-Security-Policy",
+    value: [
+      "default-src 'self'",
+      "script-src 'self' 'unsafe-inline' https://va.vercel-scripts.com",
+      "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+      "font-src 'self'",
+      "img-src 'self' data: blob: https://cdn.sanity.io",
+      "connect-src 'self' https://vitals.vercel-insights.com https://va.vercel-scripts.com",
+      "frame-src 'self' https://www.google.com",
+      "frame-ancestors 'none'",
+      "base-uri 'none'",
+      "form-action 'self'",
+      "object-src 'none'",
+      "upgrade-insecure-requests",
+    ].join("; "),
+  },
+  ```
+- **Effort**: S
+
+---
+
+#### F-25 — CSP `img-src` include `data:` e `blob:` senza necessità documentata
+
+- **Severity**: Low
+- **Category**: CSP hardening
+- **Evidence**: `next.config.ts:41`
+  ```ts
+  "img-src 'self' data: blob: https://cdn.sanity.io",
+  ```
+- **Impact**: `data:` URIs in `img-src` permettono di esfiltrare dati codificati come base64 dentro `<img src="data:...">` in caso di XSS, aggirando alcuni filtri di DLP. `blob:` ha impatto simile. Next.js `next/image` non richiede `data:`/`blob:` per il suo funzionamento normale (usa URL remote o `/_next/image?url=...`). Se non ci sono usi espliciti di `data:`/`blob:` nel codice, sono over-permissive.
+- **Exploitation**: nessun exploit diretto; riduce l'efficacia di CSP come mitigazione XSS.
+- **Remediation**: verificare con `grep -rn "data:image\|URL\.createObjectURL" --include="*.ts" --include="*.tsx" app/ components/ lib/` se esiste uso reale. Se no, rimuovere `data:` e `blob:`. Se sì (es. canvas preview), mantenere solo quello necessario.
+- **Effort**: S
+
+---
+
+#### F-26 — `Permissions-Policy` incompleta (solo 3 feature)
+
+- **Severity**: Low
+- **Category**: Headers hardening
+- **Evidence**: `next.config.ts:30-33`
+  ```ts
+  { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
+  ```
+- **Impact**: `Permissions-Policy` è un allowlist: ciò che non viene esplicitamente disabilitato rimane accessibile via JS. Il sito dichiara solo `camera`, `microphone`, `geolocation`; rimangono abilitate feature che il sito non usa: `payment`, `usb`, `serial`, `hid`, `bluetooth`, `magnetometer`, `accelerometer`, `gyroscope`, `ambient-light-sensor`, `clipboard-read`, `clipboard-write`, `display-capture`, `encrypted-media`, `fullscreen`, `midi`, `picture-in-picture`, `publickey-credentials-get`, `screen-wake-lock`, `web-share`, `xr-spatial-tracking`, `autoplay`, `interest-cohort` (FLoC). Un XSS potrebbe usarle per fingerprinting o abuse.
+- **Exploitation**: pre-requisito XSS. Hardening puro.
+- **Remediation**: espandere la lista:
+  ```ts
+  {
+    key: "Permissions-Policy",
+    value: [
+      "accelerometer=()",
+      "ambient-light-sensor=()",
+      "autoplay=()",
+      "battery=()",
+      "bluetooth=()",
+      "camera=()",
+      "clipboard-read=()",
+      "clipboard-write=()",
+      "display-capture=()",
+      "document-domain=()",
+      "encrypted-media=()",
+      "fullscreen=(self)",
+      "geolocation=()",
+      "gyroscope=()",
+      "hid=()",
+      "idle-detection=()",
+      "interest-cohort=()",
+      "magnetometer=()",
+      "microphone=()",
+      "midi=()",
+      "payment=()",
+      "picture-in-picture=()",
+      "publickey-credentials-get=()",
+      "screen-wake-lock=()",
+      "serial=()",
+      "usb=()",
+      "xr-spatial-tracking=()",
+    ].join(", "),
+  },
+  ```
+- **Effort**: S
+
+---
+
+#### F-27 — `Strict-Transport-Security` (HSTS) non dichiarato esplicitamente nel repo
+
+- **Severity**: Medium
+- **Category**: Transport security
+- **Evidence**: `next.config.ts:26-47` — nessun entry `Strict-Transport-Security` nel block headers per route non-studio.
+- **Impact**: HSTS indica al browser di forzare HTTPS per N secondi, impedendo downgrade SSL-strip. Vercel di default abilita HSTS (`max-age=63072000; includeSubDomains; preload` a livello di edge), quindi in produzione il sito è probabilmente già protetto — ma questo è "config Vercel", non garantito dal repo. Se il sito viene spostato a un altro hosting, o se Vercel cambia default, si perde la protezione. Inoltre, senza `preload` esplicito nella HSTS preload list Chrome, un primo visitatore su HTTP è vulnerabile. **Da verificare** con `curl -I https://<dominio-ida>` che header manda l'edge Vercel oggi.
+- **Exploitation**: richiede MITM sul primo accesso in HTTP (wifi pubblico). Probabilità bassa ma reale su reti non fidate.
+- **Remediation**: aggiungere esplicitamente nel block non-studio:
+  ```ts
+  { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains; preload" },
+  ```
+  E sottomettere il dominio a https://hstspreload.org/ per preload list Chrome.
+- **Effort**: S (codice) + manuale (submit preload)
+
+---
+
+#### F-28 — Headers cross-origin (COOP / COEP / CORP) non dichiarati
+
+- **Severity**: Low
+- **Category**: Cross-origin isolation
+- **Evidence**: `next.config.ts:26-47` — nessun entry `Cross-Origin-Opener-Policy`, `Cross-Origin-Embedder-Policy`, `Cross-Origin-Resource-Policy`.
+- **Impact**: La triade COOP/COEP/CORP protegge da Spectre-like attacks e da XS-Leaks (cross-site information leak). Per un sito con embed di terze parti (Google Maps iframe → F-18), `COEP: require-corp` è troppo restrittivo e romperebbe l'embed. Ma `COOP: same-origin-allow-popups` e `CORP: same-origin` sono applicabili senza rotture. Hardening puro, non blocca exploit noti.
+- **Exploitation**: scenari avanzati (XS-Leaks, timing attack su cross-origin). Threat model 3 (attacker mirato).
+- **Remediation**: aggiungere:
+  ```ts
+  { key: "Cross-Origin-Opener-Policy", value: "same-origin-allow-popups" },
+  { key: "Cross-Origin-Resource-Policy", value: "same-origin" },
+  ```
+  **Non** aggiungere COEP a meno di rimuovere Google Maps iframe (F-18). Testare che il link WhatsApp/Google Maps continui a funzionare.
+- **Effort**: S
 
 ### 4.2 Gestione segreti ed env
 
