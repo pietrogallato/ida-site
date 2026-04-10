@@ -129,15 +129,33 @@
       },
       "stepsTitle": "How it works",
       "steps": {
-        "s1": { "title": "First contact", "text": "You write or call me to briefly tell me what's bringing you to seek help. We find a time to meet, with no commitment." },
-        "s2": { "title": "First session", "text": "We meet for about 50 minutes — at my office in Meledo (VI) or Spinea (VE), or online. We get to know each other and assess together whether it makes sense to start a path." },
-        "s3": { "title": "Personalized path", "text": "We define concrete goals and a sustainable frequency (weekly or bi-weekly). We regularly reassess how things are going." }
+        "s1": {
+          "title": "First contact",
+          "text": "You write or call me to briefly tell me what's bringing you to seek help. We find a time to meet, with no commitment."
+        },
+        "s2": {
+          "title": "First session",
+          "text": "We meet for about 50 minutes — at my office in Meledo (VI) or Spinea (VE), or online. We get to know each other and assess together whether it makes sense to start a path."
+        },
+        "s3": {
+          "title": "Personalized path",
+          "text": "We define concrete goals and a sustainable frequency (weekly or bi-weekly). We regularly reassess how things are going."
+        }
       },
       "faqTitle": "Frequently asked questions",
       "faq": {
-        "f1": { "question": "How long does an individual support path last?", "answer": "There's no predefined duration: it depends on your goals and how the path evolves. Some conclude in a few weeks, others take longer. We discuss it openly from the very first meeting." },
-        "f2": { "question": "Do I need to have a serious problem to seek support?", "answer": "No. Psychological support is also helpful during times of change, uncertainty, or simply when you feel the need for a space to reflect." },
-        "f3": { "question": "Is individual support suitable for teenagers?", "answer": "For minors, I offer a dedicated service with age-appropriate methods. Individual support is designed for adults aged 18 and over." }
+        "f1": {
+          "question": "How long does an individual support path last?",
+          "answer": "There's no predefined duration: it depends on your goals and how the path evolves. Some conclude in a few weeks, others take longer. We discuss it openly from the very first meeting."
+        },
+        "f2": {
+          "question": "Do I need to have a serious problem to seek support?",
+          "answer": "No. Psychological support is also helpful during times of change, uncertainty, or simply when you feel the need for a space to reflect."
+        },
+        "f3": {
+          "question": "Is individual support suitable for teenagers?",
+          "answer": "For minors, I offer a dedicated service with age-appropriate methods. Individual support is designed for adults aged 18 and over."
+        }
       }
     },
     "couples": {
@@ -157,15 +175,33 @@
       },
       "stepsTitle": "How it works",
       "steps": {
-        "s1": { "title": "First contact", "text": "One partner or family member contacts me. We talk briefly to understand the situation and schedule a first meeting." },
-        "s2": { "title": "Introductory meeting", "text": "The first session is with all members involved. Everyone has space to share their point of view in a safe, neutral environment." },
-        "s3": { "title": "Shared path", "text": "We define goals together. Sessions involve all participants, with the possibility of individual meetings when helpful." }
+        "s1": {
+          "title": "First contact",
+          "text": "One partner or family member contacts me. We talk briefly to understand the situation and schedule a first meeting."
+        },
+        "s2": {
+          "title": "Introductory meeting",
+          "text": "The first session is with all members involved. Everyone has space to share their point of view in a safe, neutral environment."
+        },
+        "s3": {
+          "title": "Shared path",
+          "text": "We define goals together. Sessions involve all participants, with the possibility of individual meetings when helpful."
+        }
       },
       "faqTitle": "Frequently asked questions",
       "faq": {
-        "f1": { "question": "Do both partners need to agree to come?", "answer": "Ideally yes. If your partner is uncertain, we can have a first session together to see if the path could be helpful — with no obligation." },
-        "f2": { "question": "Can I have family counseling with my children?", "answer": "Yes, we assess together who it's helpful to involve and how, based on the specific situation." },
-        "f3": { "question": "Is couples counseling only for couples in crisis?", "answer": "No. It's also useful for those who want to improve communication, face an important change, or invest in the quality of their relationship." }
+        "f1": {
+          "question": "Do both partners need to agree to come?",
+          "answer": "Ideally yes. If your partner is uncertain, we can have a first session together to see if the path could be helpful — with no obligation."
+        },
+        "f2": {
+          "question": "Can I have family counseling with my children?",
+          "answer": "Yes, we assess together who it's helpful to involve and how, based on the specific situation."
+        },
+        "f3": {
+          "question": "Is couples counseling only for couples in crisis?",
+          "answer": "No. It's also useful for those who want to improve communication, face an important change, or invest in the quality of their relationship."
+        }
       }
     },
     "school": {
@@ -185,15 +221,33 @@
       },
       "stepsTitle": "How it works",
       "steps": {
-        "s1": { "title": "Needs assessment", "text": "I meet with school leadership and teachers to understand the specific needs of the school and its students." },
-        "s2": { "title": "Design", "text": "I create a tailored project: classroom workshops, listening services, teacher training, or individual support." },
-        "s3": { "title": "Intervention and monitoring", "text": "I carry out the interventions and monitor results, maintaining constant dialogue with teachers and parents." }
+        "s1": {
+          "title": "Needs assessment",
+          "text": "I meet with school leadership and teachers to understand the specific needs of the school and its students."
+        },
+        "s2": {
+          "title": "Design",
+          "text": "I create a tailored project: classroom workshops, listening services, teacher training, or individual support."
+        },
+        "s3": {
+          "title": "Intervention and monitoring",
+          "text": "I carry out the interventions and monitor results, maintaining constant dialogue with teachers and parents."
+        }
       },
       "faqTitle": "Frequently asked questions",
       "faq": {
-        "f1": { "question": "Who can request a school psychology intervention?", "answer": "School leadership, teachers, or parents. In any case, I work involving all relevant figures." },
-        "f2": { "question": "What kind of classroom activities are offered?", "answer": "Interactive workshops on affective and sex education, emotional management, peer relationships, and bullying prevention. Always adapted to the students' age." },
-        "f3": { "question": "How is a student with SLD supported?", "answer": "Through assessing difficulties, collaborating with family and teachers for personalized teaching strategies, and when needed, individual tutoring. I have specific training as an SLD and SEN tutor." }
+        "f1": {
+          "question": "Who can request a school psychology intervention?",
+          "answer": "School leadership, teachers, or parents. In any case, I work involving all relevant figures."
+        },
+        "f2": {
+          "question": "What kind of classroom activities are offered?",
+          "answer": "Interactive workshops on affective and sex education, emotional management, peer relationships, and bullying prevention. Always adapted to the students' age."
+        },
+        "f3": {
+          "question": "How is a student with SLD supported?",
+          "answer": "Through assessing difficulties, collaborating with family and teachers for personalized teaching strategies, and when needed, individual tutoring. I have specific training as an SLD and SEN tutor."
+        }
       }
     },
     "parenting": {
@@ -213,15 +267,33 @@
       },
       "stepsTitle": "How it works",
       "steps": {
-        "s1": { "title": "First contact", "text": "You briefly tell me about the situation and we figure out together whether parenting support is the most suitable path." },
-        "s2": { "title": "Initial meeting", "text": "In the first session, we explore family dynamics and the difficulties you're experiencing. One or both parents can attend." },
-        "s3": { "title": "Support path", "text": "We work through regular meetings on the concrete challenges that arise, developing new resources for your role as a parent." }
+        "s1": {
+          "title": "First contact",
+          "text": "You briefly tell me about the situation and we figure out together whether parenting support is the most suitable path."
+        },
+        "s2": {
+          "title": "Initial meeting",
+          "text": "In the first session, we explore family dynamics and the difficulties you're experiencing. One or both parents can attend."
+        },
+        "s3": {
+          "title": "Support path",
+          "text": "We work through regular meetings on the concrete challenges that arise, developing new resources for your role as a parent."
+        }
       },
       "faqTitle": "Frequently asked questions",
       "faq": {
-        "f1": { "question": "Is parenting support only for parents in difficulty?", "answer": "No. It's useful for anyone who wants to better understand family dynamics, improve communication with their children, or face a phase of change." },
-        "f2": { "question": "Do both parents need to participate?", "answer": "Not necessarily. You can work with one parent alone. When possible, involving both leads to better results." },
-        "f3": { "question": "What age range is it recommended for?", "answer": "Any stage, from childhood to adolescence. The challenges change with age and the path adapts accordingly." }
+        "f1": {
+          "question": "Is parenting support only for parents in difficulty?",
+          "answer": "No. It's useful for anyone who wants to better understand family dynamics, improve communication with their children, or face a phase of change."
+        },
+        "f2": {
+          "question": "Do both parents need to participate?",
+          "answer": "Not necessarily. You can work with one parent alone. When possible, involving both leads to better results."
+        },
+        "f3": {
+          "question": "What age range is it recommended for?",
+          "answer": "Any stage, from childhood to adolescence. The challenges change with age and the path adapts accordingly."
+        }
       }
     },
     "youth": {
@@ -241,15 +313,33 @@
       },
       "stepsTitle": "How it works",
       "steps": {
-        "s1": { "title": "Meeting with parents", "text": "The first step is a session with parents to understand the situation and concerns. It helps me get a complete picture before meeting the child or teenager." },
-        "s2": { "title": "Meeting with the child", "text": "I meet the child or teenager in a welcoming environment, using age-appropriate methods — play, drawing, or dialogue — to build a trusting relationship." },
-        "s3": { "title": "Integrated path", "text": "The work continues with regular sessions with the child and periodic meetings with parents, for coordinated support." }
+        "s1": {
+          "title": "Meeting with parents",
+          "text": "The first step is a session with parents to understand the situation and concerns. It helps me get a complete picture before meeting the child or teenager."
+        },
+        "s2": {
+          "title": "Meeting with the child",
+          "text": "I meet the child or teenager in a welcoming environment, using age-appropriate methods — play, drawing, or dialogue — to build a trusting relationship."
+        },
+        "s3": {
+          "title": "Integrated path",
+          "text": "The work continues with regular sessions with the child and periodic meetings with parents, for coordinated support."
+        }
       },
       "faqTitle": "Frequently asked questions",
       "faq": {
-        "f1": { "question": "From what age can a child start a path?", "answer": "From about 6 years of age. For younger children, the work is mainly with parents through parenting support." },
-        "f2": { "question": "Are parents present during sessions?", "answer": "It depends on the age. With younger children, parents may be involved. With teenagers, sessions are individual, with periodic meetings with parents." },
-        "f3": { "question": "Is the school involved in the path?", "answer": "Only when helpful and with parental consent. Collaboration with teachers can be very effective for coordinated support." }
+        "f1": {
+          "question": "From what age can a child start a path?",
+          "answer": "From about 6 years of age. For younger children, the work is mainly with parents through parenting support."
+        },
+        "f2": {
+          "question": "Are parents present during sessions?",
+          "answer": "It depends on the age. With younger children, parents may be involved. With teenagers, sessions are individual, with periodic meetings with parents."
+        },
+        "f3": {
+          "question": "Is the school involved in the path?",
+          "answer": "Only when helpful and with parental consent. Collaboration with teachers can be very effective for coordinated support."
+        }
       }
     },
     "online": {
@@ -269,15 +359,33 @@
       },
       "stepsTitle": "How it works",
       "steps": {
-        "s1": { "title": "Booking", "text": "Contact me to schedule an online appointment. I'll send you the video call link before the session." },
-        "s2": { "title": "Preparation", "text": "You need a stable connection, a device with camera and microphone, and a quiet place where you can speak privately." },
-        "s3": { "title": "The session", "text": "We connect at the agreed time. The session lasts about 50 minutes, just like in the office. Payment is made by bank transfer." }
+        "s1": {
+          "title": "Booking",
+          "text": "Contact me to schedule an online appointment. I'll send you the video call link before the session."
+        },
+        "s2": {
+          "title": "Preparation",
+          "text": "You need a stable connection, a device with camera and microphone, and a quiet place where you can speak privately."
+        },
+        "s3": {
+          "title": "The session",
+          "text": "We connect at the agreed time. The session lasts about 50 minutes, just like in the office. Payment is made by bank transfer."
+        }
       },
       "faqTitle": "Frequently asked questions",
       "faq": {
-        "f1": { "question": "What platform is used for video calls?", "answer": "I use secure platforms that comply with privacy regulations. I'll share the details when you book your appointment." },
-        "f2": { "question": "Are online sessions as effective as in-office ones?", "answer": "Yes. Scientific research confirms that online sessions are equally effective as in-person ones for most situations." },
-        "f3": { "question": "Can I alternate between online and in-office sessions?", "answer": "Of course. Many people choose a mixed approach, alternating based on their needs." }
+        "f1": {
+          "question": "What platform is used for video calls?",
+          "answer": "I use secure platforms that comply with privacy regulations. I'll share the details when you book your appointment."
+        },
+        "f2": {
+          "question": "Are online sessions as effective as in-office ones?",
+          "answer": "Yes. Scientific research confirms that online sessions are equally effective as in-person ones for most situations."
+        },
+        "f3": {
+          "question": "Can I alternate between online and in-office sessions?",
+          "answer": "Of course. Many people choose a mixed approach, alternating based on their needs."
+        }
       }
     }
   },
@@ -448,11 +556,11 @@
     },
     "dataCollected": {
       "title": "Data Collected",
-      "text": "Through the contact form, we collect: name, email address, phone number (optional), and message text. This data is used exclusively to respond to inquiries received. Blog content is delivered through the Sanity CDN (cdn.sanity.io), which may log standard HTTP request data (IP address, user-agent). Legal basis: Art. 6(1)(b) GDPR for the contact form; Art. 6(1)(f) GDPR for website content delivery."
+      "text": "Through the contact form, we collect: name, email address, phone number (optional), and message text. This data is used exclusively to respond to inquiries received. To prevent abuse of the form, the visitor's IP address is held temporarily in volatile memory for up to 15 minutes (legal basis: legitimate interest of the controller in preventing abuse, Art. 6(1)(f) GDPR) and is not persisted. The Vercel hosting infrastructure also logs standard HTTP request metadata (IP address, user-agent, request path, timestamp) for security and debugging purposes, according to the retention of the Vercel plan in use. Blog content is delivered through the Sanity CDN (cdn.sanity.io), which may log standard HTTP request data. Legal basis: Art. 6(1)(b) GDPR for the contact form; Art. 6(1)(f) GDPR for website content delivery and abuse prevention."
     },
     "thirdParty": {
       "title": "Third-Party Services",
-      "text": "This site uses the following third-party services: Vercel Inc. (vercel.com) for website hosting and traffic analysis; Sanity AS (sanity.io) for managing and delivering blog content via the CDN cdn.sanity.io. Both providers operate in compliance with the GDPR and have appropriate Data Processing Agreements (DPA) in place. For more information, please refer to their respective privacy policies."
+      "text": "This site uses the following third-party services: Vercel Inc. (vercel.com) for website hosting, CDN delivery and traffic analysis; Sanity AS (sanity.io) for managing and delivering blog content via the CDN cdn.sanity.io; Resend Inc. (resend.com) for sending emails generated by the contact form. All providers operate in compliance with the GDPR and have appropriate Data Processing Agreements (DPA) in place, available on request from the controller. For more information, please refer to their respective privacy policies."
     },
     "analytics": {
       "title": "Traffic Analysis",
@@ -464,7 +572,7 @@
     },
     "retention": {
       "title": "Data Retention",
-      "text": "Data collected through the contact form is retained only for the time strictly necessary to handle the request and is subsequently deleted. Anonymous analytics data cannot be traced back to individuals and is retained according to Vercel's policies."
+      "text": "Messages submitted through the contact form are retained in the controller's mailbox for as long as necessary to handle the request and any resulting professional relationship, and are then deleted. The transactional email provider (Resend) retains logs of sent emails according to the retention of its service plan. IP addresses used for contact form abuse prevention are held in volatile memory for a maximum of 15 minutes. Technical logs of the Vercel infrastructure are retained according to the retention policy of the Vercel plan in use. Aggregated Vercel Analytics data is retained according to Vercel's policies (typically 90 days)."
     },
     "rights": {
       "title": "Your Rights",

@@ -129,15 +129,33 @@
       },
       "stepsTitle": "Come funziona",
       "steps": {
-        "s1": { "title": "Primo contatto", "text": "Mi scrivi o mi chiami per raccontarmi brevemente cosa ti porta a cercare aiuto. Troviamo un momento per vederci, senza impegno." },
-        "s2": { "title": "Primo colloquio", "text": "Ci vediamo per circa 50 minuti — in studio a Meledo (VI) o Spinea (VE), oppure online. Ci conosciamo e valutiamo insieme se ha senso iniziare un percorso." },
-        "s3": { "title": "Percorso personalizzato", "text": "Definiamo obiettivi concreti e una frequenza sostenibile (settimanale o bisettimanale). Rivalutiamo regolarmente come sta andando." }
+        "s1": {
+          "title": "Primo contatto",
+          "text": "Mi scrivi o mi chiami per raccontarmi brevemente cosa ti porta a cercare aiuto. Troviamo un momento per vederci, senza impegno."
+        },
+        "s2": {
+          "title": "Primo colloquio",
+          "text": "Ci vediamo per circa 50 minuti — in studio a Meledo (VI) o Spinea (VE), oppure online. Ci conosciamo e valutiamo insieme se ha senso iniziare un percorso."
+        },
+        "s3": {
+          "title": "Percorso personalizzato",
+          "text": "Definiamo obiettivi concreti e una frequenza sostenibile (settimanale o bisettimanale). Rivalutiamo regolarmente come sta andando."
+        }
       },
       "faqTitle": "Domande frequenti",
       "faq": {
-        "f1": { "question": "Quanto dura un percorso di sostegno individuale?", "answer": "Non c'è una durata predefinita: dipende dai tuoi obiettivi e da come evolve il percorso. Alcuni si concludono in poche settimane, altri richiedono più tempo. Ne parliamo apertamente fin dal primo incontro." },
-        "f2": { "question": "Devo avere un problema grave per chiedere sostegno?", "answer": "No. Il sostegno psicologico è utile anche nei momenti di cambiamento, incertezza o semplicemente quando senti il bisogno di uno spazio per riflettere." },
-        "f3": { "question": "Il sostegno individuale è adatto anche agli adolescenti?", "answer": "Per i minori offro un servizio dedicato con modalità specifiche per la loro età. Il sostegno individuale è pensato per adulti dai 18 anni in su." }
+        "f1": {
+          "question": "Quanto dura un percorso di sostegno individuale?",
+          "answer": "Non c'è una durata predefinita: dipende dai tuoi obiettivi e da come evolve il percorso. Alcuni si concludono in poche settimane, altri richiedono più tempo. Ne parliamo apertamente fin dal primo incontro."
+        },
+        "f2": {
+          "question": "Devo avere un problema grave per chiedere sostegno?",
+          "answer": "No. Il sostegno psicologico è utile anche nei momenti di cambiamento, incertezza o semplicemente quando senti il bisogno di uno spazio per riflettere."
+        },
+        "f3": {
+          "question": "Il sostegno individuale è adatto anche agli adolescenti?",
+          "answer": "Per i minori offro un servizio dedicato con modalità specifiche per la loro età. Il sostegno individuale è pensato per adulti dai 18 anni in su."
+        }
       }
     },
     "couples": {
@@ -157,15 +175,33 @@
       },
       "stepsTitle": "Come funziona",
       "steps": {
-        "s1": { "title": "Primo contatto", "text": "Uno dei partner o un membro della famiglia mi contatta. Parliamo brevemente per capire la situazione e fissare un primo incontro." },
-        "s2": { "title": "Incontro conoscitivo", "text": "Il primo colloquio è con tutti i membri coinvolti. Ognuno ha spazio per raccontare il proprio punto di vista in un ambiente sicuro e neutro." },
-        "s3": { "title": "Percorso condiviso", "text": "Definiamo insieme gli obiettivi. Le sedute coinvolgono tutti i partecipanti, con possibilità di incontri individuali quando utile." }
+        "s1": {
+          "title": "Primo contatto",
+          "text": "Uno dei partner o un membro della famiglia mi contatta. Parliamo brevemente per capire la situazione e fissare un primo incontro."
+        },
+        "s2": {
+          "title": "Incontro conoscitivo",
+          "text": "Il primo colloquio è con tutti i membri coinvolti. Ognuno ha spazio per raccontare il proprio punto di vista in un ambiente sicuro e neutro."
+        },
+        "s3": {
+          "title": "Percorso condiviso",
+          "text": "Definiamo insieme gli obiettivi. Le sedute coinvolgono tutti i partecipanti, con possibilità di incontri individuali quando utile."
+        }
       },
       "faqTitle": "Domande frequenti",
       "faq": {
-        "f1": { "question": "Entrambi i partner devono essere d'accordo nel venire?", "answer": "Idealmente sì. Se il tuo partner è incerto, possiamo fare un primo colloquio insieme per capire se il percorso può essere utile — senza alcun obbligo." },
-        "f2": { "question": "Posso fare una consulenza familiare anche con i figli?", "answer": "Sì, valutiamo insieme chi è utile coinvolgere e con quali modalità, in base alla situazione specifica." },
-        "f3": { "question": "La consulenza di coppia serve solo per coppie in crisi?", "answer": "No. È utile anche per chi vuole migliorare la comunicazione, affrontare un cambiamento importante o investire nella qualità della relazione." }
+        "f1": {
+          "question": "Entrambi i partner devono essere d'accordo nel venire?",
+          "answer": "Idealmente sì. Se il tuo partner è incerto, possiamo fare un primo colloquio insieme per capire se il percorso può essere utile — senza alcun obbligo."
+        },
+        "f2": {
+          "question": "Posso fare una consulenza familiare anche con i figli?",
+          "answer": "Sì, valutiamo insieme chi è utile coinvolgere e con quali modalità, in base alla situazione specifica."
+        },
+        "f3": {
+          "question": "La consulenza di coppia serve solo per coppie in crisi?",
+          "answer": "No. È utile anche per chi vuole migliorare la comunicazione, affrontare un cambiamento importante o investire nella qualità della relazione."
+        }
       }
     },
     "school": {
@@ -185,15 +221,33 @@
       },
       "stepsTitle": "Come funziona",
       "steps": {
-        "s1": { "title": "Analisi dei bisogni", "text": "Incontro la dirigenza e gli insegnanti per capire le esigenze specifiche della scuola e degli studenti." },
-        "s2": { "title": "Progettazione", "text": "Creo un progetto su misura: laboratori in classe, sportello d'ascolto, formazione docenti o supporto individuale." },
-        "s3": { "title": "Intervento e monitoraggio", "text": "Realizzo gli interventi e ne monitoro i risultati, mantenendo un confronto costante con insegnanti e genitori." }
+        "s1": {
+          "title": "Analisi dei bisogni",
+          "text": "Incontro la dirigenza e gli insegnanti per capire le esigenze specifiche della scuola e degli studenti."
+        },
+        "s2": {
+          "title": "Progettazione",
+          "text": "Creo un progetto su misura: laboratori in classe, sportello d'ascolto, formazione docenti o supporto individuale."
+        },
+        "s3": {
+          "title": "Intervento e monitoraggio",
+          "text": "Realizzo gli interventi e ne monitoro i risultati, mantenendo un confronto costante con insegnanti e genitori."
+        }
       },
       "faqTitle": "Domande frequenti",
       "faq": {
-        "f1": { "question": "Chi può richiedere un intervento di psicologia scolastica?", "answer": "Dirigenti scolastici, insegnanti o genitori. In ogni caso lavoro coinvolgendo tutte le figure rilevanti." },
-        "f2": { "question": "Che tipo di interventi vengono fatti in classe?", "answer": "Laboratori interattivi su educazione affettiva e sessuo-affettiva, gestione delle emozioni, relazioni tra pari e prevenzione del bullismo. Sempre adattati all'età degli studenti." },
-        "f3": { "question": "Come si supporta uno studente con DSA?", "answer": "Con una valutazione delle difficoltà, la collaborazione con famiglia e insegnanti per strategie didattiche personalizzate, e quando serve il tutoring individuale. Ho una formazione specifica come tutor DSA e BES." }
+        "f1": {
+          "question": "Chi può richiedere un intervento di psicologia scolastica?",
+          "answer": "Dirigenti scolastici, insegnanti o genitori. In ogni caso lavoro coinvolgendo tutte le figure rilevanti."
+        },
+        "f2": {
+          "question": "Che tipo di interventi vengono fatti in classe?",
+          "answer": "Laboratori interattivi su educazione affettiva e sessuo-affettiva, gestione delle emozioni, relazioni tra pari e prevenzione del bullismo. Sempre adattati all'età degli studenti."
+        },
+        "f3": {
+          "question": "Come si supporta uno studente con DSA?",
+          "answer": "Con una valutazione delle difficoltà, la collaborazione con famiglia e insegnanti per strategie didattiche personalizzate, e quando serve il tutoring individuale. Ho una formazione specifica come tutor DSA e BES."
+        }
       }
     },
     "parenting": {
@@ -213,15 +267,33 @@
       },
       "stepsTitle": "Come funziona",
       "steps": {
-        "s1": { "title": "Primo contatto", "text": "Mi racconti brevemente la situazione e capiamo insieme se il sostegno alla genitorialità è il percorso più adatto." },
-        "s2": { "title": "Incontro iniziale", "text": "Nel primo colloquio esploriamo le dinamiche familiari e le difficoltà che stai vivendo. Può partecipare un solo genitore o entrambi." },
-        "s3": { "title": "Percorso di supporto", "text": "Lavoriamo con incontri regolari sulle sfide concrete che si presentano, sviluppando nuove risorse per il tuo ruolo di genitore." }
+        "s1": {
+          "title": "Primo contatto",
+          "text": "Mi racconti brevemente la situazione e capiamo insieme se il sostegno alla genitorialità è il percorso più adatto."
+        },
+        "s2": {
+          "title": "Incontro iniziale",
+          "text": "Nel primo colloquio esploriamo le dinamiche familiari e le difficoltà che stai vivendo. Può partecipare un solo genitore o entrambi."
+        },
+        "s3": {
+          "title": "Percorso di supporto",
+          "text": "Lavoriamo con incontri regolari sulle sfide concrete che si presentano, sviluppando nuove risorse per il tuo ruolo di genitore."
+        }
       },
       "faqTitle": "Domande frequenti",
       "faq": {
-        "f1": { "question": "Il sostegno alla genitorialità è solo per genitori in difficoltà?", "answer": "No. È utile per chiunque voglia capire meglio le dinamiche familiari, migliorare la comunicazione con i figli o affrontare una fase di cambiamento." },
-        "f2": { "question": "Devono partecipare entrambi i genitori?", "answer": "Non necessariamente. Si può lavorare anche con un solo genitore. Quando è possibile, il coinvolgimento di entrambi porta a risultati migliori." },
-        "f3": { "question": "A che età dei figli è consigliato?", "answer": "In qualsiasi fase, dall'infanzia all'adolescenza. Le sfide cambiano con l'età e il percorso si adatta di conseguenza." }
+        "f1": {
+          "question": "Il sostegno alla genitorialità è solo per genitori in difficoltà?",
+          "answer": "No. È utile per chiunque voglia capire meglio le dinamiche familiari, migliorare la comunicazione con i figli o affrontare una fase di cambiamento."
+        },
+        "f2": {
+          "question": "Devono partecipare entrambi i genitori?",
+          "answer": "Non necessariamente. Si può lavorare anche con un solo genitore. Quando è possibile, il coinvolgimento di entrambi porta a risultati migliori."
+        },
+        "f3": {
+          "question": "A che età dei figli è consigliato?",
+          "answer": "In qualsiasi fase, dall'infanzia all'adolescenza. Le sfide cambiano con l'età e il percorso si adatta di conseguenza."
+        }
       }
     },
     "youth": {
@@ -241,15 +313,33 @@
       },
       "stepsTitle": "Come funziona",
       "steps": {
-        "s1": { "title": "Incontro con i genitori", "text": "Il primo passo è un colloquio con i genitori per capire la situazione e le preoccupazioni. Mi aiuta ad avere un quadro completo prima di incontrare il bambino o il ragazzo." },
-        "s2": { "title": "Incontro con il minore", "text": "Incontro il bambino o l'adolescente in un ambiente accogliente, usando modalità adatte alla sua età — gioco, disegno o dialogo — per costruire un rapporto di fiducia." },
-        "s3": { "title": "Percorso integrato", "text": "Il lavoro prosegue con incontri regolari con il minore e colloqui periodici con i genitori, per un supporto coordinato." }
+        "s1": {
+          "title": "Incontro con i genitori",
+          "text": "Il primo passo è un colloquio con i genitori per capire la situazione e le preoccupazioni. Mi aiuta ad avere un quadro completo prima di incontrare il bambino o il ragazzo."
+        },
+        "s2": {
+          "title": "Incontro con il minore",
+          "text": "Incontro il bambino o l'adolescente in un ambiente accogliente, usando modalità adatte alla sua età — gioco, disegno o dialogo — per costruire un rapporto di fiducia."
+        },
+        "s3": {
+          "title": "Percorso integrato",
+          "text": "Il lavoro prosegue con incontri regolari con il minore e colloqui periodici con i genitori, per un supporto coordinato."
+        }
       },
       "faqTitle": "Domande frequenti",
       "faq": {
-        "f1": { "question": "Da che età è possibile iniziare un percorso?", "answer": "Dai 6 anni circa. Per i bambini più piccoli, il lavoro è prevalentemente con i genitori attraverso il sostegno alla genitorialità." },
-        "f2": { "question": "I genitori sono presenti durante le sedute?", "answer": "Dipende dall'età. Con i più piccoli i genitori possono essere coinvolti. Con gli adolescenti le sedute sono individuali, con colloqui periodici con i genitori." },
-        "f3": { "question": "La scuola viene coinvolta nel percorso?", "answer": "Solo quando utile e con il consenso dei genitori. La collaborazione con gli insegnanti può essere molto efficace per un supporto coordinato." }
+        "f1": {
+          "question": "Da che età è possibile iniziare un percorso?",
+          "answer": "Dai 6 anni circa. Per i bambini più piccoli, il lavoro è prevalentemente con i genitori attraverso il sostegno alla genitorialità."
+        },
+        "f2": {
+          "question": "I genitori sono presenti durante le sedute?",
+          "answer": "Dipende dall'età. Con i più piccoli i genitori possono essere coinvolti. Con gli adolescenti le sedute sono individuali, con colloqui periodici con i genitori."
+        },
+        "f3": {
+          "question": "La scuola viene coinvolta nel percorso?",
+          "answer": "Solo quando utile e con il consenso dei genitori. La collaborazione con gli insegnanti può essere molto efficace per un supporto coordinato."
+        }
       }
     },
     "online": {
@@ -269,15 +359,33 @@
       },
       "stepsTitle": "Come funziona",
       "steps": {
-        "s1": { "title": "Prenotazione", "text": "Contattami per fissare un appuntamento online. Ti invio il link alla videochiamata prima della seduta." },
-        "s2": { "title": "Preparazione", "text": "Ti serve una connessione stabile, un dispositivo con telecamera e microfono, e un luogo tranquillo dove poter parlare con riservatezza." },
-        "s3": { "title": "La seduta", "text": "Ci colleghiamo all'orario concordato. La seduta dura circa 50 minuti, come in studio. Il pagamento avviene tramite bonifico." }
+        "s1": {
+          "title": "Prenotazione",
+          "text": "Contattami per fissare un appuntamento online. Ti invio il link alla videochiamata prima della seduta."
+        },
+        "s2": {
+          "title": "Preparazione",
+          "text": "Ti serve una connessione stabile, un dispositivo con telecamera e microfono, e un luogo tranquillo dove poter parlare con riservatezza."
+        },
+        "s3": {
+          "title": "La seduta",
+          "text": "Ci colleghiamo all'orario concordato. La seduta dura circa 50 minuti, come in studio. Il pagamento avviene tramite bonifico."
+        }
       },
       "faqTitle": "Domande frequenti",
       "faq": {
-        "f1": { "question": "Quale piattaforma si utilizza per le videochiamate?", "answer": "Utilizzo piattaforme sicure e conformi alle normative sulla privacy. Ti comunico i dettagli al momento della prenotazione." },
-        "f2": { "question": "Le sedute online sono efficaci quanto quelle in studio?", "answer": "Sì. La ricerca scientifica conferma che le sedute online sono altrettanto efficaci di quelle in presenza per la maggior parte delle situazioni." },
-        "f3": { "question": "Posso alternare sedute online e in studio?", "answer": "Certo. Molte persone scelgono una modalità mista, alternando in base alle proprie esigenze." }
+        "f1": {
+          "question": "Quale piattaforma si utilizza per le videochiamate?",
+          "answer": "Utilizzo piattaforme sicure e conformi alle normative sulla privacy. Ti comunico i dettagli al momento della prenotazione."
+        },
+        "f2": {
+          "question": "Le sedute online sono efficaci quanto quelle in studio?",
+          "answer": "Sì. La ricerca scientifica conferma che le sedute online sono altrettanto efficaci di quelle in presenza per la maggior parte delle situazioni."
+        },
+        "f3": {
+          "question": "Posso alternare sedute online e in studio?",
+          "answer": "Certo. Molte persone scelgono una modalità mista, alternando in base alle proprie esigenze."
+        }
       }
     }
   },
@@ -448,11 +556,11 @@
     },
     "dataCollected": {
       "title": "Dati raccolti",
-      "text": "Attraverso il modulo di contatto, raccogliamo: nome, indirizzo email, numero di telefono (facoltativo) e il testo del messaggio. Questi dati sono utilizzati esclusivamente per rispondere alle richieste ricevute. I contenuti del blog vengono distribuiti tramite la CDN di Sanity (cdn.sanity.io), che può registrare dati tecnici standard delle richieste HTTP (indirizzo IP, user-agent). Base giuridica: art. 6(1)(b) GDPR per il modulo di contatto; art. 6(1)(f) GDPR per la fornitura dei contenuti del sito."
+      "text": "Attraverso il modulo di contatto, raccogliamo: nome, indirizzo email, numero di telefono (facoltativo) e il testo del messaggio. Questi dati sono utilizzati esclusivamente per rispondere alle richieste ricevute. Per prevenire abusi del modulo, l'indirizzo IP del visitatore viene trattenuto temporaneamente in memoria volatile per un massimo di 15 minuti (base giuridica: legittimo interesse del titolare alla prevenzione di abusi, art. 6(1)(f) GDPR) e non viene persistito. L'infrastruttura di hosting Vercel registra inoltre log tecnici standard delle richieste HTTP (indirizzo IP, user-agent, percorso, timestamp) per finalità di sicurezza e debug, secondo la retention prevista dal piano Vercel in uso. I contenuti del blog vengono distribuiti tramite la CDN di Sanity (cdn.sanity.io), che può registrare dati tecnici standard delle richieste HTTP. Base giuridica: art. 6(1)(b) GDPR per il modulo di contatto; art. 6(1)(f) GDPR per la fornitura dei contenuti del sito e la prevenzione di abusi."
     },
     "thirdParty": {
       "title": "Servizi di terze parti",
-      "text": "Questo sito si avvale dei seguenti servizi di terze parti: Vercel Inc. (vercel.com) per l'hosting del sito e l'analisi del traffico; Sanity AS (sanity.io) per la gestione e la distribuzione dei contenuti del blog tramite la CDN cdn.sanity.io. Entrambi i fornitori operano in conformità al GDPR e dispongono di adeguati accordi sul trattamento dei dati (DPA). Per maggiori informazioni, consulta le rispettive informative sulla privacy."
+      "text": "Questo sito si avvale dei seguenti servizi di terze parti: Vercel Inc. (vercel.com) per l'hosting del sito, la distribuzione tramite CDN e l'analisi del traffico; Sanity AS (sanity.io) per la gestione e la distribuzione dei contenuti del blog tramite la CDN cdn.sanity.io; Resend Inc. (resend.com) per l'invio delle email generate dal modulo di contatto. Tutti i fornitori operano in conformità al GDPR e dispongono di adeguati accordi sul trattamento dei dati (DPA), disponibili su richiesta al titolare. Per maggiori informazioni, consulta le rispettive informative sulla privacy."
     },
     "analytics": {
       "title": "Analisi del traffico",
@@ -464,7 +572,7 @@
     },
     "retention": {
       "title": "Conservazione dei dati",
-      "text": "I dati raccolti tramite il modulo di contatto vengono conservati per il tempo strettamente necessario a gestire la richiesta e successivamente cancellati. I dati anonimi di analytics non sono riconducibili a persone fisiche e vengono conservati secondo le policy di Vercel."
+      "text": "I messaggi inviati tramite il modulo di contatto vengono conservati nella casella email del titolare per il tempo necessario a gestire la richiesta e il rapporto professionale eventualmente instaurato, e successivamente cancellati. Il provider di email transazionale (Resend) conserva log delle email inviate secondo la retention prevista dal proprio piano di servizio. Gli indirizzi IP utilizzati per la prevenzione di abusi del modulo di contatto sono conservati in memoria volatile per un massimo di 15 minuti. I log tecnici dell'infrastruttura Vercel sono conservati secondo le policy di retention del piano Vercel in uso. I dati aggregati di Vercel Analytics sono conservati secondo le policy di Vercel (tipicamente 90 giorni)."
     },
     "rights": {
       "title": "I tuoi diritti",
