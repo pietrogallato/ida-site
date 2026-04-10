@@ -10,7 +10,37 @@
 
 ## 1. Executive summary
 
-_Da compilare nel Task 12 (dopo aver raccolto tutti i finding)._
+**Finding count (53 IDs; 52 actionable + 1 non-finding)**
+
+| Severity | Count | Note |
+|----------|-------|------|
+| Critical | 1 | F-46 (trattamento dati sanitari art. 9 GDPR) |
+| High | 8 | F-01, F-02, F-17, F-23, F-31, F-49, F-50, F-52 |
+| Medium | 18 | vedi §4, §5 |
+| Low / Hardening | 23 | vedi §4, §5 |
+| Conditional (verify) | 2 | F-15, F-21 (dipendono da verifica visibility dataset Sanity) |
+| Non-finding (area esaminata) | 1 | F-45 (template email OK) |
+
+**Top 3 rischi**
+
+1. **F-46 — Form contatti può raccogliere dati sanitari (art. 9) senza base giuridica adeguata né warning utente** ⚖️
+   Il canale email per una psicologa attira per natura descrizioni di problemi psicologici (dati particolari). La privacy policy dichiara solo basi art. 6, e non c'è né disclaimer né consenso esplicito nel form. Rischio regolatorio + legale diretto.
+
+2. **F-01 / F-02 — Rate limit in-memory su Vercel serverless + mittente email `onboarding@resend.dev`**
+   Due debolezze del canale più sensibile del sito (form contatti): (a) il rate limit è di fatto per-lambda e bypassabile con poco sforzo, (b) il mittente è il dominio di test Resend, con probabili problemi di delivery/spam e nessun DMARC alignment. Il cliente può credere che il form funzioni mentre messaggi reali finiscono in Spam o vengono droppati.
+
+3. **F-31 + F-49 + F-50 — Next.js 16.1.6 con 5 advisory aperte + Resend e Google non dichiarati come processor**
+   Debito tecnico + compliance: dependency con CVE pubbliche (HTTP smuggling, CSRF bypass, DoS) non patched, e privacy policy che omette due processor significativi. Google Maps in particolare implica trasferimento extra-EU non dichiarato.
+
+**Raccomandazione generale**
+
+Il sito parte da una **base di codice pulita**: nessuna RCE, nessun SQL/NoSQL injection, nessun XSS runtime, nessun leak di segreti nel bundle, validazione input presente, CSRF mitigato, honeypot+timing in place, query GROQ parametrizzate. La maggior parte dei 52 finding sono di tre classi:
+
+1. **Hardening difensivo** (~23 Low): CSP da rafforzare, headers COOP/COEP/HSTS espliciti, Permissions-Policy completa, robots.txt più stretto, dipendenze da aggiornare. Fix quasi tutti S-effort.
+2. **Difesa in profondità e osservabilità** (~18 Medium): rate limit distribuito, logging/monitoring, backup Sanity, retention documentate, `/studio` dietro auth edge.
+3. **Compliance GDPR** (1 Critical + 4-5 High): il nodo è il form contatti, che tocca dati sanitari. Richiede input legale ⚖️ e modifiche UI (disclaimer + checkbox) + aggiornamento testo privacy policy. Parallelamente vanno rimossi/consenti-gatted gli embed Google Maps e Vercel Analytics.
+
+**Prossimo passo suggerito**: triage dei Critical + High con l'utente, confermare gli approcci di remediation per ciascuno (soprattutto le scelte di config esterna Vercel/Sanity/Resend e le decisioni legali su F-46/F-48/F-52), poi produrre un `superpowers:writing-plans` dedicato al fix implementativo. Le voci Low vanno tenute in backlog e affrontate in un secondo sprint di hardening.
 
 ---
 
@@ -1767,4 +1797,104 @@ Raccolta consolidata delle raccomandazioni che **non sono fix di codice** ma ric
 
 ## 8. Remediation roadmap
 
-_Da compilare nel Task 12 (ordinata per severity × 1/effort)._
+**Metodo di prioritizzazione**: `score = severity × 1/effort` dove
+- Severity: Critical = 4, High = 3, Medium = 2, Low = 1
+- Effort: S = 1, M = 2, L = 3
+
+A parità di score, la priorità viene data ai finding che toccano il form contatti (amplifier threat model).
+
+**Nota** ⚖️: i finding marcati richiedono parere legale prima di poter essere implementati tecnicamente.
+
+### 8.1 Tabella prioritizzata
+
+| # | Finding | Titolo breve | Sev | Eff | Score | Note |
+|---|---------|--------------|-----|-----|-------|------|
+| 1 | F-46 ⚖️ | Form contatti + dati sanitari art. 9 | Critical | M | 2.0 | Blocca su avvocato |
+| 2 | F-49 | Resend non in lista processor | High | S | 3.0 | Quick win |
+| 3 | F-50 | Google Maps iframe non dichiarato | High | S | 3.0 | Quick win (opzione A) |
+| 4 | F-01 | Rate limit in-memory bypassabile | High | S | 3.0 | Vercel Firewall |
+| 5 | F-31 | Next.js 16.1.6 → 16.2.3 (5 advisory) | High | S | 3.0 | `npm i next@16.2.3` |
+| 6 | F-23 | CSP `'unsafe-inline'` | High | M | 1.5 | Nonce CSP |
+| 7 | F-17 | Analytics senza consenso | High | M | 1.5 | Consent gate |
+| 8 | F-02 | Mittente `onboarding@resend.dev` | High | M | 1.5 | DNS + dashboard |
+| 9 | F-52 ⚖️ | DPIA art. 35 | High | M | 1.5 | Legale |
+| 10 | F-47 | IP non dichiarato in privacy | Medium | S | 2.0 | Testo policy |
+| 11 | F-48 | Analytics "no consent" dichiarato | Medium | S | 2.0 | Testo policy |
+| 12 | F-51 | Retention vaghe | Medium | S | 2.0 | Testo policy |
+| 13 | F-53 | DPA non conservati | Medium | S | 2.0 | Manuale dashboard |
+| 14 | F-24 | CSP manca `base-uri`/`form-action`/`object-src`/`upgrade-insecure-requests` | Medium | S | 2.0 | `next.config.ts` |
+| 15 | F-27 | HSTS non esplicito | Medium | S | 2.0 | `next.config.ts` |
+| 16 | F-36 | `robots.ts` permissivo | Medium | S | 2.0 | Disallow /studio,/api |
+| 17 | F-03 | Subject email no strip ctl chars | Medium | S | 2.0 | Sanitize helper |
+| 18 | F-04 | `console.error("Resend error:", error)` PII leak | Medium | S | 2.0 | Strip error object |
+| 19 | F-32 | `sanity` 5.18 → 5.20 | Medium | M | 1.0 | Bump + test Studio |
+| 20 | F-10 | Replay protection webhook revalidate | Medium | M | 1.0 | Nonce/timestamp check |
+| 21 | F-11 | `_type` non whitelistato webhook | Medium | M | 1.0 | Whitelist switch |
+| 22 | F-13 | Headers `/studio/*` incompleti | Medium | M | 1.0 | `next.config.ts` |
+| 23 | F-14 | Vision tool abilitato | Medium | M | 1.0 | `sanity.config.ts` |
+| 24 | F-20 | `dangerouslySetInnerHTML` in head | Medium | M | 1.0 | Parte di F-23 |
+| 25 | F-42 | Retention Resend non documentata | Medium | S | 2.0 | Dashboard + doc |
+| 26 | F-43 | No backup Sanity dataset | Medium | M | 1.0 | Script/CI |
+| 27 | F-44 | No monitoring / alerting | Medium | M | 1.0 | UptimeRobot + Axiom |
+| 28 | F-18 | Google Maps iframe (code side) | Medium | S | 2.0 | Coperto da F-50 |
+| 29 | F-33 | `styled-components` dead dep | Low | S | 1.0 | `npm uninstall` |
+| 30 | F-34 | CVE dev-time (picomatch/vite/flatted) | Low | S | 1.0 | `npm audit fix` |
+| 31 | F-35 | `@vercel/analytics` v1 → v2 | Low | S | 1.0 | Bump |
+| 32 | F-29 | `.env.example` incompleto | Low | S | 1.0 | Edit file |
+| 33 | F-30 | `env.ts` schema validation | Low | S | 1.0 | Nuovo file |
+| 34 | F-25 | CSP `data:`/`blob:` | Low | S | 1.0 | Verifica + rimuovi |
+| 35 | F-26 | `Permissions-Policy` parziale | Low | S | 1.0 | Espandi lista |
+| 36 | F-28 | COOP/CORP non dichiarati | Low | S | 1.0 | `next.config.ts` |
+| 37 | F-19 | CSP `fonts.googleapis.com` inutile | Low | S | 1.0 | Rimuovi da CSP |
+| 38 | F-22 | PortableText link schema | Low | S | 1.0 | Whitelist regex |
+| 39 | F-05 | Rate limit Map mai pulita | Low | S | 1.0 | Cleanup cronjob |
+| 40 | F-06 | Timestamp client-side anti-bot | Low | S | 1.0 | Server-side token |
+| 41 | F-07 | Pattern phone mancante | Low | S | 1.0 | Regex |
+| 42 | F-08 | No CAPTCHA | Low | M | 0.5 | Turnstile/hCaptcha |
+| 43 | F-09 | No timeout Resend | Low | S | 1.0 | `AbortSignal.timeout(5000)` |
+| 44 | F-12 | `revalidatePath` slug path normalization | Low | S | 1.0 | Sanitize slug |
+| 45 | F-16 | Studio discovery via bundle | Low | — | — | Solo doc |
+| 46 | F-37 | Sitemap alternates gap | Low | S | 1.0 | SEO, fuori scope |
+| 47 | F-38 | Sitemap fetch senza filtro lingua | Low | S | 1.0 | Filter GROQ |
+| 48 | F-39 | `/api/revalidate` no logs | Low | S | 1.0 | Structured log |
+| 49 | F-40 | Middleware matcher — solo doc | Low | S | 1.0 | Commento |
+| 50 | F-41 | Resend link tracking | Low | S | 1.0 | Disable dashboard |
+| 51 | F-15 | Dataset Sanity public? (verify) | (cond) | S | — | Check Sanity dashboard |
+| 52 | F-21 | `useCdn: true` + no token (dep. F-15) | (cond) | S | — | Dipende da F-15 |
+
+### 8.2 Bucket di esecuzione
+
+**Do now (Critical + High)** — 9 finding, azione entro il prossimo sprint di sicurezza:
+- F-46 ⚖️ (bloccante legale)
+- F-49, F-50, F-01, F-31, F-02, F-23, F-17, F-52 ⚖️
+
+**Do soon (Medium)** — 18-19 finding, ciclo successivo:
+- F-47, F-48, F-51, F-53, F-24, F-27, F-36, F-03, F-04, F-42, F-32, F-10, F-11, F-13, F-14, F-20, F-43, F-44, F-18
+
+**Hardening backlog (Low)** — 23 finding, da affrontare in batch quando c'è capacità:
+- Tutti i rimanenti (F-05 ... F-41).
+
+**Verify-first** — 2 finding condizionali:
+- F-15 / F-21: verificare in Sanity dashboard se il dataset è pubblico o privato. Se pubblico, entrambi escalano a High e vanno messi in "Do now". Se privato, chiudere entrambi senza azione code-side (già funzionanti) ma aggiungere `SANITY_READ_TOKEN` server-side.
+
+---
+
+### 8.3 Nota per il triage con l'utente
+
+Questa roadmap è l'input per il prossimo piano di fix (`superpowers:writing-plans`). Alcune voci **richiedono decisioni dell'utente prima** di poter essere inserite nel plan di implementazione:
+
+1. **Scelte di config esterna** (non code-side):
+   - F-01 → Vercel plan: il Firewall rate limit richiede Pro? Se sì, confermare che l'utente l'ha. Altrimenti Upstash/KV.
+   - F-02 → dominio di Ida da verificare in Resend: serve accesso DNS del dominio.
+   - F-12, F-13, F-36 → `/studio` dietro Vercel Password Protection o restare aperto?
+   - F-15 → dataset Sanity pubblico/privato (decisione business).
+2. **Decisioni legali** ⚖️:
+   - F-46 → approccio dati sanitari: disclaimer + no-consent, oppure consent form + DPIA?
+   - F-48, F-52 → scelta base giuridica analytics + necessità DPIA.
+   - Testo finale privacy policy e consensi → redatto da legale.
+3. **Trade-off di effort vs scope**:
+   - F-23 nonce-based CSP è un refactor non banale: vale il costo, o accettare il trade-off documentato?
+   - F-43 backup Sanity: CI automation o script manuale mensile?
+   - F-50 Google Maps: rimuovere (opzione A, quick) o click-to-consent (opzione B, più UX)?
+
+Il prossimo passo operativo è una sessione di triage con l'utente su queste scelte, al termine della quale si può invocare `superpowers:writing-plans` per produrre il plan implementativo delle fix approvate.
