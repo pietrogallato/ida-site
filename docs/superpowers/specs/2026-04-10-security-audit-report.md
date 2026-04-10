@@ -1056,7 +1056,117 @@ I finding sotto sono limitati a *gap di documentazione/brittleness* delle env, n
 
 ### 4.3 Supply chain / dipendenze
 
-_Da compilare nel Task 8._
+Eseguiti `npm audit` e `npm outdated` al commit di riferimento. Totale vulnerabilità riportate da `npm audit`: **12 (5 high, 7 moderate, 0 critical)**. Vedi §6 per la tabella compatta delle dipendenze dirette.
+
+---
+
+#### F-31 — Next.js 16.1.6 ha 5 advisory aperte, fix disponibile in 16.2.3
+
+- **Severity**: High (Medium baseline + amplifier per contact form → il sito tratta PII)
+- **Category**: Supply chain / CVE
+- **Evidence**: `npm audit` e `package.json`
+  ```
+  next  16.0.0-beta.0 - 16.1.6
+  Severity: moderate
+  - GHSA-ggv3-7p47-pfv8 — HTTP request smuggling in rewrites
+  - GHSA-3x4c-7xq6-9pq8 — Unbounded next/image disk cache growth → DoS storage
+  - GHSA-h27x-g6w4-24gq — Unbounded postponed resume buffering → DoS
+  - GHSA-mq59-m269-xvcx — null origin can bypass Server Actions CSRF checks
+  - GHSA-jcc7-9wpm-mj36 — null origin can bypass dev HMR websocket CSRF checks
+  fix available via `npm audit fix --force` → next@16.2.3
+  ```
+- **Impact**: Cinque advisory npm classificate `moderate` ma la severity reale per questo sito è più alta. In particolare:
+  - **GHSA-mq59-m269-xvcx** (Server Actions CSRF bypass) è il più rilevante: il sito usa React 19 / App Router e anche se il form contatti è un API route classico, qualsiasi Server Action futura sarebbe esposta.
+  - **GHSA-ggv3-7p47-pfv8** (HTTP request smuggling in rewrites) tocca `next.config.ts` rewrites/i18n routing.
+  - Le due DoS (cache crescita, buffer) sono amplificate dal traffico low-volume del sito ma rilevanti se un attaccante punta saturation.
+  Con amplifier GDPR (contact form presente) → **High**.
+- **Exploitation**: exploit pubblici nelle GHSA note; CSRF bypass è il più pratico.
+- **Remediation**: aggiornare Next.js: `npm i next@16.2.3 eslint-config-next@16.2.3`. È un minor bump, rischio bassi-medi. Rifare build + test manuale del form + Studio. Se bump troppo oneroso, monitorare advisory e pianificare upgrade nel prossimo ciclo.
+- **Effort**: S
+
+---
+
+#### F-32 — `sanity` 5.18 obsoleto: 5.20 disponibile, catena vulnerabilità js-yaml/lodash
+
+- **Severity**: Medium
+- **Category**: Supply chain / CVE
+- **Evidence**: `npm outdated` mostra `sanity@5.18.0 → 5.20.0`; `npm audit` elenca:
+  ```
+  js-yaml <3.14.2 → prototype pollution (GHSA-mh29-5h37-fv8m)
+    via @vercel/frameworks → @sanity/cli → sanity → next-sanity
+  lodash <=4.17.23 → code injection via _.template (GHSA-r5fr-rjxr-66jc)
+                     + prototype pollution (GHSA-f23m-r3pf-42rh)
+  lodash-es <=4.17.23 → stesse CVE di lodash
+  ```
+- **Impact**: Le vulnerabilità sono in dipendenze transitive di `sanity` (CLI + studio build). Sono sfruttabili solo se:
+  1. Un attaccante può fornire YAML malevolo al CLI `sanity` (es. CI che processa config da PR untrusted). Il sito non ha workflow CI che gira `sanity` su input esterni → vettore chiuso.
+  2. `lodash._template` viene chiamato su stringa user-controlled. Nel codice del sito non c'è nessuna chiamata a lodash; l'uso è solo interno a Sanity Studio.
+  
+  Nel contesto di questo repo il rischio residuo è basso (sono tool di dev/build, non runtime di produzione), ma è hygiene: ogni upgrade futuro delle dipendenze sanity-ecosystem porterà queste fix. Il fix richiede però `--force` e un bump maggiore di sanity → 5.14.1 secondo npm (la CLI propone un downgrade peculiare, da verificare manualmente).
+- **Exploitation**: non sfruttabile nel modello di minaccia attuale del sito.
+- **Remediation**:
+  1. Aggiornare `sanity` e `@sanity/vision` alla latest compatibile (`5.20.0`): `npm i sanity@5.20.0 @sanity/vision@5.20.0 @sanity/image-url@2.1.1 next-sanity@12.2.2`.
+  2. Rifare `npm audit` e verificare che lodash/js-yaml siano risolti o almeno confinati a dev tree.
+  3. Se Sanity 6.x è disponibile stabile, pianificare upgrade maggiore separato (breaking changes schema/Studio).
+- **Effort**: M (rischio di breaking change Studio)
+
+---
+
+#### F-33 — `styled-components` 6.3.12 è nelle dependencies ma non è usato da nessun file sorgente
+
+- **Severity**: Low
+- **Category**: Supply chain / dead dependency
+- **Evidence**: `package.json:31` (intro di `"styled-components": "^6.3.12"` in `dependencies`). `grep -rn "from ['\"]styled-components['\"]" --include="*.{ts,tsx}"` nel sorgente → **nessun match**. Il progetto è Tailwind-first (`globals.css`, `tailwind.config.ts`), nessun componente usa styled-components.
+- **Impact**: Dipendenza viva non usata = attacco supply chain gratuito. Il pacchetto viene comunque installato (runtime dep), quindi:
+  - Aumenta inutilmente il bundle di produzione (se importato per errore in futuro → incremento KB).
+  - Allarga la superficie di supply-chain attack: qualunque CVE futura su styled-components richiede patching anche senza beneficio.
+  - Rende più rumoroso `npm audit`.
+  Dal lato sicurezza è Low, ma è un easy win.
+- **Exploitation**: indiretta (supply chain compromise di pacchetti non utilizzati).
+- **Remediation**: `npm uninstall styled-components`. Eseguire `npm run build` per confermare che nessuna dep transitiva richieda styled-components come peer. Se una dep peer-depende su di esso, documentare e lasciare.
+- **Effort**: S
+
+---
+
+#### F-34 — Vulnerabilità transitive hardcoded: `picomatch`, `vite`, `flatted`, `brace-expansion`
+
+- **Severity**: Low (tooling dev-time, non runtime di produzione)
+- **Category**: Supply chain / tooling
+- **Evidence**: `npm audit`:
+  ```
+  picomatch <=2.3.1 || 4.0.0 - 4.0.3 (high) — ReDoS + POSIX injection
+  vite 7.0.0 - 7.3.1 (high) — path traversal, ws arbitrary file read
+  flatted <=3.4.1 (high) — prototype pollution, unbounded recursion DoS
+  brace-expansion <1.1.13 || >=4.0.0 <5.0.5 (moderate) — process hang, memory exhaustion
+  ```
+- **Impact**: Queste sono tutte deps transitive che appaiono nel tree del repo perché:
+  - `vite` arriva da `@sanity/vision` (Studio dev server).
+  - `picomatch` da `@parcel/watcher` / `tinyglobby` (file watcher dev).
+  - `flatted` da ESLint config cache.
+  - `brace-expansion` da `@typescript-eslint`.
+  Nessuna di queste gira in runtime di produzione Vercel: sono solo dev tool. Un attaccante che vuole sfruttarle dovrebbe già avere accesso allo sviluppatore locale (es. dev server esposto). Il sito in produzione non è esposto. Rimangono hygiene: `npm audit fix` (non `--force`) le risolve senza impatto funzionale.
+- **Exploitation**: non raggiungibile dalla produzione.
+- **Remediation**: eseguire `npm audit fix` (non `--force`). Verificare che il lockfile sia aggiornato e che `npm run build` + `npm run dev` funzionino. Commit del nuovo `package-lock.json`.
+- **Effort**: S
+
+---
+
+#### F-35 — `@vercel/analytics` 1.6.1 e `@vercel/speed-insights` 1.3.1 major outdated (disponibili 2.x)
+
+- **Severity**: Low
+- **Category**: Supply chain / outdated major
+- **Evidence**: `npm outdated`:
+  ```
+  @vercel/analytics      1.6.1   1.6.1  2.0.1
+  @vercel/speed-insights 1.3.1   1.3.1  2.0.0
+  ```
+- **Impact**: Major bump disponibile da Vercel per entrambi i SDK. Le release 2.x includono miglioramenti alla privacy (consent management), fingerprinting ridotto, e fix minori. Nessuna CVE nota. Major bump → breaking changes leggeri (API di init). Rilevante indirettamente per F-17 (consent per analytics).
+- **Exploitation**: nessuna.
+- **Remediation**: quando si affronta F-17 (consent gating), aggiornare anche a 2.x per beneficiare dei controlli di privacy nativi:
+  ```
+  npm i @vercel/analytics@^2 @vercel/speed-insights@^2
+  ```
+- **Effort**: S
 
 ### 4.4 Logging, error handling, robots/sitemap, routing i18n
 
@@ -1076,7 +1186,48 @@ _Da compilare nel Task 11._
 
 ## 6. Dependency audit (output sintetico)
 
-_Da compilare nel Task 8._
+**Totale vulnerabilità `npm audit`**: 12 (5 high, 7 moderate, 0 critical)
+
+### 6.1 Dipendenze dirette — stato
+
+| Pacchetto | Installato | Latest | Gap | Note sicurezza |
+|-----------|-----------|--------|-----|----------------|
+| `next` | 16.1.6 | 16.2.3 | patch | **5 advisory aperte** → F-31 |
+| `react` | 19.2.4 | 19.2.5 | patch | nessun CVE |
+| `react-dom` | 19.2.4 | 19.2.5 | patch | nessun CVE |
+| `sanity` | 5.18.0 | 5.20.0 | minor | transitivi js-yaml/lodash → F-32 |
+| `@sanity/vision` | 5.18.0 | 5.20.0 | minor | stesso tree di sanity |
+| `@sanity/image-url` | 2.1.0 | 2.1.1 | patch | nessun CVE |
+| `next-sanity` | 12.2.1 | 12.2.2 | patch | nessun CVE diretto |
+| `next-intl` | 4.8.3 | 4.9.0 | minor | nessun CVE |
+| `resend` | 6.9.2 | 6.10.0 | patch | nessun CVE |
+| `@react-email/components` | 1.0.8 | 1.0.12 | patch | nessun CVE |
+| `@vercel/analytics` | 1.6.1 | 2.0.1 | major | F-35 (privacy improvements in 2.x) |
+| `@vercel/speed-insights` | 1.3.1 | 2.0.0 | major | F-35 |
+| `framer-motion` | 12.34.3 | 12.34.3 | — | nessun CVE |
+| `lucide-react` | 0.475.0 | 1.8.0 | major | nessun CVE, 1.x è rinomina |
+| `tailwindcss` | 4.2.1 | 4.2.2 | patch | nessun CVE |
+| `@tailwindcss/postcss` | 4.2.1 | 4.2.2 | patch | nessun CVE |
+| `styled-components` | 6.3.12 | 6.4.0 | minor | **non usata** → F-33 (rimuovere) |
+| `@portabletext/react` | ^6.0.3 | — | — | nessun CVE |
+| `@sanity/webhook` | — | — | — | usato in `/api/revalidate` |
+| `clsx` | — | — | — | nessun CVE |
+| `typescript` (dev) | 5.9.3 | 6.0.2 | major | dev-only |
+| `eslint` (dev) | 9.39.3 | 10.2.0 | major | dev-only |
+
+### 6.2 CVE transitive (tooling dev, non-runtime)
+
+| Pacchetto | Severity | CVE | Catena | Runtime? |
+|-----------|----------|-----|--------|----------|
+| `picomatch` | high | GHSA-3v7f-55p6-f55p, GHSA-c2c7-rcm5-vvqj | via `@parcel/watcher`, `tinyglobby` | no (dev watcher) |
+| `vite` | high | GHSA-4w7w-66w2-5vf9, GHSA-v2wj-q39q-566r, GHSA-p9ff-h696-f583 | via `@sanity/vision` | no (Studio dev) |
+| `flatted` | high | GHSA-25h7-pfq9-p65f, GHSA-rf6f-7fwh-wjgh | via ESLint cache | no (dev lint) |
+| `lodash` | high | GHSA-r5fr-rjxr-66jc, GHSA-f23m-r3pf-42rh | via `sanity` tree | no (Studio build) |
+| `lodash-es` | high | stesse di lodash | via `sanity` tree | no |
+| `js-yaml` | moderate | GHSA-mh29-5h37-fv8m | via `@vercel/frameworks` → `@sanity/cli` | no (CLI) |
+| `brace-expansion` | moderate | GHSA-f886-m6hf-6m8v | via `@typescript-eslint` | no (dev) |
+
+Riassunto: **nessuna CVE in dipendenza che gira a runtime in produzione** tranne Next.js (F-31). Tutto il resto è tooling dev/build. `npm audit fix` (senza `--force`) risolve la maggior parte senza impatto; il resto richiede i bump tracciati nei finding F-31, F-32.
 
 ---
 
