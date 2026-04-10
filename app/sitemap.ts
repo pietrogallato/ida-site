@@ -47,9 +47,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     });
   }
 
-  // Blog posts from Sanity
+  // Blog posts from Sanity.
+  // Security audit F-38: filter to supported languages and require
+  // defined slug + publishedAt so draft or malformed posts don't leak
+  // into the sitemap.
   const posts: { slug: string; language: string; publishedAt: string; translationSlug: string | null; translationLang: string | null }[] = await client.fetch(
-    `*[_type == "post"] {
+    `*[_type == "post"
+        && language in ["it", "en"]
+        && defined(slug.current)
+        && defined(publishedAt)] {
       "slug": slug.current,
       language,
       publishedAt,
