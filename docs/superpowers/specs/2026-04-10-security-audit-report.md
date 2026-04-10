@@ -359,7 +359,140 @@ File esaminati: `app/api/revalidate/route.ts`, `node_modules/@sanity/webhook/dis
 
 ### 3.3 `/studio/*`
 
-_Da compilare nel Task 4._
+File esaminati: `app/studio/[[...tool]]/page.tsx`, `app/studio/[[...tool]]/layout.tsx`, `sanity.config.ts`, `sanity.cli.ts`, `next.config.ts` (sezione headers `/studio/:path*`), `app/robots.ts`.
+
+**Contesto**: Sanity Studio è embeddato come route Next.js (`NextStudio`) al path `/studio`. L'autenticazione è gestita interamente da Sanity SSO (email magic link di default). Chiunque può raggiungere l'URL e vedere il form di login; per qualsiasi operazione serve essere membro del progetto Sanity.
+
+**Controlli già in ordine (non-finding):**
+- `app/studio/[[...tool]]/layout.tsx:5` imposta `metadata.robots = "noindex"` → esclude lo Studio dall'indicizzazione anche senza Disallow in `robots.txt`. ✓
+- `NextStudio` è un wrapper ufficiale, gestisce CSRF e auth Sanity internamente. ✓
+- `structureTool` e `visionTool` sono plugin ufficiali di Sanity. ✓
+- L'accesso in scrittura richiede membership al progetto Sanity, controllo lato Sanity backend. ✓
+
+---
+
+#### F-13 — Headers di sicurezza incompleti per `/studio/*` (manca X-Frame-Options/CSP/frame-ancestors)
+
+- **Severity**: Medium
+- **Category**: Headers / Clickjacking
+- **Evidence**: `next.config.ts:16-22`
+  ```ts
+  {
+    source: "/studio/:path*",
+    headers: [
+      { key: "X-Content-Type-Options", value: "nosniff" },
+      { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+    ],
+  },
+  ```
+- **Impact**: Le rotte `/studio/*` **NON** hanno `X-Frame-Options`, `Content-Security-Policy` con `frame-ancestors`, `Permissions-Policy` né altri header restrittivi. Un attaccante può embeddare `/studio` in un iframe su un sito malevolo (`<iframe src="https://sito-ida/studio">`), sovrapporlo con UI civetta e ingannare un amministratore loggato a cliccare controlli dello Studio (clickjacking). Esempi di azioni pericolose: pubblicare bozze, cancellare contenuti, creare testimonial fake. L'impatto è limitato al fatto che Sanity Studio usa fetch CORS verso `api.sanity.io` (il browser potrebbe bloccare alcune operazioni), ma molte operazioni nello Studio sono purely client-side drag/click e funzionano in frame. Sanity non pubblicizza `/studio` come "frame-safe by default", quindi la difesa deve stare lato nostro.
+- **Exploitation**: richiede che un admin loggato visiti il sito malevolo con una sessione attiva nello Studio. Plausibile via phishing mirato (email "controlla questo articolo nel sito di un collega") — coerente col threat model (3) "attacker mirato".
+- **Remediation**: aggiungere al blocco `/studio/:path*` almeno:
+  ```ts
+  {
+    source: "/studio/:path*",
+    headers: [
+      { key: "X-Content-Type-Options", value: "nosniff" },
+      { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+      { key: "X-Frame-Options", value: "SAMEORIGIN" },
+      {
+        key: "Content-Security-Policy",
+        // Studio ha bisogno di molte origini per iframe e asset; va costruita con attenzione.
+        // Partire permissiva e stringere dopo il primo test:
+        value: [
+          "default-src 'self' https://*.sanity.io https://cdn.sanity.io",
+          "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.sanity.io",
+          "style-src 'self' 'unsafe-inline' https://*.sanity.io https://fonts.googleapis.com",
+          "font-src 'self' https://*.sanity.io https://fonts.gstatic.com",
+          "img-src 'self' data: blob: https://*.sanity.io https://cdn.sanity.io",
+          "connect-src 'self' https://*.sanity.io https://*.api.sanity.io wss://*.api.sanity.io",
+          "frame-src 'self' https://*.sanity.io",
+          "frame-ancestors 'self'",
+        ].join("; "),
+      },
+      { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
+    ],
+  },
+  ```
+  Dopo il deploy, aprire lo Studio e verificare che non si rompa (aprire DevTools → Console, cercare errori CSP). Rilassare o aggiungere origini mancanti finché lo Studio funziona.
+  
+  **Alternativa più semplice** se non si vuole gestire una CSP custom: spostare `/studio` dietro Vercel Password Protection (Pro plan feature) — aggiunge uno step di auth al bordo, blocca completamente i frame non autorizzati e riduce la superficie pubblica.
+- **Effort**: M (costruzione CSP + test) / S (Vercel Password Protection se disponibile)
+
+---
+
+#### F-14 — Vision tool abilitato: arbitrary GROQ execution per utenti autenticati
+
+- **Severity**: Medium
+- **Category**: Least privilege / Data exposure
+- **Evidence**: `sanity.config.ts:12`
+  ```ts
+  plugins: [structureTool(), visionTool()],
+  ```
+- **Impact**: `visionTool()` espone nello Studio un playground GROQ dove utenti autenticati possono eseguire query arbitrarie sul dataset, incluso `*[_type == "testimonial"]{..., publishedAt, _createdAt, _updatedAt}` o `*[_type == "post"]{..., body}` per leggere anche bozze e contenuti non pubblicati. Non è un bug — è feature — ma è una superficie di data exfiltration se un account editor viene compromesso (phishing, password reuse, session hijack). Nel threat model GDPR, se il dataset contiene mai dati personali di terzi (es. testimonianze con autori reali non anonimizzati, note interne su clienti), questo è un vettore.
+- **Exploitation**: richiede compromissione di un account Sanity con accesso al dataset. Non è attaccabile da anonimi.
+- **Remediation**: valutazioni in ordine:
+  1. **Rimuovere `visionTool()` dai plugin in produzione**, lasciarlo abilitato solo in development via env check:
+     ```ts
+     const plugins = [structureTool()];
+     if (process.env.NODE_ENV === "development") {
+       plugins.push(visionTool());
+     }
+     export default defineConfig({ /* ... */ plugins });
+     ```
+  2. Se Vision serve in prod per query di supporto, abilitare 2FA obbligatorio sugli account Sanity con accesso al progetto (config esterna, vedi Task 10).
+  3. Rivedere i ruoli Sanity: assegnare ruolo `viewer` invece di `editor` dove possibile.
+- **Effort**: S (opzione 1)
+
+---
+
+#### F-15 — Dataset Sanity potenzialmente pubblico (da verificare)
+
+- **Severity**: da determinare (potenzialmente High se confermato)
+- **Category**: Data exposure / External config
+- **Evidence**: `sanity.config.ts:10`, `lib/sanity.ts:4-9`
+  ```ts
+  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET!,
+  ```
+- **Impact**: Sanity permette di configurare i dataset come "public" o "private". Se il dataset di questo progetto è **public** (impostazione da dashboard Sanity, esterna al repo), chiunque conosca il `projectId` (che è `NEXT_PUBLIC_*` quindi visibile nel bundle client) può fare query GROQ arbitrarie direttamente contro `https://<projectId>.api.sanity.io/v2026-03-28/data/query/<dataset>?query=...` senza alcuna autenticazione, bypassando completamente lo Studio. In tal caso un attaccante può:
+  - Leggere tutti i post (inclusi drafts se esposti a GROQ anonimo).
+  - Leggere tutti i testimonial (inclusi i campi `publishedAt`, `_createdAt`, eventuali campi privati nello schema).
+  - Fare discovery dell'intero schema via `*[_type == "system.schema"]`.
+  
+  Il rischio dipende interamente dal contenuto del dataset.
+  
+  Se invece il dataset è **private**, le query anonime vengono rifiutate e questo è un non-finding. La distinzione va verificata.
+- **Exploitation**: banale da verificare con un `curl`:
+  ```bash
+  curl -s "https://<projectId>.api.sanity.io/v2026-03-28/data/query/<dataset>?query=*%5B_type%20%3D%3D%20%22post%22%5D%7B_id%2Ctitle%7D%5B0..2%5D"
+  ```
+  Se la risposta contiene dati → dataset pubblico → finding High (con amplifier GDPR se il dataset contiene mai PII di terzi) o Medium (se contiene solo contenuto editoriale già pubblicato). Se risponde `401`/`403` → non-finding.
+- **Remediation**:
+  1. **Verificare**: eseguire il curl sopra sostituendo projectId/dataset reali.
+  2. **Se pubblico**: andare su sanity.io/manage → progetto → API → CORS and Datasets → impostare il dataset come **Private**. Ricontrollare che l'app funzioni (le query lato server continueranno a funzionare se hanno un token; verificare se `lib/sanity.ts` usa un token o legge anonimamente).
+  3. **Se si usa client read anonimo lato server**: aggiungere un `SANITY_READ_TOKEN` con scope `viewer`, impostarlo in env e passarlo al client:
+     ```ts
+     export const client = createClient({
+       projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
+       dataset: process.env.NEXT_PUBLIC_SANITY_DATASET!,
+       apiVersion: "2026-03-28",
+       useCdn: true,
+       token: process.env.SANITY_READ_TOKEN, // solo server-side
+     });
+     ```
+- **Effort**: S (verifica + toggle) / M (se serve rifattorizzare per usare token)
+
+---
+
+#### F-16 — Discovery dello Studio banale via bundle client (documentazione, non bloccante)
+
+- **Severity**: Low
+- **Category**: Attack surface documentation
+- **Evidence**: `NEXT_PUBLIC_SANITY_PROJECT_ID` e `NEXT_PUBLIC_SANITY_DATASET` sono embedded nel bundle client di tutte le pagine (sono referenziati in `lib/sanity.ts` che è importato dalle pagine server, ma Next può inlinare literal env se il tipo è `NEXT_PUBLIC_*` anche lato client).
+- **Impact**: Un attaccante che ispeziona il JS del sito trova sempre `projectId` e `dataset`, e può tentare il path `/studio` senza dover fare discovery. Questo è il design intenzionale di `NEXT_PUBLIC_*`: non è un bug, ma è bene documentarlo perché amplifica F-14 e F-15: la "sicurezza per oscurità" su Studio path, dataset name o projectId **non esiste**. L'unica difesa reale sono i permessi Sanity lato server + gli header su `/studio/*` + la visibility del dataset.
+- **Exploitation**: N/A (documentazione).
+- **Remediation**: nessuna azione sul codice — accettare come fatto noto. Assicurarsi che le protezioni F-13/F-14/F-15 siano in ordine.
+- **Effort**: S (documentazione)
 
 ### 3.4 Client bundle pubblico
 
