@@ -1416,7 +1416,250 @@ File esaminato per completezza. `ContactEmail` (template React Email) riceve `na
 
 ## 5. Findings — Passata C (GDPR gap analysis)
 
-_Da compilare nel Task 11._
+**Disclaimer**: questa è gap analysis tecnica, non consulenza legale. Per le voci marcate ⚖️ è **obbligatorio** consultare un DPO / avvocato specializzato in protezione dati, soprattutto perché il titolare è una psicologa che può trattare dati di natura sanitaria (art. 9 GDPR).
+
+File esaminati: `app/[locale]/privacy/page.tsx`, `messages/it.json` / `messages/en.json` sezione `privacy`, + tutti i file touchati dai task precedenti.
+
+---
+
+### 5.1 Dati personali effettivamente raccolti dal codice
+
+| Dato | Fonte | Dove finisce | Nota |
+|------|-------|--------------|------|
+| Nome | Form contatti `body.name` | Email Resend → casella Ida; log Resend (retention F-42) | PII base |
+| Email | Form contatti `body.email` | Email Resend (`replyTo`) → casella Ida; log Resend | PII base |
+| Telefono (opz.) | Form contatti `body.phone` | Email Resend → casella Ida; log Resend | PII base |
+| Testo messaggio | Form contatti `body.message` (5000 char) | Email Resend → casella Ida; log Resend | **Potenzialmente art. 9** ⚖️ (dati sanitari) |
+| IP sorgente | Header `x-forwarded-for` usato per rate limit (`route.ts:41`) | Map in-memory volatile (F-01) + **log Vercel** (retention edge) | PII (indirizzo IP = dato personale per GDPR) |
+| Timestamp submit | `body.timestamp` (anti-bot check) | Non persistito | non-PII |
+| User-Agent | (implicito nei log Vercel edge) | Log Vercel | PII combinato |
+| Country / region | Vercel Analytics | Vercel Analytics backend | PII aggregato |
+| Pageviews, referrer, device | Vercel Analytics + Speed Insights | Vercel backend | PII aggregato ("privacy friendly" ma dato personale) |
+| Web Vitals (LCP, CLS, INP, TTFB) | Vercel Speed Insights | Vercel backend | Non-PII diretta, fingerprintable |
+| Preferenza tema (chiaro/scuro), locale | localStorage | Solo device utente | Non-PII |
+| Contenuti blog / testimonianze | Sanity CDN (server-side fetch) | Pubblicati come pagine | Non-PII |
+
+### 5.2 Processor / terze parti realmente toccati dal codice
+
+| Processor | Scopo | Dove nel codice | Dati trasferiti |
+|-----------|-------|-----------------|-----------------|
+| **Vercel Inc.** (US/EU) | Hosting + Analytics + Speed Insights | `app/[locale]/layout.tsx:10-11, 145-146`, deployment | IP, UA, pageviews, Web Vitals, log applicativi, payload email via serverless |
+| **Resend** (US/EU) | Invio email contact form | `app/api/contact/route.ts:7, 93-117` | Nome, email, telefono, messaggio, IP sorgente (via header) |
+| **Sanity AS** (NO/EU) | CMS + CDN asset (`cdn.sanity.io`) | `lib/sanity.ts`, `sanity/`, `app/studio/*` | Nessun dato utente del sito (solo contenuto editoriale); ma CDN vede IP+UA al download asset |
+| **Google LLC** (US) — Maps | Embed iframe `/contatti` | `next.config.ts:43` (`frame-src https://www.google.com`), `app/[locale]/contatti/page.tsx` (component iframe) | IP, referrer, cookies Google del visitatore. **F-18** |
+| **Google LLC** (US) — Fonts | Dichiarato in CSP, **NON usato a runtime** (`next/font` self-hosted) | `next.config.ts:40, 44` | Nessuno — la CSP è over-permissive (**F-19**) |
+| **GitHub** (per deployment) | Fuori dal trattamento dati utente | n/a | n/a |
+
+### 5.3 Gap: codice vs privacy policy attuale
+
+Tabella di confronto riga per riga:
+
+| Elemento | Nel codice? | Dichiarato in policy? | Gap |
+|----------|-------------|----------------------|-----|
+| Nome | ✅ | ✅ (`dataCollected`) | OK |
+| Email | ✅ | ✅ (`dataCollected`) | OK |
+| Telefono | ✅ | ✅ (`dataCollected`) | OK |
+| Messaggio testo libero | ✅ | ✅ (`dataCollected`) | **⚖️ Manca warning su dati sanitari** (art. 9) → **F-46** |
+| IP sorgente form | ✅ (rate limit + log Vercel) | ❌ (policy non dichiara raccolta IP dai visitatori) | **F-47** |
+| User-Agent / log Vercel | ✅ (implicito) | ❌ | **F-47** |
+| Base giuridica `messaggio` | — | ✅ ma dichiara art. 6(1)(a) + 6(1)(b) generica | **⚖️ F-46** — se il messaggio può contenere dati sanitari, serve base art. 9 (consenso esplicito) |
+| Vercel Analytics | ✅ | ✅ (`analytics`) ma "nessun consenso necessario" | **F-17** + **F-48** (consenso mancante + dichiarazione errata sul consenso) |
+| Vercel Speed Insights | ✅ | ⚠️ menzionato sotto Analytics | Parziale (ok) |
+| Resend come processor | ✅ | ❌ **Resend NON è elencato** in `thirdParty` della policy | **F-49** |
+| Google Maps iframe | ✅ | ❌ (`thirdParty` non menziona Google) | **F-50** + **F-18** già aperto |
+| Google Fonts | Dichiarato CSP ma non usato | ❌ | **F-19** (solo code fix, no policy gap) |
+| Sanity CDN | ✅ | ✅ (menzionata) | OK |
+| Cookie / localStorage | ✅ (solo tema + locale) | ✅ (`cookies`) | OK (dichiarazione coerente) |
+| Retention Resend (email) | ✅ (30gg default) | ❌ "tempo strettamente necessario" — troppo vago | **F-51** |
+| Retention log Vercel | ✅ | ❌ non dichiarata | **F-51** |
+| Retention rate-limit IP map | ✅ (volatile 15min) | ❌ non dichiarata | **F-51** |
+| Diritti dell'interessato | — | ✅ (`rights`) | OK |
+| Titolare + contatto privacy | — | ✅ (`controller`) | OK (nessun DPO esplicito; per psicologa non obbligatorio se no-larga-scala) |
+| DPIA per trattamento art. 9 | — | ❌ | **⚖️ F-52** |
+| DPA firmati con processor | — | ❌ (non è pubblico, ma va conservato dal titolare) | **F-53** (check operativo, non codice) |
+
+---
+
+#### F-46 — Modulo contatti può raccogliere dati sanitari (art. 9 GDPR) senza base giuridica adeguata né warning
+
+- **Severity**: Critical (amplifier massimo: dati sensibili + psicologa)
+- **Category**: GDPR / Art. 9
+- **Evidence**: `app/api/contact/route.ts:91` (`sanitizedMessage = body.message.slice(0, 5000)`), `components/sections/contact-form.tsx` (textarea libera), `messages/it.json` sezione `legalBasis` (dichiara solo art. 6).
+- **Impact**: ⚖️ Un visitatore che contatta una psicologa per un consulto può — e tipicamente *vuole* — descrivere il proprio problema: ansia, depressione, traumi, diagnosi pregresse. Questi sono dati particolari ex art. 9 GDPR. Il trattamento di dati particolari richiede:
+  1. Una **base giuridica speciale** ex art. 9(2) (tipicamente lettera (a) consenso esplicito, o (h) medicina/sanità).
+  2. **Misure di sicurezza rafforzate**.
+  3. Potenzialmente **DPIA** (art. 35) se large-scale.
+  
+  La policy attuale dichiara solo art. 6(1)(a)/(b)/(f), che **non sono sufficienti** per art. 9. Inoltre non c'è warning nel form che avverta l'utente di non inserire dati sanitari, né un checkbox di consenso esplicito.
+  
+  Impact:
+  - **Regolatorio**: esposizione a sanzione Garante in caso di ispezione/segnalazione.
+  - **Legale**: responsabilità civile del titolare in caso di data breach.
+  - **Tecnico**: il canale email (Resend → Gmail/outlook di Ida) non è uno standard appropriato per dati clinici.
+- **Exploitation**: non è un exploit tecnico; è una non-conformità che si attiva ad ogni submission reale.
+- **Remediation** (da concordare con avvocato ⚖️):
+  1. **Opzione A — Escludere dati sanitari dal canale**: aggiungere nel form un disclaimer visibile prima del submit: *"Non inserire in questo modulo informazioni relative alla tua salute mentale o fisica, diagnosi, terapie in corso. Per un primo contatto clinico usa il telefono o WhatsApp."* Dichiarare in privacy policy che il canale è solo per richieste organizzative (appuntamenti, info generali).
+  2. **Opzione B — Trattare come dati particolari**: aggiungere checkbox consenso esplicito art. 9(2)(a), DPIA, processor DPA verificati, cifratura end-to-end (Resend non è E2E), retention ridotta, diritto di oblio automatico. Complesso e costoso.
+  3. **Consenso esplicito** (checkbox obbligatoria `required`) con testo: *"Acconsento al trattamento dei dati personali, inclusi eventuali dati particolari, ai sensi dell'art. 9(2)(a) GDPR, per la finalità di gestione della mia richiesta di consulto psicologico."*
+  
+  Raccomandazione di questo audit: **A + consenso checkbox**, cioè disclaimer + checkbox minimo, come compromise pragmatico.
+- **Effort**: M (testo legale + UI) — **bloccato da parere legale**
+
+---
+
+#### F-47 — IP e user-agent raccolti (rate limit + log Vercel) non dichiarati in privacy policy
+
+- **Severity**: Medium
+- **Category**: GDPR / Trasparenza
+- **Evidence**: `app/api/contact/route.ts:41` (`x-forwarded-for` → rate limit), log Vercel edge di default. Privacy policy `dataCollected` elenca solo nome/email/phone/message.
+- **Impact**: L'indirizzo IP è dato personale per giurisprudenza consolidata (CJEU Breyer). Usare l'IP per rate limit è legittimo (art. 6(1)(f) legittimo interesse prevenzione abusi), ma **va dichiarato** in informativa. Stesso discorso per log Vercel che conservano IP+UA+path+timing.
+- **Exploitation**: non-exploit — non-conformità di trasparenza.
+- **Remediation**: aggiungere alla privacy policy (nella sezione `dataCollected` o una nuova `logs`):
+  > "Per motivi di sicurezza e prevenzione abusi del modulo di contatto, raccogliamo temporaneamente l'indirizzo IP del visitatore (base giuridica: legittimo interesse del titolare, art. 6(1)(f) GDPR). Tale dato è conservato in memoria volatile per un massimo di 15 minuti e non viene persistito. Inoltre, l'infrastruttura di hosting Vercel registra log tecnici (IP, user-agent, path richiesto, timestamp) con retention di X giorni, ai fini di sicurezza e debug."
+- **Effort**: S (modifica testo policy)
+
+---
+
+#### F-48 — Privacy policy dichiara "Vercel Analytics non necessita consenso" — affermazione opinabile
+
+- **Severity**: Medium (amplifier GDPR)
+- **Category**: GDPR / Consenso
+- **Evidence**: `messages/it.json` → `privacy.analytics.text` e `privacy.cookies.text`:
+  > "Vercel Analytics non utilizza cookie, non raccoglie dati personali identificabili [...] Vercel Analytics è conforme al GDPR."
+  > "Non essendo presenti cookie di profilazione, non è necessario un banner di consenso ai cookie."
+- **Impact**: L'affermazione è parzialmente vera (Vercel Analytics non usa cookie) ma ⚖️ opinabile dal punto di vista legale:
+  1. Anche senza cookie, Vercel Analytics **raccoglie IP e user-agent** per derivare country/device (pur senza persistenza cross-session). Il Garante italiano e EDPB hanno chiarito che analytics server-side che processano IP **possono** richiedere consenso o essere giustificati da legittimo interesse con proper balancing test.
+  2. La sezione `cookies` salta a "quindi nessun banner cookie serve" — il banner TTDSG/ePrivacy si applica a qualsiasi tecnologia di tracking (non solo cookie). In IT/EU il *consenso* non è strettamente legato al cookie ma al trattamento.
+  3. Cfr. F-17 già aperto: codice carica Analytics prima di consenso.
+  
+  Il pattern sicuro è: o disabilitare analytics, o mettere un banner minimo con toggle, o dichiarare **esplicitamente** la base di legittimo interesse con test di bilanciamento.
+- **Exploitation**: rischio regolatorio.
+- **Remediation**:
+  1. Riformulare il testo policy per non affermare "non serve consenso" come fatto, ma dichiarare la base giuridica scelta (legittimo interesse + balancing test disponibile) oppure
+  2. Implementare un consent gate (F-17) e condizionare il caricamento Analytics/Speed Insights. Questa è la strada più difensiva.
+- **Effort**: S (testo) + M (consent gate, stessa fix di F-17)
+
+---
+
+#### F-49 — Resend NON dichiarato nella lista processor in privacy policy
+
+- **Severity**: High (amplifier GDPR — processor sul canale più sensibile)
+- **Category**: GDPR / Trasparenza
+- **Evidence**: `messages/it.json` → `privacy.thirdParty.text` menziona solo Vercel e Sanity. Resend gestisce **tutte** le email del form contatti e **non è menzionato**.
+- **Impact**: Omissione grave: Resend riceve nome/email/phone/messaggio di ogni persona che compila il form. È un processor nel senso GDPR (art. 28), e va:
+  1. Dichiarato nell'informativa con nome, ruolo, paese, scopo.
+  2. Coperto da DPA (data processing agreement) firmato. Resend ne offre uno standard.
+  3. Informato il visitatore del trasferimento extra-EU se applicabile.
+- **Exploitation**: non-conformità diretta, esposizione a sanzione.
+- **Remediation**: aggiornare `messages/it.json` / `messages/en.json` sezione `thirdParty.text` includendo Resend:
+  > "Questo sito si avvale dei seguenti servizi di terze parti: Vercel Inc. (vercel.com) per l'hosting del sito e l'analisi del traffico; Sanity AS (sanity.io) per la gestione e la distribuzione dei contenuti del blog; **Resend Inc. (resend.com) per l'invio delle email generate dal modulo di contatto**. Tutti i fornitori operano in conformità al GDPR e dispongono di adeguati accordi sul trattamento dei dati (DPA), disponibili su richiesta."
+  
+  In parallelo, scaricare e conservare il DPA Resend.
+- **Effort**: S (testo) + manuale (download DPA)
+
+---
+
+#### F-50 — Google Maps iframe: Google non dichiarato come processor
+
+- **Severity**: High (amplifier GDPR: trasferimento extra-EU → US)
+- **Category**: GDPR / Processor / Trasferimenti extra-EU
+- **Evidence**: `next.config.ts:43` (`frame-src https://www.google.com`), `app/[locale]/contatti/page.tsx` (iframe Google Maps per sede). Privacy policy `thirdParty` non menziona Google.
+- **Impact**: L'iframe Google Maps carica contenuto da `google.com` al render della pagina `/contatti`, **prima** di qualsiasi interazione utente. Questo comporta:
+  1. Trasferimento di IP+UA+Referer del visitatore a Google LLC (US).
+  2. Possibile set di cookie third-party `NID`, `DV`, `CONSENT` se il visitatore non li ha già.
+  3. Google è processor de-facto ma è **non dichiarato**.
+  4. Trasferimento extra-EU senza base giuridica (SCC, Data Privacy Framework) menzionata.
+  Questa è una delle non-conformità più frequentemente sanzionate dal Garante (vedi sanzioni su Google Fonts in Germania).
+  Cfr. F-18 già aperto sul code side.
+- **Exploitation**: non-exploit — rischio regolatorio immediato.
+- **Remediation** (due strade):
+  1. **Rimuovere l'iframe** (preferito per semplicità): sostituire con una foto statica della mappa + link `<a href="https://maps.google.com/...">`. Nessun dato trasmesso a Google finché l'utente non clicca. Aggiornare CSP rimuovendo `frame-src https://www.google.com`.
+  2. **Click-to-consent**: mostrare un placeholder con bottone "Carica mappa" che monta l'iframe solo dopo consenso esplicito. Aggiungere Google in privacy policy come processor con base giuridica consenso art. 6(1)(a) + trasferimento extra-EU ex DPF.
+  
+  Raccomandazione: **opzione 1**.
+- **Effort**: S (opzione 1) / M (opzione 2)
+
+---
+
+#### F-51 — Retention periods troppo vaghi ("tempo strettamente necessario")
+
+- **Severity**: Medium
+- **Category**: GDPR / Principio di limitazione della conservazione (art. 5(1)(e))
+- **Evidence**: `messages/it.json` → `privacy.retention.text`:
+  > "I dati raccolti tramite il modulo di contatto vengono conservati per il tempo strettamente necessario a gestire la richiesta e successivamente cancellati. I dati anonimi di analytics non sono riconducibili a persone fisiche e vengono conservati secondo le policy di Vercel."
+- **Impact**: "Tempo strettamente necessario" non è una retention policy: è un placeholder che non permette all'interessato di conoscere la durata. GDPR art. 13(2)(a) richiede il *periodo* o *i criteri*.
+  
+  In questo caso concreto:
+  - Resend conserva default 30 giorni (F-42).
+  - Casella email Ida conserva a discrezione (anni?).
+  - Log Vercel conservano secondo il plan (da verificare).
+  - Rate limit IP map: 15 minuti volatile.
+- **Exploitation**: non-conformità trasparenza.
+- **Remediation**: sostituire con valori concreti:
+  > "Retention:
+  > - I messaggi inviati tramite il modulo di contatto vengono conservati nella casella email del titolare per un massimo di 24 mesi, dopo i quali vengono cancellati salvo necessità di gestione di rapporto consolidato.
+  > - Il provider di email transazionale (Resend) conserva log delle email inviate per 30 giorni.
+  > - Gli indirizzi IP usati per prevenzione abusi del modulo sono conservati in memoria volatile per 15 minuti.
+  > - I log tecnici dell'infrastruttura Vercel hanno retention di 1 giorno (piano attuale).
+  > - I dati aggregati di Vercel Analytics sono conservati secondo policy Vercel (90 giorni)."
+  
+  (Adattare ai valori reali, dopo verifica nei dashboard.)
+- **Effort**: S
+
+---
+
+#### F-52 — ⚖️ DPIA per trattamento dati sanitari non risulta effettuata
+
+- **Severity**: High ⚖️ (dipende dal parere legale)
+- **Category**: GDPR / DPIA art. 35
+- **Evidence**: nessun riferimento a DPIA nel repo o nella policy.
+- **Impact**: Il GDPR art. 35 impone DPIA quando il trattamento presenta "rischio elevato per i diritti e le libertà delle persone fisiche", e fornisce nell'Annex alcuni trigger: *(b) trattamento su larga scala di categorie particolari di dati ex art. 9*, *(c) monitoraggio sistematico di area pubblica*. La lista Garante italiana (2018) include esplicitamente "trattamenti effettuati da professionisti sanitari". Per uno studio individuale di psicologa la "larga scala" è discutibile (poche decine di pazienti/mese?), ma la natura dei dati impone comunque valutazione del rischio.
+- **Exploitation**: rischio regolatorio.
+- **Remediation**: ⚖️ **consultare DPO o avvocato** per:
+  1. Valutare se DPIA è obbligatoria.
+  2. Se sì, condurla (checklist WP29, analisi rischi, misure mitiganti).
+  3. Documentarla e tenerla a disposizione del Garante.
+  
+  Se F-46 viene risolto con opzione A (escludere dati sanitari dal form), il DPIA può concentrarsi solo sul trattamento post-contatto e non sul form stesso.
+- **Effort**: M ⚖️
+
+---
+
+#### F-53 — DPA con i processor non risulta conservato dal titolare
+
+- **Severity**: Medium
+- **Category**: GDPR / Art. 28 (rapporti con processor)
+- **Evidence**: nessun riferimento nel repo (ragionevole: non è codice) — è un controllo operativo del titolare.
+- **Impact**: Art. 28 richiede contratto scritto tra titolare e processor. Vercel/Sanity/Resend offrono DPA standard scaricabili dai rispettivi dashboard. Il titolare deve **scaricarli e conservarli** (o accettarli tramite click-through). Se il Garante chiede evidenza, serve produrre il contratto.
+- **Exploitation**: n/a.
+- **Remediation**: checklist operativa per Ida:
+  - Vercel: Account Settings → Legal → Data Processing Addendum → download PDF.
+  - Sanity: manage.sanity.io → Organization → Security → DPA.
+  - Resend: Dashboard → Settings → Legal → DPA (o richiedere via support).
+  - Conservare i 3 PDF in luogo tracciabile (Google Drive, file offline).
+- **Effort**: S (manuale)
+
+---
+
+### 5.4 Raccomandazioni azionabili (ordinate per urgenza)
+
+1. **⚖️ F-46**: concordare con avvocato approccio al trattamento dati sanitari → form disclaimer + checkbox consenso. **Blocking**.
+2. **F-49**: aggiungere Resend alla lista processor in privacy policy. **Quick win**.
+3. **F-50**: rimuovere Google Maps iframe o mettere dietro click-to-consent. **Quick win**.
+4. **F-47**: dichiarare raccolta IP per rate limit e log Vercel.
+5. **F-51**: sostituire retention vaghe con valori concreti.
+6. **F-48**: riformulare sezione analytics + implementare consent gate (stesso fix di F-17).
+7. **⚖️ F-52**: valutazione DPIA.
+8. **F-53**: scaricare e conservare DPA Vercel/Sanity/Resend.
+
+### 5.5 Punti che richiedono obbligatoriamente un parere legale ⚖️
+
+- F-46 (base giuridica art. 9 per form contatti di una psicologa)
+- F-48 (balancing test legittimo interesse analytics)
+- F-52 (DPIA sì/no + condotta)
+- Eventuale designazione DPO (art. 37) — non obbligatoria per studio individuale ma prudente
+- Testo finale della privacy policy post-fix
+- Testo consensi espliciti nel form
 
 ---
 
