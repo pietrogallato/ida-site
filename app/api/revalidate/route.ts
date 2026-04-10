@@ -1,8 +1,9 @@
 import { revalidatePath } from "next/cache";
 import { type NextRequest, NextResponse } from "next/server";
 import { isValidSignature, SIGNATURE_HEADER_NAME } from "@sanity/webhook";
+import { env } from "@/lib/env";
 
-const secret = process.env.SANITY_REVALIDATION_SECRET;
+const secret = env.SANITY_REVALIDATION_SECRET;
 
 // Allow-list of Sanity document types that may drive revalidation.
 // Security audit F-11: an explicit switch avoids the previous behaviour

@@ -1,9 +1,10 @@
 import { createClient } from "next-sanity";
 import type { Locale, BlogItem, Testimonial } from "@/types";
+import { env } from "@/lib/env";
 
 export const client = createClient({
-  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
-  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET!,
+  projectId: env.NEXT_PUBLIC_SANITY_PROJECT_ID,
+  dataset: env.NEXT_PUBLIC_SANITY_DATASET,
   apiVersion: "2026-03-28",
   useCdn: true,
 });

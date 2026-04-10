@@ -2,14 +2,15 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { Resend } from "resend";
 import { ContactEmail } from "@/lib/emails/contact-email";
+import { env } from "@/lib/env";
 import type { ContactFormData, ContactAPIResponse } from "@/types";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = new Resend(env.RESEND_API_KEY);
 
-if (!process.env.CONTACT_EMAIL) {
+if (!env.CONTACT_EMAIL) {
   console.warn("CONTACT_EMAIL env variable is not set");
 }
-const CONTACT_EMAIL = process.env.CONTACT_EMAIL;
+const CONTACT_EMAIL = env.CONTACT_EMAIL;
 
 // In-memory rate limiting (per IP, 5 requests per 15 minutes).
 // NOTE: on Vercel serverless this state is per-lambda-instance — see
@@ -106,6 +107,18 @@ export async function POST(request: NextRequest) {
     }
     if (!body.message?.trim()) {
       return NextResponse.json<ContactAPIResponse>({ success: false, error: "Message is required" }, { status: 400 });
+    }
+    // Phone is optional, but when present it must look like a phone number.
+    // Accepts digits, spaces, dots, dashes, parentheses, and a leading "+".
+    // Length is bounded between 6 and 20 characters. Security audit F-07.
+    if (body.phone && body.phone.trim()) {
+      const phoneTrimmed = body.phone.trim();
+      if (!/^\+?[\d\s().-]{6,20}$/.test(phoneTrimmed)) {
+        return NextResponse.json<ContactAPIResponse>(
+          { success: false, error: "Invalid phone number" },
+          { status: 400 },
+        );
+      }
     }
 
     // Sanitize all user-controlled strings that will flow into the email
