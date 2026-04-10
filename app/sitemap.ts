@@ -19,18 +19,22 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const entries: MetadataRoute.Sitemap = [];
 
+  // Helper: build the hreflang cluster for a localized route. Includes the
+  // x-default entry pointing at the Italian version, as recommended by
+  // Google when a default/canonical language exists. Security audit F-37.
+  const staticLanguages = (path: string) => ({
+    it: `${baseUrl}/it${path}`,
+    en: `${baseUrl}/en${path}`,
+    "x-default": `${baseUrl}/it${path}`,
+  });
+
   for (const route of routes) {
     entries.push({
       url: `${baseUrl}/it${route.path}`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: route.priority,
-      alternates: {
-        languages: {
-          it: `${baseUrl}/it${route.path}`,
-          en: `${baseUrl}/en${route.path}`,
-        },
-      },
+      alternates: { languages: staticLanguages(route.path) },
     });
 
     entries.push({
@@ -38,12 +42,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: route.priority,
-      alternates: {
-        languages: {
-          it: `${baseUrl}/it${route.path}`,
-          en: `${baseUrl}/en${route.path}`,
-        },
-      },
+      alternates: { languages: staticLanguages(route.path) },
     });
   }
 
@@ -74,10 +73,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     };
 
     if (post.translationSlug && post.translationLang) {
+      // Full hreflang cluster with self-reference, translation and
+      // x-default. The Italian version is always treated as x-default,
+      // consistent with the static routes and with the site's default
+      // locale. Security audit F-37.
+      const italianUrl =
+        post.language === "it"
+          ? `${baseUrl}/it/blog/${post.slug}`
+          : `${baseUrl}/it/blog/${post.translationSlug}`;
       entry.alternates = {
         languages: {
           [post.language]: `${baseUrl}/${post.language}/blog/${post.slug}`,
           [post.translationLang]: `${baseUrl}/${post.translationLang}/blog/${post.translationSlug}`,
+          "x-default": italianUrl,
         },
       };
     }
