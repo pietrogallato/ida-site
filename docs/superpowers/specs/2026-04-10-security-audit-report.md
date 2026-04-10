@@ -1170,7 +1170,149 @@ Eseguiti `npm audit` e `npm outdated` al commit di riferimento. Totale vulnerabi
 
 ### 4.4 Logging, error handling, robots/sitemap, routing i18n
 
-_Da compilare nel Task 9._
+File esaminati: `app/api/contact/route.ts`, `app/api/revalidate/route.ts`, `app/[locale]/error.tsx`, `app/robots.ts`, `app/sitemap.ts`, `proxy.ts`, `i18n/routing.ts`.
+
+**Controlli già in ordine (non-finding):**
+- `app/[locale]/error.tsx` è un error boundary client pulito: mostra solo "500" + testo tradotto + bottone reset, non logga l'oggetto `error` né mostra stack trace (`error.tsx:14-22`). ✓
+- `app/api/contact/route.ts:126` logga `"Contact API error"` come stringa fissa, senza oggetto (diverso da `route.ts:120` che logga `error`, già coperto da F-04). ✓
+- `app/api/revalidate/route.ts` non logga nulla in nessun branch (nessun `console.*`). ✓
+- Non c'è nessun `global-error.tsx` custom che possa leakare più informazioni di quello i18n. ✓
+- `proxy.ts` (middleware) delega tutto a next-intl: matcher limitato a `/` e `/(it|en)/:path*`, nessun rewrite dinamico custom → no open redirect. ✓
+- `i18n/routing.ts` definisce pathnames esplicite per ogni pagina, no catch-all wildcard che possa essere abusato. ✓
+- `app/sitemap.ts` enumera solo pagine pubbliche + blog post da Sanity, nessun path admin/preview/studio. ✓
+
+---
+
+#### F-36 — `robots.ts` permissivo: non esclude `/studio`, `/api/*`, né percorsi sensibili
+
+- **Severity**: Medium
+- **Category**: Information disclosure / Discovery
+- **Evidence**: `app/robots.ts:4-12`
+  ```ts
+  return {
+    rules: {
+      userAgent: "*",
+      allow: "/",
+    },
+    sitemap: `${siteConfig.url}/sitemap.xml`,
+  };
+  ```
+- **Impact**: `allow: "/"` autorizza crawler su tutti i path, inclusi:
+  - `/studio/*` → il CMS login page viene indicizzato da Google se il bot lo scopre. Cfr. F-16 (banner/discovery Studio). Una ricerca Google `site:<dominio-ida> studio` rivelerebbe immediatamente la presenza del CMS.
+  - `/studio/vision` → peggio: il tool GROQ explorer (cfr. F-14) potenzialmente indicizzato. Se Google clicca e screenshot-a, appare in cache il boot di Sanity.
+  - `/api/contact` e `/api/revalidate` → le API route rispondono su GET con 405 o simile; i bot le hit comunque, consumando budget e inquinando i log.
+  - Qualsiasi futura route semi-privata (es. `/admin`) non sarebbe esclusa by default.
+  Anche se `robots.txt` non è un meccanismo di sicurezza (i bot malevoli lo ignorano), è la prima linea contro indicizzazione non voluta da motori legittimi. Con amplifier GDPR (Studio può esporre flow con dati di contatto nei draft se usato per salvare messaggi) → **Medium**.
+- **Exploitation**: banale discovery via Google/Bing. Nessun exploit attivo, ma riduce la sicurezza per oscurità che F-16 già critica.
+- **Remediation**: riscrivere `robots.ts`:
+  ```ts
+  export default function robots(): MetadataRoute.Robots {
+    return {
+      rules: [
+        {
+          userAgent: "*",
+          allow: "/",
+          disallow: ["/studio/", "/api/"],
+        },
+      ],
+      sitemap: `${siteConfig.url}/sitemap.xml`,
+    };
+  }
+  ```
+  Nota: questo non protegge da discovery attivo — serve comunque mettere `/studio` dietro un'auth edge (cfr. F-12). È solo hygiene.
+- **Effort**: S
+
+---
+
+#### F-37 — `sitemap.ts` non restituisce `alternates.languages` per i blog post senza translation link
+
+- **Severity**: Low
+- **Category**: SEO / Metadata hygiene (non security-critical)
+- **Evidence**: `app/sitemap.ts:61-80`
+  ```ts
+  for (const post of posts) {
+    const langPrefix = post.language === "it" ? "it" : "en";
+    const entry: MetadataRoute.Sitemap[number] = {
+      url: `${baseUrl}/${langPrefix}/blog/${post.slug}`,
+      // ...
+    };
+    if (post.translationSlug && post.translationLang) {
+      entry.alternates = { /* ... */ };
+    }
+    entries.push(entry);
+  }
+  ```
+- **Impact**: Un post senza `translationOf` viene emesso senza alternates linguistici. Questo non è una vulnerabilità di sicurezza — è un gap SEO (hreflang). Lo includo qui perché l'ispezione è stata fatta nel tempo del Task 9 e per completezza. Nessun impatto diretto su sicurezza, ma il reviewer umano deve saperlo.
+- **Exploitation**: non applicabile.
+- **Remediation**: fuori scope audit. Registrare in backlog SEO.
+- **Effort**: S — ma non prioritario in questo audit.
+
+---
+
+#### F-38 — `sitemap.ts` fetch di tutti i post senza filtro lingua, causa duplicazione URL
+
+- **Severity**: Low
+- **Category**: Information disclosure / Data consistency
+- **Evidence**: `app/sitemap.ts:50-59`
+  ```ts
+  const posts: { slug: string; language: string; ... }[] = await client.fetch(
+    `*[_type == "post"] { ... }`,
+  );
+  for (const post of posts) {
+    const langPrefix = post.language === "it" ? "it" : "en";
+    entries.push({ url: `${baseUrl}/${langPrefix}/blog/${post.slug}`, ... });
+  }
+  ```
+- **Impact**: La query espone ogni post in ogni lingua presente in Sanity. Se un editor mette un post in stato draft con `language: "it"` ma senza slug EN, il loop comunque emette `/it/blog/<slug>`. **Se un editor crea un post in una lingua non-supportata** (es. `language: "fr"`), il ternario collassa a `"en"` e produce `/en/blog/<slug>` → URL inconsistente. Non è un leak segreto (il post è published), ma riduce l'integrità della sitemap e può esporre contenuti prima del tempo se l'editor stressa il workflow. Non è un problema di sicurezza classico.
+- **Exploitation**: n/a.
+- **Remediation**: filtrare GROQ a lingue supportate e skip `!defined(publishedAt)`:
+  ```ts
+  `*[_type == "post" && language in ["it","en"] && defined(publishedAt) && defined(slug.current)] { ... }`
+  ```
+- **Effort**: S
+
+---
+
+#### F-39 — `/api/revalidate` non registra né `Error` né diagnostics
+
+- **Severity**: Low
+- **Category**: Observability
+- **Evidence**: `app/api/revalidate/route.ts` (file intero, 45 righe)
+  - Nessun `console.log` / `console.warn` / `console.error`.
+  - Silent return su signature invalid (401) → non si sa se un bot sta martellando.
+  - Silent return su payload invalido (400) → stesso.
+- **Impact**: Rovescio della medaglia di F-04 (troppo logging PII nel contact form): qui troppo poco. Se un attaccante prova a brute-force la signature HMAC per forgiare un payload, non c'è alcun segnale nei log. Idealmente si dovrebbe contare i 401 per rate-limit e alerting. Questa è observability, non sicurezza diretta.
+- **Exploitation**: n/a (defensive hardening).
+- **Remediation**: aggiungere metriche/log strutturati (senza PII):
+  ```ts
+  if (!signature || !(await isValidSignature(body, signature, secret))) {
+    console.warn("revalidate: invalid signature", { ip: req.headers.get("x-forwarded-for"), ts: Date.now() });
+    return NextResponse.json({ error: "Invalid signature" }, { status: 401 });
+  }
+  ```
+  Idealmente pipare a Vercel Log Drains o Axiom per alerting.
+- **Effort**: S
+
+---
+
+#### F-40 — Middleware `proxy.ts` matcher copre solo root e `/(it|en)/*`, lascia escoperte rotte pubblicate senza locale prefix
+
+- **Severity**: Low
+- **Category**: i18n routing consistency
+- **Evidence**: `proxy.ts:7`
+  ```ts
+  export const config = {
+    matcher: ["/", "/(it|en)/:path*"],
+  };
+  ```
+- **Impact**: Il middleware next-intl gira solo su `/` e sotto `/(it|en)/*`. Questo significa che `/api/*`, `/studio/*`, `/sitemap.xml`, `/robots.txt`, `/_next/*` restano escluse — corretto. Ma significa anche che se un attaccante visita un path che non matcha (es. `/xx/foo` con locale inesistente), il comportamento dipende dal fallback di next-intl: redirect a default locale o 404? Next-intl `localePrefix: "as-needed"` (default) reindirizza path senza locale a quello default. Un URL malformato come `/fr/contatti` viene **404** perché `fr` non è in `locales`. ✓ Non è un vero bug di sicurezza, ma vale la pena aggiungere un test e documentare. Nessun vettore di open redirect trovato perché next-intl non costruisce redirect da path utente arbitrari.
+- **Exploitation**: n/a.
+- **Remediation**: aggiungere un test manuale (o in CI) che verifichi:
+  - `/fr/contatti` → 404
+  - `/it/contatti%00` → gestito correttamente (no crash)
+  - `/it/contatti?redirect=//evil.com` → parametri query non processati dal middleware
+  Lasciare il matcher invariato. Documentare comportamento atteso in `proxy.ts` con commento.
+- **Effort**: S
 
 ### 4.5 Resend delivery, backup, monitoring
 
