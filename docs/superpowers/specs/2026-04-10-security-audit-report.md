@@ -955,7 +955,104 @@ I finding sotto si concentrano su (a) CSP con `'unsafe-inline'` e directive manc
 
 ### 4.2 Gestione segreti ed env
 
-_Da compilare nel Task 7._
+File esaminati: `.env.example`, `.env.local` (solo nomi variabili, mai valori), `.gitignore`, `lib/sanity.ts`, `sanity.config.ts`, `sanity.cli.ts`, `app/api/contact/route.ts`, `app/api/revalidate/route.ts`.
+
+**Inventario variabili d'ambiente (tutte enumerate):**
+
+| Variabile | Classe | Usata in | Note |
+|-----------|--------|----------|------|
+| `RESEND_API_KEY` | Segreta | `app/api/contact/route.ts:7` | server-only ✓ |
+| `CONTACT_EMAIL` | Segreta (PII dell'owner) | `app/api/contact/route.ts:9, 12` | server-only ✓ |
+| `SANITY_REVALIDATION_SECRET` | Segreta | `app/api/revalidate/route.ts:5` | server-only ✓, già trattata in F-08 |
+| `NEXT_PUBLIC_SANITY_PROJECT_ID` | Pubblica | `lib/sanity.ts:5`, `sanity.config.ts:9`, `sanity.cli.ts:5` | by design, nel bundle client |
+| `NEXT_PUBLIC_SANITY_DATASET` | Pubblica | `lib/sanity.ts:6`, `sanity.config.ts:10`, `sanity.cli.ts:6` | by design, nel bundle client |
+
+**Controlli già in ordine (non-finding):**
+- Nessuna variabile segreta è prefissata `NEXT_PUBLIC_` ✓.
+- Nessun segreto hardcoded nel codice (grep su `sk_live`, `sk_test`, `re_...`, `Bearer`) ✓.
+- `.gitignore` contiene `.env*` → tutti i file `.env*` sono esclusi ✓.
+- `git ls-files` non trova nessun file `.env` tracciato ✓.
+- `RESEND_API_KEY`, `CONTACT_EMAIL`, `SANITY_REVALIDATION_SECRET` sono usati **solo** in `app/api/*`, cioè route server (RSC / API handler). Non finiscono nel bundle client ✓.
+- `lib/sanity.ts` è chiamato solo da RSC/server actions, non da `"use client"`, quindi `NEXT_PUBLIC_*` resta nel contesto Node al fetch time (e va bene anche fosse nel client: sono pubbliche by design).
+
+I finding sotto sono limitati a *gap di documentazione/brittleness* delle env, non a leak.
+
+---
+
+#### F-29 — `.env.example` incompleto: mancano `NEXT_PUBLIC_SANITY_*` e `SANITY_REVALIDATION_SECRET`
+
+- **Severity**: Low
+- **Category**: DevEx / Configurazione
+- **Evidence**: `.env.example` (intero file)
+  ```
+  RESEND_API_KEY=
+  CONTACT_EMAIL=
+  ```
+- **Impact**: Il file `.env.example` documenta solo 2 delle 5 env necessarie. Un developer che clona il repo e fa `cp .env.example .env.local` si ritrova un build rotto perché mancano `NEXT_PUBLIC_SANITY_PROJECT_ID`, `NEXT_PUBLIC_SANITY_DATASET`, `SANITY_REVALIDATION_SECRET`. Non è un rischio di sicurezza in sé, ma aumenta la probabilità che qualcuno finisca a debuggare a caso e finisca per hardcodare valori nel codice o committare per sbaglio un `.env` per far partire il build. Impatto indiretto sulla security posture.
+- **Exploitation**: nessuno diretto.
+- **Remediation**: aggiornare `.env.example`:
+  ```
+  # Resend API key for contact form emails
+  # Get yours at https://resend.com
+  RESEND_API_KEY=
+
+  # Email address to receive contact form submissions
+  CONTACT_EMAIL=
+
+  # Sanity project identifiers (public, safe to commit to .env.example)
+  NEXT_PUBLIC_SANITY_PROJECT_ID=
+  NEXT_PUBLIC_SANITY_DATASET=production
+
+  # Secret shared with Sanity webhook for /api/revalidate signature verification
+  # Generate with: openssl rand -hex 32
+  SANITY_REVALIDATION_SECRET=
+  ```
+- **Effort**: S
+
+---
+
+#### F-30 — Non-null assertions su `process.env.*` senza early-exit o schema validation
+
+- **Severity**: Low
+- **Category**: Config robustness
+- **Evidence**: Casi diretti di `process.env.FOO!`:
+  - `lib/sanity.ts:5-6` (`NEXT_PUBLIC_SANITY_PROJECT_ID!`, `NEXT_PUBLIC_SANITY_DATASET!`)
+  - `sanity.config.ts:9-10` (idem)
+  - `sanity.cli.ts:5-6` (idem)
+  - `app/api/revalidate/route.ts:5` (`SANITY_REVALIDATION_SECRET!`) — già rilevato in F-08
+- **Impact**: Il pattern `!` dice al compilatore "questa variabile esiste sicuramente", ma a runtime non c'è nessun controllo. Se la variabile manca al boot:
+  - `NEXT_PUBLIC_SANITY_*` → il build Next.js fallisce in produzione (gli env pubblici sono risolti a build time), quindi è self-healing per il deploy Vercel.
+  - `SANITY_REVALIDATION_SECRET` → il codice passa `undefined` a `isValidSignature`, comportamento dipendente dal provider (F-08 già copre).
+  
+  Nessuna di queste esplode in maniera grave, ma è difesa in profondità mancata: una `env.ts` con validazione (es. con `zod` o similari) al boot avrebbe dato fail-fast con errore chiaro invece di errori cryptic runtime.
+- **Exploitation**: nessuna.
+- **Remediation** (opzione minima): creare `lib/env.ts` che valida e ri-esporta:
+  ```ts
+  // lib/env.ts
+  const required = [
+    "NEXT_PUBLIC_SANITY_PROJECT_ID",
+    "NEXT_PUBLIC_SANITY_DATASET",
+    "RESEND_API_KEY",
+    "CONTACT_EMAIL",
+    "SANITY_REVALIDATION_SECRET",
+  ] as const;
+
+  for (const key of required) {
+    if (!process.env[key]) {
+      throw new Error(`Missing required env var: ${key}`);
+    }
+  }
+
+  export const env = {
+    NEXT_PUBLIC_SANITY_PROJECT_ID: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID as string,
+    NEXT_PUBLIC_SANITY_DATASET: process.env.NEXT_PUBLIC_SANITY_DATASET as string,
+    RESEND_API_KEY: process.env.RESEND_API_KEY as string,
+    CONTACT_EMAIL: process.env.CONTACT_EMAIL as string,
+    SANITY_REVALIDATION_SECRET: process.env.SANITY_REVALIDATION_SECRET as string,
+  };
+  ```
+  E sostituire ogni `process.env.X!` con `env.X`. Opzionalmente usare `zod` per validazione più rigorosa.
+- **Effort**: S
 
 ### 4.3 Supply chain / dipendenze
 
