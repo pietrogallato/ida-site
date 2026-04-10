@@ -29,10 +29,22 @@ export const portableTextComponents: PortableTextComponents = {
   },
   marks: {
     link: ({ children, value }) => {
-      const isExternal = value?.href?.startsWith("http");
+      // Whitelist safe URL schemes. An editor with CMS access could otherwise
+      // set href="javascript:..." and turn a Sanity post into an XSS vector.
+      // Security audit F-22.
+      const href: string | undefined = value?.href;
+      const isSafe =
+        typeof href === "string" &&
+        /^(https?:|mailto:|tel:|\/|#)/i.test(href.trim());
+      if (!isSafe) {
+        return (
+          <span className="text-foreground-muted">{children}</span>
+        );
+      }
+      const isExternal = href!.startsWith("http");
       return (
         <a
-          href={value?.href}
+          href={href}
           className="text-primary-text underline decoration-primary/30 hover:text-primary-dark hover:decoration-primary"
           {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
         >
