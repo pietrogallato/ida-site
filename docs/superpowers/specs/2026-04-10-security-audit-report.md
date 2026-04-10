@@ -496,15 +496,294 @@ File esaminati: `app/studio/[[...tool]]/page.tsx`, `app/studio/[[...tool]]/layou
 
 ### 3.4 Client bundle pubblico
 
-_Da compilare nel Task 5._
+File esaminati: `app/[locale]/layout.tsx`, `app/layout.tsx` (se presente), `components/ui/cookie-banner.tsx`, `app/[locale]/contatti/page.tsx`, `next.config.ts` (images + CSP), `lib/portable-text-components.tsx`.
+
+**Inventario env pubblici nel bundle (grep):**
+- `NEXT_PUBLIC_SANITY_PROJECT_ID` (sanity.cli.ts, sanity.config.ts, lib/sanity.ts)
+- `NEXT_PUBLIC_SANITY_DATASET` (idem)
+
+Entrambe sono pubbliche by design (l'API Sanity pubblica usa projectId come identificativo non segreto). Non sono leak — sono scelte. Vedi F-16 per documentazione implicita dello Studio path.
+
+**Font loading**: Playfair Display e DM Sans caricati via `next/font/google` (`app/[locale]/layout.tsx:3, 20-30`). `next/font` scarica i file al build time e li serve self-hosted da `/` → **non** viene fatta nessuna chiamata runtime a `fonts.googleapis.com` / `fonts.gstatic.com`. → vedi F-19 per la CSP over-permissiva.
+
+---
+
+#### F-17 — Vercel Analytics e Speed Insights caricati senza consenso esplicito
+
+- **Severity**: High (Medium baseline + amplifier GDPR per processor con IP)
+- **Category**: GDPR / Consent management
+- **Evidence**: `app/[locale]/layout.tsx:10-11, 145-146`
+  ```ts
+  import { SpeedInsights } from "@vercel/speed-insights/next";
+  import { Analytics } from "@vercel/analytics/next";
+  // ...
+  <SpeedInsights />
+  <Analytics />
+  ```
+  combinati con il cookie banner puramente informativo:
+  `components/ui/cookie-banner.tsx:27-30`
+  ```ts
+  const dismiss = useCallback(() => {
+    localStorage.setItem(STORAGE_KEY, "true");
+    window.dispatchEvent(new StorageEvent("storage"));
+  }, []);
+  ```
+- **Impact**: Vercel Analytics si presenta come "privacy-friendly, cookieless", ma in pratica raccoglie IP, user agent, referrer, percorso, paese, tipo di device. Vercel è un processor USA; anche senza cookie, il trattamento di IP costituisce trattamento di dati personali ai sensi del GDPR e dell'art. 122 Codice Privacy italiano (implementazione ePrivacy). L'orientamento del Garante Privacy è che:
+  1. Analytics "cookieless" basata solo su aggregazioni e con IP minimizzati → possibile base giuridica *legittimo interesse* con informativa chiara; l'utente mantiene il diritto di opporsi.
+  2. Analytics con IP pieno, fingerprinting, persistenza su device (anche via localStorage) → richiede **consenso preventivo** prima dell'attivazione.
+  
+  Il cookie banner attuale **non chiede consenso**: mostra solo un testo con link alla privacy policy e un bottone "dismiss" che nasconde il banner. L'Analytics parte comunque al primo caricamento della pagina, prima che l'utente abbia interagito in qualsiasi modo. Questo pattern è stato sanzionato in diversi provvedimenti del Garante italiano (es. provvedimenti su Google Analytics 2022-2023 — pattern analogo).
+  
+  **Il mismatch critico**: tutta la valutazione legale dipende da cosa dichiara la privacy policy (vedi Task 11). Se la policy dichiara "legittimo interesse" → bisogna verificare che l'impact assessment esista e che ci sia opt-out. Se la policy dichiara "consenso" → il codice attuale è fuori conformità perché non aspetta il consenso.
+- **Exploitation**: N/A (compliance, non exploit).
+- **Remediation** — due path, da scegliere in base alla base giuridica dichiarata in policy:
+
+  **Path A — Legittimo interesse (strada più semplice):**
+  1. Documentare la DPIA/LIA (Legitimate Interest Assessment) nella privacy policy.
+  2. Aggiungere un meccanismo di **opt-out** facilmente accessibile (link in footer "Gestisci tracking" o nel banner).
+  3. Quando l'utente sceglie opt-out, non renderizzare `<Analytics />` e `<SpeedInsights />`:
+     ```tsx
+     const [analyticsConsent, setAnalyticsConsent] = useState(true); // default ON
+     // ...
+     {analyticsConsent && (
+       <>
+         <SpeedInsights />
+         <Analytics />
+       </>
+     )}
+     ```
+  4. Verificare che Vercel Analytics abbia l'opzione "IP anonymization" attiva nel dashboard Vercel.
+
+  **Path B — Consenso preventivo (più rigoroso, raccomandato per un sito di psicologa con dati sensibili):**
+  1. Trasformare il cookie banner in un vero consent banner con bottoni "Accetta" / "Rifiuta" (entrambi equivalenti graficamente, non "dark pattern").
+  2. Salvare il consenso in localStorage.
+  3. Renderizzare Analytics/Speed Insights **solo** se consenso concesso:
+     ```tsx
+     {hasConsent && (
+       <>
+         <SpeedInsights />
+         <Analytics />
+       </>
+     )}
+     ```
+  4. Permettere la revoca del consenso da una pagina dedicata o da un link "Gestisci preferenze" in footer.
+  
+  In entrambi i casi, aggiornare la privacy policy di conseguenza (vedi Task 11 per gap analysis).
+- **Effort**: M (Path A) / M-L (Path B, richiede anche il rifacimento del banner)
+
+---
+
+#### F-18 — Google Maps iframe embedded incondizionatamente (Google come processor non-consentito)
+
+- **Severity**: Medium (High con amplifier se il form contatti e la mappa sono nella stessa pagina, perché l'utente è già in contesto PII)
+- **Category**: Third-party embed / GDPR
+- **Evidence**: `app/[locale]/contatti/page.tsx:221-230`
+  ```tsx
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2808.8!2d11.45!3d45.45!..."
+    width="100%"
+    height="350"
+    loading="lazy"
+    referrerPolicy="no-referrer-when-downgrade"
+    title={t("map.iframeTitle")}
+  />
+  ```
+- **Impact**: L'iframe di Google Maps viene caricato automaticamente quando l'utente visita `/contatti` (lazy, ma comunque automatico appena scrolla). Al momento del load, il browser invia a Google:
+  - IP dell'utente
+  - User-Agent
+  - Referer con l'URL della pagina contatti (visto `referrerPolicy="no-referrer-when-downgrade"` → su HTTPS→HTTPS il referer completo passa)
+  - Cookies di sessione Google esistenti (se l'utente è loggato, Google può correlare la visita al suo account)
+  
+  Google diventa un processor del trattamento "localizzazione studio" e va dichiarato in privacy policy. Inoltre, Google Maps imposta cookie `NID`, `CONSENT`, `SOCS` su `.google.com` durante il load → cookie di terze parti finalità profilazione. **Questo è un trattamento che richiede consenso preventivo** ai sensi ePrivacy.
+  
+  L'aggravante col form contatti: la stessa pagina contiene il form (PII potenzialmente art. 9). La coincidenza temporale "utente apre pagina contatti → Google registra la visita → utente invia messaggio" crea un set di dati correlabili.
+- **Exploitation**: N/A (compliance, non exploit).
+- **Remediation** — due path:
+
+  **Path A — Consent-gated embed:**
+  1. Mostrare un placeholder statico (screenshot mappa + "Clicca per caricare la mappa interattiva (carica contenuti Google)").
+  2. Solo al click dell'utente, sostituire con l'iframe reale.
+  ```tsx
+  const [mapLoaded, setMapLoaded] = useState(false);
+  return mapLoaded ? (
+    <iframe src="https://www.google.com/maps/embed?pb=..." /* ... */ />
+  ) : (
+    <button onClick={() => setMapLoaded(true)} className="...">
+      <img src="/images/map-placeholder.jpg" alt="Posizione studio" />
+      <span>Clicca per caricare la mappa (Google Maps)</span>
+    </button>
+  );
+  ```
+
+  **Path B — Rimuovere Google Maps:**
+  - Sostituire con un'indicazione testuale dell'indirizzo + link "Apri in Maps" che apre una nuova scheda solo al click (nessun load inline → nessun trattamento automatico).
+  - Oppure usare un provider di mappe privacy-friendly (OpenStreetMap via `react-leaflet` o `maplibre-gl` self-hosted).
+- **Effort**: S (Path A) / M (Path B con react-leaflet)
+
+---
+
+#### F-19 — CSP lista `fonts.googleapis.com` e `fonts.gstatic.com` non utilizzati a runtime
+
+- **Severity**: Low
+- **Category**: CSP hardening
+- **Evidence**: `next.config.ts:40-42`
+  ```ts
+  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+  "font-src 'self' https://fonts.gstatic.com",
+  ```
+  combinato con `app/[locale]/layout.tsx:3, 20-30` che usa `next/font/google` (self-hosting al build time).
+- **Impact**: Le voci `fonts.googleapis.com` in `style-src` e `fonts.gstatic.com` in `font-src` non sono più necessarie: `next/font/google` scarica le font al build time e le serve da `'self'`. Avere queste origini nella CSP significa che, se mai un attaccante riuscisse a iniettare uno `<link rel="stylesheet" href="https://fonts.googleapis.com/...">` o un `<link as="font">`, passerebbe la CSP inutilmente. È un CSP relaxation senza beneficio.
+- **Exploitation**: richiede già un vettore di injection; è ornamentale.
+- **Remediation**: rimuovere le due origini dalla CSP:
+  ```ts
+  "style-src 'self' 'unsafe-inline'",
+  "font-src 'self'",
+  ```
+- **Effort**: S
+
+---
+
+#### F-20 — Tre `dangerouslySetInnerHTML` in `<head>` richiedono `'unsafe-inline'` in `script-src`
+
+- **Severity**: Medium
+- **Category**: CSP hardening
+- **Evidence**: `app/[locale]/layout.tsx:106-131`
+  ```tsx
+  <script
+    dangerouslySetInnerHTML={{
+      __html: `(function() { /* theme init */ })();`,
+    }}
+  />
+  <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(getWebsiteSchema()) }} />
+  <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(getLocalBusinessSchema(locale)) }} />
+  ```
+  combinato con `next.config.ts:38`
+  ```ts
+  "script-src 'self' 'unsafe-inline' https://va.vercel-scripts.com",
+  ```
+- **Impact**: L'uso di inline scripts costringe a tenere `'unsafe-inline'` in `script-src`, che di fatto disattiva le garanzie più forti della CSP contro XSS: qualsiasi `<script>` inline iniettato (es. tramite un bug di sanitizzazione in un futuro componente) verrebbe eseguito. Per la pagina pubblica (non studio) questo è il finding di CSP più significativo. Note positive:
+  - I 3 script attuali sono **tutti contenuto controllato dal codice**, non input utente (theme init statico; ld+json da `siteConfig` hard-coded). **Non sono vulnerabilità attive** ma bloccano un hardening importante.
+  - Le `ld+json` sono tipo `application/ld+json` che non viene eseguito come script, ma il tag `<script>` inline attira comunque il check CSP `script-src`.
+- **Exploitation**: non diretto; è un "relaxation" della difesa in profondità.
+- **Remediation** — due opzioni:
+
+  **Opzione A — Nonce CSP (raccomandato):**
+  1. Generare un nonce crypto-random per ogni request in un middleware o nel root layout.
+  2. Passare il nonce come prop agli script inline.
+  3. Sostituire `'unsafe-inline'` con `'nonce-<valore>'` nella CSP, e usare `'strict-dynamic'` per amplificare la sicurezza.
+  4. Next.js 16 supporta questo pattern nativamente con headers dinamici.
+  
+  Esempio:
+  ```tsx
+  // middleware.ts
+  import { NextResponse } from "next/server";
+  export function middleware(req) {
+    const nonce = Buffer.from(crypto.randomUUID()).toString("base64");
+    const csp = `script-src 'self' 'nonce-${nonce}' 'strict-dynamic' https://va.vercel-scripts.com; ...`;
+    const res = NextResponse.next();
+    res.headers.set("Content-Security-Policy", csp);
+    res.headers.set("x-nonce", nonce);
+    return res;
+  }
+  ```
+  ```tsx
+  // layout.tsx
+  import { headers } from "next/headers";
+  const nonce = (await headers()).get("x-nonce") ?? undefined;
+  <script nonce={nonce} dangerouslySetInnerHTML={{ __html: "..." }} />
+  ```
+
+  **Opzione B — Esternalizzare gli script inline:**
+  1. Spostare il theme init in un file statico `public/theme-init.js` e includerlo come `<script src="/theme-init.js" />`.
+  2. Per le `ld+json` usare `next-seo` o `next/script` strategy `beforeInteractive` con `src` externa (ma ld+json per sua natura è contenuto, non script — meglio opzione A o C).
+  
+  **Opzione C — Accettare come tradeoff documentato:**
+  - Siccome gli script sono tutti server-controlled, il rischio XSS da inline script è nullo finché non si introducono inline script con input utente. Documentare come "noto, accettato, tracciato" nel code style e aggiungere un lint rule che vieta nuovi `dangerouslySetInnerHTML` in layout. Meno sicuro di A ma più semplice.
+- **Effort**: M (A) / M (B) / S (C)
+
+---
 
 ### 3.5 Query Sanity (GROQ)
 
-_Da compilare nel Task 5._
+File esaminati: `lib/sanity.ts`, `sanity/schemas/testimonial.ts` (+ altri schemi dati per contesto).
+
+**Controlli già in ordine (non-finding):**
+- Tutte le query in `lib/sanity.ts` usano parametri `$locale`, `$slug`, `$topicSlug`, `$contentType` anziché interpolazione diretta di input utente. ✓
+- Le porzioni di query assemblate tramite template string (`${hasTopicFilter ? '...' : ''}`) sono controllate da booleani interni, non da input esterno. ✓
+- Nessuna query accetta un fragment GROQ arbitrario dal client. ✓
+
+---
+
+#### F-21 — `lib/sanity.ts` usa `useCdn: true` + nessun token → client read anonimo (dipende da F-15)
+
+- **Severity**: dipende da F-15 (fino a High se il dataset è public)
+- **Category**: Data exposure / Dataset visibility
+- **Evidence**: `lib/sanity.ts:4-9`
+  ```ts
+  export const client = createClient({
+    projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
+    dataset: process.env.NEXT_PUBLIC_SANITY_DATASET!,
+    apiVersion: "2026-03-28",
+    useCdn: true,
+  });
+  ```
+- **Impact**: Nessun `token` è passato al client Sanity → le query vengono eseguite come "anonymous read". Se il dataset è pubblico (F-15), chiunque può replicare le stesse query direttamente da browser senza passare per il sito. Se il dataset è privato, le query del sito falliranno. Entrambe le opzioni implicano una verifica da fare nel dashboard Sanity — il codice come scritto dà per scontato "dataset pubblico". Fare cross-reference con F-15 per la verifica empirica.
+- **Exploitation**: se dataset pubblico → trivially exploitable; altrimenti non sfruttabile.
+- **Remediation**: stesse raccomandazioni di F-15. Se si sposta il dataset a privato, aggiungere `token: process.env.SANITY_READ_TOKEN` al client e verificare che tutte le server-side pages continuino a funzionare. Nessuna chiamata a `client.fetch` è fatta da un componente `"use client"` in questo codebase, quindi il token non verrebbe esposto al bundle.
+- **Effort**: S (config)
+
+---
 
 ### 3.6 Form client e rendering contenuti CMS
 
-_Da compilare nel Task 5._
+File esaminati: `components/sections/contact-form.tsx`, `lib/portable-text-components.tsx`, tutte le pagine che renderizzano PortableText (blog).
+
+**Controlli già in ordine (non-finding):**
+- `contact-form.tsx` non usa `dangerouslySetInnerHTML`; tutti gli input sono componenti controllati; l'errore di rete è solo una stringa localizzata, nessun rendering di HTML arbitrario. ✓
+- `portable-text-components.tsx` renderizza i link con `rel="noopener noreferrer"` e `target="_blank"` per URL esterni (check `isExternal = value?.href?.startsWith("http")`) → prevenzione reverse tabnabbing. ✓
+- Le immagini dentro portable text sono renderizzate tramite `next/image` che valida `src` contro `next.config.ts:images.remotePatterns` (solo `cdn.sanity.io`). URL con schema `javascript:` o `data:` saltano il domain match → next/image ritorna un errore di configurazione, non esegue. ✓
+
+---
+
+#### F-22 — `portable-text-components.tsx` non valida `value?.href` dei link prima di metterli in `<a href>`
+
+- **Severity**: Low
+- **Category**: XSS defense in depth
+- **Evidence**: `lib/portable-text-components.tsx:30-42`
+  ```tsx
+  link: ({ children, value }) => {
+    const isExternal = value?.href?.startsWith("http");
+    return (
+      <a
+        href={value?.href}
+        // ...
+      >
+  ```
+- **Impact**: Un editor Sanity malizioso (insider) può impostare `value.href = "javascript:alert(document.cookie)"`. React generalmente NON escapa gli URL negli attributi `href` — li passa come sono, ed è il browser a eseguire `javascript:` se cliccato. Il check `startsWith("http")` serve solo a decidere `target="_blank"`, non a validare lo schema. Risultato: un link `javascript:` scritto via Sanity Studio viene renderizzato e cliccabile → clickjacking-to-XSS per utenti che cliccano.
+  
+  Questo è un **insider threat**: serve accesso editor Sanity. In un progetto con 1-2 editor fidati è basso rischio, ma coerente col threat model (3) "attacker mirato" dove un account editor compromesso diventa vettore. React 18+ ha un warning dev-only per schemi pericolosi, ma non blocca in produzione.
+- **Exploitation**: richiede compromissione account editor Sanity → pubblicazione di un post con link malevolo → vittima clicca il link. Probabilità bassa ma fattibile.
+- **Remediation**: validare lo schema in whitelist:
+  ```tsx
+  link: ({ children, value }) => {
+    const href = value?.href;
+    const safe = href && /^(https?:|mailto:|tel:|\/)/i.test(href);
+    if (!safe) {
+      return <span className="text-foreground-muted">{children}</span>;
+    }
+    const isExternal = href.startsWith("http");
+    return (
+      <a
+        href={href}
+        className="text-primary-text underline decoration-primary/30 hover:text-primary-dark hover:decoration-primary"
+        {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+      >
+        {children}
+      </a>
+    );
+  },
+  ```
+- **Effort**: S
 
 ---
 
