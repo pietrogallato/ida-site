@@ -1316,7 +1316,101 @@ File esaminati: `app/api/contact/route.ts`, `app/api/revalidate/route.ts`, `app/
 
 ### 4.5 Resend delivery, backup, monitoring
 
-_Da compilare nel Task 10._
+File esaminati: `app/api/contact/route.ts` (Resend init + invio), `lib/emails/contact-email.tsx` (template email), `package.json` (versione Resend).
+
+**Nota**: la maggior parte dei finding Resend è già coperta da F-02 (mittente `onboarding@resend.dev`) e F-04 (log PII). Qui aggiungo solo gap nuovi: link tracking, retention, backup Sanity, monitoring.
+
+---
+
+#### F-41 — Link tracking Resend non esplicitamente disabilitato (default provider = on?)
+
+- **Severity**: Low (amplifier GDPR → Medium se il link tracking è effettivamente attivo)
+- **Category**: GDPR / Email privacy
+- **Evidence**: `app/api/contact/route.ts:93-117`
+  ```ts
+  const { error } = await resend.emails.send({
+    from: "Sito Ida Sato <onboarding@resend.dev>",
+    to: CONTACT_EMAIL,
+    replyTo: sanitizedEmail,
+    subject: `Nuovo messaggio da ${sanitizedName.slice(0, 100)}`,
+    react: ContactEmail({ ... }),
+    text: [ ... ].join("\n"),
+  });
+  ```
+- **Impact**: Resend offre "click tracking" e "open tracking" (pixel + redirect wrapper) come feature opzionali. Il codice non specifica esplicitamente `headers` o `tags` che le disabilitino — il comportamento dipende dalla configurazione di default sul dashboard Resend, che **da verificare**. Se attivi, i link nell'email (es. `tel:`, `mailto:` o link a siti esterni) vengono riscritti come redirect via `r.resend.com/...`, e l'apertura viene trackata via pixel. Per una email di contatto con PII, questo è un trattamento dati non-consented del destinatario (Ida) e possibilmente dell'interessato (il mittente del form). Inoltre, quando Ida clicca "Rispondi" per contattare il paziente, se il link è stato riscritto può avere latenza o portare a un URL non voluto.
+- **Exploitation**: non è un exploit. È un potenziale default non-privacy-friendly che va neutralizzato.
+- **Remediation**: nel dashboard Resend → Settings → Tracking, disabilitare "Click tracking" e "Open tracking" per il progetto. Opzionalmente nel codice passare header espliciti:
+  ```ts
+  await resend.emails.send({
+    // ...
+    headers: {
+      "List-Unsubscribe": "<mailto:...>", // se mai si invia newsletter
+    },
+  });
+  ```
+  Dopo il fix, verificare inviando un test e ispezionando l'HTML source: i link NON devono essere wrapped in `r.resend.com`.
+- **Effort**: S (config dashboard)
+
+---
+
+#### F-42 — Retention messaggi Resend non documentata nel repo
+
+- **Severity**: Medium (amplifier GDPR già applicato al baseline Low)
+- **Category**: GDPR / Data retention
+- **Evidence**: nessun riferimento a retention policy in `CLAUDE.md`, `README.md`, privacy policy, o codice.
+- **Impact**: Resend conserva le email inviate per un periodo (default: ~30 giorni, visibili nel dashboard "Emails" come storico). Questo è un secondo luogo in cui le PII del form contatti sono conservate (oltre alla casella di posta di Ida). La privacy policy del sito deve dichiararlo se vero — cfr. F-44 (Passata C). Il log retention Resend non è sotto il controllo del codice: è config dashboard. Serve verificare nel piano Resend attuale quale retention è attiva (Free tier: 30 giorni; Pro: 90 giorni configurabile).
+- **Exploitation**: indiretto — un takeover dell'account Resend esporrebbe storico PII dei contatti.
+- **Remediation**:
+  1. Verificare retention attuale in Resend dashboard → Logs settings.
+  2. Ridurre al minimo compatibile con il debug (es. 7-14 giorni).
+  3. Documentare il valore scelto nella privacy policy (cfr. F-44).
+  4. Aggiungere 2FA sull'account Resend.
+- **Effort**: S (config dashboard + doc)
+
+---
+
+#### F-43 — Nessun backup/export programmato del dataset Sanity
+
+- **Severity**: Medium
+- **Category**: Backup / Disaster recovery
+- **Evidence**: nessun workflow CI/GitHub Actions, nessuno script `package.json` per `sanity dataset export`, nessuna docu su backup nel repo.
+- **Impact**: Il dataset Sanity contiene tutti i contenuti editoriali (blog post, testimonianze, servizi, topic, FAQ). Se il dataset viene eliminato per errore, compromesso, o se l'account Sanity ha un problema, il contenuto è perso. Sanity offre versioning interno e undo, ma non un vero backup offline: un account compromesso può cancellare anche la history. Per un sito content-driven, questo è rischio operativo.
+  
+  Il codice è su git → backuppato via GitHub. Gli asset media (immagini caricate nel Studio) e i documenti Sanity sono l'unica cosa **non** coperta da git.
+- **Exploitation**: indiretto — si attiva su incident (compromise, human error, Sanity outage).
+- **Remediation**:
+  1. Opzione A (manuale ricorrente): creare uno script `scripts/backup-sanity.sh` che esegue `sanity dataset export production backup-$(date +%Y%m%d).tar.gz` e documentarlo in `CLAUDE.md`. L'utente lo esegue mensilmente.
+  2. Opzione B (automatica CI): GitHub Action schedulata che chiama Sanity API con un token read-only, crea l'export, e lo salva come artifact o su S3/Vercel Blob. Richiede `SANITY_AUTH_TOKEN` come secret repo.
+  3. Opzione C (paid): Sanity stessa offre backup enterprise.
+  Preferita: **B** se c'è tempo, **A** come interim.
+- **Effort**: M (CI automation) / S (script manuale)
+
+---
+
+#### F-44 — Nessun monitoring / alerting su endpoint pubblici
+
+- **Severity**: Medium
+- **Category**: Observability / Incident response
+- **Evidence**: nessuna config di log drains, webhooks di alerting, uptime monitor, in repo o documentazione.
+- **Impact**: Senza alerting:
+  - Un abuse burst su `/api/contact` (migliaia di request/minuto) non genera alert → spam di mail a Ida finché non se ne accorge lei stessa.
+  - Un downtime del sito (deploy rotto, Sanity fetch failing) non viene rilevato → pazienti che cercano il sito non lo trovano e non c'è segnale finché non scrive qualcuno.
+  - Un 5xx spike su `/api/contact` silenzioso significa form rotto → messaggi persi.
+  - Brute-force silenzioso su `/api/revalidate` (F-39) non rilevato.
+  Il threat model include spam/bot come priorità 2: manca l'occhio per vederlo.
+- **Exploitation**: indiretto — peggiora MTTR su qualsiasi incident.
+- **Remediation**: setup minimo con strumenti gratuiti:
+  1. **Uptime monitor** (Better Stack/UptimeRobot free): sonda `GET /it` e `GET /en` ogni 5 minuti.
+  2. **Error rate alert**: Vercel Analytics include "Log Drains" (plan Pro); gratis si può usare Axiom free tier collegato via log drain.
+  3. **Abuse alert su `/api/contact`**: una semplice GitHub Action che legge Vercel analytics API 1x/giorno e alerta se request > soglia.
+  4. **Webhook pagina Status**: opzionale, per comunicare downtime ai visitatori.
+- **Effort**: M (setup iniziale) — una volta fatto, praticamente zero manutenzione.
+
+---
+
+#### F-45 — `lib/emails/contact-email.tsx`: review veloce (non-finding, documentazione)
+
+File esaminato per completezza. `ContactEmail` (template React Email) riceve `name`, `email`, `phone`, `message`, `receivedAt` come prop e li renderizza in markup statico. React Email escapa i valori by default → nessun HTML injection via campi utente. Il template non fa fetch esterni, non include tracking pixel, non embedda immagini remote. ✓ nessun finding.
 
 ---
 
@@ -1375,7 +1469,56 @@ Riassunto: **nessuna CVE in dipendenza che gira a runtime in produzione** tranne
 
 ## 7. External configuration recommendations
 
-_Da compilare nel Task 10 (consolidato)._
+Raccolta consolidata delle raccomandazioni che **non sono fix di codice** ma richiedono azioni su servizi esterni (DNS, Vercel, Sanity, Resend, monitoring). Ogni punto ha un cross-reference al finding che lo motiva.
+
+### 7.1 DNS (registrar del dominio)
+
+- [ ] **SPF record** per dominio mittente email (F-02). `v=spf1 include:_spf.resend.com -all` (o `~all` se si è ancora in fase di verifica).
+- [ ] **DKIM record** (2 CNAME forniti dal dashboard Resend dopo "Add Domain") (F-02).
+- [ ] **DMARC record** (F-02). Iniziare con `v=DMARC1; p=quarantine; rua=mailto:dmarc@<dominio>` e alzare a `p=reject` dopo aver verificato che non ci siano falsi positivi.
+- [ ] **HSTS preload** (F-27): submit del dominio a https://hstspreload.org/.
+
+### 7.2 Vercel dashboard
+
+- [ ] **Vercel Firewall / Rate Limit Rules** (F-01): regola edge su `/api/contact` max 5 req/15min per IP. Piano Pro.
+- [ ] **Password Protection** o **Vercel Authentication** su route `/studio/*` (F-12, F-13). Semplice toggle in Project Settings → Deployment Protection.
+- [ ] **Log Drains** verso Axiom/Better Stack (F-44) per alerting e retention log.
+- [ ] **Branch protection**: limitare deploy a branch `main`, no deploy su PR da fork untrusted.
+- [ ] **Env secrets backup**: esportare settings env → file cifrato offline (1Password/Bitwarden). Se l'account Vercel viene perso, gli env non sono recuperabili.
+- [ ] **Verificare HSTS default** (F-27): `curl -I https://<dominio>` e controllare che `strict-transport-security` sia presente con `max-age` ≥ 31536000.
+
+### 7.3 Sanity dashboard (manage.sanity.io)
+
+- [ ] **Dataset visibility** → private vs public (F-15). Decidere in base al threat model: se privato, aggiungere `SANITY_READ_TOKEN` server-only al client (F-21).
+- [ ] **CORS origins** (F-13 related): limitare a `https://<dominio-ida>` e `http://localhost:3000` — NO wildcard.
+- [ ] **2FA obbligatoria** per tutti i membri del progetto.
+- [ ] **Member access**: rimuovere accessi orfani, limitare ruolo `administrator` al minimo.
+- [ ] **Backup dataset schedulato** (F-43).
+- [ ] **Webhook signature secret** forte (F-08) e **rotazione periodica** (es. annuale).
+
+### 7.4 Resend dashboard
+
+- [ ] **Dominio verificato** con SPF/DKIM/DMARC (F-02).
+- [ ] **Disable click & open tracking** (F-41).
+- [ ] **Log retention** configurata al minimo necessario (F-42).
+- [ ] **2FA** sull'account.
+- [ ] **API key scoping**: creare una API key dedicata al sito, solo permessi "send", rotazione annuale.
+- [ ] **Alerting** su bounce rate / complaint rate anomali (feature Resend Pro).
+
+### 7.5 Privacy policy e legal (dal Task 11)
+
+- [ ] Aggiornamenti privacy policy per processor dichiarati, retention, base giuridica form contatti → vedi §5 (GDPR gap).
+- [ ] **Consenso analytics** UI (cookie/consent banner condizionale) → F-17.
+- [ ] **Disclaimer form contatti**: aggiungere testo esplicito "non inserire dati sanitari sensibili in questo form, usa il telefono/WhatsApp per comunicazioni cliniche".
+- [ ] **DPA firmati** con Resend, Sanity, Vercel: scaricare dai rispettivi dashboard e conservare come titolare.
+
+### 7.6 Monitoring / alerting (F-44)
+
+- [ ] **Uptime monitor** (UptimeRobot/Better Stack free): sonde `/it`, `/en`, `/api/contact` (GET → 405 atteso ma sentinel vivo).
+- [ ] **Error rate dashboard** (Axiom free o Vercel Analytics Pro).
+- [ ] **Synthetic check** del flusso form contatti: 1x/settimana script che invia un form con `body.website != ""` (honeypot) e verifica che il 200 silenzioso arrivi (e che NO email venga inviata).
+- [ ] **Alert Slack/email** su spike 5xx o burst request `/api/contact`.
+- [ ] **Status page** pubblica (opzionale, BetterStack free include 1 status page).
 
 ---
 
