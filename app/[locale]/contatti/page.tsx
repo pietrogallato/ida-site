@@ -7,6 +7,7 @@ import { Card } from "@/components/ui/card";
 import { FadeIn } from "@/components/ui/fade-in";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
 import { ContactForm } from "@/components/sections/contact-form";
+import { MapsConsent } from "@/components/sections/maps-consent";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { siteConfig } from "@/content/site";
 
@@ -217,18 +218,10 @@ export default async function ContactPage() {
             <h2 className="mb-4 text-lg font-semibold text-foreground">
               {t("map.title")}
             </h2>
-            <div className="overflow-hidden rounded-xl">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2808.8!2d11.45!3d45.45!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sMeledo%20(VI)!5e0!3m2!1sit!2sit!4v1"
-                width="100%"
-                height="350"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title={t("map.iframeTitle")}
-              />
-            </div>
+            <MapsConsent
+              embedUrl="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2808.8!2d11.45!3d45.45!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sMeledo%20(VI)!5e0!3m2!1sit!2sit!4v1"
+              mapsLink="https://www.google.com/maps/search/?api=1&query=Meledo+VI+Italy"
+            />
           </div>
         </ScrollReveal>
       </Container>

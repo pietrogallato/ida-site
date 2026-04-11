@@ -454,7 +454,11 @@
     },
     "map": {
       "title": "Dove trovarmi",
-      "iframeTitle": "Mappa degli studi di Ida Sato a Meledo (VI) e Spinea (VE)"
+      "iframeTitle": "Mappa degli studi di Ida Sato a Meledo (VI) e Spinea (VE)",
+      "consentTitle": "Mappa Google Maps",
+      "consentDescription": "Caricando la mappa accetti che Google LLC (USA) riceva il tuo indirizzo IP e user agent per mostrarne il contenuto. Il trasferimento avviene ai sensi del Data Privacy Framework. Maggiori dettagli nella privacy policy.",
+      "consentButton": "Carica la mappa",
+      "openInMaps": "Apri in Google Maps"
     }
   },
   "faq": {
@@ -560,7 +564,7 @@
     },
     "thirdParty": {
       "title": "Servizi di terze parti",
-      "text": "Questo sito si avvale dei seguenti servizi di terze parti: Vercel Inc. (vercel.com) per l'hosting del sito, la distribuzione tramite CDN e l'analisi del traffico; Sanity AS (sanity.io) per la gestione e la distribuzione dei contenuti del blog tramite la CDN cdn.sanity.io; Resend Inc. (resend.com) per l'invio delle email generate dal modulo di contatto. Tutti i fornitori operano in conformità al GDPR e dispongono di adeguati accordi sul trattamento dei dati (DPA), disponibili su richiesta al titolare. Per maggiori informazioni, consulta le rispettive informative sulla privacy."
+      "text": "Questo sito si avvale dei seguenti servizi di terze parti: Vercel Inc. (vercel.com) per l'hosting del sito, la distribuzione tramite CDN e l'analisi del traffico; Sanity AS (sanity.io) per la gestione e la distribuzione dei contenuti del blog tramite la CDN cdn.sanity.io; Resend Inc. (resend.com) per l'invio delle email generate dal modulo di contatto; Google LLC (USA) per la visualizzazione facoltativa di Google Maps nella pagina Contatti, caricata solo previo consenso esplicito dell'utente (base giuridica: art. 6(1)(a) GDPR; trasferimento extra-UE coperto dal Data Privacy Framework UE-USA). Tutti i fornitori operano in conformità al GDPR e dispongono di adeguati accordi sul trattamento dei dati (DPA), disponibili su richiesta al titolare. Per maggiori informazioni, consulta le rispettive informative sulla privacy."
     },
     "analytics": {
       "title": "Analisi del traffico",
