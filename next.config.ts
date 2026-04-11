@@ -23,6 +23,25 @@ const csp = [
   "upgrade-insecure-requests",
 ].join("; ");
 
+// Minimal CSP for /studio/* — security audit F-13. Sanity Studio has its own
+// permissive runtime (many sanity.io origins, eval, inline styles), so this
+// CSP stays very loose on script/style/connect but enforces one critical
+// directive: frame-ancestors 'self' blocks clickjacking attempts that would
+// embed the logged-in studio in a malicious iframe. X-Frame-Options: SAMEORIGIN
+// below is the legacy-browser fallback for the same protection.
+const studioCsp = [
+  "default-src 'self' https://*.sanity.io https://cdn.sanity.io",
+  "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.sanity.io",
+  "style-src 'self' 'unsafe-inline' https://*.sanity.io https://fonts.googleapis.com",
+  "font-src 'self' data: https://*.sanity.io https://fonts.gstatic.com",
+  "img-src 'self' data: blob: https://*.sanity.io https://cdn.sanity.io",
+  "connect-src 'self' https://*.sanity.io https://*.api.sanity.io wss://*.api.sanity.io",
+  "frame-src 'self' https://*.sanity.io",
+  "frame-ancestors 'self'",
+  "base-uri 'self'",
+  "object-src 'none'",
+].join("; ");
+
 // Permissions-Policy: explicit deny-list covering all features the site does
 // not use (security audit F-26). Default is allowlist, so anything omitted
 // here is still available to scripts.
@@ -65,12 +84,20 @@ const nextConfig: NextConfig = {
   },
   async headers() {
     return [
-      // Permissive headers for Sanity Studio
+      // Sanity Studio — clickjacking protection (security audit F-13).
+      // The studio is embedded as a Next.js route at /studio and we cannot
+      // inherit the site-wide CSP (it would break the studio SPA). Instead
+      // we serve a minimal studio-specific CSP with frame-ancestors 'self'
+      // plus X-Frame-Options: SAMEORIGIN as a legacy fallback, so a
+      // malicious third-party page cannot iframe /studio and hijack an
+      // authenticated admin via clickjacking.
       {
         source: "/studio/:path*",
         headers: [
           { key: "X-Content-Type-Options", value: "nosniff" },
           { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+          { key: "X-Frame-Options", value: "SAMEORIGIN" },
+          { key: "Content-Security-Policy", value: studioCsp },
         ],
       },
       // Restrictive headers for all other routes
