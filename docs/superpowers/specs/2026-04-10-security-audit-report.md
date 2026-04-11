@@ -77,6 +77,7 @@ Questa è l'area più sensibile del sito dal punto di vista GDPR (amplifier appl
   2. **Upstash Redis** free tier + libreria `@upstash/ratelimit`: drop-in replacement della funzione `isRateLimited`, supporta sliding window, persistenza distribuita.
   3. **Vercel KV** (wrapper Upstash Redis): stesso risultato, integrazione Vercel nativa.
 - **Effort**: S (opzione 1) / M (opzioni 2-3)
+- **Status (2026-04-11)**: **ACCEPTED RISK**. Il titolare è su piano Vercel Hobby (free) e non intende passare a Pro, quindi l'opzione 1 non è disponibile. Le opzioni 2-3 richiedono un terzo fornitore e non sono giustificate dal volume atteso del sito (poche visite/giorno, form contatti usato raramente). Difese compensative attualmente attive: (i) mitigation Batch 1 con cleanup LRU sulla map + cap 10k entries (F-05); (ii) timeout Resend 8s (F-09) limita il tempo di ciascuna lambda; (iii) Resend stesso impone rate limiting lato upstream. In caso di abuse rilevato, escalation pianificata: attivare "Attack Challenge Mode" nel dashboard Vercel (gratuito anche su Hobby) per qualche ora. Rivedere la decisione se il volume del sito cresce in modo significativo.
 
 ---
 
@@ -101,6 +102,7 @@ Questa è l'area più sensibile del sito dal punto di vista GDPR (amplifier appl
   4. Verificare che Resend confermi il dominio come "Verified".
   5. Fare un send di test e controllare gli header SPF/DKIM/DMARC nel client (es. Gmail → Show Original).
 - **Effort**: M (richiede accesso DNS + dashboard Resend)
+- **Status (2026-04-11)**: **DEFERRED — blocked**. Il titolare non possiede ancora un dominio custom. `onboarding@resend.dev` resta l'unica opzione compatibile col Resend free tier finché un dominio non viene acquistato. **Azione urgente a carico del titolare**: verificare nel dashboard Resend che `CONTACT_EMAIL` sia nella lista "verified" dell'account Resend, altrimenti tutti i send falliscono silenziosamente e il form è rotto senza che nessuno se ne accorga. Da riaprire al momento dell'acquisto del dominio: aggiungere DNS records (SPF/DKIM/DMARC) + aggiornare il `from` in `app/api/contact/route.ts`.
 
 ---
 
@@ -511,6 +513,7 @@ File esaminati: `app/studio/[[...tool]]/page.tsx`, `app/studio/[[...tool]]/layou
      });
      ```
 - **Effort**: S (verifica + toggle) / M (se serve rifattorizzare per usare token)
+- **Status (2026-04-11)**: **VERIFIED + ACCEPTED RISK**. Probe anonimo su `https://<projectId>.api.sanity.io/v2026-03-28/data/query/<dataset>` ha risposto HTTP 200 con risultati → **il dataset è effettivamente pubblico**. Review dello schema (`sanity/schemas/`): i document type `post`, `testimonial`, `topic`, `resource` contengono solo contenuti editoriali destinati alla pubblicazione sul sito, nessun campo "note interne", nessuna PII di terzi, nessun draft privato. L'impatto residuo di una query anonima è "leggere gli stessi dati già visibili al visitatore". Decisione: mantenere il dataset pubblico (più semplice) + rivedere la decisione se in futuro si aggiunge uno schema con campi non destinati alla pubblicazione.
 
 ---
 
@@ -523,6 +526,7 @@ File esaminati: `app/studio/[[...tool]]/page.tsx`, `app/studio/[[...tool]]/layou
 - **Exploitation**: N/A (documentazione).
 - **Remediation**: nessuna azione sul codice — accettare come fatto noto. Assicurarsi che le protezioni F-13/F-14/F-15 siano in ordine.
 - **Effort**: S (documentazione)
+- **Status (2026-04-11)**: **ACCEPTED**. Trattato come fatto architetturale. Le difese reali sono tutte in ordine: F-13 (headers clickjacking) risolto, F-14 (Vision tool) rimosso, F-15/F-21 verificato e accettato.
 
 ### 3.4 Client bundle pubblico
 
@@ -761,6 +765,7 @@ File esaminati: `lib/sanity.ts`, `sanity/schemas/testimonial.ts` (+ altri schemi
 - **Exploitation**: se dataset pubblico → trivially exploitable; altrimenti non sfruttabile.
 - **Remediation**: stesse raccomandazioni di F-15. Se si sposta il dataset a privato, aggiungere `token: process.env.SANITY_READ_TOKEN` al client e verificare che tutte le server-side pages continuino a funzionare. Nessuna chiamata a `client.fetch` è fatta da un componente `"use client"` in questo codebase, quindi il token non verrebbe esposto al bundle.
 - **Effort**: S (config)
+- **Status (2026-04-11)**: **ACCEPTED RISK** (segue la decisione di F-15). Dataset confermato pubblico, contenuti destinati alla pubblicazione, nessun token necessario. Rivedere insieme a F-15 se in futuro si aggiungono campi privati.
 
 ---
 
@@ -849,6 +854,12 @@ I finding sotto si concentrano su (a) CSP con `'unsafe-inline'` e directive manc
   2. **Hash-based CSP**: calcolare SHA-256 di ciascuno script inline statico e metterli in `script-src 'sha256-...'`. Funziona solo se gli script non cambiano. Fragile ai refactor.
   3. **Accettare il tradeoff** documentato (come già discusso in F-20 Opzione C) ma almeno aggiungere `'strict-dynamic'` se migrato a nonce. Non risolve il problema, solo riconosce.
 - **Effort**: M (opzione 1) / S (opzione 2 se script stabili) / S (opzione 3, doc only)
+- **Status (2026-04-11)**: **ACCEPTED RISK**. Il titolare ha valutato costi/benefici e deciso di mantenere `'unsafe-inline'` in `script-src` e `style-src`. Razionale documentato:
+  - Nessun XSS noto oggi nel codebase.
+  - Le difese complementari sono già in Batch 1: F-22 whitelist schemi link in PortableText, F-24 `base-uri`/`form-action`/`object-src`, F-25 `img-src` stretto, F-26 Permissions-Policy, F-19 HSTS.
+  - Threat model = sito vetrina + form contatti, non applicazione con autenticazione utente. Il baseline di rischio è basso.
+  - Migrazione nonce è modifica architetturale (middleware custom CSP, refactor dei 3 script inline in `layout.tsx`, test completo) non giustificata dal beneficio marginale rispetto all'alternativa hash-based.
+  - Revisione prevista: riaprire la decisione se (a) si aggiungono moduli che rendono PortableText più dinamico, (b) si introduce auth utente, o (c) emerge CVE a carico di una delle dipendenze del bundle.
 
 ---
 
@@ -1435,6 +1446,7 @@ File esaminati: `app/api/contact/route.ts` (Resend init + invio), `lib/emails/co
   3. **Abuse alert su `/api/contact`**: una semplice GitHub Action che legge Vercel analytics API 1x/giorno e alerta se request > soglia.
   4. **Webhook pagina Status**: opzionale, per comunicare downtime ai visitatori.
 - **Effort**: M (setup iniziale) — una volta fatto, praticamente zero manutenzione.
+- **Status (2026-04-11)**: **ACCEPTED RISK**. Monitoring non è necessario nel contesto attuale: volume previsto basso (sito vetrina, pochi visitatori/giorno), scope limitato (nessun flusso transazionale, nessuna autenticazione utente), MTTR tollerabile alto. Rivedere se: (a) il volume cresce significativamente, (b) si aggiunge un flusso di prenotazione/pagamento, (c) emerge un incident che richieda alerting retrospettivamente.
 
 ---
 
