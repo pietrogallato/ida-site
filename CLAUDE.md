@@ -9,6 +9,23 @@ npm run start        # Server di produzione
 npm run lint         # ESLint
 ```
 
+## Backup Sanity (manuale, mensile)
+
+Il dataset Sanity è l'unica cosa del sito **non** coperta da git. Eseguire
+mensilmente (o prima di modifiche editoriali importanti):
+
+```bash
+./scripts/backup-sanity.sh
+```
+
+Lo script crea `backups/sanity-production-YYYYMMDD-HHMMSS.tar.gz`. La
+cartella `backups/` è gitignored. **Step obbligatorio**: copiare il file
+risultante fuori dal laptop (Google Drive, disco esterno, altro). La
+ritenzione interna di Sanity non sostituisce un backup off-site — security
+audit F-43.
+
+Prima esecuzione su una nuova macchina: `npx sanity login` (una volta).
+
 ## Struttura progetto
 
 ```

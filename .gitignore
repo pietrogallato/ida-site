@@ -37,6 +37,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# sanity dataset backups (F-43). kept local and copied off-site manually.
+/backups
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
