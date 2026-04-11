@@ -576,7 +576,7 @@
     },
     "retention": {
       "title": "Data Retention",
-      "text": "Messages submitted through the contact form are retained in the controller's mailbox for as long as necessary to handle the request and any resulting professional relationship, and are then deleted. The transactional email provider (Resend) retains logs of sent emails according to the retention of its service plan. IP addresses used for contact form abuse prevention are held in volatile memory for a maximum of 15 minutes. Technical logs of the Vercel infrastructure are retained according to the retention policy of the Vercel plan in use. Aggregated Vercel Analytics data is retained according to Vercel's policies (typically 90 days)."
+      "text": "Messages submitted through the contact form are retained in the controller's mailbox for as long as necessary to handle the request and any resulting professional relationship, and are then deleted. The transactional email provider Resend Inc. retains sent emails (including metadata and html/text content) for approximately 15 days in its logging console, according to the retention currently applied to the service plan in use. IP addresses used for contact form abuse prevention are held in volatile memory for a maximum of 15 minutes and are not persisted. Technical logs of the Vercel infrastructure are retained according to the retention policy of the Vercel plan in use. Aggregated Vercel Analytics data is retained according to Vercel's policies (typically 90 days)."
     },
     "rights": {
       "title": "Your Rights",

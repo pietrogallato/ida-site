@@ -576,7 +576,7 @@
     },
     "retention": {
       "title": "Conservazione dei dati",
-      "text": "I messaggi inviati tramite il modulo di contatto vengono conservati nella casella email del titolare per il tempo necessario a gestire la richiesta e il rapporto professionale eventualmente instaurato, e successivamente cancellati. Il provider di email transazionale (Resend) conserva log delle email inviate secondo la retention prevista dal proprio piano di servizio. Gli indirizzi IP utilizzati per la prevenzione di abusi del modulo di contatto sono conservati in memoria volatile per un massimo di 15 minuti. I log tecnici dell'infrastruttura Vercel sono conservati secondo le policy di retention del piano Vercel in uso. I dati aggregati di Vercel Analytics sono conservati secondo le policy di Vercel (tipicamente 90 giorni)."
+      "text": "I messaggi inviati tramite il modulo di contatto vengono conservati nella casella email del titolare per il tempo necessario a gestire la richiesta e il rapporto professionale eventualmente instaurato, e successivamente cancellati. Il provider di email transazionale Resend Inc. conserva le email inviate (inclusi metadati e contenuto html/testo) per circa 15 giorni nella propria console di logging, secondo la retention attualmente applicata al piano di servizio in uso. Gli indirizzi IP utilizzati per la prevenzione di abusi del modulo di contatto sono conservati in memoria volatile per un massimo di 15 minuti e non vengono persistiti. I log tecnici dell'infrastruttura Vercel sono conservati secondo le policy di retention del piano Vercel in uso. I dati aggregati di Vercel Analytics sono conservati secondo le policy di Vercel (tipicamente 90 giorni)."
     },
     "rights": {
       "title": "I tuoi diritti",

@@ -1407,6 +1407,7 @@ File esaminati: `app/api/contact/route.ts` (Resend init + invio), `lib/emails/co
   3. Documentare il valore scelto nella privacy policy (cfr. F-44).
   4. Aggiungere 2FA sull'account Resend.
 - **Effort**: S (config dashboard + doc)
+- **Status (2026-04-11)**: **RESOLVED (doc)**. Retention verificata manualmente nella console Resend: ~15 giorni visibili, inclusi metadati + html/body. Il valore è stato documentato nella privacy policy (`messages/it.json` + `messages/en.json` → `privacy.retention.text`) e nel registro art. 30 `docs/legal/README.md`. La config Resend per ridurre ulteriormente la retention non è disponibile sul piano in uso (Free); rivalutare se si passa a Pro. 2FA sull'account Resend resta un'azione operativa lato titolare.
 
 ---
 
@@ -1680,6 +1681,7 @@ Tabella di confronto riga per riga:
   - Resend: Dashboard → Settings → Legal → DPA (o richiedere via support).
   - Conservare i 3 PDF in luogo tracciabile (Google Drive, file offline).
 - **Effort**: S (manuale)
+- **Status (2026-04-11)**: **PARTIALLY RESOLVED**. DPA Vercel e Resend scaricati e archiviati in `docs/legal/` (`dpa-vercel-20260411.pdf`, `dpa-resend-20260411.pdf`). Registro GDPR art. 30 creato in `docs/legal/README.md` con mappa processor, basi giuridiche, retention, trasferimenti extra-UE. **Gap noto**: il DPA Vercel §1 si applica formalmente solo ai piani "Enterprise and Pro"; il sito usa Hobby — documentato nel registro §2 come rischio accettato (le misure Schedule 2 del DPA + Vercel Privacy Notice + certificazione EU-U.S. DPF restano vincolanti). **Ancora pending**: scaricare il DPA Sanity da https://www.sanity.io/legal/dpa o accettarlo via `sanity.io/manage`.
 
 ---
 
