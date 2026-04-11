@@ -3,6 +3,7 @@
 import { useCallback, useSyncExternalStore } from "react";
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
+import { TrackingPreferencesButton } from "@/components/ui/tracking-preferences";
 
 const STORAGE_KEY = "cookie-banner-dismissed";
 
@@ -46,12 +47,15 @@ export function CookieBanner() {
           {t("privacyLink")}
         </Link>
       </p>
-      <button
-        onClick={dismiss}
-        className="mt-3 shrink-0 rounded-lg bg-primary px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-primary-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 sm:mt-0"
-      >
-        {t("dismiss")}
-      </button>
+      <div className="mt-3 flex shrink-0 flex-wrap items-center gap-3 sm:mt-0">
+        <TrackingPreferencesButton variant="link" />
+        <button
+          onClick={dismiss}
+          className="rounded-lg bg-primary px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-primary-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+        >
+          {t("dismiss")}
+        </button>
+      </div>
     </div>
   );
 }

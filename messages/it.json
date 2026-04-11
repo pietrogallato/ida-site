@@ -568,11 +568,11 @@
     },
     "analytics": {
       "title": "Analisi del traffico",
-      "text": "Questo sito utilizza Vercel Analytics e Vercel Speed Insights per raccogliere dati anonimi sull'utilizzo del sito. Questi strumenti non utilizzano cookie, non raccolgono dati personali identificabili e non effettuano tracciamento cross-site. I dati vengono elaborati nell'Unione Europea e non vengono trasferiti a paesi terzi. Vercel Analytics è conforme al GDPR."
+      "text": "Questo sito utilizza Vercel Analytics e Vercel Speed Insights per raccogliere dati aggregati e anonimi sull'utilizzo del sito (numero di visite, pagine più viste, paese di origine, tipo di dispositivo, metriche di performance tecnica). Questi strumenti non utilizzano cookie, non raccolgono dati personali identificabili e non effettuano tracciamento cross-site. L'indirizzo IP del visitatore viene processato da Vercel Inc. in forma aggregata e non viene collegato a un'identità. Base giuridica del trattamento: legittimo interesse del titolare al miglioramento continuo del servizio e alla prevenzione di abusi (art. 6(1)(f) GDPR). Il bilanciamento di interessi tiene conto del fatto che: (i) nessun cookie viene installato; (ii) nessuna profilazione viene effettuata; (iii) l'utente può opporsi in qualsiasi momento e senza giustificazione. Per esercitare il diritto di opposizione, utilizza il link \"Gestisci tracking\" presente nel footer di ogni pagina o nel banner informativo: disattivando l'opzione, nessuno script di analytics verrà più caricato sul tuo browser. La scelta viene memorizzata localmente sul tuo dispositivo."
     },
     "cookies": {
       "title": "Cookie e archiviazione locale",
-      "text": "Questo sito utilizza esclusivamente cookie tecnici necessari al funzionamento. Inoltre, il sito utilizza il localStorage del browser (non tecnicamente un cookie) per memorizzare la preferenza del tema (chiaro/scuro) e della lingua. Questi dati rimangono esclusivamente sul tuo dispositivo e non vengono trasmessi a terzi. Non vengono utilizzati cookie di profilazione o di terze parti. Non essendo presenti cookie di profilazione, non è necessario un banner di consenso ai cookie."
+      "text": "Questo sito utilizza esclusivamente cookie tecnici necessari al funzionamento. Inoltre, il sito utilizza il localStorage del browser (non tecnicamente un cookie) per memorizzare la preferenza del tema (chiaro/scuro), della lingua e la tua eventuale opposizione alla raccolta di analytics. Questi dati rimangono esclusivamente sul tuo dispositivo e non vengono trasmessi a terzi. Non vengono utilizzati cookie di profilazione o di terze parti."
     },
     "retention": {
       "title": "Conservazione dei dati",
@@ -584,10 +584,19 @@
     }
   },
   "cookieBanner": {
-    "text": "Questo sito utilizza solo cookie tecnici necessari al funzionamento.",
+    "text": "Questo sito utilizza solo cookie tecnici necessari al funzionamento e strumenti di analisi aggregata del traffico (Vercel Analytics, cookieless) sulla base del legittimo interesse. Puoi opporti in qualsiasi momento.",
     "privacyLink": "Privacy Policy",
     "dismiss": "Ho capito",
     "ariaLabel": "Informativa sui cookie"
+  },
+  "tracking": {
+    "manageLink": "Gestisci tracking",
+    "dialogTitle": "Preferenze di tracciamento",
+    "dialogDescription": "Questo sito raccoglie statistiche aggregate sul traffico tramite Vercel Analytics e Vercel Speed Insights. Nessun cookie di profilazione, nessun tracciamento cross-site, nessun dato personale identificabile. La base giuridica è il legittimo interesse del titolare al miglioramento del servizio (art. 6(1)(f) GDPR). Puoi disattivare completamente la raccolta in qualsiasi momento usando l'interruttore qui sotto.",
+    "optionLabel": "Raccolta statistiche anonime",
+    "statusEnabled": "Attiva — Vercel Analytics e Speed Insights sono in esecuzione su questo browser.",
+    "statusDisabled": "Disattivata — nessuno script di analytics viene caricato su questo browser.",
+    "close": "Chiudi"
   },
   "footer": {
     "description": "Psicologa clinica iscritta all'Albo degli Psicologi del Veneto (n. 13939). Sostegno individuale, di coppia e familiare, psicologia scolastica e percorsi per genitori e adolescenti.",

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { getLocale, getTranslations } from "next-intl/server";
 import { Mail, Phone, MessageCircle, Linkedin } from "lucide-react";
 import { Container } from "@/components/ui/container";
+import { TrackingPreferencesButton } from "@/components/ui/tracking-preferences";
 import { siteConfig, navItems } from "@/content/site";
 
 export async function Footer() {
@@ -116,6 +117,8 @@ export async function Footer() {
             >
               Privacy Policy
             </Link>
+            {" — "}
+            <TrackingPreferencesButton variant="link" />
           </p>
         </div>
       </Container>

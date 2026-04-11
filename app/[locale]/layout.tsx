@@ -7,8 +7,7 @@ import { getTranslations } from "next-intl/server";
 import { locales, type Locale } from "@/i18n/config";
 import { siteConfig } from "@/content/site";
 import { getWebsiteSchema, getLocalBusinessSchema } from "@/lib/structured-data";
-import { SpeedInsights } from "@vercel/speed-insights/next";
-import { Analytics } from "@vercel/analytics/next";
+import { AnalyticsGate } from "@/components/ui/analytics-gate";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { SkipLink } from "@/components/ui/skip-link";
 import { Header } from "@/components/layout/header";
@@ -142,8 +141,7 @@ export default async function LocaleLayout({
             <BackToTop />
             <CookieBanner />
           </ThemeProvider>
-          <SpeedInsights />
-          <Analytics />
+          <AnalyticsGate />
         </NextIntlClientProvider>
       </body>
     </html>

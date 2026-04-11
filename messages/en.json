@@ -568,11 +568,11 @@
     },
     "analytics": {
       "title": "Traffic Analysis",
-      "text": "This site uses Vercel Analytics and Vercel Speed Insights to collect anonymous usage data. These tools do not use cookies, do not collect personally identifiable information, and do not perform cross-site tracking. Data is processed within the European Union and is not transferred to third countries. Vercel Analytics is GDPR-compliant."
+      "text": "This site uses Vercel Analytics and Vercel Speed Insights to collect aggregated, anonymous usage data (number of visits, most-viewed pages, country of origin, device type, technical performance metrics). These tools do not use cookies, do not collect personally identifiable information, and do not perform cross-site tracking. The visitor's IP address is processed by Vercel Inc. in aggregated form and is not linked to an identity. Legal basis: legitimate interest of the controller in continuously improving the service and preventing abuse (Art. 6(1)(f) GDPR). The balancing of interests takes into account that: (i) no cookie is installed; (ii) no profiling is performed; (iii) the user can object at any time without justification. To exercise the right to object, use the \"Manage tracking\" link in the footer of every page or in the informational banner: disabling the option stops any analytics script from loading in your browser. The choice is stored locally on your device."
     },
     "cookies": {
       "title": "Cookies and Local Storage",
-      "text": "This site exclusively uses technical cookies necessary for operation. Additionally, the site uses the browser's localStorage (not technically a cookie) to store theme preference (light/dark) and language selection. This data remains exclusively on your device and is not transmitted to third parties. No profiling or third-party cookies are used. Since no profiling cookies are present, a cookie consent banner is not required."
+      "text": "This site exclusively uses technical cookies necessary for operation. Additionally, the site uses the browser's localStorage (not technically a cookie) to store theme preference (light/dark), language selection and your possible objection to analytics collection. This data remains exclusively on your device and is not transmitted to third parties. No profiling or third-party cookies are used."
     },
     "retention": {
       "title": "Data Retention",
@@ -584,10 +584,19 @@
     }
   },
   "cookieBanner": {
-    "text": "This site only uses technical cookies necessary for operation.",
+    "text": "This site only uses technical cookies necessary for operation and aggregated, cookieless traffic analytics (Vercel Analytics) on the basis of legitimate interest. You can object at any time.",
     "privacyLink": "Privacy Policy",
     "dismiss": "Got it",
     "ariaLabel": "Cookie notice"
+  },
+  "tracking": {
+    "manageLink": "Manage tracking",
+    "dialogTitle": "Tracking preferences",
+    "dialogDescription": "This site collects aggregated traffic statistics through Vercel Analytics and Vercel Speed Insights. No profiling cookies, no cross-site tracking, no personally identifiable information. The legal basis is the controller's legitimate interest in improving the service (Art. 6(1)(f) GDPR). You can fully disable collection at any time using the switch below.",
+    "optionLabel": "Anonymous traffic statistics",
+    "statusEnabled": "Enabled — Vercel Analytics and Speed Insights are running in this browser.",
+    "statusDisabled": "Disabled — no analytics script is loaded in this browser.",
+    "close": "Close"
   },
   "footer": {
     "description": "Clinical psychologist registered with the Veneto Psychologists' Register (no. 13939). Individual support, couples and family counseling, school psychology, and programs for parents and adolescents.",
